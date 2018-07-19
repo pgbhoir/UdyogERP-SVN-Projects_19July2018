@@ -1,0 +1,38 @@
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe.config
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.pdb
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.frmMain.resources
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.Properties.Resources.resources
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csproj.GenerateResource.Cache
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.exe
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.pdb
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\DataAccess-Net.dll
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\uBaseForm.dll
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\udSelectPop.dll
+D:\vuPrj\DotNet\ugstEWayBill\ugstEWayBill\bin\Debug\Newtonsoft.Json.dll
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe.config
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.pdb
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.frmMain.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.Properties.Resources.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csproj.GenerateResource.Cache
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.exe
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.pdb
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe.config
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.exe
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.pdb
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.pdb
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csprojResolveAssemblyReference.cache
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.frmMain.resources
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.Properties.Resources.resources
+E:\SVNProjects\From Rupesh P\From Rupesh P_31012018\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csproj.GenerateResource.Cache
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe.config
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.exe
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\bin\Debug\ugstEWayBill.pdb
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.frmMain.resources
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.Properties.Resources.resources
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.csproj.GenerateResource.Cache
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.exe
+E:\SVNProjects\From Rupesh P\ugstEWayBill\ugstEWayBill\ugstEWayBill\obj\Debug\ugstEWayBill.pdb

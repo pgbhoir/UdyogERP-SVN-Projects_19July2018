@@ -1,0 +1,23 @@
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI2.UI.exe.config
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI2.UI.exe
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI2.UI.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI.BLL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI.DAL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI.BLL.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI.DAL.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\Interop.VisualFoxpro.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\Interop.VisualFoxpro.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.csproj.ResolveComReference.cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.frmMenuTranRept.resources
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.frmSearch.resources
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.frmUI.resources
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI2.UI.Properties.Resources.resources
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.csproj.GenerateResource.Cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI2.UI.exe
+E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI2.UI.pdb
+D:\1 Development\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\CustModAccUI2.UI.exe.config
+D:\1 Development\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\Interop.VisualFoxpro.dll
+D:\1 Development\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI.UI.csproj.ResolveComReference.cache
+D:\1 Development\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI2.UI.exe
+D:\1 Development\Dotnet\CustModAccUI\CustModAccUI2.UI\obj\Debug\CustModAccUI2.UI.pdb

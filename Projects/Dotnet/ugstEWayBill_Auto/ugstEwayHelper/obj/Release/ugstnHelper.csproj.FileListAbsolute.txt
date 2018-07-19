@@ -1,0 +1,15 @@
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\bin\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\bin\Release\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Release\ugstnHelper.csprojResolveAssemblyReference.cache
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Release\ugstnHelper.pdb
+D:\1 Development\Dotnet\ugstEWayBill\ugstEwayHelper\bin\Release\ugstnHelper.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEwayHelper\bin\Release\ugstnHelper.pdb
+D:\1 Development\Dotnet\ugstEWayBill\ugstEwayHelper\bin\Release\Udyog.Library.Common.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEwayHelper\obj\Release\ugstnHelper.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEwayHelper\obj\Release\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill_Final\ugstEwayHelper\bin\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEwayHelper\bin\Release\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill_Final\ugstEwayHelper\obj\Release\ugstnHelper.csprojResolveAssemblyReference.cache
+D:\EWay\API\ugstEWayBill_Final\ugstEwayHelper\obj\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEwayHelper\obj\Release\ugstnHelper.pdb

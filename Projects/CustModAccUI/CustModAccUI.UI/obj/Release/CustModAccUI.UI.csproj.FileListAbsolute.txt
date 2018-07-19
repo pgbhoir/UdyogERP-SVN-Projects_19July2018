@@ -1,0 +1,9 @@
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\ResolveAssemblyReference.cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\CustModAccUI.UI.csproj.GenerateResource.Cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\bin\Release\CustModAccUI.UI.dll.config
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\bin\Release\CustModAccUI.UI.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\bin\Release\CustModAccUI.UI.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\CustModAccUI.UI.Properties.Resources.resources
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\CustModAccUI.UI.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\CustModAccUI.UI.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.UI\obj\Release\CustModAccUI.UI.frmUI.resources

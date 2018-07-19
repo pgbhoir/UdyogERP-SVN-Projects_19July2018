@@ -1,0 +1,2 @@
+LPARAMETERS lsdate,ledate,dsessionid
+DO FORM uefrmgstinwardxls WITH lsdate,ledate,dsessionid

@@ -1,0 +1,3 @@
+E:\SVNProjects\From Rupesh P\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\obj\Release\ugstEWB_AcMast_JSON.frmMain.resources
+E:\SVNProjects\From Rupesh P\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\obj\Release\ugstEWB_AcMast_JSON.Properties.Resources.resources
+E:\SVNProjects\From Rupesh P\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\ugstEWB_AcMast_JSON\obj\Release\ugstEWB_AcMast_JSON.csproj.GenerateResource.Cache

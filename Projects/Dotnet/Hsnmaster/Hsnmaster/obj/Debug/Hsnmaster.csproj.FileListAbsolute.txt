@@ -1,0 +1,46 @@
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe.config
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.pdb
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\DataAccess-Net.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\getinfo.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\itextsharp.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\ubaseform.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\udclsdgvdatetimepicker.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\udclsdgvnumericcolumn.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\udselectpop.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\Udyog.Library.Common.dll
+D:\Udyog\GST\Hsnmaster\Hsnmaster\bin\Debug\DataAccess-Net.pdb
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmHSNCodeMast.resources
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.Properties.Resources.resources
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csproj.GenerateResource.Cache
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.exe
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.pdb
+D:\Udyog\GST\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csprojResolveAssemblyReference.cache
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe.config
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.pdb
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmHSNCodeMast.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmValidIn.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.Properties.Resources.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csproj.GenerateResource.Cache
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.exe
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.pdb
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe.config
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.pdb
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmHSNCodeMast.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmValidIn.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.Properties.Resources.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csproj.GenerateResource.Cache
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.exe
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.pdb
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe.config
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.exe
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Debug\UdHSNCodeMast.pdb
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmHSNCodeMast.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.frmValidIn.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.Properties.Resources.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\Hsnmaster.csproj.GenerateResource.Cache
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.exe
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Debug\UdHSNCodeMast.pdb

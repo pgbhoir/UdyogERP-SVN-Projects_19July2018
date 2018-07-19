@@ -1,0 +1,5 @@
+Parameters _lnsessionid
+
+Do Form uepickupsplit.scx With _lnsessionid To retval
+
+Return retval

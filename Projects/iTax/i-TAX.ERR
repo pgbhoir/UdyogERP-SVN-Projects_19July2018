@@ -1,0 +1,89 @@
+Program d:\svngst\itax\vu_udfs.prg has the following errors:
+    Menu GWARE - Undefined
+    Unknown HASH - Undefined
+    Unknown ENCRYPT - Undefined
+    Unknown DECRYPT - Undefined
+
+Visual Class Library d:\svngst\itax\sqlconnection.vcx has the following errors:
+    Unknown HASH - Undefined
+    Unknown ENCRYPT - Undefined
+    Unknown DECRYPT - Undefined
+    Unknown UEGETPOP - Undefined
+
+Form d:\svngst\itax\spl.scx has the following errors:
+    Unknown UEIMAGES - Undefined
+    File UGERPWELPAGE.JPG - Undefined
+
+Form d:\svngst\itax\frmudyogsdi.scx has the following errors:
+    Menu GWARE - Undefined
+    Unknown UEIMAGES - Undefined
+    Application UEMIRROR - Undefined
+    Proc./Func. UEMULTYCO_MAST - Undefined
+    Proc./Func. UECO_MAST - Undefined
+
+Form d:\svngst\itax\frmpassword.scx has the following errors:
+    Unknown UEIMAGES - Undefined
+    Application UDALERTAPP - Undefined
+
+Visual Class Library d:\svngst\itax\vutool.vcx has the following errors:
+    Unknown UEGETPOP - Undefined
+    Unknown UEIMAGES - Undefined
+    Proc./Func. UDAPPTOOLNEW - Undefined
+    Proc./Func. UDTRIGTOOLNEW - Undefined
+    Proc./Func. UETRIGTOOLNEW - Undefined
+    Unknown UDAPPTOOLSAVE - Undefined
+    Unknown UDTRIGTOOLSAVE - Undefined
+    Unknown UETRIGTOOLSAVE - Undefined
+    Proc./Func. UDAPPTOOLAFTSAVEIT - Undefined
+    Proc./Func. UDTRIGTOOLAFTSAVEIT - Undefined
+    Proc./Func. UETRIGTOOLAFTSAVEIT - Undefined
+    Proc./Func. UDAPPTOOLEDIT - Undefined
+    Proc./Func. UDTRIGTOOLEDIT - Undefined
+    Proc./Func. UETRIGTOOLEDIT - Undefined
+    Unknown UDAPPTOOLDELETE - Undefined
+    Unknown UDTRIGTOOLDELETE - Undefined
+    Unknown UETRIGTOOLDELETE - Undefined
+    Proc./Func. UDAPPTOOLDELETEAFTER - Undefined
+    Proc./Func. UDTRIGTOOLDELETEAFTER - Undefined
+    Proc./Func. UETRIGTOOLDELETEAFTER - Undefined
+    Proc./Func. UDAPPTOOLCOPY - Undefined
+    Proc./Func. UDTRIGTOOLCOPY - Undefined
+    Proc./Func. UETRIGTOOLCOPY - Undefined
+    Proc./Func. UDAPPTOOLPRINT - Undefined
+    Proc./Func. UDTRIGTOOLPRINT - Undefined
+    Proc./Func. UETRIGTOOLPRINT - Undefined
+    Proc./Func. UDAPPTOOLEXIT - Undefined
+    Proc./Func. UDTRIGTOOLEXIT - Undefined
+    Proc./Func. UETRIGTOOLEXIT - Undefined
+
+Form d:\svngst\itax\denied.scx has the following errors:
+    File SILVER.BMP - Undefined
+
+Visual Class Library d:\svngst\itax\_base.vcx has the following errors:
+    Program SETOBJRF - Undefined
+
+Form d:\svngst\itax\frmregistermsg.scx has the following errors:
+    Unknown UEIMAGES - Undefined
+
+Program d:\svngst\itax\main.prg has the following errors:
+    Unknown HASH - Undefined
+    Application UETIPSAPP - Undefined
+    Application UEBACKUP - Undefined
+    Application DTS - Undefined
+    Application INTEGRATION - Undefined
+    Application UI2UIXGEN - Undefined
+    Proc./Func. UEUPDATEPKG - Undefined
+    Unknown UDAPPMAINAPPL - Undefined
+    Unknown UDTRIGMAINAPPL - Undefined
+    Unknown UETRIGMAINAPPL - Undefined
+    Proc./Func. UDAPPACTIVE - Undefined
+    Proc./Func. UDTRIGACTIVE - Undefined
+    Proc./Func. UETRIGACTIVE - Undefined
+    Unknown UEREGISTRATION - Undefined
+    Proc./Func. UEGETCOMPINFO - Undefined
+    Proc./Func. UNREG_DATA - Undefined
+
+Visual Class Library d:\svngst\itax\barcodeclass.vcx has the following errors:
+    Unknown UDTRIGBCUPDT - Undefined
+    Proc./Func. UEBARCODETRAN - Undefined
+

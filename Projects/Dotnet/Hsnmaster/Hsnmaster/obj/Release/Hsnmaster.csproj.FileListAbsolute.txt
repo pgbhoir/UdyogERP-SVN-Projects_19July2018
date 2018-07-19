@@ -1,0 +1,181 @@
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.dll
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+F:\Kishor\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+F:\Kishor\GST\GST HSN Code Master\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\getinfo.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\itextsharp.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\ubaseform.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\udclsdgvdatetimepicker.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\udclsdgvnumericcolumn.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\Udyog.Library.Common.dll
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Udyog\WorkingGST\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+C:\Users\Rupesh\Desktop\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\final\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\final\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\final\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\final\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.manifest
+D:\final\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\final\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\final\Hsnmaster\Hsnmaster\bin\Release\NullDate.exe
+D:\final\Hsnmaster\Hsnmaster\bin\Release\NullDate.vshost.exe
+D:\final\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\final\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+D:\final\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\final\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\final\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\final\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\final\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\final\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe.manifest
+D:\final - Copy\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\final - Copy\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\final - Copy\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\final - Copy\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\final - Copy\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\final - Copy\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\Transfer\Shrikant Sir\Hsnmaster\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\bin\Release\udSelectPop.pdb
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\Transfer\Shrikant Sir\Hsnmaster_with_validation\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\RRG D DRIVE BACKUP\Transfer Data Folder\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\Final Projects & Updates\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\PROJECT WORK 2\1 HSNCODE Master\2.HSNCODE MASTER\HSN CODE MASTER WITH VALIDATION PROJECT\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\getinfo.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\itextsharp.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\ubaseform.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\udclsdgvdatetimepicker.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\udclsdgvnumericcolumn.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\Udyog.Library.Common.dll
+D:\Combine\Hsnmaster\Hsnmaster\bin\Release\DataAccess-Net.pdb
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+D:\Combine\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe.config
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.exe
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\bin\Release\UdHSNCodeMast.pdb
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmHSNCodeMast.resources
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.frmValidIn.resources
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.Properties.Resources.resources
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\Hsnmaster.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.exe
+E:\SVNProjects\Bug-30849\Hsnmaster\Hsnmaster\obj\Release\UdHSNCodeMast.pdb

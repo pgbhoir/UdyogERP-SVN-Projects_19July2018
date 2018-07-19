@@ -1,0 +1,8 @@
+Program d:\1 development\gstr zoom-in\getgstrdata.prg has the following errors:
+    Visual Class Library SQLCONNECTION - Undefined
+
+Form d:\1 development\gstr zoom-in\frmgstrzoomin.scx has the following errors:
+    Application UECRVIEWER - Undefined
+    Unknown BARSTAT - Undefined
+    Proc./Func. TOUEVOUCHER - Undefined
+

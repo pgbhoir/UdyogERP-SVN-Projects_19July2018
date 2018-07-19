@@ -1,0 +1,14 @@
+Form d:\multilevel\user_security\frmusers.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form d:\multilevel\user_security\frmuseraccess.scx has the following errors:
+    Unknown UEGETPOP - Undefined
+
+Form d:\multilevel\user_security\frmrolepermisson.scx has the following errors:
+    Unknown UEGETPOP - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown BEEP - Undefined
+
+Program d:\multilevel\user_security\main.prg has the following errors:
+    Unknown APPVERCHK - Undefined
+

@@ -1,0 +1,6 @@
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\bin\Debug\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\bin\Debug\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\bin\Debug\Newtonsoft.Json.dll
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Debug\ugstnHelper.csprojResolveAssemblyReference.cache
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Debug\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill\ugstEwayHelper\obj\Debug\ugstnHelper.pdb

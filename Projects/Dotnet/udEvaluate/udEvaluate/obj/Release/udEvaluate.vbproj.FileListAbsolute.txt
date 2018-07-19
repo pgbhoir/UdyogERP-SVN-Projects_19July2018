@@ -1,0 +1,8 @@
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\bin\Release\udEvaluate.dll
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\bin\Release\udEvaluate.pdb
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\bin\Release\udEvaluate.xml
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\obj\Release\udEvaluate.Resources.resources
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\obj\Release\udEvaluate.vbproj.GenerateResource.Cache
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\obj\Release\udEvaluate.dll
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\obj\Release\udEvaluate.xml
+D:\1 Development\Dotnet\udEvaluate\udEvaluate\udEvaluate\obj\Release\udEvaluate.pdb

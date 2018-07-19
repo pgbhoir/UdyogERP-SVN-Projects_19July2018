@@ -1,0 +1,13 @@
+Form e:\...\working bugs\30954\updates\svn updates for bug-30954\ledzoom\ledzoom.scx has the following errors:
+    Proc./Func. TOUEVOUCHER - Undefined
+    Visual Class Library VOUCLASS - Undefined
+    Application UECRVIEWER - Undefined
+    Proc./Func. UEMAILING - Undefined
+    Unknown UEALLOC - Undefined
+    Unknown UEGETPOP - Undefined
+    Unknown BARSTAT - Undefined
+
+Program e:\...\working bugs\30954\updates\svn updates for bug-30954\ledzoom\main.prg has the following errors:
+    Unknown APPVERCHK - Undefined
+    Visual Class Library SQLCONNECTION - Undefined
+

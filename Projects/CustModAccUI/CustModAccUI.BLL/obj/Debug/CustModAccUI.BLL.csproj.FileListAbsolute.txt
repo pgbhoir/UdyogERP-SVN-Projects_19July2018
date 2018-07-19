@@ -1,0 +1,7 @@
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\bin\Debug\CustModAccUI.BLL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\bin\Debug\CustModAccUI.BLL.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\bin\Debug\CustModAccUI.DAL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\bin\Debug\CustModAccUI.DAL.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\obj\Debug\CustModAccUI.BLL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.BLL\obj\Debug\CustModAccUI.BLL.pdb

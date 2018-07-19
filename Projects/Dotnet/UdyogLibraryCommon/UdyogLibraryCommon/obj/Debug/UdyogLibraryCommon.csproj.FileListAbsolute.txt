@@ -1,0 +1,24 @@
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csprojResolveAssemblyReference.cache
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.Properties.Resources.resources
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csproj.GenerateResource.Cache
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll.config
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.pdb
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.dll
+c:\users\shrikant.usqure\documents\visual studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.pdb
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll.config
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.pdb
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csprojResolveAssemblyReference.cache
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.Properties.Resources.resources
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csproj.GenerateResource.Cache
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.dll
+D:\Udyog\Working\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.pdb
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll.config
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.pdb
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csprojResolveAssemblyReference.cache
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.Properties.Resources.resources
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\UdyogLibraryCommon.csproj.GenerateResource.Cache
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.dll
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Debug\Udyog.Library.Common.pdb

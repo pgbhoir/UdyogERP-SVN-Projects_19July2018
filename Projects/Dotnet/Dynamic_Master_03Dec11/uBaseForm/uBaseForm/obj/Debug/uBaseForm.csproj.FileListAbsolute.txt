@@ -1,0 +1,7 @@
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\bin\Debug\uBaseForm.dll
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\bin\Debug\uBaseForm.pdb
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\obj\Debug\uBaseForm.FrmBaseForm.resources
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\obj\Debug\uBaseForm.Properties.Resources.resources
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\obj\Debug\uBaseForm.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\obj\Debug\uBaseForm.dll
+E:\SVNProjects\Bug-30849\Dynamic_Master_03Dec11\uBaseForm\uBaseForm\obj\Debug\uBaseForm.pdb

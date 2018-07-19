@@ -1,0 +1,195 @@
+*:*****************************************************************************
+*:        Program: MainCrystal.PRG
+*:         System: Udyog Software
+*:         Author: RND
+*:  Last modified: 19/06/2007
+*:			AIM  : Crystal Report Viewer
+*:*****************************************************************************
+&& vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+*LPARAMETERS tcCry1,tcBsql,tnSql,tcPrfix
+*!*	LPARAMETERS tcCry1,tcBsql,tnSql,tcPrfix,tnSql1
+Lparameters tcCry1,tcBsql,tnSql,tcPrfix,tnSql1,oPrinterObj		&& Changed by Sachin N. S. on 31/10/2012 for Bug-3775
+*!*	tcCry1		 :	Crystal Report Name
+*!*	tcBsql		 :	Sql-String
+*!*	tnSql		 :	(1) Preview with Print Button [Default]
+*!*					(2) Preview with out Print Button
+*!*					(3) Print with Preview
+*!*					(4) Print with PDF
+*!*					(5) Print with XML
+*!*					(6) Print with HTML
+*!*	Usage		 :	Do Uecrviewer With "Acmast.rpt","SELECT AC_NAME,[GROUP] FROM Ac_Mast",1
+*!*	tnSql 		 :	Old version is using tnSql, but added new parameter as tnSql1 just for forcing
+*!*					the user to use latest uecrviewer.app
+*:*****************************************************************************
+
+****Versioning**** Added By Amrendra On 01/06/2011
+Local _VerValidErr,_VerRetVal,_CurrVerVal
+_VerValidErr = ""
+_VerRetVal  = 'NO'
+_CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
+Try
+	_VerRetVal = AppVerChk('REPORTVIEWER',_CurrVerVal,Justfname(Sys(16)))
+Catch To _VerValidErr
+	_VerRetVal  = 'NO'
+Endtry
+If Type("_VerRetVal")="L"
+	cMsgStr="Version Error occured!"
+	cMsgStr=cMsgStr+Chr(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
+	Messagebox(cMsgStr,64,VuMess)
+	Return .F.
+Endif
+If _VerRetVal  = 'NO'
+	Return .F.
+Endif
+****Versioning****
+If Vartype(tnSql1) <> "N"
+	tnSql1 = 0
+Else
+	tnSql = tnSql1
+Endif
+&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+
+If Vartype(VuMess) <> [C]
+	_Screen.Visible = .F.
+	Messagebox("Internal Application Are Not Execute Out-Side ...",16)
+	Quit
+Endif
+
+If Vartype(tcPrfix) <> "C"
+	tcPrfix = ""
+Endif
+
+If Empty(tcBsql)
+	Messagebox('Please Pass Sql-String...',64,VuMess)
+	Return .F.
+Endif
+
+
+************ Commented By Sachin N. S. on 29/09/2009 ************ Start
+*!*	Do Case
+*!*	Case Set("Date") == "AMERICAN"
+*!*		currDt = Padl(Month(Date()),2,"0")+"-"+Padl(Day(Date()),2,"0")+"-"+Padl(Year(Date()),4,"0")
+*!*		If !Between(Ctod(currDt),Ctod("05-01-2009"),Ctod("05-26-2010"))
+*!*			Messagebox("Please collect latest report viewer",16,VuMess)
+*!*			Return .F.
+*!*		Endif
+*!*	Otherwise
+*!*		currDt = Padl(Day(Date()),2,"0")+"-"+Padl(Month(Date()),2,"0")+"-"+Padl(Year(Date()),4,"0")
+*!*		If !Between(Ctod(currDt),Ctod("01-05-2009"),Ctod("26-05-2010"))
+*!*			Messagebox("Please collect latest report viewer",16,VuMess)
+*!*			Return .F.
+*!*		Endif
+*!*	Endcase
+************ Commented By Sachin N. S. on 29/09/2009 ************ End
+
+If Pcount() < 2 Or Type("tcCry1") <> "C" Or Type("tcBsql") <> "C"
+	Messagebox("Pass valid parameters...",0+64,VuMess)
+	Return .F.
+Endif
+
+*!*	*!*	Set DataSession To _Screen.ActiveForm.DataSessionId
+
+If Vartype(oCrystalRuntimeApplication) <> 'O'
+	Public oCrystalRuntimeApplication
+	oCrystalRuntimeApplication = Createobject("CrystalRuntime.Application.10")
+Endif
+
+Local moCrvobj
+moCrvobj = Createobject("MainCrvclass")
+moCrvobj.SplitStringParameters(Iif(Vartype(tcBsql)<>'C',"",tcBsql))
+moCrvobj.cPrfix = tcPrfix
+If Vartype(_Screen.ActiveForm.cPrintText) = "C"
+	moCrvobj.cPrintText = Iif(!Empty(_Screen.ActiveForm.cPrintText),_Screen.ActiveForm.cPrintText,"")
+Endif
+tnSql = Iif(Vartype(tnSql)<>'N',1,tnSql)
+
+moCrvobj.oPrinterObj = oPrinterObj		&& Added by Sachin N. S. on 31/10/2012 for Bug-3775
+
+&& After export activex is changing the default directory so we are again set the default directory [Raghu251009]
+lcOlddir = "'"+Alltrim(aPath)+Alltrim(Company.FolderName)+"\'"
+If !Empty(lcOlddir)
+	Set Default To &lcOlddir
+Endif
+&& After export activex is changing the default directory so we are again set the default directory [Raghu251009]
+
+*!*	****** Added by Sachin N. S. on 26/06/2017 for GST -- Start
+If reg_value = 'NOT DONE' And !Inlist(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993')),'10iTAX','10USQUARE','iTax','USquare','VudyogMFG','VudyogTRD','VudyogServiceTax','VudyogSDK','VudyogSTD','VudyogPRO','VudyogENT','VUTrader','VudyogGSSDK')
+	If 'ST_BILL' $ UPPER(tcCry1)
+		moCrvobj.tcUnReg = ""
+	Endif
+Endif
+*!*	****** Added by Sachin N. S. on 26/06/2017 for GST -- End
+
+*!*	Do Form frmcrystalreport.scx With tcCry1,moCrvobj,tnSql,_Screen.ActiveForm.DataSessionId
+Do Form frmcrystalreport.scx With tcCry1,moCrvobj,tnSql
+
+Define Class MainCrvclass As Custom
+	TceSql1 = .F.
+	tceSql2 = .F.
+	tceSql3 = .F.
+	tceSql4 = .F.
+	tceSql5 = .F.
+	tcUnReg = ""
+	cPrintText = ""
+	cPrfix = ""
+	nDatasID = 0
+	oPrinterObj = ''		&& Added by Sachin N. S. on 31/10/2012 for Bug-3775
+
+	Function SplitStringParameters
+		Lparameters tcSql
+		Local lnSql,i,x
+		If ! Empty(tcSql)
+			xLen = Len(Alltrim(tcSql))
+			tcSql = Iif(Right(Alltrim(tcSql),1)=':',Left(Allt(tcSql),xLen-1),Alltrim(tcSql))
+			*!*			tcSql = "<<"+STRTRAN(tcSql,":",">><<")+">>" &&Rup 30/01/2010 Changed for L2S-55 : in Account Name was giving problem. All Related project need to be changed where ":" is used to generate string.
+			tcSql = "<<"+tcSql+">>"
+			lnSql = Occur("<<",tcSql)
+			For i=1 To lnSql Step 1
+				x = 'This.tceSql'+Allt(Str((i)))
+				&x = Strextract(tcSql,"<<",">>",i)
+				If i = 5
+					Exit
+				Endif
+			Endfor
+		Endif
+		This.funGer()
+		This.SetPdf_Path()
+		This.nDatasID = _Screen.ActiveForm.DataSessionId
+	Endfunc
+
+	Function funGer
+		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+		*!*		IF ! PEMSTATUS(Company,"Regd",5)
+		*!*			THIS.tcUnreg = []
+		*!*		ELSE
+		*!*			IF UPPER(ALLTRIM(Company.Regd)) = "DONE"
+		*!*				IF INLIST(UPPER(ALLTRIM(r_srvtype)),'PREMIUM','NORMAL')
+		*!*					THIS.tcUnreg = []
+		*!*				ELSE
+		*!*					THIS.tcUnreg = Company.Unregdmsg
+		*!*				ENDIF
+		*!*			ELSE
+		*!*				THIS.tcUnreg = Company.Unregdmsg
+		*!*			ENDIF
+		*!*		ENDIF
+		This.tcUnReg = 'D E M O  -  C O M P A N Y'
+		This.tcUnReg = GlobalObj.getPropertyval("unReg_Msg")
+		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	Endfunc
+
+	Function SetPdf_Path
+		If ! Pemstatus(Coadditional,"PDF_Path",5)
+			AddProperty(Coadditional,"PDF_Path",Fullpath(Curdir()))
+		Else
+			If Empty(Coadditional.PDF_Path) Or Isnull(Coadditional.PDF_Path)
+				Coadditional.PDF_Path = Fullpath(Curdir())
+			Else
+				Coadditional.PDF_Path = Alltrim(Coadditional.PDF_Path)
+				If Substr(Coadditional.PDF_Path,Len(Coadditional.PDF_Path),1) <> "\"
+					Coadditional.PDF_Path = Coadditional.PDF_Path+"\"
+				Endif
+			Endif
+		Endif
+	Endfunc
+
+Enddefine

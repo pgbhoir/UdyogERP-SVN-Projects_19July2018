@@ -1,0 +1,2 @@
+LPARAMETERS vDataSessionId,addmode,editmode
+DO FORM uefrmgstchallandetails WITH vDataSessionId,addmode,editmode

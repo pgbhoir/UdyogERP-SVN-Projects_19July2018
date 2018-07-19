@@ -1,0 +1,678 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CreditAvailable
+{
+    public partial class Form1 : uBaseForm.FrmBaseForm
+    {
+        DataAccess_Net.clsDataAccess oDataAccess;
+
+        // DataTable Define
+        DataTable dtCredit = new DataTable();/* DataTable For dgvCredit Gridview Data*/
+        DataTable dtPartyName;/* DataTable For Party Textbox search Data*/
+        DataTable dtGroupDetail;/* DataTable For accountname and group  Data*/
+        DataTable dtGroup;/* DataTable For group  Data*/
+        DataTable dtCredit1 = new DataTable();/* Copy dtCredit Table*/
+
+        public Form1(string[] args)
+        {
+            InitializeComponent();
+            this.pDisableCloseBtn = true;  /* close disable  */
+            this.MaximizeBox = false; /* Maximize disable  */
+            this.WindowState = FormWindowState.Maximized;/* Full Screen */
+            this.dgvCredit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystrokeOrF2;
+
+            this.pPApplPID = 0;
+            this.pPara = args;
+            this.pFrmCaption = "Credit Availability";
+            this.pCompId = Convert.ToInt16(args[0]);
+            this.pComDbnm = args[1];
+            this.pServerName = args[2];
+            this.pUserId = args[3];
+            this.pPassword = args[4];
+            this.pPApplRange = args[5];
+            this.pAppUerName = args[6];
+            //Icon MainIcon = new System.Drawing.Icon(args[7].Replace("<*#*>", " "));
+            //this.pFrmIcon = MainIcon;
+            this.pPApplText = args[8].Replace("<*#*>", " ");
+            this.pPApplName = args[9];
+            this.pPApplPID = Convert.ToInt16(args[10]);
+            this.pPApplCode = args[11];
+
+            DataAccess_Net.clsDataAccess._databaseName = this.pComDbnm;
+            DataAccess_Net.clsDataAccess._serverName = this.pServerName;
+            DataAccess_Net.clsDataAccess._userID = this.pUserId;
+            DataAccess_Net.clsDataAccess._password = this.pPassword;
+            oDataAccess = new DataAccess_Net.clsDataAccess();
+
+        }
+
+        public void set_dtCredit()
+        {
+            string from, to, supply;
+            from = dateTimePicker1.Value.Date.ToString("MM/dd/yyyy");
+            to = dateTimePicker2.Value.Date.ToString("MM/dd/yyyy");
+            supply = comboBox1.SelectedIndex.ToString();
+
+            dtCredit.Columns.Clear();
+            dtCredit.Clear();
+
+            if (comboBox1.SelectedIndex == 0 || comboBox1.SelectedIndex == 1)
+            {
+                string SqlStr = "EXEC SP_CREDIT_AVAILABILITY @from = '" +from+ "',@to = '" +to+ "',@supply = '" +supply+ "';";
+                dtCredit = oDataAccess.GetDataSet(SqlStr, null, 100).Tables[0];
+            }
+            dgvCredit.AutoGenerateColumns = false;
+            dgvCredit.DataSource = dtCredit;
+            dgvCredit.Columns[0].DataPropertyName = "tran_cd";
+            dgvCredit.Columns[1].DataPropertyName = "inv_no";
+            dgvCredit.Columns[2].DataPropertyName = "item";
+            dgvCredit.Columns[3].DataPropertyName = "date";
+            dgvCredit.Columns[4].DataPropertyName = "pinvno";
+            dgvCredit.Columns[5].DataPropertyName = "pinvdt";
+            dgvCredit.Columns[6].DataPropertyName = "net_amt";
+            dgvCredit.Columns[7].DataPropertyName = "cgst_amt";
+            dgvCredit.Columns[8].DataPropertyName = "sgst_amt";
+            dgvCredit.Columns[9].DataPropertyName = "igst_amt";
+            dgvCredit.Columns[10].DataPropertyName = "Credit_Availability";
+            dgvCredit.Columns[14].DataPropertyName = "IN_ITC_SEC";
+            dgvCredit.Columns[15].DataPropertyName = "HSNCODE";
+            dgvCredit.Columns[16].DataPropertyName = "party_nm";
+            dtCredit1 = dtCredit;
+
+        }
+        public void gridColumn_Display()
+        {
+            dgvCredit.Columns[1].DisplayIndex = 1;
+            dgvCredit.Columns[2].DisplayIndex = 5;
+            dgvCredit.Columns[3].DisplayIndex = 2;
+            dgvCredit.Columns[4].DisplayIndex = 3;
+            dgvCredit.Columns[5].DisplayIndex = 4;
+            dgvCredit.Columns[15].DisplayIndex = 6;
+            dgvCredit.Columns[6].DisplayIndex = 7;
+            dgvCredit.Columns[7].DisplayIndex = 9;
+            dgvCredit.Columns[8].DisplayIndex = 10;
+            dgvCredit.Columns[9].DisplayIndex = 11;
+            dgvCredit.Columns[10].DisplayIndex = 8;
+            dgvCredit.Columns[11].DisplayIndex = 12;
+            dgvCredit.Columns[12].DisplayIndex = 13;
+            dgvCredit.Columns[13].DisplayIndex = 14;
+            dgvCredit.Columns[14].DisplayIndex = 15;
+
+        }
+        public void FormSetting()
+        {
+            gridColumn_Display();
+            //Form dgvCredit Resize settings
+            dgvCredit.Width = this.Width - 40;
+            dgvCredit.Height = this.Height - 260;
+            dgvCredit.Columns[10].Frozen = true;
+
+            //Form panel1 Resize settings
+            panel1.Location = new Point(12, this.Height - 152);
+            panel1.Width = dgvCredit.Width;
+
+            //Form panel1 Resize settings
+            panel2.Location = new Point(this.Width - 550, -1);
+            panel2.Width = this.Width - 40;
+
+            //Form lblNote Resize settings
+            lblNote.Location = new Point(12, this.Height - 100);
+
+
+        }
+        public void set_Unavailable()
+        {
+            int i = 0;
+            foreach (DataGridViewRow dr1 in dgvCredit.Rows)
+            {
+                if (dr1.Cells["Column11"].Value.ToString() == "False")
+                {
+                    dgvCredit.Rows[i].Cells[11].Value = dgvCredit.Rows[i].Cells[7].Value;
+                    dgvCredit.Rows[i].Cells[12].Value = dgvCredit.Rows[i].Cells[8].Value;
+                    dgvCredit.Rows[i].Cells[13].Value = dgvCredit.Rows[i].Cells[9].Value;
+                }
+                else
+                {
+                    dgvCredit.Rows[i].Cells[11].Value = "0.00";
+                    dgvCredit.Rows[i].Cells[12].Value = "0.00";
+                    dgvCredit.Rows[i].Cells[13].Value = "0.00";
+                }
+                i++;
+            }
+        }
+        public void set_PartyName()
+        {
+            dtPartyName = new DataTable();/* DataTable For Party Textbox search Data*/
+            dtGroupDetail = new DataTable();/* DataTable For accountname and group  Data*/
+            dtGroup = new DataTable();/* DataTable For group  Data*/
+            dtPartyName.Clear();
+            dtPartyName.Columns.Clear();
+            dtPartyName.Columns.Add("partyname");
+            dtGroupDetail.Clear();
+            dtGroupDetail.Columns.Clear();
+            dtGroup.Clear();
+            dtGroup.Columns.Clear();
+            string strSQL = "select ac_name ,[group] from AC_MAST where ac_name in (select party_nm from epitem)";
+            dtGroupDetail = oDataAccess.GetDataSet(strSQL, null, 20).Tables[0];
+            foreach (DataRow dr in dtGroupDetail.Rows)
+            {
+                string strSQL1 = "EXECUTE [USP_ENT_GET_PARENT_ACGROUP] '" + dr[1].ToString() + "'";
+                dtGroup = oDataAccess.GetDataSet(strSQL1, null, 20).Tables[0];
+                foreach (DataRow dr1 in dtGroup.Rows)
+                {
+                    if (dr1[2].ToString().Trim() == "SUNDRY CREDITORS")
+                    {
+                        dtPartyName.Rows.Add(dr[0].ToString());
+                    }
+                }
+
+            }
+        }
+        public void set_amount()
+        {
+            int i = 0;
+            double cgst = 0.00, sgst = 0.00, igst = 0.00, g_cgst, g_sgst, g_igst;
+            foreach (DataGridViewRow dr in dgvCredit.Rows)
+            {
+                g_cgst = Convert.ToDouble(dgvCredit.Rows[i].Cells[11].Value.ToString());
+                g_sgst = Convert.ToDouble(dgvCredit.Rows[i].Cells[12].Value.ToString());
+                g_igst = Convert.ToDouble(dgvCredit.Rows[i].Cells[13].Value.ToString());
+                cgst = cgst + g_cgst;
+                sgst = sgst + g_sgst;
+                igst = igst + g_igst;
+                i++;
+            }
+            textBox2.Text = Convert.ToDecimal(cgst).ToString("0.00");
+            textBox3.Text = Convert.ToDecimal(sgst).ToString("0.00");
+            textBox4.Text = Convert.ToDecimal(igst).ToString("0.00");
+        }
+        public void search()
+        {
+            if (textBox5.Text == "" && textBox1.Text != "")
+            {
+                pageLoad(1);
+                DataRow[] result = dtCredit1.Select("party_nm='" + textBox1.Text + "' ");
+                if (result.Length > 0)
+                {
+                    dtCredit = new DataTable();
+                    dtCredit.Clear();
+                    dtCredit.Columns.Clear();
+                    dtCredit = result.CopyToDataTable();
+                    dgvCredit.DataSource = dtCredit;
+                    dgvCredit.Columns[0].DataPropertyName = "tran_cd";
+                    dgvCredit.Columns[1].DataPropertyName = "inv_no";
+                    dgvCredit.Columns[2].DataPropertyName = "item";
+                    dgvCredit.Columns[3].DataPropertyName = "date";
+                    dgvCredit.Columns[4].DataPropertyName = "pinvno";
+                    dgvCredit.Columns[5].DataPropertyName = "pinvdt";
+                    dgvCredit.Columns[6].DataPropertyName = "net_amt";
+                    dgvCredit.Columns[7].DataPropertyName = "cgst_amt";
+                    dgvCredit.Columns[8].DataPropertyName = "sgst_amt";
+                    dgvCredit.Columns[9].DataPropertyName = "igst_amt";
+                    dgvCredit.Columns[10].DataPropertyName = "Credit_Availability";
+                    dgvCredit.Columns[14].DataPropertyName = "IN_ITC_SEC";
+                    dgvCredit.Columns[15].DataPropertyName = "HSNCODE";
+                    dgvCredit.Columns[16].DataPropertyName = "party_nm";
+                }
+            }
+            else if (textBox5.Text != "" && textBox1.Text == "")
+            {
+                pageLoad(1);
+                DataRow[] result = dtCredit1.Select("HSNCODE='" + textBox5.Text + "' ");
+                if (result.Length > 0)
+                {
+                    dtCredit = new DataTable();
+                    dtCredit.Clear();
+                    dtCredit.Columns.Clear();
+                    dtCredit = result.CopyToDataTable();
+                    dgvCredit.DataSource = dtCredit;
+                    dgvCredit.Columns[0].DataPropertyName = "tran_cd";
+                    dgvCredit.Columns[1].DataPropertyName = "inv_no";
+                    dgvCredit.Columns[2].DataPropertyName = "item";
+                    dgvCredit.Columns[3].DataPropertyName = "date";
+                    dgvCredit.Columns[4].DataPropertyName = "pinvno";
+                    dgvCredit.Columns[5].DataPropertyName = "pinvdt";
+                    dgvCredit.Columns[6].DataPropertyName = "net_amt";
+                    dgvCredit.Columns[7].DataPropertyName = "cgst_amt";
+                    dgvCredit.Columns[8].DataPropertyName = "sgst_amt";
+                    dgvCredit.Columns[9].DataPropertyName = "igst_amt";
+                    dgvCredit.Columns[10].DataPropertyName = "Credit_Availability";
+                    dgvCredit.Columns[14].DataPropertyName = "IN_ITC_SEC";
+                    dgvCredit.Columns[15].DataPropertyName = "HSNCODE";
+                    dgvCredit.Columns[16].DataPropertyName = "party_nm";
+                }
+            }
+            else if (textBox5.Text != "" && textBox1.Text != "")
+            {
+                pageLoad(1);
+                DataRow[] result = dtCredit1.Select(" HSNCODE='" + textBox5.Text + "' and party_nm='" + textBox1.Text + "' ");
+                if (result.Length > 0)
+                {
+                    dtCredit = new DataTable();
+                    dtCredit.Clear();
+                    dtCredit.Columns.Clear();
+                    dtCredit = result.CopyToDataTable();
+                    dgvCredit.DataSource = dtCredit;
+                    dgvCredit.Columns[0].DataPropertyName = "tran_cd";
+                    dgvCredit.Columns[1].DataPropertyName = "inv_no";
+                    dgvCredit.Columns[2].DataPropertyName = "item";
+                    dgvCredit.Columns[3].DataPropertyName = "date";
+                    dgvCredit.Columns[4].DataPropertyName = "pinvno";
+                    dgvCredit.Columns[5].DataPropertyName = "pinvdt";
+                    dgvCredit.Columns[6].DataPropertyName = "net_amt";
+                    dgvCredit.Columns[7].DataPropertyName = "cgst_amt";
+                    dgvCredit.Columns[8].DataPropertyName = "sgst_amt";
+                    dgvCredit.Columns[9].DataPropertyName = "igst_amt";
+                    dgvCredit.Columns[10].DataPropertyName = "Credit_Availability";
+                    dgvCredit.Columns[14].DataPropertyName = "IN_ITC_SEC";
+                    dgvCredit.Columns[15].DataPropertyName = "HSNCODE";
+                    dgvCredit.Columns[16].DataPropertyName = "party_nm";
+                }
+                else
+                {
+                    dgvCredit.DataSource = null;
+                    MessageBox.Show("Records not found", this.pPApplName);
+                }
+            }
+            set_Unavailable();
+        }
+
+        public void pageLoad(int i)
+        {
+            if (i == 0)
+            {
+                textBox1.Text = "";
+                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker2.Value = DateTime.Now;
+                set_dtCredit();
+                set_Unavailable();
+                set_amount();
+            }
+            else
+            {
+                set_dtCredit();
+                set_Unavailable();
+                set_amount();
+            }
+            if (dtCredit.Rows.Count > 0)
+            {
+                btnEdit.Enabled = true;
+                btnCancel.Enabled = true;
+            }
+            else
+            {
+                btnCancel.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+        }
+
+        public void party_Notification()
+        {
+            try
+            {
+                // set_PartyName();
+                string VForText = string.Empty, vSearchCol = string.Empty, strSQL = string.Empty, Vstr = string.Empty, vColExclude = string.Empty, vDisplayColumnList = string.Empty, vReturnCol = string.Empty;
+                DataSet tDs = new DataSet();
+                DataView view = new DataView(dtCredit1);
+                DataTable distinctValues = new DataTable();
+                distinctValues = view.ToTable(true, "party_nm");
+                DataView dvw = distinctValues.DefaultView;
+                VForText = "Select Party Name";
+                vSearchCol = "party_nm";
+                vDisplayColumnList = "party_nm:Party Name";
+                vReturnCol = "party_nm";
+                udSelectPop.SELECTPOPUP oSelectPop = new udSelectPop.SELECTPOPUP();
+                oSelectPop.pdataview = dvw;
+                oSelectPop.pformtext = VForText;
+                oSelectPop.psearchcol = vSearchCol;
+                oSelectPop.Width = 30;
+                oSelectPop.Icon = pFrmIcon;
+                oSelectPop.pDisplayColumnList = vDisplayColumnList;
+                oSelectPop.pRetcolList = vReturnCol;
+
+                oSelectPop.ShowDialog();
+
+                if (oSelectPop.pReturnArray != null)
+                {
+                    textBox1.Text = oSelectPop.pReturnArray[0];
+                }
+
+                pageLoad(1);
+            }
+            catch (Exception)
+            {
+            }
+        }
+        public void hsn_Notification()
+        {
+            try
+            {
+                string VForText = string.Empty, vSearchCol = string.Empty, strSQL = string.Empty, Vstr = string.Empty, vColExclude = string.Empty, vDisplayColumnList = string.Empty, vReturnCol = string.Empty;
+                DataSet tDs = new DataSet();
+                DataView view = new DataView(dtCredit1);
+                DataTable distinctValues = new DataTable();
+                distinctValues = view.ToTable(true, "HSNCODE");
+                DataView dvw = distinctValues.DefaultView;
+                VForText = "Select HSN Code";
+                vSearchCol = "dtCredit";
+                vDisplayColumnList = "HSNCODE:HSNCODE";
+                vReturnCol = "HSNCODE";
+                udSelectPop.SELECTPOPUP oSelectPop = new udSelectPop.SELECTPOPUP();
+                oSelectPop.pdataview = dvw;
+                oSelectPop.pformtext = VForText;
+                oSelectPop.psearchcol = vSearchCol;
+                oSelectPop.Width = 30;
+                oSelectPop.Icon = pFrmIcon;
+                oSelectPop.pDisplayColumnList = vDisplayColumnList;
+                oSelectPop.pRetcolList = vReturnCol;
+                oSelectPop.ShowDialog();
+                if (oSelectPop.pReturnArray != null)
+                {
+                    textBox5.Text = oSelectPop.pReturnArray[0];
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+        public bool section_Notification()
+        {
+            string VForText = string.Empty, vSearchCol = string.Empty, strSQL = string.Empty, Vstr = string.Empty, vColExclude = string.Empty, vDisplayColumnList = string.Empty, vReturnCol = string.Empty;
+            DataSet tDs = new DataSet();
+            string SqlStr1 = "select descr as 'Ineligible ITC Section' from Reversalmast where Category = 'ITC Ineligible' and isactive = 0";
+            tDs = oDataAccess.GetDataSet(SqlStr1, null, 20);
+            DataView dvw = tDs.Tables[0].DefaultView;
+            VForText = "Select Ineligible ITC Section";
+            vSearchCol = "Ineligible ITC Section";
+            vDisplayColumnList = "Ineligible ITC Section:Ineligible ITC Section";
+            vReturnCol = "Ineligible ITC Section";
+            udSelectPop.SELECTPOPUP oSelectPop = new udSelectPop.SELECTPOPUP();
+            oSelectPop.pdataview = dvw;
+            oSelectPop.pformtext = VForText;
+            oSelectPop.psearchcol = vSearchCol;
+            oSelectPop.Width = 30;
+            oSelectPop.Icon = pFrmIcon;
+            oSelectPop.pDisplayColumnList = vDisplayColumnList;
+            oSelectPop.pRetcolList = vReturnCol;
+            oSelectPop.ShowDialog();
+            if (oSelectPop.pReturnArray != null)
+            {
+                dgvCredit.CurrentRow.Cells[14].Value = oSelectPop.pReturnArray[0].ToString();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            FormSetting();
+            // pageLoad(0);
+            textBox1.Visible = true;
+            panel1.Visible = true;
+            dgvCredit.Columns[10].ReadOnly = true;
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvCredit_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 10 && dgvCredit.Columns[10].ReadOnly == false)
+            {
+                if (dgvCredit.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "True" && dgvCredit.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "")
+                {
+                    dgvCredit.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
+                    this.dgvCredit.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+                else
+                {
+                    dgvCredit.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                    this.dgvCredit.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+                if (dgvCredit.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "False")
+                {
+                    bool result = section_Notification();
+                    dgvCredit.Rows[e.RowIndex].Cells[11].Value = dgvCredit.Rows[e.RowIndex].Cells[7].Value;
+                    dgvCredit.Rows[e.RowIndex].Cells[12].Value = dgvCredit.Rows[e.RowIndex].Cells[8].Value;
+                    dgvCredit.Rows[e.RowIndex].Cells[13].Value = dgvCredit.Rows[e.RowIndex].Cells[9].Value;
+                    if (result == false)
+                    {
+                        dgvCredit.Rows[e.RowIndex].Cells[10].Value = true;
+                        dgvCredit.Rows[e.RowIndex].Cells[11].Value = "0.00";
+                        dgvCredit.Rows[e.RowIndex].Cells[12].Value = "0.00";
+                        dgvCredit.Rows[e.RowIndex].Cells[13].Value = "0.00";
+                        this.dgvCredit.RefreshEdit();
+                    }
+                    this.dgvCredit.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                }
+                else
+                {
+                    dgvCredit.Rows[e.RowIndex].Cells[11].Value = "0.00";
+                    dgvCredit.Rows[e.RowIndex].Cells[12].Value = "0.00";
+                    dgvCredit.Rows[e.RowIndex].Cells[13].Value = "0.00";
+                    dgvCredit.Rows[e.RowIndex].Cells[14].Value = "";
+                }
+                set_amount();
+                dgvCredit.EndEdit();
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dtCredit.Rows.Count > 0)
+            {
+                party_Notification();
+                search();
+            }
+            else
+            {
+                MessageBox.Show("Party Name not found.", this.pPApplName);
+            }
+            set_amount();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            int updated = 0;
+            string SqlStr = string.Empty;
+            dtCredit.AcceptChanges();
+            foreach (DataRow dr in dtCredit.Rows)
+            {
+                oDataAccess.BeginTransaction();
+                string Credit_Availability, itserial, entry_ty, tran_cd, itc_sec;
+                Credit_Availability = dr["Credit_Availability"].ToString();
+                itc_sec = dr["IN_ITC_SEC"].ToString();
+                itserial = dr["itserial"].ToString();
+                entry_ty = dr["entry_ty"].ToString();
+                tran_cd = dr["tran_cd"].ToString();
+                if (comboBox1.SelectedItem.ToString() == "Goods")
+                {
+                    SqlStr = "update PTITEM set Credit_Availability='" + Credit_Availability + "',IN_ITC_SEC='" + itc_sec + "' where itserial='" + itserial + "' and entry_ty='" + entry_ty + "' and tran_cd=" + tran_cd + " ";
+                }
+                else if (comboBox1.SelectedItem.ToString() == "Services")
+                {
+                    SqlStr = "update EPITEM set Credit_Availability='" + Credit_Availability + "',IN_ITC_SEC='" + itc_sec + "'  where itserial='" + itserial + "' and entry_ty='" + entry_ty + "' and tran_cd=" + tran_cd + " ";
+                }
+                try
+                {
+                    updated = oDataAccess.ExecuteSQLStatement(SqlStr, null, 20, true);
+                }
+                catch (Exception)
+                {
+
+                }
+                oDataAccess.CommitTransaction();
+            }
+            if (updated != 0)
+            {
+                btnSave.Enabled = false;
+                btnEdit.Enabled = true;
+
+            }
+            set_Unavailable();
+            dgvCredit.Columns[10].ReadOnly = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (dgvCredit.Rows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you wish to cancel this Process ?", this.pPApplText, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    btnSave.Enabled = false;
+                    pageLoad(0);
+                    dgvCredit.Columns[10].ReadOnly = true;
+                    textBox1.Text = "";
+                    textBox5.Text = "";
+                    comboBox1.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                textBox1.Text = "";
+                textBox5.Text = "";
+                comboBox1.SelectedIndex = -1;
+                dateTimePicker1.Value = DateTime.Now;
+                dateTimePicker2.Value = DateTime.Now;
+            }
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            btnEdit.Enabled = false;
+            btnSave.Enabled = true;
+            dgvCredit.Columns[10].ReadOnly = false;
+        }
+
+        private void dateTimePicker1_CloseUp(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox5.Text = "";
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show("From date should less than To date.", this.pPApplName);
+                dateTimePicker1.Value = DateTime.Now;
+                pageLoad(1);
+            }
+            else
+            {
+                pageLoad(1);
+            }
+        }
+
+        private void dateTimePicker2_CloseUp(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox5.Text = "";
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show("To date should greater than From date.", this.pPApplName);
+                dateTimePicker2.Value = DateTime.Now;
+                pageLoad(1);
+            }
+            else
+            {
+                pageLoad(1);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pageLoad(1);
+            textBox1.Text = "";
+            textBox5.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dtCredit.Rows.Count > 0)
+            {
+                hsn_Notification();
+                search();
+            }
+            else
+            {
+                MessageBox.Show("HSN Code Not Found.", this.pPApplName);
+            }
+            set_amount();
+        }
+
+        private void dateTimePicker1_KeyUp(object sender, KeyEventArgs e)
+        {
+            textBox1.Text = "";
+            textBox5.Text = "";
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show("From date should less than To date.", this.pPApplName);
+                dateTimePicker1.Value = DateTime.Now;
+                pageLoad(1);
+            }
+            else
+            {
+                pageLoad(1);
+            }
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            pageLoad(1);
+            textBox1.Text = "";
+            textBox5.Text = "";
+        }       
+
+        private void dateTimePicker2_KeyUp(object sender, KeyEventArgs e)
+        {
+            textBox1.Text = "";
+            textBox5.Text = "";
+            if (dateTimePicker1.Value.Date > dateTimePicker2.Value.Date)
+            {
+                MessageBox.Show("To date should greater than From date.", this.pPApplName);
+                dateTimePicker2.Value = DateTime.Now;
+                pageLoad(1);
+
+            }
+            else
+            {
+                pageLoad(1);
+            }
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.btnCancel.Enabled)
+                btnCancel_Click(this.btnCancel, e);
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.btnLogout.Enabled)
+                btnLogout_Click(this.btnLogout, e);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.btnEdit.Enabled)
+                btnEdit_Click(this.btnEdit, e);
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.btnSave.Enabled)
+                btnSave_Click(this.btnSave, e);
+        }
+    }
+}

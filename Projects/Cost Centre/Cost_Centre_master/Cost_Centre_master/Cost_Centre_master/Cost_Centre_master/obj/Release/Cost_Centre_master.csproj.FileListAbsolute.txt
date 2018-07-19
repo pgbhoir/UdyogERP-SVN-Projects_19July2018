@@ -1,0 +1,18 @@
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.exe
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.pdb
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\ResolveAssemblyReference.cache
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.Cost_Centre_Mast.resources
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_cat_master.Properties.Resources.resources
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csproj.GenerateResource.Cache
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.exe
+F:\Bug\25197\Cost Center\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.pdb
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.exe
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.pdb
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.exe
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.pdb
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csprojResolveAssemblyReference.cache
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.Cost_Centre_Mast.resources
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_cat_master.Properties.Resources.resources
+E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csproj.GenerateResource.Cache
+E:\CostCentre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.exe
+E:\CostCentre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.pdb

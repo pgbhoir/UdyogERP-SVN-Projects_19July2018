@@ -1,0 +1,22 @@
+Parameters vDataSessionId, vaddmode,veditmode,vpform
+
+*!*		LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
+*!*		_VerValidErr = ""
+*!*		_VerRetVal  = 'NO'
+*!*		_CurrVerVal='10.0.0.0' 
+*!*		TRY
+*!*			_VerRetVal = AppVerChk('DUTYDEBIT',_CurrVerVal,JUSTFNAME(SYS(16)))
+*!*		CATCH TO _VerValidErr
+*!*			_VerRetVal  = 'NO'
+*!*		Endtry	
+*!*		IF TYPE("_VerRetVal")="L"
+*!*			cMsgStr="Version Error occured!"
+*!*			cMsgStr=cMsgStr+CHR(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
+*!*			Messagebox(cMsgStr,64,VuMess)
+*!*			Return .F.
+*!*		ENDIF
+*!*		IF _VerRetVal  = 'NO'
+*!*			Return .F.
+*!*		Endif
+
+DO FORM rcmdetails WITH vDataSessionId, vaddmode,veditmode,vpform

@@ -1,0 +1,2 @@
+LPARAMETERS lsdate,ledate,dsessionid
+DO FORM uefrmgstchallandetails  WITH lsdate,ledate,dsessionid

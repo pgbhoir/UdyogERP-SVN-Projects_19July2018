@@ -1,0 +1,57 @@
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\DataAccess-Net.dll
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\ubaseform.dll
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\bin\Release\udselectpop.dll
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csprojResolveAssemblyReference.cache
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\udclsdgvnumericcolumn.dll
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csprojResolveAssemblyReference.cache
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csprojResolveAssemblyReference.cache
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+D:\PROJECT WORK 2\Final Projects & Updates\R&D\3 Eligible ITC\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+D:\svn\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe.config
+D:\svn\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.exe
+D:\svn\CreditAvailable\CreditAvailable\bin\Release\CreditAvailable.pdb
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csprojResolveAssemblyReference.cache
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Form1.resources
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.Properties.Resources.resources
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csproj.GenerateResource.Cache
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.exe
+D:\svn\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.pdb
+E:\Prajakta\Projects\Eligible ITC Project\CreditAvailable\CreditAvailable\obj\Release\CreditAvailable.csprojResolveAssemblyReference.cache

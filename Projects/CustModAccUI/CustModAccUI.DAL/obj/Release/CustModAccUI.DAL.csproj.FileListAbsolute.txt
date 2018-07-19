@@ -1,0 +1,5 @@
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.DAL\bin\Release\CustModAccUI.DAL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.DAL\bin\Release\CustModAccUI.DAL.pdb
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.DAL\obj\Release\ResolveAssemblyReference.cache
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.DAL\obj\Release\CustModAccUI.DAL.dll
+E:\Project\Dotnet\CustModAccUI\CustModAccUI.DAL\obj\Release\CustModAccUI.DAL.pdb

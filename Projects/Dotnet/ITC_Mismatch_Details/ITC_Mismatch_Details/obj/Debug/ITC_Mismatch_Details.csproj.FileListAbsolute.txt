@@ -1,0 +1,90 @@
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\ITC Mismatch Details\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ubaseform.dll
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\Udyog.Library.Common.dll
+D:\Shrikant sir\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\Shrikant sir\Final\Update\10012017-10.30\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Shrikant sir\Final\Update\10012017-10.30\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Shrikant sir\Final\Update\10012017-10.30\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Shrikant sir\Final\Update\10012017-10.30\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Shrikant sir\Final\Update\10012017-10.30\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Shrikant sir\Final\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatchDetails.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_New\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatchDetails.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\Transfer\Shrikant Sir\rrg\ITC_Mismatch_Details_Last\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+E:\Project Data\Projects\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+E:\Project Data\Projects\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+E:\Project Data\Projects\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+E:\Project Data\Projects\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+E:\Project Data\Projects\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb

@@ -1,0 +1,14 @@
+Form d:\svngst\account allocation\frmalloc.scx has the following errors:
+    Unknown UEGETPOP - Undefined
+    Unknown BARSTAT - Undefined
+    Proc./Func. UETRIGALLOCATE - Undefined
+    Unknown CHECK_ADVANCEALLOCATION - Undefined
+
+Program d:\svngst\account allocation\progalloc.prg has the following errors:
+    Proc./Func. UETRIGALLOCATE - Undefined
+    Unknown APPVERCHK - Undefined
+
+Form d:\svngst\account allocation\frmtaxalloc.scx has the following errors:
+    Unknown GET_PAYMENTDETAILS - Undefined
+    Unknown GET_TAXALLOCATION - Undefined
+

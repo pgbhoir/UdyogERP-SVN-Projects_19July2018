@@ -1,0 +1,92 @@
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\UeSMS.exe
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\UeSMS.pdb
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\dataaccess-net.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\getinfo.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\GSMCommunication.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\httprequesturl.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\ubaseform.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\udSelectPop.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\GSMCommShared.dll
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\bin\Release\udSelectPop.pdb
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\ResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.exe
+D:\1 Development\Dotnet\UeSMS_Bug-22077\UeSMS\obj\Release\UeSMS.pdb
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\UeSMS.exe
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\UeSMS.pdb
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\dataaccess-net.dll
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\getinfo.dll
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\GSMCommunication.dll
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\ubaseform.dll
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\GSMCommShared.dll
+D:\1 Development\Dotnet\UeSMS\UeSMS\bin\Release\udSelectPop.pdb
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\ResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.exe
+D:\1 Development\Dotnet\UeSMS\UeSMS\obj\Release\UeSMS.pdb
+D:\SVN Development\Dotnet\UeSMS\bin\Release\UeSMS.exe
+D:\SVN Development\Dotnet\UeSMS\bin\Release\UeSMS.pdb
+D:\SVN Development\Dotnet\UeSMS\bin\Release\dataaccess-net.dll
+D:\SVN Development\Dotnet\UeSMS\bin\Release\getinfo.dll
+D:\SVN Development\Dotnet\UeSMS\bin\Release\GSMCommunication.dll
+D:\SVN Development\Dotnet\UeSMS\bin\Release\ubaseform.dll
+D:\SVN Development\Dotnet\UeSMS\bin\Release\GSMCommShared.dll
+D:\SVN Development\Dotnet\UeSMS\obj\Release\ResolveAssemblyReference.cache
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.exe
+D:\SVN Development\Dotnet\UeSMS\obj\Release\UeSMS.pdb
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\UeSMS.exe
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\UeSMS.pdb
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\dataaccess-net.dll
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\getinfo.dll
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\GSMCommunication.dll
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\ubaseform.dll
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\bin\Release\GSMCommShared.dll
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\ResolveAssemblyReference.cache
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.frmParamValue.resources
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.frmSMSSettingMaster.resources
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.frmSMSParamMaster.resources
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.exe
+D:\1 Development\Dotnet\ueSMS\Working folder for Bug-26025\obj\Release\UeSMS.pdb
+E:\Bug Issues\Projects\UeSMS\bin\Release\UeSMS.exe
+E:\Bug Issues\Projects\UeSMS\bin\Release\UeSMS.pdb
+E:\Bug Issues\Projects\UeSMS\bin\Release\GSMCommunication.dll
+E:\Bug Issues\Projects\UeSMS\bin\Release\GSMCommShared.dll
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.exe
+E:\Bug Issues\Projects\UeSMS\obj\Release\UeSMS.pdb
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\sms master\UeSMS\bin\Release\UeSMS.exe
+C:\Users\Administrator\Desktop\sms master\UeSMS\bin\Release\UeSMS.pdb
+C:\Users\Administrator\Desktop\sms master\UeSMS\bin\Release\GSMCommunication.dll
+C:\Users\Administrator\Desktop\sms master\UeSMS\bin\Release\GSMCommShared.dll
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.exe
+C:\Users\Administrator\Desktop\sms master\UeSMS\obj\Release\UeSMS.pdb
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\bin\Release\UeSMS.exe
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\bin\Release\UeSMS.pdb
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\bin\Release\GSMCommunication.dll
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\bin\Release\GSMCommShared.dll
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.frmParamValue.resources
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.frmSMSSettingMaster.resources
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.frmSMSParamMaster.resources
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.csproj.GenerateResource.Cache
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.exe
+D:\Project Work\Shrikant Sir Work\Project Work\sms master\UeSMS\obj\Release\UeSMS.pdb
+E:\Working\Dotnet\UeSMS\obj\Release\UeSMS.exe
+E:\Working\Dotnet\UeSMS\obj\Release\UeSMS.pdb

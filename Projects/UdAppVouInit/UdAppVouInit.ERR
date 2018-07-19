@@ -1,0 +1,8 @@
+Program e:\svnprojects\bug-31087 & bug-31169 & bug-31113\udappvouinit\udappvouinit.prg has the following errors:
+    Visual Class Library VOUCLASS - Undefined
+    Proc./Func. VOUINIT - Undefined
+    Application UEAMENDMENT - Undefined
+    Visual Class Library BATCHSERIALSTK - Undefined
+    Visual Class Library UDEXIMCLASS - Undefined
+    Visual Class Library UDCLSPOINTOFSALE - Undefined
+

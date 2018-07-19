@@ -1,0 +1,256 @@
+ public GSTR3BforJsonDto GetGSTR3BJson(long CompanyID, string startdate, string enddate)
+        {
+            var returnobj = new GSTR3BforJsonDto();
+            var threebdata = GetGSTRThreeData(CompanyID, startdate, enddate);
+            returnobj.gstin = threebdata.CompanyGSTIN;
+            var retper = !string.IsNullOrEmpty(startdate) ? Convert.ToDateTime(startdate).Month.ToString("d2") + Convert.ToDateTime(startdate).Year.ToString() : string.Empty;
+            returnobj.ret_period = retper;
+            var objsupdetails = new SuplierDetailsDto();
+            // osup_det details
+            objsupdetails.osup_det = new osupdetdto
+            {
+                txval = threebdata.OTaxableSuppliesTotal,
+                iamt = threebdata.OTaxableSuppliesIGSTTotal,
+                camt = threebdata.OTaxableSuppliesCGSTTotal,
+                samt = threebdata.OTaxableSuppliesSGSTTotal,
+                csamt = threebdata.OTaxableSuppliesCessTotal,
+            };
+            // osup_zero details
+            objsupdetails.osup_zero = new osupzerodto
+            {
+                txval = threebdata.OTaxableSuppliesZeroRatedTotal,
+                iamt = threebdata.OTaxableSuppliesZeroRatedIGST,
+                csamt = threebdata.OTaxableSuppliesZeroRatedCess
+            };
+            //osup_nil_exmp details
+            objsupdetails.osup_nil_exmp = new osupnilexmpdto { txval = threebdata.OTaxableSuppliesNilExemptedTotal };
+            //isup_rev details
+            objsupdetails.isup_rev = new isuprevdto
+            {
+                txval = Convert.ToDecimal(threebdata.ITaxableLiabletoReverseChargeTotal),
+                iamt = Convert.ToDecimal(threebdata.ITaxableLiabletoReverseChargeIGST),
+                camt = Convert.ToDecimal(threebdata.ITaxableLiabletoReverseChargeCGST),
+                samt = Convert.ToDecimal(threebdata.ITaxableLiabletoReverseChargeSGST),
+                csamt = Convert.ToDecimal(threebdata.ITaxableLiabletoReverseChargeCESS),
+            };
+            //osup_nongst details
+            objsupdetails.osup_nongst = new osupnilexmpdto { txval = Convert.ToDecimal(threebdata.oTaxableNonGSTTxblevalueTotal) };
+            returnobj.sup_details = objsupdetails;
+
+            //inter_sup details
+            var objintersupdetails = new intersupdto();
+            var lstunregdetails = new List<unregdetailsdto>();
+            //unreg_details details
+            foreach (var unregitem in threebdata.SuppliesTaxableListStateWise)
+            {
+                var objunregdetails = new unregdetailsdto
+                {
+                    pos = unregitem.PlaceOfSupply,
+                    txval = unregitem.TaxableAmount,
+                    iamt = unregitem.IGSTAmount
+                };
+                lstunregdetails.Add(objunregdetails);
+
+            }
+            objintersupdetails.unreg_details = new List<unregdetailsdto>();
+            objintersupdetails.unreg_details = lstunregdetails;
+            //comp_details details
+            var lstcompdetails = new List<unregdetailsdto>();
+            foreach (var unregitem in threebdata.SuppliesCompositionTaxableListStateWise)
+            {
+                var objunregdetails = new unregdetailsdto
+                {
+                    pos = unregitem.PlaceOfSupply,
+                    txval = unregitem.TaxableAmount,
+                    iamt = unregitem.IGSTAmount
+                };
+                lstcompdetails.Add(objunregdetails);
+            }
+            objintersupdetails.comp_details = new List<unregdetailsdto>();
+            objintersupdetails.comp_details = lstcompdetails;
+
+            //uin_details 
+
+            var lstuindetails = new List<unregdetailsdto>();
+            foreach (var uinregitem in threebdata.SuppliesUINholdersTaxableListStateWise)
+            {
+                var objuindetails = new unregdetailsdto
+                {
+                    pos = uinregitem.PlaceOfSupply,
+                    txval = uinregitem.TaxableAmount,
+                    iamt = uinregitem.IGSTAmount
+                };
+                lstuindetails.Add(objuindetails);
+            }
+            objintersupdetails.uin_details = new List<unregdetailsdto>();
+            objintersupdetails.uin_details = lstuindetails;
+
+
+            returnobj.inter_sup = new intersupdto();
+            returnobj.inter_sup = objintersupdetails;
+
+            //itc_elg details
+            var objitcelg = new itcelgdto();
+            //itc_avl
+            var lstitcavl = new List<itcavldto>();
+            //IMPG
+            var objimpg = new itcavldto
+            {
+                ty = "IMPG",
+                iamt = Convert.ToDecimal(threebdata.ImportGoodsIGST),
+                camt = Convert.ToDecimal(threebdata.ImportGoodsCGST),
+                samt = Convert.ToDecimal(threebdata.ImportGoodsSGST),
+                csamt = Convert.ToDecimal(threebdata.ImportGoodsCESS),
+            };
+            lstitcavl.Add(objimpg);
+            //IMPS
+            var objimps = new itcavldto
+            {
+                ty = "IMPS",
+                iamt = Convert.ToDecimal(threebdata.ImportServicesIGST),
+                camt = Convert.ToDecimal(threebdata.ImportServicesCGST),
+                samt = Convert.ToDecimal(threebdata.ImportServicesSGST),
+                csamt = Convert.ToDecimal(threebdata.ImportServicesCESS),
+            };
+            lstitcavl.Add(objimps);
+            //ISRC
+            var objisrc = new itcavldto
+            {
+                ty = "ISRC",
+                iamt = Convert.ToDecimal(threebdata.InwardSuppliesRCMIGST),
+                camt = Convert.ToDecimal(threebdata.InwardSuppliesRCMCGST),
+                samt = Convert.ToDecimal(threebdata.InwardSuppliesRCMSGST),
+                csamt = Convert.ToDecimal(threebdata.InwardSuppliesRCMCESS),
+            };
+            lstitcavl.Add(objisrc);
+            //ISD not available(we are not handling) so as of now it is 0
+            var objiisd = new itcavldto
+            {
+                ty = "ISD",
+                iamt = 0,
+                camt = 0,
+                samt = 0,
+                csamt = 0,
+            };
+            lstitcavl.Add(objiisd);
+
+            //OTH
+            var objothc = new itcavldto
+            {
+                ty = "OTH",
+                iamt = Convert.ToDecimal(threebdata.AllOtherIGST),
+                camt = Convert.ToDecimal(threebdata.AllOtherCGST),
+                samt = Convert.ToDecimal(threebdata.AllOtherSGST),
+                csamt = Convert.ToDecimal(threebdata.AllOtherCESS),
+            };
+            lstitcavl.Add(objothc);
+            objitcelg.itc_avl = new List<itcavldto>();
+            objitcelg.itc_avl = lstitcavl;
+
+
+
+            //itc_rev 
+            var lstitcrev = new List<itcavldto>();
+            //RUL details 
+            var objitcrul = new itcavldto
+            {
+                ty = "RUL",
+                iamt = Convert.ToDecimal(threebdata.ITCRevRule4243IGST),
+                camt = Convert.ToDecimal(threebdata.ITCRevRule4243CGST),
+                samt = Convert.ToDecimal(threebdata.ITCRevRule4243SGST),
+                csamt = Convert.ToDecimal(threebdata.ITCRevRule4243CESS),
+            };
+            lstitcrev.Add(objitcrul);
+            //OTH details 
+            var objitcoth = new itcavldto
+            {
+                ty = "OTH",
+                iamt = Convert.ToDecimal(threebdata.ITCRevOtherIGST),
+                camt = Convert.ToDecimal(threebdata.ITCRevOtherCGST),
+                samt = Convert.ToDecimal(threebdata.ITCRevOtherSGST),
+                csamt = Convert.ToDecimal(threebdata.ITCRevOtherCESS),
+            };
+            lstitcrev.Add(objitcoth);
+
+            objitcelg.itc_rev = new List<itcavldto>();
+            objitcelg.itc_rev = lstitcrev;
+
+            //itc_net details
+            var objitcnet = new itcnetdto
+            {
+                iamt = Convert.ToDecimal(threebdata.NetITCIGST),
+                camt = Convert.ToDecimal(threebdata.NetITCCGST),
+                samt = Convert.ToDecimal(threebdata.NetITCSGST),
+                csamt = Convert.ToDecimal(threebdata.NetITCCESS)
+            };
+            objitcelg.itc_net = new itcnetdto();
+            objitcelg.itc_net = objitcnet;
+            //itc_inelg details 
+            var lstitcinelg = new List<itcavldto>();
+            //RUL details 
+            var objitcinelgrul = new itcavldto
+            {
+                ty = "RUL",
+                iamt = Convert.ToDecimal(threebdata.InElgSection175IGST),
+                camt = Convert.ToDecimal(threebdata.InElgSection175CGST),
+                samt = Convert.ToDecimal(threebdata.InElgSection175SGST),
+                csamt = Convert.ToDecimal(threebdata.InElgSection175CESS),
+            };
+            lstitcinelg.Add(objitcinelgrul);
+            //OTH details 
+            var objitcinelgoth = new itcavldto
+            {
+                ty = "OTH",
+                iamt = Convert.ToDecimal(threebdata.InElgITCOtherIGST),
+                camt = Convert.ToDecimal(threebdata.InElgITCOtherCGST),
+                samt = Convert.ToDecimal(threebdata.InElgITCOtherSGST),
+                csamt = Convert.ToDecimal(threebdata.InElgITCOtherCESS),
+            };
+            lstitcinelg.Add(objitcinelgoth);
+
+            objitcelg.itc_inelg = new List<itcavldto>();
+            objitcelg.itc_inelg = lstitcinelg;
+
+
+            returnobj.itc_elg = objitcelg;
+
+            //inward_sup details
+            var objinwardsupdetails = new inwardsupdto();
+            //isup_details details
+            var lstisupdetails = new List<isupdetailsdto>();
+            //GST
+            var objgst = new isupdetailsdto
+            {
+                ty = "GST",
+                inter = threebdata.SuppliesCompExeNilInterStateTotal,
+                intra = threebdata.SuppliesCompExeNilIntraStateTotal
+            };
+            lstisupdetails.Add(objgst);
+            //NON-GST
+            var objnongst = new isupdetailsdto
+            {
+                ty = "NONGST",
+                inter = threebdata.SuppliesNonGSTInterStateTotal,
+                intra = threebdata.SuppliesNonGSTIntraStateTotal
+            };
+            lstisupdetails.Add(objnongst);
+            objinwardsupdetails.isup_details = new List<isupdetailsdto>();
+            objinwardsupdetails.isup_details = lstisupdetails;
+
+            returnobj.inward_sup = objinwardsupdetails;
+            //intr_ltfee details 
+            //intr_details 
+            var objintrltfee = new intrltfeedto();
+            objintrltfee.intr_details = new itcnetdto
+            {
+                iamt = threebdata.LateFeeIGST,
+                camt = threebdata.LateFeeCGST,
+                samt = threebdata.LateFeeSGST,
+                csamt = threebdata.LateFeeCESS
+            };
+            returnobj.intr_ltfee = new intrltfeedto();
+            returnobj.intr_ltfee = objintrltfee;
+
+
+            return returnobj;
+        }

@@ -1,0 +1,3 @@
+Lparameters vDataSessionId,addmode,editmode
+Messagebox("reached in prg")
+Do Form uefrmgstdepositdetails With vDataSessionId,addmode,editmode

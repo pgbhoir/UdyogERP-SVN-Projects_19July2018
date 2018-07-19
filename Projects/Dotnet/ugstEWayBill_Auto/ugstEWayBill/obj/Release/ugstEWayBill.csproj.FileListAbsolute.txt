@@ -1,0 +1,67 @@
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.pdb
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\Newtonsoft.Json.dll
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\Udyog.Library.Common.dll
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\Udyog.QRCode.dll
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\Udyog.QRCode.pdb
+D:\EWay\API\ugstEWayBill\ugstEWayBill\bin\Release\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.exe
+D:\EWay\API\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.pdb
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.pdb
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\Newtonsoft.Json.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\Udyog.Library.Common.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\ugstnHelper.dll
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\bin\Release\ugstnHelper.pdb
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.exe
+D:\1 Development\Dotnet\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.pdb
+D:\test1\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\test1\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.exe
+D:\test1\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.pdb
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.exe
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.pdb
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.exe
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.pdb
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\Newtonsoft.Json.dll
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\uBaseForm.dll
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\Udyog.Library.Common.dll
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstnHelper.dll
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\Udyog.QRCode.pdb
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstnHelper.pdb
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\EWay\API\Backup\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.exe
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstEWayBill.pdb
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\Newtonsoft.Json.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\uBaseForm.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\Udyog.Library.Common.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\Udyog.QRCode.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstnHelper.dll
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\Udyog.QRCode.pdb
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\bin\Release\ugstnHelper.pdb
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.exe
+D:\EWay\API\ugstEWayBill_Final\ugstEWayBill\obj\Release\ugstEWayBill.pdb

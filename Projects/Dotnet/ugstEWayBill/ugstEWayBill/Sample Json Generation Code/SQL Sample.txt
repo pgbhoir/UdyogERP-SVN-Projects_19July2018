@@ -1,0 +1,119 @@
+SET ANSI_NULLS ON
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+GO
+ 
+CREATE PROCEDURE [dbo].[SerializeJSON] (@ParameterSQL AS VARCHAR(MAX))
+AS
+BEGIN
+    DECLARE @SQL NVARCHAR(MAX)
+    DECLARE @XMLString VARCHAR(MAX)
+    DECLARE @XML XML
+    DECLARE @Paramlist NVARCHAR(1000)
+ 
+    SET @Paramlist = N'@XML XML OUTPUT'
+    SET @SQL = 'WITH PrepareTable (XMLString)'
+    SET @SQL = @SQL + 'AS('
+    SET @SQL = @SQL + @ParameterSQL + 'FOR XML RAW,TYPE,ELEMENTS'
+    SET @SQL = @SQL + ')'
+    SET @SQL = @SQL + 'SELECT @XML=[XMLString]FROM[PrepareTable]'
+ 
+    EXEC sp_executesql @SQL
+        , @Paramlist
+        , @XML = @XML OUTPUT
+ 
+    SET @XMLString = CAST(@XML AS VARCHAR(MAX))
+ 
+    DECLARE @JSON VARCHAR(MAX)
+    DECLARE @Row VARCHAR(MAX)
+    DECLARE @RowStart INT
+    DECLARE @RowEnd INT
+    DECLARE @FieldStart INT
+    DECLARE @FieldEnd INT
+    DECLARE @KEY VARCHAR(MAX)
+    DECLARE @Value VARCHAR(MAX)
+    DECLARE @StartRoot VARCHAR(100);
+ 
+    SET @StartRoot = '<row>'
+ 
+    DECLARE @EndRoot VARCHAR(100);
+ 
+    SET @EndRoot = '</row>'
+ 
+    DECLARE @StartField VARCHAR(100);
+ 
+    SET @StartField = '<'
+ 
+    DECLARE @EndField VARCHAR(100);
+ 
+    SET @EndField = '>'
+    SET @RowStart = CharIndex(@StartRoot, @XMLString, 0)
+    SET @JSON = ''
+ 
+    WHILE @RowStart > 0
+    BEGIN
+        SET @RowStart = @RowStart + Len(@StartRoot)
+        SET @RowEnd = CharIndex(@EndRoot, @XMLString, @RowStart)
+        SET @Row = SubString(@XMLString, @RowStart, @RowEnd - @RowStart)
+        SET @JSON = @JSON + '{'
+        -- for each row
+        SET @FieldStart = CharIndex(@StartField, @Row, 0)
+ 
+        WHILE @FieldStart > 0
+        BEGIN
+            -- parse node key
+            SET @FieldStart = @FieldStart + Len(@StartField)
+            SET @FieldEnd = CharIndex(@EndField, @Row, @FieldStart)
+            SET @KEY = SubString(@Row, @FieldStart, @FieldEnd - @FieldStart)
+            SET @JSON = @JSON + '"' + @KEY + '":'
+            -- parse node value
+            SET @FieldStart = @FieldEnd + 1
+            SET @FieldEnd = CharIndex('</', @Row, @FieldStart)
+            SET @Value = SubString(@Row, @FieldStart, @FieldEnd - @FieldStart)
+            SET @JSON = @JSON + '"' + @Value + '",'
+            SET @FieldStart = @FieldStart + Len(@StartField)
+            SET @FieldEnd = CharIndex(@EndField, @Row, @FieldStart)
+            SET @FieldStart = CharIndex(@StartField, @Row, @FieldEnd)
+        END
+ 
+        IF LEN(@JSON) > 0
+            SET @JSON = SubString(@JSON, 0, LEN(@JSON))
+        SET @JSON = @JSON + '},'
+        --/ for each row
+        SET @RowStart = CharIndex(@StartRoot, @XMLString, @RowEnd)
+    END
+ 
+    IF LEN(@JSON) > 0
+        SET @JSON = SubString(@JSON, 0, LEN(@JSON))
+    SET @JSON = '[' + @JSON + ']'
+ 
+    SELECT @JSON
+END
+----------
+It takes any SQL query as a parameter.
+
+1
+EXEC [dbo].[SerializeJSON] "SELECT * FROM myTable;";
+When you setup this stored procedure you’ll need to grant execute permissions. I have a small team of seasoned high performers (lucky me!), so I can afford to be more liberal with permissions. In which case I’ll grant execute permission to the SQL Server public role.
+
+1
+GRANT EXECUTE ON dbo.SerializeJSON  TO public
+Now you could schedule this as a SQL Agent Job to dump your JSON file regularly to a wwwroot directory but in a shared development environment this is cumbersome. Especially if coders need perms to modify (or copy) the Agent Job on the SQL Server. Or if you’re using SQLExpress, you don’t even have Agents Jobs.
+
+An alternative is to create a PowerShell script with promiscuous permissions.
+-------
+Import-Module 'sqlps' -DisableNameChecking;
+ 
+Invoke-Sqlcmd `
+ -ServerInstance "myHostName\myInstanceName" `
+ -Database "myDatabaseName" `
+ -Query "EXEC [dbo].[SerializeJSON] `"SELECT TOP 100 * FROM myTableName`";";
+-------
+Set permissions with this command in the PowerShell Console,
+
+1
+Set-ExecutionPolicy Unrestricted
+Now this little .ps1 script can be copied, shared and edited with a text editor. You could use Windows Task Scheduler to run this periodically to refresh your test data.
+
+Simple. Effective.

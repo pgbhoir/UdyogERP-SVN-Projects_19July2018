@@ -1,0 +1,11 @@
+LPARAMETERS lBugid as String
+*!*	*!*	BUILD EXE "E:\Project\Working\ueaamast.app" FROM "E:\Project\Working\AA Advance Authorization Master\ueaamast.app"
+*!*	*!*	BUILD EXE "E:\Project\Working\ueaamast" FROM "E:\Project\Working\AA Advance Authorization Master - Copy\ueaamast.pjx"
+*!*	MESSAGEBOX("Current Directory : " + CURDIR())
+STORE '' TO currPath
+currpath = CURDIR()
+*!*	MESSAGEBOX(currpath+"\vu10Updt_"+ALLTRIM(lbugid))
+BUILD EXE currpath+"\UpdtExe\vu10Updt_"+ALLTRIM(lbugid) FROM currpath+"\UpdtExe\vu10Updt.PJX"
+*!*	BUILD EXE "E:\Project\Working\vu10Updt" FROM "E:\Project\Dotnet\CustModAccUI\Supporting Files\UpdtExe\vu10Updt.PJX"
+*!*	MESSAGEBOX("hello")
+*!*	BUILD exe "E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\Files\UpdtExe\vu10Updt" FROM "E:\Project\Dotnet\CustModAccUI\CustModAccUI2.UI\bin\Debug\Files\UpdtExe\vu10Updt.pjx"

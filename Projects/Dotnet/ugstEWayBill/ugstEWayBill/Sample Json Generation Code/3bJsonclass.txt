@@ -1,0 +1,112 @@
+ public class GSTR3BforJsonDto
+    {
+        public string gstin { get; set; }
+        public string ret_period { get; set; }
+        public SuplierDetailsDto sup_details { get; set; }
+        public intersupdto inter_sup { get; set; }
+        public itcelgdto itc_elg { get; set; }
+        public inwardsupdto inward_sup { get; set; }
+        public intrltfeedto intr_ltfee { get; set; }
+    }
+
+    public class intrltfeedto
+    {
+        public itcnetdto intr_details { get; set; }
+    }
+
+    public class inwardsupdto
+    {
+        public List<isupdetailsdto> isup_details { get; set; }
+    }
+
+    public class isupdetailsdto
+    {
+        public string ty { get; set; }
+        public decimal? inter { get; set; }
+        public decimal? intra { get; set; }
+    }
+
+    public class itcelgdto
+    {
+        public List<itcavldto> itc_avl { get; set; }
+        public List<itcavldto> itc_rev { get; set; }
+        public itcnetdto itc_net { get; set; }
+
+        public List<itcavldto> itc_inelg { get; set; }
+    }
+
+    public class itcnetdto
+    {
+        public decimal? iamt { get; set; }
+        public decimal? camt { get; set; }
+        public decimal? samt { get; set; }
+        public decimal? csamt { get; set; }
+    }
+
+    public class itcavldto
+    {
+        public string ty { get; set; }
+        public decimal? iamt { get; set; }
+        public decimal? camt { get; set; }
+        public decimal? samt { get; set; }
+        public decimal? csamt { get; set; }
+    }
+
+    public class intersupdto
+    {
+        public List<unregdetailsdto> unreg_details { get; set; }
+        public List<unregdetailsdto> comp_details { get; set; }
+        public List<unregdetailsdto> uin_details { get; set; }
+    }
+    
+
+    public class unregdetailsdto
+    {
+        public string pos { get; set; }
+        public decimal? txval { get; set; }
+        public decimal? iamt { get; set; }
+    }
+
+    public class SuplierDetailsDto
+    {
+        public osupdetdto osup_det { get; set; }
+        public osupzerodto osup_zero { get; set; }
+        public osupnilexmpdto osup_nil_exmp { get; set; }
+        public isuprevdto isup_rev { get; set; }
+        public osupnilexmpdto osup_nongst { get; set; }
+    }
+
+    //public class osupnongstdto
+    //{
+    //    public decimal? txval { get; set; }
+    //}
+
+    public class isuprevdto
+    {
+        public decimal? txval { get; set; }
+        public decimal? iamt { get; set; }
+        public decimal? camt { get; set; }
+        public decimal? samt { get; set; }
+        public decimal? csamt { get; set; }
+    }
+
+    public class osupnilexmpdto
+    {
+        public decimal? txval { get; set; }
+    }
+
+    public class osupzerodto
+    {
+        public decimal? txval { get; set; }
+        public decimal? iamt { get; set; }
+        public decimal? csamt { get; set; }
+    }
+
+    public class osupdetdto
+    {
+        public decimal? txval { get; set; }
+        public decimal? iamt { get; set; }
+        public decimal? camt { get; set; }
+        public decimal? samt { get; set; }
+        public decimal? csamt { get; set; }
+    }

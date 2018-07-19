@@ -1,0 +1,17 @@
+C:\Users\Shrikant\Downloads\QRCode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csprojResolveAssemblyReference.cache
+C:\Users\Shrikant\Downloads\QRCode\QRCode\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.Properties.Resources.resources
+C:\Users\Shrikant\Downloads\QRCode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csproj.GenerateResource.Cache
+D:\barcode\QRCode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csprojResolveAssemblyReference.cache
+D:\barcode\QRCode\QRCode\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.Properties.Resources.resources
+D:\barcode\QRCode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csproj.GenerateResource.Cache
+D:\barcode\QRCode\QRCode\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.dll
+D:\barcode\QRCode\QRCode\QRCodeLib\obj\Debug\ThoughtWorks.QRCode.pdb
+D:\barcode\QRCode\QRCode\QRCodeLib\ThoughtWorks.QRCode.dll
+D:\barcode\QRCode\QRCode\QRCodeLib\ThoughtWorks.QRCode.pdb
+D:\barcode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csprojResolveAssemblyReference.cache
+D:\barcode\QRCode\QRCodeLib\obj\Debug\Udyog.QRCode.Properties.Resources.resources
+D:\barcode\QRCode\QRCodeLib\obj\Debug\QRCodeLib.csproj.GenerateResource.Cache
+D:\barcode\QRCode\QRCodeLib\obj\Debug\Udyog.QRCode.dll
+D:\barcode\QRCode\QRCodeLib\obj\Debug\Udyog.QRCode.pdb
+D:\barcode\QRCode\QRCodeLib\Udyog.QRCode.dll
+D:\barcode\QRCode\QRCodeLib\Udyog.QRCode.pdb

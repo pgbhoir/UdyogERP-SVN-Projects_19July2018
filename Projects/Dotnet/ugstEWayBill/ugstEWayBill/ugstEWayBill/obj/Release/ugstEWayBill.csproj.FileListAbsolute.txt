@@ -1,0 +1,5 @@
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\bin\Release\ugstEWayBill.exe.config
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csprojResolveAssemblyReference.cache
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.frmMain.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.Properties.Resources.resources
+D:\vuPrj\DotNet Project\DotNet 2016\ugstEWayBill\ugstEWayBill\obj\Release\ugstEWayBill.csproj.GenerateResource.Cache

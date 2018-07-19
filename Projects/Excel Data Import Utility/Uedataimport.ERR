@@ -1,0 +1,18 @@
+Form d:\...\excel data import utility\excel data import utility_050318\frmselect.scx has the following errors:
+    Unknown UEGETPOP - Undefined
+
+Form d:\...\excel data import utility_050318\frmprocess.scx has the following errors:
+    Unknown UEGETPOP - Undefined
+
+Visual Class Library d:\...\excel data import utility\excel data import utility_050318\ditbll.vcx has the following errors:
+    Unknown GETPREFIX - Undefined
+
+Form d:\...\excel data import utility\excel data import utility_050318\frmfldmap.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form d:\...\excel data import utility_050318\frmdefaultsetting.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Program d:\...\excel data import utility_050318\getactualvalue.prg has the following errors:
+    Visual Class Library SQLCONNECTION - Undefined
+

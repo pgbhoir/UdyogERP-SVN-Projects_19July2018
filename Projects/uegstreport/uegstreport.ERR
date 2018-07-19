@@ -1,0 +1,21 @@
+Form e:\...\uegstreport\uegstreport\uegstreport.scx has the following errors:
+    Proc./Func. UECRVIEWER - Undefined
+    Application ZIPUNZIP - Undefined
+    Proc./Func. UEGSTRZOOMIN - Undefined
+    Unknown BARSTAT - Undefined
+    Unknown UDGSTOUTWARDEXCEL - Undefined
+    Unknown UDGSTINWARDEXCEL - Undefined
+
+Visual Class Library d:\udyoggst\class\solution.vcx has the following errors:
+    File RED.BMP - Undefined
+    File GREEN.BMP - Undefined
+    File BLUE.BMP - Undefined
+    File WHITE.BMP - Undefined
+    File BTS.BMP - Undefined
+
+Visual Class Library d:\udyoggst\class\_base.vcx has the following errors:
+    Program SETOBJRF - Undefined
+
+Visual Class Library d:\udyoggst\class\standardui.vcx has the following errors:
+    Unknown BARSTAT - Undefined
+

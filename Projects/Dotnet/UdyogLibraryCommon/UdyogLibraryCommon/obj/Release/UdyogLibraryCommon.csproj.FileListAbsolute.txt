@@ -1,0 +1,7 @@
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Release\Udyog.Library.Common.dll.config
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Release\Udyog.Library.Common.dll
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\bin\Release\Udyog.Library.Common.pdb
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Release\Udyog.Library.Common.Properties.Resources.resources
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Release\UdyogLibraryCommon.csproj.GenerateResource.Cache
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Release\Udyog.Library.Common.dll
+D:\WorkingGST\UdyogLibraryCommon\UdyogLibraryCommon\obj\Release\Udyog.Library.Common.pdb

@@ -1,0 +1,79 @@
+Form d:\multilevel\item_mast\itemmas.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Application UDAPPITEMNEW - Undefined
+    Program UDTRIGITEMNEW - Undefined
+    Proc./Func. UETRIGITEMNEW - Undefined
+    Unknown UDAPPITSAVEBEFORE - Undefined
+    Unknown UDTRIGITSAVEBEFORE - Undefined
+    Unknown UETRIGITSAVEBEFORE - Undefined
+    Unknown GETCONNECTIONSTRING - Undefined
+    Unknown UDAPPMASTFINALUPDATE - Undefined
+    Unknown UDTRIGMASTFINALUPDATE - Undefined
+    Unknown UETRIGMASTFINALUPDATE - Undefined
+    Application UDAPPMASTROLLBACK - Undefined
+    Program UDTRIGMASTROLLBACK - Undefined
+    Proc./Func. UETRIGMASTROLLBACK - Undefined
+    Application UDAPPMASTTABLEUPDATE - Undefined
+    Program UDTRIGMASTTABLEUPDATE - Undefined
+    Proc./Func. UETRIGMASTTABLEUPDATE - Undefined
+    Proc./Func. UEFIND - Undefined
+    Proc./Func. LOCATE - Undefined
+    Program VU_UDFS - Undefined
+    Application UDAPPITEMACTIVATE - Undefined
+    Program UDTRIGITEMACTIVATE - Undefined
+    Proc./Func. UETRIGITEMACTIVATE - Undefined
+    Proc./Func. UEEXTRA - Undefined
+    Unknown UEGETPOP - Undefined
+    Application UEITADVANCESETTING - Undefined
+
+Program d:\multilevel\item_mast\ichoice.prg has the following errors:
+    Unknown APPVERCHK - Undefined
+
+Form d:\multilevel\item_mast\frmgpuomrate.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
+
+Visual Class Library e:\u3\udyogerpsdk\class\vouclass.vcx has the following errors:
+    Proc./Func. UEEXTRA - Undefined
+    Unknown UEGETPOP - Undefined
+    Proc./Func. UENRENTRY - Undefined
+    Form UEFRM_OPWKITEMALLOCATION - Undefined
+    Unknown UDAPPVOUITFIRE - Undefined
+    Unknown UDTRIGVOUITFIRE - Undefined
+    Unknown UETRIGVOUITFIRE - Undefined
+    Proc./Func. UDAPPVOUXTRACLOSE - Undefined
+    Proc./Func. UDTRIGVOUXTRACLOSE - Undefined
+    Proc./Func. UETRIGVOUXTRACLOSE - Undefined
+    Form PTSRCH - Undefined
+    Form UEFRM_DCSTITEMALLOCATION - Undefined
+    Form UEFRM_BOMDETAILSIP - Undefined
+    Form UEFRM_BOMDETAILSOP - Undefined
+    Proc./Func. SAVEOPPTTAXDET - Undefined
+    Application UDAPPETVALID - Undefined
+    File FINISH_ITEM.GIF - Undefined
+    Form UEFRM_GST_ADJ - Undefined
+    Application UEDUTYDEBIT - Undefined
+    Application UDAPPSUPPLIMENTORY - Undefined
+    Application UEFRMGSTADJ - Undefined
+    Application UDAPPRCMDET - Undefined
+    Application UETDSPAYMENT - Undefined
+    Application UEEMPPAYROLLPOSTING - Undefined
+    Form UEETITDETINAR - Undefined
+    Form UEETDETAILINAR - Undefined
+    Form UEETITDETINDC - Undefined
+    Form UEETDETAILINDC - Undefined
+    Form UEETDETAILINIR - Undefined
+    Form UEETDETAILINGT - Undefined
+    Form UEFRM_PT_EXDATA1 - Undefined
+    Form UEFRM_JV_EXDATA1 - Undefined
+    Form UEFRM_ST_EXDATA1 - Undefined
+    Form UEFRM_SERVICETAX - Undefined
+    Form UEFRM_ST_BOND - Undefined
+    Form UEFRM_SR_EXDATA1 - Undefined
+    Form UEFRM_SERTAX_DET - Undefined
+    Application UESERVICETAXCREDIT - Undefined
+    Application UESERVICETAXCREDITACCRUAL - Undefined
+    Application UEGSTCHALLANDETAILS - Undefined
+    Application UDAPPVOUXTRACLOSE - Undefined
+    Program UDTRIGVOUXTRACLOSE - Undefined
+

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ugstEWayBill", "ugstEWayBill\ugstEWayBill.csproj", "{D73E3218-A2D9-4BA6-A917-5305C1EECB88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ugstnHelper", "ugstEwayHelper\ugstnHelper.csproj", "{53457C2B-EDC0-471A-9B8A-B1D62E07DDE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D73E3218-A2D9-4BA6-A917-5305C1EECB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73E3218-A2D9-4BA6-A917-5305C1EECB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73E3218-A2D9-4BA6-A917-5305C1EECB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73E3218-A2D9-4BA6-A917-5305C1EECB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53457C2B-EDC0-471A-9B8A-B1D62E07DDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53457C2B-EDC0-471A-9B8A-B1D62E07DDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53457C2B-EDC0-471A-9B8A-B1D62E07DDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53457C2B-EDC0-471A-9B8A-B1D62E07DDE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

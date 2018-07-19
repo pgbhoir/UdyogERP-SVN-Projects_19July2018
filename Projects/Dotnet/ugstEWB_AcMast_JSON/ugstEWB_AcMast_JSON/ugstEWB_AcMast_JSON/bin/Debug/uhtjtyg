@@ -1,0 +1,17 @@
+{ 
+ "gstin": "",
+ "client_details"  :[ 
+ {
+ "client_type":"UnReg" ,
+ "clientGstin":"" ,
+ "clientName":"WEIGHT-DIFFERENCE" ,
+ "clientBusAddr1":"" ,
+ "clientBusAddr2":"" ,
+ "clientBusPlace":"" ,
+ "clientBusPincode":"" ,
+ "clientMob":"" ,
+ "clientEmail":"" ,
+ "clientStateCode":"37" ,
+ "approxDistance":"99" }  , 
+ ] 
+ } 
