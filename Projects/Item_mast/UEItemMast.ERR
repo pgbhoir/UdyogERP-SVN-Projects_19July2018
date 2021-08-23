@@ -1,6 +1,8 @@
-Form d:\multilevel\item_mast\itemmas.scx has the following errors:
+Form e:\...\bug_33359_working\my changes\masters\item_mast\itemmas.scx has the following errors:
     Unknown BARSTAT - Undefined
     Application UDAPPITEMNEW - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Program UDTRIGITEMNEW - Undefined
     Proc./Func. UETRIGITEMNEW - Undefined
     Unknown UDAPPITSAVEBEFORE - Undefined
@@ -24,16 +26,18 @@ Form d:\multilevel\item_mast\itemmas.scx has the following errors:
     Proc./Func. UETRIGITEMACTIVATE - Undefined
     Proc./Func. UEEXTRA - Undefined
     Unknown UEGETPOP - Undefined
+    Unknown UEMGETPOP - Undefined
     Application UEITADVANCESETTING - Undefined
+    Application UEDATAIMPORT - Undefined
 
-Program d:\multilevel\item_mast\ichoice.prg has the following errors:
+Program e:\...\bug_33359_working\my changes\masters\item_mast\ichoice.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\multilevel\item_mast\frmgpuomrate.scx has the following errors:
+Form e:\...\bug_33359_working\my changes\masters\item_mast\frmgpuomrate.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Visual Class Library e:\u3\udyogerpsdk\class\vouclass.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\vouclass.vcx has the following errors:
     Proc./Func. UEEXTRA - Undefined
     Unknown UEGETPOP - Undefined
     Proc./Func. UENRENTRY - Undefined
@@ -45,17 +49,14 @@ Visual Class Library e:\u3\udyogerpsdk\class\vouclass.vcx has the following erro
     Proc./Func. UDTRIGVOUXTRACLOSE - Undefined
     Proc./Func. UETRIGVOUXTRACLOSE - Undefined
     Form PTSRCH - Undefined
-    Form UEFRM_DCSTITEMALLOCATION - Undefined
-    Form UEFRM_BOMDETAILSIP - Undefined
-    Form UEFRM_BOMDETAILSOP - Undefined
-    Proc./Func. SAVEOPPTTAXDET - Undefined
-    Application UDAPPETVALID - Undefined
-    File FINISH_ITEM.GIF - Undefined
+    Proc./Func. UEMARKSMAST - Undefined
+    Proc./Func. UEUNITBCSERIALIZE - Undefined
     Form UEFRM_GST_ADJ - Undefined
     Application UEDUTYDEBIT - Undefined
     Application UDAPPSUPPLIMENTORY - Undefined
     Application UEFRMGSTADJ - Undefined
     Application UDAPPRCMDET - Undefined
+    Application UDAPPGSTR_STATUS - Undefined
     Application UETDSPAYMENT - Undefined
     Application UEEMPPAYROLLPOSTING - Undefined
     Form UEETITDETINAR - Undefined
@@ -76,4 +77,20 @@ Visual Class Library e:\u3\udyogerpsdk\class\vouclass.vcx has the following erro
     Application UEGSTCHALLANDETAILS - Undefined
     Application UDAPPVOUXTRACLOSE - Undefined
     Program UDTRIGVOUXTRACLOSE - Undefined
+    Form UEFRM_DCSTITEMALLOCATION - Undefined
+    Form UEFRM_BOMDETAILSIP - Undefined
+    Form UEFRM_BOMDETAILSOP - Undefined
+    Proc./Func. SAVEOPPTTAXDET - Undefined
+    Application UDAPPETVALID - Undefined
+
+Form e:\...\bug_33359_working\my changes\masters\item_mast\frmpharmaretails.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
+
+Form e:\...\bug_33359_working\my changes\masters\item_mast\frmautomobile.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
+
+Form e:\...\bug_33359_working\my changes\masters\item_mast\frmemissionvalues.scx has the following errors:
+    Unknown BARSTAT - Undefined
 

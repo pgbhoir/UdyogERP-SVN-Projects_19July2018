@@ -42,14 +42,40 @@ _CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
 *!*	_mailto   = Iif(!Empty(_mailto),Eval(_mailto),"")
 *!*	_mailcc   = Iif(!Empty(_mailcc),Eval(_mailcc),"")
 
+
 LOCAL llShowItem AS Boolean,lnVar AS INTEGER
 #DEFINE olMailItem  0
 *!*	loOutlook   = CREATEOBJECT('Outlook.Application')		&& Commented by Shrikant S. on 10/09/2015 for Bug-26664
 && Added by Shrikant S. on 10/09/2015 for Bug-26664		&&  Start
 _curobject=_Screen.ActiveForm
+
+Set DataSession To _curobject.DataSessionId
+
+
+etsql_str="Select * From eMailSettings"	
+etsql_con = _curobject.sqlconobj.dataconn([EXE],company.dbname,etsql_str,[esetting],"_curobject.nHandle",_curobject.DataSessionId)
+
+
 ans=.T.
-Try
-	loOutlook   = Createobject('Outlook.Application')
+
+TRY
+	&& Added by Shrikant S. on 25/09/2018 for Bug-31906		&& Start
+	llsmtp=.f.	
+	IF TYPE('esetting.issmtpdefa')<>'U'
+		IF esetting.issmtpdefa=.t.
+			llsmtp=.t.
+			ans=.f.
+		endif	
+	endif
+	
+	IF !llsmtp
+		loOutlook   = Createobject('Outlook.Application')		
+	ENDIF
+	&& Added by Shrikant S. on 25/09/2018 for Bug-31906		&& End
+	
+	
+*!*		loOutlook   = Createobject('Outlook.Application')				&& Commented by Shrikant S. on 25/09/2018 for Bug-31906
+
 Catch To oException
 *	Messagebox("Outlook setting not found.",64,VuMess)
 	ans=.F.
@@ -83,12 +109,12 @@ Endtry
 loMailItem  = loOutlook.CreateItem( olMailItem )   && This creates the MailItem Object
 loMailItem.BodyFormat=2
 llShowItem  = _mailshow		&&.T.
+
 WITH loMailItem
 	.TO      = _mailto
 	.Cc      = _mailcc
 	.Subject = _mailsub
 *	.Body    = _mailbody           &&Comment By Amrendra
-
 
 && Raghu110809
 	Tmp_mailatt = "<<"+STRTRAN(ALLTRIM(_mailatt),";",">><<")+">>"
@@ -108,12 +134,19 @@ WITH loMailItem
 *!*	*!*		ENDIF
 && Commented by raghu code is not proper for multiple attachment [End]
 	&&Changes done by vasant on 15/06/2012 as per Bug-4648 (Avery - Auto Email Testing)
-	IF !EMPTY(_mailbody)
-		.HTMLBody=  _mailbody + .HTMLBody  
-	Endif	
+&&Commented By Prajakta B. on 10/08/2019 for Bug 32773  --Start
+*!*		IF !EMPTY(_mailbody)  
+*!*			.HTMLBody=  _mailbody + .HTMLBody 
+*!*		Endif					
+&&Commented By Prajakta B. on 10/08/2019 for Bug 32773  --End
 	&&Changes done by vasant on 15/06/2012 as per Bug-4648 (Avery - Auto Email Testing)
 	IF llShowItem
 		.DISPLAY()      && Shows the New Message Dialog with all details from
+		&&Added By Prajakta B. on 10/08/2019 for Bug 32773  --Start
+		IF !EMPTY(_mailbody)  
+			.HTMLBody = _mailbody + .HTMLBody  
+		ENDIF
+		&&Added By Prajakta B. on 10/08/2019 for Bug 32773  --End
 	ELSE
 		.SEND()         && Calling this will cause a Security Dialog
 	ENDIF

@@ -3,7 +3,7 @@ Para Flag,pType,pRange
 	LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
 	_VerValidErr = ""
 	_VerRetVal  = 'NO'
-_CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
+	_CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
 	TRY
 		_VerRetVal = AppVerChk('ITEMMAST',_CurrVerVal,JUSTFNAME(SYS(16)))
 	CATCH TO _VerValidErr

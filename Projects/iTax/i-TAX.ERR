@@ -1,31 +1,31 @@
-Program d:\svngst\itax\vu_udfs.prg has the following errors:
+Program e:\...\latest project\itax\vu_udfs.prg has the following errors:
     Menu GWARE - Undefined
     Unknown HASH - Undefined
     Unknown ENCRYPT - Undefined
     Unknown DECRYPT - Undefined
 
-Visual Class Library d:\svngst\itax\sqlconnection.vcx has the following errors:
+Visual Class Library e:\...\latest project\itax\sqlconnection.vcx has the following errors:
     Unknown HASH - Undefined
     Unknown ENCRYPT - Undefined
     Unknown DECRYPT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\svngst\itax\spl.scx has the following errors:
+Form e:\...\latest project\itax\spl.scx has the following errors:
     Unknown UEIMAGES - Undefined
     File UGERPWELPAGE.JPG - Undefined
 
-Form d:\svngst\itax\frmudyogsdi.scx has the following errors:
+Form e:\...\latest project\itax\frmudyogsdi.scx has the following errors:
     Menu GWARE - Undefined
     Unknown UEIMAGES - Undefined
     Application UEMIRROR - Undefined
     Proc./Func. UEMULTYCO_MAST - Undefined
     Proc./Func. UECO_MAST - Undefined
 
-Form d:\svngst\itax\frmpassword.scx has the following errors:
+Form e:\...\latest project\itax\frmpassword.scx has the following errors:
     Unknown UEIMAGES - Undefined
     Application UDALERTAPP - Undefined
 
-Visual Class Library d:\svngst\itax\vutool.vcx has the following errors:
+Visual Class Library e:\...\latest project\itax\vutool.vcx has the following errors:
     Unknown UEGETPOP - Undefined
     Unknown UEIMAGES - Undefined
     Proc./Func. UDAPPTOOLNEW - Undefined
@@ -56,16 +56,16 @@ Visual Class Library d:\svngst\itax\vutool.vcx has the following errors:
     Proc./Func. UDTRIGTOOLEXIT - Undefined
     Proc./Func. UETRIGTOOLEXIT - Undefined
 
-Form d:\svngst\itax\denied.scx has the following errors:
+Form e:\...\latest project\itax\denied.scx has the following errors:
     File SILVER.BMP - Undefined
 
-Visual Class Library d:\svngst\itax\_base.vcx has the following errors:
+Visual Class Library e:\...\latest project\itax\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Form d:\svngst\itax\frmregistermsg.scx has the following errors:
+Form e:\...\latest project\itax\frmregistermsg.scx has the following errors:
     Unknown UEIMAGES - Undefined
 
-Program d:\svngst\itax\main.prg has the following errors:
+Program e:\...\latest project\itax\main.prg has the following errors:
     Unknown HASH - Undefined
     Application UETIPSAPP - Undefined
     Application UEBACKUP - Undefined
@@ -83,7 +83,7 @@ Program d:\svngst\itax\main.prg has the following errors:
     Proc./Func. UEGETCOMPINFO - Undefined
     Proc./Func. UNREG_DATA - Undefined
 
-Visual Class Library d:\svngst\itax\barcodeclass.vcx has the following errors:
-    Unknown UDTRIGBCUPDT - Undefined
+Visual Class Library e:\...\latest project\itax\barcodeclass.vcx has the following errors:
     Proc./Func. UEBARCODETRAN - Undefined
+    Unknown UDTRIGBCUPDT - Undefined
 

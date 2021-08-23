@@ -65,7 +65,8 @@ Private usquarepass,mudprodcode
 usquarepass = Upper(DEC(NewDecry(GlobalObj.GetPropertyVal('EncryptId'),'Ud*_yog*\+1993')))
 mudprodcode = DEC(NewDecry(GlobalObj.GetPropertyVal("UdProdCode"),'Ud*yog+1993'))
 *!*	If !INLIST(UPPER(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER')	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
-If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK')	&&Changes Done by Sachin N. S. on 28/09/2016 for GST
+*!*	If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK')	&&Changes Done by Sachin N. S. on 28/09/2016 for GST
+If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK','UERPSTD','UERPSILVPRO','UERPGOLDPRO','UERPENT','UERPSDK')		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
 	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 	&&vasant060609a
 	nretval =0
@@ -178,7 +179,8 @@ Do While !Eof()
 
 			color_schemesp = color_scheme1
 			*!*					If INLIST(UPPER(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER')	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
-			If Inlist(Upper(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST')	&&Changes done by Sachin N. S. on 28/09/2016 for GST
+*!*				If Inlist(Upper(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST')	&&Changes done by Sachin N. S. on 28/09/2016 for GST
+			If Inlist(Upper(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','UERPSTD','UERPSILVPRO','UERPGOLDPRO','UERPENT')		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
 				If Inlist(Upper(Alltrim(_MenuTbl1.LabKey)),'UPREMIUM')
 					color_schemesp = color_scheme3
 				Else
@@ -575,6 +577,7 @@ Procedure vou_common
 	tbrdesktopmenu.Visible = .F.
 	tbrdesktopmenu.timer1.Enabled = .F.
 	tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
+	tbrShortcut.Visible=.f.			&& Added by Shrikant S. on 20/09/2018 for Installer ENT 2.0.0
 	llprog = tprogname
 	llprog = Strtran(Alltrim(llprog),"}}",']')
 	llprog = Strtran(Alltrim(llprog),"{{",'[')

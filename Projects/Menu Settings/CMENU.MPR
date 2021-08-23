@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 01/19/17              CMENU.MPR               15:48:31  
+*       * 06/12/19              CMENU.MPR               12:18:56  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
-*       * Author's Name                                           
+*       * Udyog Software(India) Ltd.                              
 *       *                                                         
-*       * Copyright (C) 2017 Company Name                         
+*       * Copyright (C) 2019 Udyog Software(India) Ltd.           
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -36,14 +36,14 @@ DEFINE BAR 8 OF shortcut PROMPT "Move Do\<wn" ;
 	SKIP FOR _screen.ActiveForm.pageframe1.page1.oletreeNode.selectedItem.LastSibling.Selected = .T.
 ON SELECTION BAR 1 OF shortcut do addnode
 ON SELECTION BAR 2 OF shortcut ;
-	DO _4tu0xvsxi ;
-	IN LOCFILE("WORKING FOLDER FOR GST\CMENU" ,"MPX;MPR|FXP;PRG" ,"WHERE is CMENU?")
+	DO _5i80qeadh ;
+	IN LOCFILE("WORKING FOLDER FOR BUG-32226\CMENU" ,"MPX;MPR|FXP;PRG" ,"WHERE is CMENU?")
 ON SELECTION BAR 3 OF shortcut do nodefind
 ON SELECTION BAR 4 OF shortcut do addseparator
 ON SELECTION BAR 5 OF shortcut do nodedel
 ON SELECTION BAR 6 OF shortcut ;
-	DO _4tu0xvsxj ;
-	IN LOCFILE("WORKING FOLDER FOR GST\CMENU" ,"MPX;MPR|FXP;PRG" ,"WHERE is CMENU?")
+	DO _5i80qeadi ;
+	IN LOCFILE("WORKING FOLDER FOR BUG-32226\CMENU" ,"MPX;MPR|FXP;PRG" ,"WHERE is CMENU?")
 ON SELECTION BAR 7 OF shortcut _screen.ActiveForm.pageframe1.page1.command1.click()
 ON SELECTION BAR 8 OF shortcut _screen.ActiveForm.pageframe1.page1.command2.click()
 
@@ -51,7 +51,7 @@ ACTIVATE POPUP shortcut
 
 *       *********************************************************
 *       *                                                         
-*       * _4TU0XVSXI  ON SELECTION BAR 2 OF POPUP shortcut        
+*       * _5I80QEADH  ON SELECTION BAR 2 OF POPUP shortcut        
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -62,14 +62,14 @@ ACTIVATE POPUP shortcut
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _4tu0xvsxi
+PROCEDURE _5i80qeadh
 _screen.ActiveForm.pageframe1.page1.oletreenode.setfocus()
 _screen.ActiveForm.labeledit()
 
 
 *       *********************************************************
 *       *                                                         
-*       * _4TU0XVSXJ  ON SELECTION BAR 6 OF POPUP shortcut        
+*       * _5I80QEADI  ON SELECTION BAR 6 OF POPUP shortcut        
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -80,7 +80,7 @@ _screen.ActiveForm.labeledit()
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _4tu0xvsxj
+PROCEDURE _5i80qeadi
 _screen.ActiveForm.grid1.visible = .f.
 _screen.ActiveForm.label1.visible = .t.
 _screen.LockScreen = .T.

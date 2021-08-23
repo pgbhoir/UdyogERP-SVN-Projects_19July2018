@@ -13,35 +13,55 @@ Public Class USAGE
         ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy"
         Thread.CurrentThread.CurrentCulture = ci
 
+
+
         If (My.Application.CommandLineArgs.Count > 0) Then
             pPApplPID = 0
             pCompId = Convert.ToInt16(My.Application.CommandLineArgs.Item(0).ToString())
+            MessageBox.Show(pCompId)
             pComDbnm = My.Application.CommandLineArgs.Item(1).ToString()
+            MessageBox.Show(pComDbnm)
             pServerName = My.Application.CommandLineArgs.Item(2).ToString()
-            pUserId = My.Application.CommandLineArgs.Item(3).ToString()
-            pPassword = My.Application.CommandLineArgs.Item(4).ToString()
-            pPApplRange = My.Application.CommandLineArgs.Item(5).ToString()
-            pAppUerName = My.Application.CommandLineArgs.Item(6).ToString()
+            MessageBox.Show(pServerName)
+            pUserId = My.Application.CommandLineArgs.Item(3).ToString().Replace("<*#*>", " ")
+            MessageBox.Show(pUserId)
+            pPassword = My.Application.CommandLineArgs.Item(4).ToString().Replace("<*#*>", " ")
+            MessageBox.Show(pPassword)
+            pPApplRange = My.Application.CommandLineArgs.Item(5).ToString().Replace("<*#*>", " ")
+            MessageBox.Show(pPApplRange)
+            pAppUerName = My.Application.CommandLineArgs.Item(6).ToString().Replace("<*#*>", " ")
+            MessageBox.Show(pAppUerName)
             pPApplText = My.Application.CommandLineArgs.Item(8).Replace("<*#*>", " ")
-            pPApplName = My.Application.CommandLineArgs.Item(8).Replace("<*#*>", " ")
+            MessageBox.Show(pPApplText)
+            pPApplName = My.Application.CommandLineArgs.Item(9).Replace("<*#*>", " ")
+            MessageBox.Show(pPApplName)
             pPApplPID = Convert.ToInt16(My.Application.CommandLineArgs.Item(10).ToString())
+            MessageBox.Show(pPApplPID)
             pPApplCode = My.Application.CommandLineArgs.Item(11).ToString()
+            MessageBox.Show(pPApplCode)
             Me.Icon = New Icon(My.Application.CommandLineArgs.Item(7).Replace("<*#*>", " "))
 
         Else
-            pPApplPID = 0
-            pCompId = Convert.ToInt16(args(0))
-            pComDbnm = args(1)
-            pServerName = args(2)
-            pUserId = args(3)
-            pPassword = args(4)
-            pPApplRange = args(5)
-            pAppUerName = args(6)
-            pPApplText = args(8).Replace("<*#*>", " ")
-            pPApplName = args(9)
-            pPApplPID = Convert.ToInt16(args(10))
-            pPApplCode = args(11)
-            Me.Icon = New Icon(args(7))
+            Try
+
+                pPApplPID = 0
+                pCompId = Convert.ToInt16(args(0))
+                pComDbnm = args(1)
+                pServerName = args(2)
+                pUserId = args(3)
+                pPassword = args(4)
+                pPApplRange = args(5)
+                pAppUerName = args(6)
+                pPApplText = args(8).Replace("<*#*>", " ")
+                pPApplName = args(9)
+                pPApplPID = Convert.ToInt16(args(10))
+                pPApplCode = args(11)
+                Me.Icon = New Icon(args(7))
+
+            Catch
+                MessageBox.Show("error")
+            End Try
+
         End If
 
         'Birendra : Bug-7528 on 02/01/2013 :End:

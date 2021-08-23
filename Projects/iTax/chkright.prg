@@ -33,6 +33,7 @@ Else
 		Return .F.
 	Endif
 Endif
+
 Private usquarepass,mudprodcode, mprodtitle		&& Changed by Sachin N. S. on 13/04/2018 for Installer
 usquarepass = Upper(Dec(NewDecry(GlobalObj.GetPropertyVal('EncryptId'),'Ud*_yog*\+1993')))
 mudprodcode = Dec(NewDecry(GlobalObj.GetPropertyVal("UdProdCode"),'Ud*yog+1993'))
@@ -46,7 +47,8 @@ _varname1 = '_ProdCode'+Sys(3)
 
 
 *!*	If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX')
-If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGGSSDK')		&& Changed by Sachin N. S. on 27/09/2016 for GST
+*!*	If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGGSSDK')		&& Changed by Sachin N. S. on 27/09/2016 for GST
+If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGGSSDK','UERPSDK')		&& Changed by Sachin N. S. on 06/08/2018 for Bug-31756
 	Local sqlconobj,_menuretval,_menuok,_macid,_mregname
 	_mregname = ''
 	_macid = ''
@@ -80,6 +82,7 @@ If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTR
 				_menuok = 'Multiple Records Found'
 			Otherwise
 				msqlstr = NewDecry(dbfmenu.EncFld,_macid)
+
 				_customized = .F.
 				Do Case
 					Case _lttype = 'MENU' And Left(msqlstr,9) == 'CUST:MENU'
@@ -97,48 +100,63 @@ If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTR
 					msqlstr = NewDecry(dbfmenu.EncFld,'Udencyogprod')
 
 *!*						Messagebox("msqlstr : "+msqlstr)
+*!*						Strtofile(msqlstr,"D:\Test1.txt")
 
 
 *!*						**** To be Removed -- Start
-*!*						msqlstr1 = "Select Enc,CAST('' as varchar(250)) as enc1,fenc,penc,CAST('' as varchar(250)) as fenc1,CAST('' as varchar(250)) as penc1 from Vudyog..ProdDetail "
-*!*						_menuretval =sqlconobj.dataconn('EXE',company.dbname,msqlstr1,"dbfmenu","_menunHandle",_ltDatasessionid)
+*!*						If !File("D:\dbfmenu1.dbf")
+*!*							msqlstr1 = "Select Enc,CAST('' as varchar(250)) as enc1,fenc,penc,CAST('' as varchar(250)) as fenc1,CAST('' as varchar(250)) as penc1 from Vudyog..ProdDetail "
+*!*							_menuretval =sqlconobj.dataconn('EXE',company.dbname,msqlstr1,"dbfmenu1","_menunHandle",_ltDatasessionid)
 
-*!*						Select dbfmenu
-*!*						Go Top
-*!*						Scan
-*!*							Select dbfmenu
-*!*							_decdata = NewDecry(Cast(dbfmenu.Enc As Blob),'Udencyogprod')
-*!*							_decdata1 = NewDecry(Cast(dbfmenu.fEnc As Blob),'Udencyogprod')
-*!*							_decdata2 = NewDecry(Cast(dbfmenu.pEnc As Blob),'Udencyogprod')
-*!*							If '8495' $ _decdata1
-*!*								_featureid  = NewEncry(Alltrim(_decdata1),'Udencyogprod')
-*!*								_featureid  = Cast(_featureid As Varbinary(250))
-*!*								msqlstr1 = "Update Vudyog..ProdDetail set enc1=?_decdata,fenc1=?_decdata1,penc1=?_decdata2 where fenc = ?_featureid"
-*!*								_menuretval =sqlconobj.dataconn('EXE',company.dbname,msqlstr1,"","_menunHandle",_ltDatasessionid)
-*!*							Endif
-*!*							Replace enc1 With _decdata, fenc1 With _decdata1, penc1 With _decdata2 In dbfmenu
+*!*							Select dbfmenu1
+*!*							Go Top
+*!*							Scan
+*!*								Select dbfmenu1
+*!*								_decdata = NewDecry(Cast(dbfmenu1.Enc As Blob),'Udencyogprod')
+*!*								_decdata1 = NewDecry(Cast(dbfmenu1.fEnc As Blob),'Udencyogprod')
+*!*								_decdata2 = NewDecry(Cast(dbfmenu1.pEnc As Blob),'Udencyogprod')
+*!*								*!*							If '8495' $ _decdata1
+*!*								*!*								_featureid  = NewEncry(Alltrim(_decdata1),'Udencyogprod')
+*!*								*!*								_featureid  = Cast(_featureid As Varbinary(250))
+*!*								*!*								msqlstr1 = "Update Vudyog..ProdDetail set enc1=?_decdata,fenc1=?_decdata1,penc1=?_decdata2 where fenc = ?_featureid"
+*!*								*!*								_menuretval =sqlconobj.dataconn('EXE',company.dbname,msqlstr1,"","_menunHandle",_ltDatasessionid)
+*!*								*!*							Endif
+*!*								Replace enc1 With _decdata, fenc1 With _decdata1, penc1 With _decdata2 In dbfmenu1
 
-*!*							Select dbfmenu
-*!*						Endscan
-*!*						Select dbfmenu
-*!*						Copy To "E:\UDYOG\UDYOGGST\dbfmenu.dbf"
+*!*								Select dbfmenu1
+*!*							Endscan
+*!*							Select dbfmenu1
+*!*							Copy To "D:\dbfmenu1.dbf"
+*!*						Endif
 *!*						**** To be Removed -- End
 
 
 					_stlen = At('~*0*~',msqlstr)
 					_enlen = At('~*1*~',msqlstr)
 
-*!*						Messagebox("Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode  :: "+Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode)
+					*!*						MESSAGEBOX("_stlen :"+TRANSFORM(_stlen))
+					*!*						MESSAGEBOX("_enlen :"+TRANSFORM(_enlen))
+					*!*						MESSAGEBOX("msqlstr : "+msqlstr)
+					*!*
+					*!*						MESSAGEBOX("Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)) : "+Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)))
+					*!*						MESSAGEBOX("mudprodcode : "+mudprodcode)
+
+					*!*						MESSAGEBOX(Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode,'Udencyogprod')
+					*!*						Messagebox("Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode  :: "+Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode)
 
 					_featureid  = NewEncry(Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(msqlstr,_stlen + 5,_enlen-(_stlen+5)),''))+'~*0*~'+mudprodcode,'Udencyogprod')
 					_featureid  = Cast(_featureid As Varbinary(250))
-					*!*						_featureid  = Cast(_featureid As Blob)
+					*!*	_featureid  = Cast(_featureid As Blob)
+					*!*	_featureid  = TRANSFORM(_featureid)
+					*!*	MESSAGEBOX("_featureid 1:"+_featureid)
+					*!*	STRTOFILE(_featureid,"D:\Test2.txt")
+
 					msqlstr = "Select Enc from Vudyog..ProdDetail where fenc = ?_featureid"
 					_menuretval =sqlconobj.dataconn('EXE',company.dbname,msqlstr,"dbfmenu","_menunHandle",_ltDatasessionid)
 					If _menuretval > 0
 						_menuok = 'No Records Found' && Commented by Archana K. on 22/05/13 for Bug-7899
-*!*							_menuok = 'This feature is not available in '+mudprodcode+'-'+Upper(GlobalObj.GetPropertyVal("ClientType"))  && Changed by Archana K. on 22/05/13 for Bug-7899
-						_menuok = 'This feature is not available in '+mprodTitle+'-'+Upper(GlobalObj.GetPropertyVal("ClientType"))  && Changed by Sachin N. S. on 13/04/2018 for Installer	
+						*!*							_menuok = 'This feature is not available in '+mudprodcode+'-'+Upper(GlobalObj.GetPropertyVal("ClientType"))  && Changed by Archana K. on 22/05/13 for Bug-7899
+						_menuok = 'This feature is not available in '+mprodtitle+'-'+Upper(GlobalObj.GetPropertyVal("ClientType"))  && Changed by Sachin N. S. on 13/04/2018 for Installer
 						Select dbfmenu
 						Go Top
 						Scan
@@ -169,9 +187,12 @@ If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTR
 							_optionname  	= Alltrim(Iif(_stlen > 0 And _enlen > 0,Substr(_decdata,_stlen + 5,_enlen-(_stlen+5)),''))
 							_customized = .F.
 
+							*!*	*!*								If _lttype = 'REPORT'
 
 *!*								Messagebox("_decdata : "+_decdata)
 
+*!*								Messagebox(_featureid  )
+							*!*	*!*								Endif
 
 							Do Case
 								Case _lttype = 'MENU' And _optiontype = 'MENU'
@@ -182,31 +203,37 @@ If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGMFG','VUDYOGTR
 									_customized = .T.
 							Endcase
 
-
+							*!*	*!*								If _lttype = 'REPORT'
 *!*								Messagebox("_lttype = "+_lttype)
-*!*								Messagebox("_optiontype = "+_optiontype)
-*!*								
+
+
 *!*								Messagebox("_prodcode : "+_prodcode)
 *!*								Messagebox("vchkprod : "+vchkprod)
 
 *!*								Messagebox("mudprodcode : "+mudprodcode)
-*!*								MESSAGEBOX("_prodver : "+_prodver)
-*!*								
+*!*								Messagebox("_prodver : "+_prodver)
+
 *!*								Messagebox("Upper(GlobalObj.GetPropertyVal('ClientType')) : "+Upper(GlobalObj.GetPropertyVal("ClientType")))
-*!*								MESSAGEBOX("Upper(_servicever) : "+Upper(_servicever))
-*!*								
-*!*								
+*!*								Messagebox("Upper(_servicever) : "+Upper(_servicever))
+
+
 *!*								Messagebox("_ltpara4a : "+_ltpara4a)
 *!*								Messagebox("_optionname : "+_optionname)
-*!*								
-*!*								
-*!*								MESSAGEBOX("Upper(_featuretype) : "+Upper(_featuretype) )
 
-							If _customized = .T. And (_prodcode $ vchkprod Or _prodcode = 'vugen') And mudprodcode == _prodver ;
+
+*!*								Messagebox("Upper(_featuretype) : "+Upper(_featuretype) )
+							*!*	*!*								Endif
+
+							If _customized = .T. And (_prodcode $ vchkprod Or _prodcode = 'vugen') And mudprodcode == _prodver;
 									AND Upper(GlobalObj.GetPropertyVal("ClientType")) == Upper(_servicever)	;
 									AND Upper(_ltpara4a) == Upper(_optionname)
-									
-*!*									MESSAGEBOX(" Condition passed")
+
+								*!*									IF  Upper(_optionname)="PURCHASETRANSACTIONSCT3ISSUABLE"
+								*!*										MESSAGEBOX("Upper(_servicever) : "+Upper(_servicever))
+								*!*										MESSAGEBOX("Upper(_featuretype) : "+Upper(_featuretype) )
+								*!*										MESSAGEBOX("Upper(_featureid) : "+Upper(_featureid) )
+								*!*									endif
+								*!*								Messagebox(" Condition passed")
 								Do Case
 									Case Upper(_featuretype) == 'FREE'
 										_menuok	     = ''

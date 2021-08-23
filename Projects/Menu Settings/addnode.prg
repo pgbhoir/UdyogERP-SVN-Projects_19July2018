@@ -3,7 +3,7 @@
 *If Inlist(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGSTD','VUDYOGPRO','VUDYOGENT')&&Commented For Bug-2286 USquare 10.0 Installer : By Amrendra on 15-02-2012
 *!*	If Inlist(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX') &&Changed For Bug-2286 USquare 10.0 Installer : By Amrendra on 15-02-2012
 *!*	If Inlist(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER') &&Changed By Sachin N. S. on 31/10/2013 for New Product VUTrader -- Bug-20574
-If Inlist(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST') &&Changed By Sachin N. S. on 09/03/2017 for GST
+If Inlist(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'VUDYOGMFG','VUDYOGTRD','VUDYOGSERVICETAX','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','UERPSTD','UERPSILVPRO','UERPGOLDPRO','UERPENT') &&Bug-31756 Rupesh Added Values for uERP in inlist
 &&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 	=Messagebox("Sorry !! No New Menu can be added in this Version.",0+16,vuMess)
 	Return .F.

@@ -118,7 +118,7 @@ UdNewTrigEnbl	= .F.	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professi
 Local mudProdCode
 
 Public mvu_Backimg,mvu_Position,CompanySetting		&&Changes done by Vasant on 30/04/2013 as per Bug 7303(Barcode Printing Details).			&& Wallpaper Related
-PUBLIC mvu_nenc 				&& Added by Shrikant S. on 25/04/2018 for Bug-31488		
+Public mvu_nenc 				&& Added by Shrikant S. on 25/04/2018 for Bug-31488
 
 
 appprocid = GetCurrentProcessId()
@@ -173,8 +173,8 @@ Endif
 
 mvu_one     = Space(2000)
 mvu_two     = 0
-mvu_two	    = getprivstr([Settings],"NENC", "", @mvu_one, len(mvu_one), apath + "visudyog.ini")			&& Added by Shrikant S. on 25/04/2018 for Bug-31488
-mvu_nenc	= left(mvu_one,mvu_two)																		&& Added by Shrikant S. on 25/04/2018 for Bug-31488	
+mvu_two	    = GetPrivStr([Settings],"NENC", "", @mvu_one, Len(mvu_one), apath + "visudyog.ini")			&& Added by Shrikant S. on 25/04/2018 for Bug-31488
+mvu_nenc	= Left(mvu_one,mvu_two)																		&& Added by Shrikant S. on 25/04/2018 for Bug-31488
 
 && Added by Shrikant S. on 25/04/2018 for Bug-31488			&& Start
 If !Empty(mvu_nenc)
@@ -220,7 +220,9 @@ mvu_Backimg  = Iif(Empty(lcBackimg),'',lcBackimg)
 
 mvu_two		 = GetPrivStr([Settings],"Position", "", @mvu_one, Len(mvu_one), iniFilePath)
 lnPosition   = Left(mvu_one,mvu_two)
-mvu_Position = Iif(Empty(lcBackimg),1,Val(lnPosition))
+*!*	mvu_Position = Iif(Empty(lcBackimg),1,Val(lnPosition))  &&Commented by Priyanka B on 19122018 for Bug-32062
+mvu_Position = Iif(Inlist(Val(lnPosition),0,1,2),Val(lnPosition),1)  &&Modified by Priyanka B on 19122018 for Bug-32062
+
 
 *!*	Backimage = Itaxback.Tif
 *!*	Position  = 1
@@ -294,7 +296,10 @@ traperror = Createobject("traperrormsg")
 On Error traperror.errorroutine(Error(), Message( ), Message(1), Program( ), Lineno( ))
 
 lcdisplayvalue=[ ]
-
+&& added by Prajakta B. on 07/02/2019 for Bug 32229-- Start
+cProdCode = dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993'))
+Delete File apath+"Bmp\icon_"+cProdCode+".ico" RECYCLE
+&& added by Prajakta B. on 07/02/2019 for Bug 32229-- End
 Do Form spl  &&ash Rpp
 Read Events
 
@@ -538,12 +543,12 @@ Do While .T.
 	Endif
 
 	********** Added By Sachin N. S. on 24/06/2009 ********** Start
-
 	If exitclick = .F. And !Eof('_co_mast')
 		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 		*If Inlist(Upper(Alltrim(r_srvtype)),'PREMIUM','NORMAL') And reg_value = "DONE"
 		*!If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL') And reg_value = "DONE" && Commented by Archana K. on 21/02/13 for Bug-7899
-		If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION') And reg_value = "DONE" && Changed by Archana K. on 21/02/13 for Bug-7899&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+		*!*			If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION') And reg_value = "DONE" && Changed by Archana K. on 21/02/13 for Bug-7899&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)	&& Commneted by Shrikant S. on 12/04/2019 for Registration
+		If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION','SUPPORT','MARKETING','INSTITUTIONAL','DEVELOPER') And reg_value = "DONE" 			&& Added by Shrikant S. on 12/04/2019 for Registration checking support/marketing/Developer version
 			*!*	*!*				oSystemInfo = Createobject("SystemInfo.SysInformation")
 			*!*	*!*				cMacId = oSystemInfo.getSystemInformation("M")
 
@@ -640,7 +645,6 @@ Do While .T.
 		Read Events
 		Exit
 	Else
-
 		*!*			if not inlist(mvu_MenuType,[B],[X]) and exitclick <> .t. and llLoginfrm = .t.			&& Raghu 160609
 		If exitclick <> .T. And lLoginform = .T.
 			Do Form frmpassword
@@ -677,7 +681,7 @@ Do While .T.
 			Endif
 			If Type('m_LicenseServiceValidate') <> 'C'
 				m_LicenseServiceValidate = ''
-			ENDIF
+			Endif
 
 			If !m_LicenseServiceValidate == 'LVERIFY'
 				exitclick=.T.
@@ -686,7 +690,7 @@ Do While .T.
 			Release m_LicenseServiceValidate
 		Endif
 		&&vasant060410
-		
+
 		If exitclick = .F.
 			Do Form frmconndatabase
 
@@ -753,7 +757,7 @@ Do While .T.
 				Otherwise
 					&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 					If UdNewTrigEnbl
-						If (File('UDAppMainAppl.App') Or File('UDTrigMainAppl.fxp'))
+						If (File('UDAppMainAppl.App') Or File('UDTrigMainAppl.fxp')) And !Inlist(Upper(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 							pbar.cleaprogressbar()
 							pbar = Null
 							Release pbar
@@ -761,7 +765,7 @@ Do While .T.
 								*!*								exitclick=UDAppMainAppl.App()   Tkt 3468 by Rupesh
 								exitclick=UDAppMainAppl()
 							Endif
-							If File('UDTrigMainAppl.fxp')
+							If File('UDTrigMainAppl.fxp') And !Inlist(Upper(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 								exitclick=UDTrigMainAppl()
 							Endif
 						Else
@@ -797,7 +801,7 @@ Do While .T.
 					If File('UDAppActive.App')
 						Do UDAppActive
 					Endif
-					If File('UDTrigActive.fxp')
+					If File('UDTrigActive.fxp') And !Inlist(Upper(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 						Do UDTrigActive
 					Endif
 				Else
@@ -833,10 +837,56 @@ If Type('GlobalObj') = 'O'
 	Endif
 	If Type('m_LicenseServiceValidate') <> 'C'
 		m_LicenseServiceValidate = ''
-	ENDIF
+	Endif
 	Release m_LicenseServiceValidate
 Endif
 &&vasant060410
+
+***** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- Start
+If reg_value="NOT DONE" And Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+	If !Empty(r_instdate1)
+		nhandle=0
+		_ProdCode = Cast(GlobalObj.getpropertyval("udProdCode") As Varbinary(250))
+
+		lcCondi = ""
+		lcCondi = lcCondi + Iif(Type("_co_mast.prodCode")="U" And Type("Company.prodCode")="U",""," (prodCode = ?_ProdCode or prodCode is null or prodCode = '' ) ")
+
+		msqlstr = " select getdate() as currdate "
+		nretval=sqlconobj.dataconn('EXE',_Defaultdb,msqlstr,"_curdate","nHandle")
+		If nretval<0
+			Return .F.
+		Endif
+
+		msqlstr = " select top 1 [coformdt] from vudyog..co_mast where ISNULL(coformdt,'')<>'' "+Iif(!Empty(lcCondi)," and "+lcCondi,"")
+		nretval=sqlconobj.dataconn('EXE',_Defaultdb,msqlstr,"_co_mast","nHandle")
+		If nretval<0
+			Return .F.
+		Endif
+
+		mudProdCode = dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993'))
+		*!*			_coFormDt1 = dec(NewDecry(ALLTRIM(_co_Mast.CoFormDt),'Ud*yog+1993'))
+		_coFormDt1 = dec(NewDecry(Alltrim(_co_Mast.CoFormDt),'Ud*yogERP+1993'))
+
+		instdate1=Strextract(_coFormDt1,"","<>")
+		instdate2=Strextract(_coFormDt1,"<>","")
+
+		If Ctod(instdate2) < _curdate.currdate And !Empty(instdate2) And !Empty(_curdate.currdate)
+			instdate = Alltrim(instdate1)+"<>"+Alltrim(Dtoc(Ttod(_curdate.currdate)))
+			dCurDate = NewEncry(enc(Alltrim(instdate)),'Ud*yogERP+1993')
+			msqlstr = " Update vudyog..co_mast set [coformdt]='"+dCurDate+"' where "+lcCondi
+			nretval=sqlconobj.dataconn('EXE',_Defaultdb,msqlstr,"_co_mast","nHandle")
+			If nretval<0
+				Return .F.
+			Endif
+		Endif
+
+		mRet=sqlconobj.sqlconnclose("nhandle")
+		If mRet< 0
+			Return .F.
+		Endif
+	Endif
+Endif
+***** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- End
 
 On Shutdown
 Close All
@@ -974,6 +1024,14 @@ Procedure doRegistration
 			Endif
 
 			*!*			lnDays = Iif(lnGrace>0,Iif(dSrvDate > Ctod(r_instdate1)+lnGrace+1,dSrvDate - Ctod(r_instdate1)+1,dSrvDate - Ctod(r_instdate1) - lnGrace+1),(dSrvDate - Ctod(r_instdate1)+1))
+			****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- Start
+			If Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+				r_instdate11 = Strextract(r_instdate1,"","<>")
+				r_instdate12 = Strextract(r_instdate1,"<>","")
+				r_instdate1 = r_instdate11
+			Endif
+			****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- End
+
 			lnDays = (dSrvDate - Ctod(r_instdate1)+1)		&& Changed By Sachin N. S. on 15/08/2009 as said by vasant to remove grace period
 
 			lnEvalPerd = 0
@@ -984,22 +1042,53 @@ Procedure doRegistration
 			*If !Inlist(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogMFG','VudyogTRD','VudyogServiceTax','VudyogSTD','VudyogPRO','VudyogENT')		&&Changes done by Vasant on 22/02/2011 as per TKT-6371 for Changing Demo Days for VU10 (Standard/Professional/Enterprise)
 			If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogMFG','VudyogTRD','VudyogServiceTax')		&&Changes done by Vasant on 22/02/2011 as per TKT-6371 for Changing Demo Days for VU10 (Standard/Professional/Enterprise)
 				&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-				lnEvalPerd = 27
+
+				***** Changed by Sachin N. S. on 24/11/2018 for Bug-32062 -- Start
+				If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+					lnEvalPerd = 27
+				Else
+					lnEvalPerd = 10
+				Endif
+				***** Changed by Sachin N. S. on 24/11/2018 for Bug-32062 -- End
 			Else
 				lnEvalPerd = 9
 			Endif
 
-			If lnDays <= lnEvalPerd
-				lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
-					"You are using the "+Alltrim(Str(lnEvalPerd))+" days evaluation copy of the software, which would expire on "+Dtoc(Ctod(r_instdate1)+lnEvalPerd-1)+"."+;
-					"You are required to register the software on or before the "+Dtoc(Ctod(r_instdate1)+lnEvalPerd-1)+" in order to avoid expiry."+Chr(13)+Chr(13)+;
-					"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email accounts@udyogsoftware.com."
+
+			****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- Start
+			If Empty(Ctod(r_instdate1))
+				lnDays = lnEvalPerd+1
+			Endif
+			llSftbkDtd=.T.
+			If Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+				If Ctod(r_instdate12)>dSrvDate
+					llSftbkDtd=.F.
+				Endif
+			Endif
+			****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- End
+
+			If llSftbkDtd		&& Added by Sachin N. S. on 13/08/2018 for Bug-31756
+				If lnDays <= lnEvalPerd
+					lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
+						"You are using the "+Alltrim(Str(lnEvalPerd))+" days evaluation copy of the software, which would expire on "+Dtoc(Ctod(r_instdate1)+lnEvalPerd-1)+"."+;
+						"You are required to register the software on or before the "+Dtoc(Ctod(r_instdate1)+lnEvalPerd-1)+" in order to avoid expiry."+Chr(13)+Chr(13)+;
+						"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email license.activation@udyogsoftware.com."		&& Changed by Sachin N. S. on 26/09/2018 for Bug-31756
+					*!*							"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email accounts@udyogsoftware.com."
+				Else
+					lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
+						"We regret to inform you that your evaluation period has been expired and you will not be able to use the software."+;
+						"We hope you are satisfied with the software and enjoyed using it."+Chr(13)+Chr(13)+;
+						"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email license.activation@udyogsoftware.com."				&& Changed by Sachin N. S. on 26/09/2018 for Bug-31756
+					*!*							"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email accounts@udyogsoftware.com."
+				Endif
+				****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- Start
 			Else
 				lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
-					"We regret to inform you that your evaluation period has been expired and you will not be able to use the software."+;
-					"We hope you are satisfied with the software and enjoyed using it."+Chr(13)+Chr(13)+;
-					"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email accounts@udyogsoftware.com."
+					"We regret to inform you that your software was already used in future date and cannot continue in the evaluation period."+Chr(13)+Chr(13)+;
+					"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email license.activation@udyogsoftware.com."				&& Changed by Sachin N. S. on 26/09/2018 for Bug-31756
+				*!*						"For any assistance, please contact your nearest software vendor or visit us at www.udyogsoftware.com or email accounts@udyogsoftware.com."
 			Endif
+			****** Added by Sachin N. S. on 13/08/2018 for Bug-31756 -- End
 
 			****** Added by Sachin N. S. on 17/05/2017 for GST -- Start
 			If Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogGSSDK')
@@ -1010,6 +1099,20 @@ Procedure doRegistration
 					"customizations. Partner may, using the functionality within the Udyog GST, configure and, modify certain available "+;
 					"functionality of the Udyog GST. "+Chr(13)+Chr(13)+;
 					"Udyog GST SDK license is not intended for Customer use and cannot be installed on Customer workstations. Any attempt "+;
+					"to install or use this software on Customer workstations is strictly prohibited. If you have any questions on the same, please "+;
+					"contact the support team at Udyog Software at support@udyogsoftware.com."
+			Endif
+			****** Added by Sachin N. S. on 17/05/2017 for GST -- End
+
+			****** Added by Sachin N. S. on 17/05/2017 for GST -- Start
+			If Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'uERPSdk')
+				lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
+					"Udyog ERP SDK version is provided to Partners for internal usage, support on customization tasks and for "+;
+					"product demonstrations. During the Evaluation Period, Udyog Software grants to Partners a non-exclusive, revocable "+;
+					"and non-transferable right to use the Udyog GST solely for the purpose of product demonstrations and developing "+;
+					"customizations. Partner may, using the functionality within the Udyog ERP, configure and, modify certain available "+;
+					"functionality of the Udyog ERP. "+Chr(13)+Chr(13)+;
+					"Udyog ERP SDK license is not intended for Customer use and cannot be installed on Customer workstations. Any attempt "+;
 					"to install or use this software on Customer workstations is strictly prohibited. If you have any questions on the same, please "+;
 					"contact the support team at Udyog Software at support@udyogsoftware.com."
 			Endif
@@ -1084,7 +1187,7 @@ Procedure doRegistration
 			*!*			Endif
 			*********** Changed By Sachin N. S. on 09/07/2010 for New Message Change *********** End
 
-			If reg_value = 'NOT DONE' And (lnDays >= lnEvalPerd+1 Or dSrvDate < Ctod(r_instdate1))
+			If reg_value = 'NOT DONE' And (lnDays >= lnEvalPerd+1 Or dSrvDate < Ctod(r_instdate1) Or llSftbkDtd=.F.)		&& Changed by Sachin N. S. on 13/08/2018 for Bug-31756
 				Do Form frmRegisterMsg With lcMessg,.T.,.T.,.F.
 				Read Events
 				If lRgMsg
@@ -1142,8 +1245,9 @@ Procedure doRegistration
 				lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
 					Transform(lnDays)+Iif(lnDays=1," Day "," Days ") + "to go. "+;
 					"Avail our latest updates on your software and our support for the next year. "+;
-					"Contact "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" for any assistance or email accounts@udyogsoftware.com "+;
-					"to avail Udyog's Annual Maintenance Contract (AMC)."
+					"Contact "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" for any assistance or email license.activation@udyogsoftware.com "+;		&& Changed by Sachin N. S. om 26/09/2018 for Bug-31756
+				"to avail Udyog's Annual Maintenance Contract (AMC)."
+				*!*						"Contact "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" for any assistance or email accounts@udyogsoftware.com "
 				&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 				*********** Changed By Sachin N. S. on 09/07/2010 for New Message Change *********** End
 
@@ -1184,8 +1288,9 @@ Procedure doRegistration
 						lcMessg = "Dear User,"+Chr(13)+Chr(13)+;
 							"Your Application may not be upgraded with the latest software patches or upgrades since "+Alltrim(Iif(dSrvDate>Ctod(ueReadRegMe.r_ExpDt),ueReadRegMe.r_AmcEdDt,ueReadRegMe.r_ExpDt))+"."+;
 							"You run the risk of not having the latest statutory updates in your software. "+Chr(13)+Chr(13)+;
-							"Update your Annual Maintenenace Contract by contacting "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" or email accounts@udyogsoftware.com "+;
-							"to avail the latest updates and our support."
+							"Update your Annual Maintenenace Contract by contacting "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" or email license.activation@udyogsoftware.com "+;		&& Changed by Sachin N. S. on  26/09/2018 for Bug-31756
+						"to avail the latest updates and our support."
+						*!*								"Update your Annual Maintenenace Contract by contacting "+Chr(34)+Alltrim(ueReadRegMe.r_ename)+Chr(34)+" or email accounts@udyogsoftware.com "
 						&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 					Endif
 
@@ -1263,8 +1368,8 @@ Procedure doRegistration
 			&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 			*If Inlist(Upper(Alltrim(r_srvtype)),'PREMIUM','NORMAL')
 			*!*			If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL') && Commented by Archana K. on 21/02/13 for Bug-7899
-
-			If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION') && Changed by Archana K. on 21/02/13 for Bug-7899
+			If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION') && Changed by Archana K. on 21/02/13 for Bug-7899			&& Commented by Shrikant S. on 13/04/2019 for Registration
+				*!*				If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION' ,'SUPPORT VERSION','MARKETING VERSION','DEVELOPER VERSION','EDUCATIONAL VERSION')	&& Added by Shrikant S. on 13/04/2019 for Registration
 				r_Compn = ueReadRegMe.r_Compn
 				&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 				***** Added by Sachin N. S. on 06/12/2016 for GST Vudyog Database Working -- Start
@@ -1303,7 +1408,8 @@ Procedure doRegistration
 
 			*		If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogSTD','VudyogPRO','VudyogENT')	&& Added By Sachin N. S. on 01/04/2011 for TKT-6920
 			*!*			If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VUTrader')	&&Changed For Bug-2286 USquare 10.0 Installer : By Amrendra on 15-02-2012	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
-			If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VUTrader','VudyogGST')		&& Changed by Sachin N. S. on 30/09/2016 for GST
+			*!*				If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VUTrader','VudyogGST')		&& Changed by Sachin N. S. on 30/09/2016 for GST
+			If !Inlist(dec(NewDecry(GlobalObj.getpropertyval("UdProdCode"),'Ud*yog+1993')),'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VUTrader','VudyogGST','uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt')		&& Changed by Sachin N. S. on 20/07/2018 for Udyog ERP STD/PRO/ENT
 				_cPassroute1 = Iif(Type('_co_mast.passroute1')!='U',',passroute1','')	&& Added By Sachin N. S. on 26/08/2011 for TKT-8128
 				*!*				msqlstr = "Select co_name,passroute from co_Mast order by end_dt desc"		&& Changed By Sachin N. S. on 26/08/2011 for TKT-8128
 				*!*				msqlstr = "Select co_name,passroute"+_cPassroute1+" from co_Mast order by end_dt desc"
@@ -1370,11 +1476,11 @@ Procedure doRegistration
 					If Empty(Buffer)
 						Loop
 					Endif
+
 					lnCnt = lnCnt + 1
 				Endscan
 				lnCnt = lnCnt + lnExemptCount
 				&&vasant060410a
-
 				If lnCnt > r_coof
 					=Messagebox("Number of company registered is less than the company created."+Chr(13)+;
 						"Please contact your service center for upgrading.",0+16,vumess)
@@ -1383,9 +1489,9 @@ Procedure doRegistration
 				Endif
 				******* Added By Sachin N. S. on 19/04/2011 for TKT-6920 ******* Start
 			Else
-
 				*!*				If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL') && Commented by Archana K. on 21/02/13 for Bug-7899
-				If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION')&& Changed by Archana K. on 21/02/13 for Bug-7899
+				If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION')&& Changed by Archana K. on 21/02/13 for Bug-7899			&& Commented by Shrikant S. on 13/04/2019 for Registration		&& Uncommented by Shrikant S. on 01/08/2019 for Old Registration Process
+					*!*					If Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION','SUPPORT VERSION','MARKETING VERSION','DEVELOPER VERSION','EDUCATIONAL VERSION')	&& Added by Shrikant S. on 13/04/2019 for Registration		&& commented by Shrikant S. on 01/08/2019 for Old Registration Process
 					_CompFound = .F.
 					cProd_cd = ""
 					***** Added by Sachin N. S. on 06/12/2016 for GST Vudyog Database Working -- Start
@@ -1410,6 +1516,8 @@ Procedure doRegistration
 					lnExempt=0
 					lnvuent=0
 					lnCnt=0
+
+
 					Select _CoMaster
 					*!*					Index On Co_name Tag Co_name Unique			&& Commented by Sachin N. S. on 29/08/2016 for Bug-28561
 					Scan
@@ -1434,6 +1542,7 @@ Procedure doRegistration
 						Endif
 						***** Added By Sachin N. S. on 26/08/2011 for TKT-8128 ***** End
 
+
 						*!*						If "vuent" $ Buffer
 						If "vuent" $ Buffer Or (("vupro" $ Buffer Or "vuinv" $ Buffer Or "vuord" $ Buffer Or "vutds" $ Buffer) And "multicoiov" $ Buffer1)		&& Changes by Sachin N. S. on 25/05/2011 for TKT-8128 Multi-Company
 							lnvuent=1
@@ -1448,7 +1557,6 @@ Procedure doRegistration
 							lnmulticoiovtExempt = lnmulticoiovtExempt + 1
 						Endif
 						******* Added by Sachin N. S. on 24/08/2016 for Bug-28561 -- End
-
 						Buffer = Strtran(Buffer,'vuent','')
 						Buffer = Strtran(Buffer,'vupro','')		&& Added By Sachin N. S. on 23/05/2011 for TKT-8128 Multi-Company
 						Buffer = Strtran(Buffer,'vuinv','')		&& Added By Sachin N. S. on 23/05/2011 for TKT-8128 Multi-Company
@@ -1460,15 +1568,50 @@ Procedure doRegistration
 						Buffer = removemodcode(Buffer,lnmulticoiovtExempt,"vatgen")
 						***** Added by Sachin N. S. on 29/08/2016 for Bug-28561 -- End
 
+
+
+
 						If Empty(Buffer)
 							Loop
 						Endif
+
+
 						*!*						lnCnt = lnCnt + Icase("vupro" $ Buffer,1,"vuexc" $ Buffer,1,"vuexp" $ Buffer,1,"vuinv" $ Buffer,1,"vuord" $ Buffer,1,"vubil" $ Buffer,1,"vutex" $ Buffer,1,"vuser" $ Buffer,1,"vuisd" $ Buffer,1,"vumcu" $ Buffer,1,"vutds" $ Buffer,1,0)
 						*!*						lnCnt = lnCnt + Icase("vuexc" $ Buffer,1,"vuexp" $ Buffer,1,"vubil" $ Buffer,1,"vutex" $ Buffer,1,"vuser" $ Buffer,1,"vuisd" $ Buffer,1,"vumcu" $ Buffer,1,Iif(lnvuent<=0,1,0)) 		&& Changed By Sachin N. S. on 23/05/2011 for TKT-8128 Multi-Company
 						lnCnt = lnCnt + Icase("vuexc" $ Buffer,1,"vuexp" $ Buffer,1,"vubil" $ Buffer,1,"vutex" $ Buffer,1,"vuser" $ Buffer,1,"vuisd" $ Buffer,1,"vumcu" $ Buffer,1,"vugst" $ Buffer,1,Iif(lnvuent<=0,1,0)) 		&& Changed By Sachin N. S. on 30/09/2016 for GST
 
 						Select _CoMaster
+
 					Endscan
+
+					&& Added by Shrikant S. on 03/08/2019 for Installer 2.2.0		Old Registration Process		&& Start
+					lnCnt=0
+					Local lncompCnt
+					Select _CoMaster
+					Scan
+						If Left(Upper(_CoMaster.Co_name),13) = 'UDYOG TESTING'
+							Loop
+						Endif
+						pvalue = Allt(_CoMaster.PassRoute)
+						Buffer = ""
+						For i = 1 To Len(pvalue)
+							Buffer = Buffer + Chr(Asc(Substr(pvalue,i,1))/2)
+						Next i
+
+						Buffer1 = ""
+						If Type('_CoMaster.PassRoute1')!='U'
+							pvalue1 = Allt(_CoMaster.PassRoute1)
+							Buffer1 = ""
+							For i = 1 To Len(pvalue1)
+								Buffer1 = Buffer1 + Chr(Asc(Substr(pvalue1,i,1))/2)
+							Next i
+						Endif
+
+						lncompCnt=GetCompanyCount(Alltrim(Buffer)+Iif(Right(Alltrim(Buffer),1)==',','',',')+Alltrim(Buffer1),Iif(lnvuent>0,.T.,.F.))
+
+						lnCnt=lnCnt+lncompCnt
+					Endscan
+					&& Added by Shrikant S. on 03/08/2019 for Installer 2.2.0		Old Registration Process		&& End
 
 					If lnCnt>r_coof
 						=Messagebox("Number of company registered is less than the company created."+Chr(13)+;
@@ -1578,3 +1721,81 @@ Procedure removemodcode
 	Return cBuffer
 Endproc
 ***** Added by Sachin N. S. on 29/08/2016 for Bug-28561 -- End
+
+&& Added by Shrikant S. on 06/08/2019 for Old Registration Process 		&& Start
+Procedure GetCompanyCount
+	Lparameters lcModList,llmulti
+
+	Local nrecno
+
+	If !Used('_curProdList')
+		sqlconobj1=Newobject('sqlconnudobj',"sqlconnection",xapps)
+		_nHandle1Rem=0
+		Create Cursor _curProdList (lSel L, cProdName c(100), cProdCode c(15), cCmbNotAlwd c(250), cModDep c(250), cMainProdCode c(250), nProdType N(2), nOrder c(30))
+		Index On nOrder Tag nOrder
+		cPdCd = GlobalObj.getpropertyval("UdProdCode")
+
+		msqlstr = " select ENC1, ENC2 FROM MODULEMAST WHERE ENC1 = ?cPdCd "
+		nretval=sqlconobj1.dataconn('EXE',"Vudyog",msqlstr,"_tmpProduct","_nHandle1Rem")
+		If nretval <= 0
+			Return .F.
+		Endif
+		nretval=sqlconobj1.sqlconnclose("_nHandle1Rem")
+
+		Select _tmpProduct
+		Scan
+			Select _tmpProduct
+
+			cDec = NewDecry(Alltrim(Cast(_tmpProduct.Enc2 As Blob)),'Udyog!Module!Mast')
+
+			cModCd = Strextract(cDec,'~*1*~','~*1*~')
+			cModNm = Strextract(cDec,'~*2*~','~*2*~')
+			cModDp = Strextract(cDec,'~*3*~','~*3*~')
+			cModEx = Strextract(cDec,'~*4*~','~*4*~')
+			cPrdCd = Strextract(cDec,'~*5*~','~*5*~')
+			_norder = Strextract(cDec,'~*6*~','~*6*~')
+			_nOrder1 = Alltrim(Iif(At('.',_norder) > 0,Substr(_norder,1,At('.',_norder)-1),_norder))
+			_nOrder2 = Alltrim(Iif(At('.',_norder) > 0,Substr(_norder,At('.',_norder)+1),''))
+			_norder = Iif(Val(_nOrder1) > 0,'A','Z')+Padl(_nOrder1,10,'0')+Iif(Empty(cModDp),'A','Z')+Iif(Val(_nOrder2) > 0,'A','Z')+Padl(_nOrder2,10,'0')
+
+			If !Inlist(Upper(cModCd),'OTHERS')
+				Insert Into _curProdList Values(.F., cModNm, cModCd, cModEx, cModDp, cPrdCd, Iif(!Empty(cModDp),2,1),_norder)
+			Endif
+			Select _tmpProduct
+		Endscan
+
+		Select _curProdList
+		Go Top
+	Endif
+
+	If llmulti =.T.
+		Local Array arrprod(5)
+		arrprod[1]='vuent'
+		arrprod[2]='vupro'
+		arrprod[3]='vuinv'
+		arrprod[4]='vuord'
+		arrprod[5]='vutds'
+		gnProdCnt= Alen(arrprod)
+
+		For i=1 To gnProdCnt
+			Select _curProdList
+			Scan For Alltrim(_curProdList.cMainProdCode)==Alltrim(arrprod[i])
+				Select _curProdList
+				lcModList= Strtran(lcModList,Alltrim(arrprod[i]),'')
+				lcModList= Strtran(lcModList,Alltrim(_curProdList.cProdCode),'')
+				If Empty(lcModList)
+					Exit
+				Endif
+				Select _curProdList
+			Endscan
+		Endfor
+	Endif
+	lcModList= Strtran(lcModList,',','')
+	If !Empty(lcModList)
+		Return 1
+	Endif
+
+	Return 0
+Endproc
+
+&& Added by Shrikant S. on 06/08/2019 for Old Registration Process 		&& End

@@ -33,7 +33,7 @@ mvu_pass1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_pass))
 vicopath=STRTRAN(icopath,' ','<*#*>')
 pApplCaption=STRTRAN(vumess,' ','<*#*>')
 pApplName=justfname(SYS(16))
-_ShellExec ="UeDisposalOfAssests.exe " +TRANSFORM(tcCompId)+" "+ALLTRIM(tcCompdb)+" "+ALLTRIM(mvu_server)+" "+ALLTRIM(mvu_user1)+" "+ALLTRIM(mvu_pass1)+" "+pRange+" "+musername +" "+ALLTRIM(vicopath)+" "+pApplCaption+" "+pApplName+" "+ALLTRIM(STR(pid))+" "+pApplCode
+_ShellExec ="UeDisposalOfAssets.exe " +TRANSFORM(tcCompId)+" "+ALLTRIM(tcCompdb)+" "+ALLTRIM(mvu_server)+" "+ALLTRIM(mvu_user1)+" "+ALLTRIM(mvu_pass1)+" "+pRange+" "+musername +" "+ALLTRIM(vicopath)+" "+pApplCaption+" "+pApplName+" "+ALLTRIM(STR(pid))+" "+pApplCode
 
 
 oWSHELL.EXEC(_ShellExec)

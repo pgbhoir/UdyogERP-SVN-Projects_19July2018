@@ -1,7 +1,9 @@
-Form d:\svngst\extra data master\exdtmast.scx has the following errors:
+Form d:\prajakta\project\bug_32846\extra data master\exdtmast.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown ONENCRYPT - Undefined
     Unknown UDAPPMASTFINALUPDATE - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Unknown UDTRIGMASTFINALUPDATE - Undefined
     Unknown UETRIGMASTFINALUPDATE - Undefined
     Proc./Func. CLEANUP - Undefined
@@ -9,9 +11,9 @@ Form d:\svngst\extra data master\exdtmast.scx has the following errors:
     Unknown UEJOUR_OP - Undefined
     Unknown UEGETPOP - Undefined
 
-Program d:\svngst\extra data master\exdtmast.prg has the following errors:
+Program d:\prajakta\project\bug_32846\extra data master\exdtmast.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\svngst\extra data master\frmgetparam.scx has the following errors:
+Form d:\prajakta\project\bug_32846\extra data master\frmgetparam.scx has the following errors:
     Unknown BARSTAT - Undefined
 

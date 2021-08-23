@@ -13,7 +13,7 @@ ENDIF
 *!*		=MESSAGEBOX('Pass Valid Parameters',0,"")
 *!*		RETURN .T.
 *!*	ENDIF
-
+SET STEP ON 
 oWSHELL = CREATEOBJECT("WScript.Shell")
 IF VARTYPE(oWSHELL) <> "O"
 	MESSAGEBOX("WScript.Shell Object Creation Error...",16,VuMess)
@@ -26,8 +26,20 @@ tcCompId = Company.CompId
 tcCompdb =Company.Dbname
 tcCompNm=Company.co_name
 SqlConObj = NEWOBJECT('SqlConnUdObj','SqlConnection',xapps)
-mvu_user1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_user))
-mvu_pass1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_pass))
+
+*!*	mvu_user1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_user))
+*!*	mvu_pass1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_pass))
+
+&& Added by Shrikant S. on 26/04/2018 for Bug-31488		&& Start
+IF mvu_nenc=1
+	mvu_user1 =SqlConObj.newdecry(strconv(mvu_user,16),"Ud*yog+1993Uid")
+	mvu_pass1 =SqlConObj.newdecry(STRCONV(mvu_pass,16),"Ud*yog+1993Pwd")
+else
+	mvu_user1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_user))
+	mvu_pass1 = SqlConObj.dec(SqlConObj.ondecrypt(mvu_pass))
+ENDIF
+&& Added by Shrikant S. on 26/04/2018 for Bug-31488		&& End
+
 vicopath=STRTRAN(icopath,' ','<*#*>')
 pApplCaption=STRTRAN(vumess,' ','<*#*>')
 *!*	pApplName=justfname(SYS(16))
@@ -35,6 +47,8 @@ pApplCaption=STRTRAN(vumess,' ','<*#*>')
 *_ShellExec ="UeCost_Cen_master.exe "
 *_ShellExec ="UeBasedOnUsages.exe "+TRANSFORM(tcCompId)+" "+ALLTRIM(tcCompdb)+" "+ALLTRIM(mvu_server)+" "+ALLTRIM(mvu_user1)+" "+ALLTRIM(mvu_pass1)+" "+pRange+" "+"DEG"+" "+musername +" "+ALLTRIM(vicopath)+" "+pApplCaption+" "+pApplName+" "+ALLTRIM(STR(pid))+" "+pApplCode
 _ShellExec ="UeBasedOnUsages.exe " +TRANSFORM(tcCompId)+" "+ALLTRIM(tcCompdb)+" "+ALLTRIM(mvu_server)+" "+ALLTRIM(mvu_user1)+" "+ALLTRIM(mvu_pass1)+" "+pRange+" "+musername +" "+ALLTRIM(vicopath)+" "+pApplCaption+" "+pApplName+" "+ALLTRIM(STR(pid))+" "+pApplCode
+
+
 
 oWSHELL.EXEC(_ShellExec)
 SqlConObj = NULL

@@ -18,7 +18,7 @@ Endif
 Local _VerValidErr,_VerRetVal,_CurrVerVal
 _VerValidErr = ""
 _VerRetVal  = 'NO'
-_CurrVerVal='10.0.0.0' 
+_CurrVerVal='10.0.0.0'
 *!*	Try
 *!*		_VerRetVal = AppVerChk('UEGSTRZOOMIN',_CurrVerVal,Justfname(Sys(16)))
 *!*	Catch To _VerValidErr
@@ -35,14 +35,6 @@ _CurrVerVal='10.0.0.0'
 *!*	Endif
 ****Versioning****
 
-*!*	If !("GRIDFIND.VCX" $ Upper(Set("Classlib")))
-*!*		Set Classlib To gridfind.vcx Additive
-*!*	Endif
-*!*	If !("CONFA.VCX" $ Upper(Set("Classlib")))
-*!*		Set Classlib To confa.vcx Additive
-*!*	Endif
-
-
 Local lnI
 Set Talk Off
 Set StrictDate To 0
@@ -50,12 +42,12 @@ Set Deleted On
 mFromDt = mFromDt
 mTodate = mTodate
 
-llRet = GETGSTRDATA(mFromDt,mTodate,sqldatasession)
+llRet = GETGSTRDATA(mFromDt,mTodate,mReportType,sqldatasession)
 If llRet = .F.
 	Return .F.
 Endif
 
-Do Form FRMGSTRZOOMIN With mFromDt,mTodate,sqldatasession
+Do Form FRMGSTRZOOMIN With mFromDt,mTodate,mReportType,sqldatasession
 
 If Type('Statdesktop') = 'O'
 	Statdesktop.ProgressBar.Value = 100

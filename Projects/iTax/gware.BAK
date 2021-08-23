@@ -31,9 +31,9 @@ Endif
 #Define color_scheme1 3	&& color constant
 #Define color_scheme2 4	&& color constant
 &&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (start)
-SET COLOR OF SCHEME 11 TO ,RGB(0,0,0,215,248,253),
+Set Color Of Scheme 11 To ,Rgb(0,0,0,215,248,253),
 #Define color_scheme3 11
-SET COLOR OF SCHEME 12 TO ,RGB(0,0,0,233,210,255),
+Set Color Of Scheme 12 To ,Rgb(0,0,0,233,210,255),
 #Define color_scheme4 12
 &&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
 
@@ -63,11 +63,12 @@ nHandle=0
 *!*	If !INLIST(ALLTRIM(mudprodcode),'USQUARE','ITAX')
 Private usquarepass,mudprodcode
 usquarepass = Upper(DEC(NewDecry(GlobalObj.GetPropertyVal('EncryptId'),'Ud*_yog*\+1993')))
-mudprodcode = dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))
+mudprodcode = DEC(NewDecry(GlobalObj.GetPropertyVal("UdProdCode"),'Ud*yog+1993'))
 *!*	If !INLIST(UPPER(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER')	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
-If !INLIST(UPPER(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK')	&&Changes Done by Sachin N. S. on 28/09/2016 for GST
-&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-&&vasant060609a
+*!*	If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK')	&&Changes Done by Sachin N. S. on 28/09/2016 for GST
+If !Inlist(Upper(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','VUDYOGGSSDK','UERPSTD','UERPSILVPRO','UERPGOLDPRO','UERPENT','UERPSDK')		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
+	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	&&vasant060609a
 	nretval =0
 	nHandle=0
 	&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
@@ -82,7 +83,7 @@ If !INLIST(UPPER(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPR
 
 	&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
 	*Select * From nedata Where !(mudprodcode+'<~*0*~>'+Alltrim(padname)+'<~*1*~>'+Alltrim(barname)+'<~*2*~>'+Alltrim(Str(Range)) == Alltrim(newrange)) Or Isnull(newrange) Into Cursor nedata
-	Select * From nedata Where !(UPPER(mudprodcode+'<~*0*~>'+Alltrim(padname)+'<~*1*~>'+Alltrim(barname)+'<~*2*~>'+Alltrim(Str(Range))) == UPPER(Alltrim(NewDecry(newrange,'Udencyogprod')))) Or Isnull(newrange) Into Cursor nedata
+	Select * From nedata Where !(Upper(mudprodcode+'<~*0*~>'+Alltrim(padname)+'<~*1*~>'+Alltrim(barname)+'<~*2*~>'+Alltrim(Str(Range))) == Upper(Alltrim(NewDecry(newrange,'Udencyogprod')))) Or Isnull(newrange) Into Cursor nedata
 	&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
 	Release mudprodcode
 	Select nedata
@@ -96,141 +97,142 @@ If !INLIST(UPPER(mudprodcode),'USQUARE','ITAX','VUDYOGSDK','VUDYOGSTD','VUDYOGPR
 		*=Messagebox("Menu Table has been changed",64,vumess)
 		Return .F.
 	Endif
-&&vasant060609a
+	&&vasant060609a
 
 Endif
 
 *********** Added By Sachin N. S. on 23/07/2009 *********** End
 
 &&Changes has been done by vasant on 08/08/2012 as per Bug-5788 (The 'Leave Maintenance' Menu is coming differently in the 'Tree View' Menus to that in the Menu in the Menu Bar).
-	nretval=0
-	msqlstr = "Select * from Manufact"
-	nretval=sqlconobj.dataconn('EXE',company.dbname,msqlstr,"_MenuTbl2","nHandle")
-	If nretval<0
-		Return .F.
-	Endif
+nretval=0
+msqlstr = "Select * from Manufact"
+nretval=sqlconobj.dataconn('EXE',company.dbname,msqlstr,"_MenuTbl2","nHandle")
+If nretval<0
+	Return .F.
+Endif
 
-	nretval=sqlconobj.sqlconnclose("nHandle") && Connection Close
-	If nretval<=0
-		Return .F.
-	Endif
-	Release nHandle
-	Set DataSession To oDatasessionid
+nretval=sqlconobj.sqlconnclose("nHandle") && Connection Close
+If nretval<=0
+	Return .F.
+Endif
+Release nHandle
+Set DataSession To oDatasessionid
 
-	mudprodcode = dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))	
-	Define Menu (m.cmenuname) In (m.oformref.Name) Bar
+mudprodcode = DEC(NewDecry(GlobalObj.GetPropertyVal("UdProdCode"),'Ud*yog+1993'))
+Define Menu (m.cmenuname) In (m.oformref.Name) Bar
 
-	Select _MenuTbl1
-	Inde On levela+levelc Tag levelac
-	Locate
-	Do While !Eof()
-		If !Empty(prompname)
-			lbar	= Allt(barname)
-			lpad	= Allt(padname)
-			mprom 	= Allt(prompname)
-			lnumitem= numitem
-			lhot	= Allt(HotKey)
-			llhot 	= ['']
-			lprogname= Allt(progname)
-			lskip 	= []
+Select _MenuTbl1
+Inde On levela+levelc Tag levelac
+Locate
+Do While !Eof()
+	If !Empty(prompname)
+		lbar	= Allt(barname)
+		lpad	= Allt(padname)
+		mprom 	= Allt(prompname)
+		lnumitem= numitem
+		lhot	= Allt(HotKey)
+		llhot 	= ['']
+		lprogname= Allt(progname)
+		lskip 	= []
 
-			If Left(mprom,1)="\"
-				mprom="'\<"+Upper(Substr(mprom,3,1))+Substr(mprom,4)+"'"
+		If Left(mprom,1)="\"
+			mprom="'\<"+Upper(Substr(mprom,3,1))+Substr(mprom,4)+"'"
+		Else
+			npos=Rat("<",mprom)
+			If npos<>0
+				If Subs(mprom, npos-2, 1)=' '		&& take it upper if the hot key first char after space
+					mprom=Left(mprom,npos-2)+"\<"+Upper(Substr(mprom,npos+1,1))+Substr(mprom,npos+2)
+				Else
+					mprom=Left(mprom,npos-2)+"\<"+Substr(mprom,npos+1,1)+Substr(mprom,npos+2)
+				Endif
+			Endif
+			mprom="'"+mprom+"'"
+		Endif
+
+		If Empty(_MenuTbl1.levelp)
+			lbardesc = lbar +' Of '+m.cmenuname+' Prompt '+mprom+' Color Scheme '+Transform(color_scheme1)
+			If !Empty(lhot)
+				lbardesc = lbardesc + ' KEY '+lhot+' , '+llhot
+			Endif
+			If !Empty(lskip)
+				lbardesc = lbardesc + ' SKIP For '+lskip
+			Endif
+			Define Pad &lbardesc
+			If !Empty(lnumitem)
+				On Pad &lbar Of (m.cmenuname) Activate Popup &lbar
 			Else
-				npos=Rat("<",mprom)
-				If npos<>0
-					If Subs(mprom, npos-2, 1)=' '		&& take it upper if the hot key first char after space
-						mprom=Left(mprom,npos-2)+"\<"+Upper(Substr(mprom,npos+1,1))+Substr(mprom,npos+2)
-					Else
-						mprom=Left(mprom,npos-2)+"\<"+Substr(mprom,npos+1,1)+Substr(mprom,npos+2)
+				If !Empty(lprogname)
+					lappName = Alltrim(lprogname)
+					lappName = Strtran(Alltrim(lprogname),']',"}}")
+					lappName = Strtran(Alltrim(lappName),'[',"{{")
+					st = 'do vou_common with ['+Alltrim(lappName)+'],['+lbar+'],['+lpad+'] in gware.mpr'
+					On Selection Pad &lbar Of (m.cmenuname) &st
+				Endif
+			Endif
+		Else
+			Try
+				=Getbar(lpad,1)
+			Catch To _MenuErr
+				lpaddesc = lpad +' Margin Relative Shadow Color Scheme '+Transform(color_scheme2)
+				Define Popup &lpaddesc
+			Endtry
+
+			color_schemesp = color_scheme1
+			*!*					If INLIST(UPPER(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER')	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
+*!*				If Inlist(Upper(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST')	&&Changes done by Sachin N. S. on 28/09/2016 for GST
+			If Inlist(Upper(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST','UERPSTD','UERPSILVPRO','UERPGOLDPRO','UERPENT')		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
+				If Inlist(Upper(Alltrim(_MenuTbl1.LabKey)),'UPREMIUM')
+					color_schemesp = color_scheme3
+				Else
+					If Inlist(Upper(Alltrim(_MenuTbl1.LabKey)),'SPREMIUM')
+						color_schemesp = color_scheme4
 					Endif
 				Endif
-				mprom="'"+mprom+"'"
-			ENDIF
-
-			IF EMPTY(_MenuTbl1.levelp)
-				lbardesc = lbar +' Of '+m.cmenuname+' Prompt '+mprom+' Color Scheme '+TRANSFORM(color_scheme1)
+			Endif
+			If Empty(lbar)
+				Define Bar counter Of &lpad  Prompt "\-"
+			Else
+				counter = Recno('_MenuTbl1')
+				lbardesc = Str(counter) +' Of '+lpad+' Prompt '+mprom+' Color Scheme '+Transform(color_schemesp)
 				If !Empty(lhot)
 					lbardesc = lbardesc + ' KEY '+lhot+' , '+llhot
 				Endif
 				If !Empty(lskip)
 					lbardesc = lbardesc + ' SKIP For '+lskip
-				ENDIF
-				Define Pad &lbardesc
+				Endif
+				Define Bar &lbardesc
 				If !Empty(lnumitem)
-					On Pad &lbar Of (m.cmenuname) Activate Popup &lbar
-				ELSE
+					On Bar counter Of &lpad Activate Popup &lbar
+				Else
 					If !Empty(lprogname)
 						lappName = Alltrim(lprogname)
 						lappName = Strtran(Alltrim(lprogname),']',"}}")
 						lappName = Strtran(Alltrim(lappName),'[',"{{")
 						st = 'do vou_common with ['+Alltrim(lappName)+'],['+lbar+'],['+lpad+'] in gware.mpr'
-						On Selection Pad &lbar Of (m.cmenuname) &st
-					Endif
-				ENDIF
-			ELSE
-				TRY
-					=GETBAR(lpad,1)
-				CATCH TO _MenuErr
-					lpaddesc = lpad +' Margin Relative Shadow Color Scheme '+TRANSFORM(color_scheme2)
-					Define Popup &lpaddesc
-				Endtry	
-
-				color_schemesp = color_scheme1
-*!*					If INLIST(UPPER(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER')	&&Changes has been done by Sachin & Vasant on 30/10/2013 for Bug 20574 (VU Trader Installer required).
-				If INLIST(UPPER(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX','VUTRADER','VUDYOGGST')	&&Changes done by Sachin N. S. on 28/09/2016 for GST
-					IF INLIST(UPPER(ALLTRIM(_MenuTbl1.LabKey)),'UPREMIUM')
-						color_schemesp = color_scheme3
-					Else	
-						IF INLIST(UPPER(ALLTRIM(_MenuTbl1.LabKey)),'SPREMIUM')
-							color_schemesp = color_scheme4
-						Endif	
-					Endif	
-				Endif	
-				If Empty(lbar)
-					Define Bar counter Of &lpad  Prompt "\-"
-				ELSE
-					counter = RecNo('_MenuTbl1')
-					lbardesc = STR(counter) +' Of '+lpad+' Prompt '+mprom+' Color Scheme '+TRANSFORM(color_schemesp)
-					If !Empty(lhot)
-						lbardesc = lbardesc + ' KEY '+lhot+' , '+llhot
-					Endif
-					If !Empty(lskip)
-						lbardesc = lbardesc + ' SKIP For '+lskip
-					Endif
-					Define Bar &lbardesc
-					If !Empty(lnumitem)
-						On Bar counter Of &lpad Activate Popup &lbar
-					ELSE
-						If !Empty(lprogname)
-							lappName = Alltrim(lprogname)
-							lappName = Strtran(Alltrim(lprogname),']',"}}")
-							lappName = Strtran(Alltrim(lappName),'[',"{{")
-							st = 'do vou_common with ['+Alltrim(lappName)+'],['+lbar+'],['+lpad+'] in gware.mpr'
-							On Selection Bar counter Of &lpad &st
-						Endif
+						On Selection Bar counter Of &lpad &st
 					Endif
 				Endif
 			Endif
 		Endif
-		Select _MenuTbl1
-		If !Eof()
-			Skip
-		Endif
-	ENDDO
-
-	a_menupops="_mwindow"
-	Define Pad _Msm_windo Of (m.cmenuname) Prompt "\<Window" Color Scheme 3 KEY 'Alt+W';
-		MESSAGE "Manipulates windows, displays Command and Data Session windows"
-	On Pad _Msm_windo Of (m.cmenuname) Activate Popup (a_menupops)
-	Define Popup (a_menupops) Margin Relative Shadow Color Scheme 4
-	Activate Menu (m.cmenuname) Nowait
-	If m.ctypeparm2 = "C"
-		m.getmenuname = m.cmenuname
-		m.oformref.Name = m.csaveformname
 	Endif
-	RELEASE mudprodcode 	
-RETURN
+	Select _MenuTbl1
+	If !Eof()
+		Skip
+	Endif
+Enddo
+
+a_menupops="_mwindow"
+Define Pad _Msm_windo Of (m.cmenuname) Prompt "\<Window" Color Scheme 3 Key 'Alt+W';
+	MESSAGE "Manipulates windows, displays Command and Data Session windows"
+On Pad _Msm_windo Of (m.cmenuname) Activate Popup (a_menupops)
+Define Popup (a_menupops) Margin Relative Shadow Color Scheme 4
+Activate Menu (m.cmenuname) Nowait
+If m.ctypeparm2 = "C"
+	m.getmenuname = m.cmenuname
+	m.oformref.Name = m.csaveformname
+Endif
+Release mudprodcode
+Return
 
 *!*	tuser = musername
 *!*	*!*	*!*	msqlstr = "select a.* from com_menu a "
@@ -427,14 +429,14 @@ RETURN
 *!*				If INLIST(UPPER(mudprodcode),'VUDYOGSTD','VUDYOGPRO','VUDYOGENT','10USQUARE','10ITAX')
 *!*					IF INLIST(UPPER(ALLTRIM(dbfmenu.LabKey)),'UPREMIUM')
 *!*						color_schemesp = color_scheme3
-*!*					Else	
+*!*					Else
 *!*						IF INLIST(UPPER(ALLTRIM(dbfmenu.LabKey)),'SPREMIUM')
 *!*							color_schemesp = color_scheme4
-*!*						Endif	
-*!*					Endif	
-*!*				Endif	
+*!*						Endif
+*!*					Endif
+*!*				Endif
 *!*				&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
-*!*				
+*!*
 *!*				lnumitem=numitem
 *!*				If Left(lpromp,1)="\"
 *!*					lpromp="'\<"+Upper(Substr(lpromp,3,1))+Substr(lpromp,4)+"'"
@@ -501,28 +503,28 @@ RETURN
 *!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (start)
 *!*									*Define Bar counter Of &lpad Prompt &lpromp Key &lhot ,lhot
 *!*									Define Bar counter Of &lpad Prompt &lpromp Key &lhot ,lhot COLOR SCHEME color_schemesp
-*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)														
+*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
 *!*								ELSE
 *!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (start)
 *!*									*Define Bar counter Of &lpad Prompt &lpromp Key &lhot ,lhot ;
 *!*										SKIP For &lskip
 *!*									Define Bar counter Of &lpad Prompt &lpromp Key &lhot ,lhot COLOR SCHEME color_schemesp;
 *!*										SKIP For &lskip
-*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)									
+*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
 *!*								Endif
 *!*							Else
 *!*								If Empty(lskip)
 *!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (start)
 *!*									*Define Bar counter Of &lpad Prompt &lpromp
 *!*									Define Bar counter Of &lpad Prompt &lpromp COLOR SCHEME color_schemesp
-*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)							
+*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
 *!*								ELSE
 *!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (start)
 *!*									*Define Bar counter Of &lpad Prompt &lpromp ;
 *!*										SKIP For &lskip
 *!*									Define Bar counter Of &lpad Prompt &lpromp COLOR SCHEME color_schemesp;
 *!*										SKIP For &lskip
-*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)										
+*!*									&&Changes has been done by vasant as per TKT-8292 on 04/06/2011 (end)
 *!*								Endif
 *!*							Endif
 *!*							If !Empty(lprogname)
@@ -566,182 +568,183 @@ RETURN
 
 &&Changes has been done by vasant on 08/08/2012 as per Bug-5788 (The 'Leave Maintenance' Menu is coming differently in the 'Tree View' Menus to that in the Menu in the Menu Bar).
 Procedure vou_common
-Parameters tprogname,tbar,tpad	
-	_rightretvalue = .f.
-	_rightretvalue = chkRight(.f.,'MENU',tpad,tbar)
-	IF !_rightretvalue
-		RETURN
-	Endif	
+	Parameters tprogname,tbar,tpad
+	_rightretvalue = .F.
+	_rightretvalue = chkRight(.F.,'MENU',tpad,tbar)
+	If !_rightretvalue
+		Return
+	Endif
 	tbrdesktopmenu.Visible = .F.
 	tbrdesktopmenu.timer1.Enabled = .F.
 	tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
+	
 	llprog = tprogname
 	llprog = Strtran(Alltrim(llprog),"}}",']')
 	llprog = Strtran(Alltrim(llprog),"{{",'[')
 	&llprog
 
-*!*	*!*	COMMOM PROCEDURE FOR VOUCHERS
-*!*	Procedure vou_common
-*!*	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*	*Parameters tpara,tprogname
-*!*	Parameters tpara,tprogname,tbar,tpad	
-*!*	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*	Do Case
-*!*	Case tpara = "A"  && for !empty lcprog
-*!*		gprompt=Promp()
-*!*		gpad=Pad()
-*!*		Select dbfmenu
-*!*		Locate For Alltrim(Upper(prompname))==Alltrim(Upper(gprompt))
-*!*		If !Found()
-*!*			Return
-*!*		Endif
-*!*		llprog=Allt(progname)
-*!*		lpcvtype=cprog
-*!*		view_on = .T. &&do not remove this line
-*!*		If Empty(lpcvtype) Or Empty(llprog)
-*!*			Return
-*!*		Endif
-*!*		pcvtype=lpcvtype
-*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*		_rightretvalue = .f.
-*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
-*!*		*_rightretvalue = chkRight(tbar,tpad)
-*!*		_rightretvalue = chkRight(.f.,'MENU',tpad,tbar)
-*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
-*!*		IF !_rightretvalue
-*!*			RETURN
-*!*		Endif	
-*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*		tbrdesktopmenu.Visible = .F.
-*!*		tbrdesktopmenu.timer1.Enabled = .F.
-*!*		tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
-*!*		&llprog
-*!*	Case tpara = "B"
-*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*		_rightretvalue = .f.
-*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
-*!*	*	_rightretvalue = chkRight(tbar,tpad)
-*!*		_rightretvalue = chkRight(.f.,'MENU',tpad,tbar)
-*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
-*!*		IF !_rightretvalue
-*!*			RETURN
-*!*		Endif	
-*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
-*!*		tbrdesktopmenu.Visible = .F.
-*!*		tbrdesktopmenu.timer1.Enabled = .F.
-*!*		tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
-*!*		llprog = tprogname
-*!*		llprog = Strtran(Alltrim(llprog),"}}",']')
-*!*		llprog = Strtran(Alltrim(llprog),"{{",'[')
-*!*		&llprog
-*!*	*!*		Execscript(llprog)
-*!*	Endcase
+	*!*	*!*	COMMOM PROCEDURE FOR VOUCHERS
+	*!*	Procedure vou_common
+	*!*	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*	*Parameters tpara,tprogname
+	*!*	Parameters tpara,tprogname,tbar,tpad
+	*!*	&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*	Do Case
+	*!*	Case tpara = "A"  && for !empty lcprog
+	*!*		gprompt=Promp()
+	*!*		gpad=Pad()
+	*!*		Select dbfmenu
+	*!*		Locate For Alltrim(Upper(prompname))==Alltrim(Upper(gprompt))
+	*!*		If !Found()
+	*!*			Return
+	*!*		Endif
+	*!*		llprog=Allt(progname)
+	*!*		lpcvtype=cprog
+	*!*		view_on = .T. &&do not remove this line
+	*!*		If Empty(lpcvtype) Or Empty(llprog)
+	*!*			Return
+	*!*		Endif
+	*!*		pcvtype=lpcvtype
+	*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*		_rightretvalue = .f.
+	*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
+	*!*		*_rightretvalue = chkRight(tbar,tpad)
+	*!*		_rightretvalue = chkRight(.f.,'MENU',tpad,tbar)
+	*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
+	*!*		IF !_rightretvalue
+	*!*			RETURN
+	*!*		Endif
+	*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*		tbrdesktopmenu.Visible = .F.
+	*!*		tbrdesktopmenu.timer1.Enabled = .F.
+	*!*		tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
+	*!*		&llprog
+	*!*	Case tpara = "B"
+	*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*		_rightretvalue = .f.
+	*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
+	*!*	*	_rightretvalue = chkRight(tbar,tpad)
+	*!*		_rightretvalue = chkRight(.f.,'MENU',tpad,tbar)
+	*!*		&&Changes has been done as per TKT-6470 (Multilanguage support - Tested with English & Japanese Language) on 24/02/2011
+	*!*		IF !_rightretvalue
+	*!*			RETURN
+	*!*		Endif
+	*!*		&&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
+	*!*		tbrdesktopmenu.Visible = .F.
+	*!*		tbrdesktopmenu.timer1.Enabled = .F.
+	*!*		tbrcallmenu.cmdMenu.Picture = "pinout.bmp"
+	*!*		llprog = tprogname
+	*!*		llprog = Strtran(Alltrim(llprog),"}}",']')
+	*!*		llprog = Strtran(Alltrim(llprog),"{{",'[')
+	*!*		&llprog
+	*!*	*!*		Execscript(llprog)
+	*!*	Endcase
 
-*!*	Function rel_bar
-*!*	Lparameter padname, barname
-*!*	padname = Upper(Allt(padname))
-*!*	barname = Upper(Allt(barname))
-*!*	Local this_bar4user
-*!*	this_bar4user = .F.
+	*!*	Function rel_bar
+	*!*	Lparameter padname, barname
+	*!*	padname = Upper(Allt(padname))
+	*!*	barname = Upper(Allt(barname))
+	*!*	Local this_bar4user
+	*!*	this_bar4user = .F.
 
-*!*	If Upper(Allt(nameuser)) = "ADMIN"
+	*!*	If Upper(Allt(nameuser)) = "ADMIN"
 
-*!*		If padname = "_MSYSMENU" And barname = "FILE"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "FILE" And barname = "EXIT"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "_MSYSMENU" And barname = "TOOLS"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "TOOLS" And barname = "LOGIN"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "TOOLS" And barname = "CHANGEPASSWORD"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "TOOLS" And barname = "SECURITY"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "USERSLEVEL"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "MENURIGHTS"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "USERCONTROL"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "USERCONTROL" And barname = "ENTRYDETAILS"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "USERCONTROL" And barname = "ENTRYSUMMARY"
-*!*			Return .T.
-*!*		Endif
-*!*	Endif
+	*!*		If padname = "_MSYSMENU" And barname = "FILE"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "FILE" And barname = "EXIT"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "_MSYSMENU" And barname = "TOOLS"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "TOOLS" And barname = "LOGIN"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "TOOLS" And barname = "CHANGEPASSWORD"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "TOOLS" And barname = "SECURITY"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "USERSLEVEL"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "MENURIGHTS"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "USERCONTROL"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "USERCONTROL" And barname = "ENTRYDETAILS"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "USERCONTROL" And barname = "ENTRYSUMMARY"
+	*!*			Return .T.
+	*!*		Endif
+	*!*	Endif
 
-*!*	If Upper(Allt(nameuser)) <> "ADMIN"
-*!*		If padname = "SECURITY" And barname = "VOUCHERPERIODLOCK"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "KEYBOARDLOCK"
-*!*			Return .T.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "LOCKSTATUS"
-*!*			Return .T.
-*!*		Endif
+	*!*	If Upper(Allt(nameuser)) <> "ADMIN"
+	*!*		If padname = "SECURITY" And barname = "VOUCHERPERIODLOCK"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "KEYBOARDLOCK"
+	*!*			Return .T.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "LOCKSTATUS"
+	*!*			Return .T.
+	*!*		Endif
 
-*!*		If padname = "SECURITY" And barname = "USERSLEVEL"
-*!*			Return .F.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "MENURIGHTS"
-*!*			Return .F.
-*!*		Endif
-*!*		If padname = "SECURITY" And barname = "USERCONTROL"
-*!*			Return .F.
-*!*		Endif
-*!*	Endif && not an admin
+	*!*		If padname = "SECURITY" And barname = "USERSLEVEL"
+	*!*			Return .F.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "MENURIGHTS"
+	*!*			Return .F.
+	*!*		Endif
+	*!*		If padname = "SECURITY" And barname = "USERCONTROL"
+	*!*			Return .F.
+	*!*		Endif
+	*!*	Endif && not an admin
 
-*!*	this_bar4user = .T.
-*!*	Return this_bar4user
+	*!*	this_bar4user = .T.
+	*!*	Return this_bar4user
 
-*!*	If padname = "_MSYSMENU" And barname = "FILE"
-*!*		Return .T.
-*!*	Endif
+	*!*	If padname = "_MSYSMENU" And barname = "FILE"
+	*!*		Return .T.
+	*!*	Endif
 
-*!*	If padname = "_MSYSMENU" And barname = "TOOLS"
-*!*		Return .T.
-*!*	Endif
+	*!*	If padname = "_MSYSMENU" And barname = "TOOLS"
+	*!*		Return .T.
+	*!*	Endif
 
-*!*	If padname = "FILE" And barname = "EXIT"
-*!*		Return .T.
-*!*	Endif
+	*!*	If padname = "FILE" And barname = "EXIT"
+	*!*		Return .T.
+	*!*	Endif
 
-*!*	If padname = "TOOLS" And barname = "LOGIN"
-*!*		Return .T.
-*!*	Endif
-*!*	Return .F.
-&&Changes has been done by vasant on 08/08/2012 as per Bug-5788 (The 'Leave Maintenance' Menu is coming differently in the 'Tree View' Menus to that in the Menu in the Menu Bar).
+	*!*	If padname = "TOOLS" And barname = "LOGIN"
+	*!*		Return .T.
+	*!*	Endif
+	*!*	Return .F.
+	&&Changes has been done by vasant on 08/08/2012 as per Bug-5788 (The 'Leave Maintenance' Menu is coming differently in the 'Tree View' Menus to that in the Menu in the Menu Bar).
 
-******************
+	******************
 Procedure fileexit
-******************
-For i = 1 To _Screen.FormCount
-	If Allt(Upper(_Screen.Forms[i].BaseClass)) != "TOOLBAR" And Left(Upper(Alltrim(_Screen.Forms[i].Name)),5) != 'UDYOG' ;
-			AND Upper(Alltrim(_Screen.Forms[i].Name)) != 'FRMLOGINUSERS' And Upper(Alltrim(_Screen.Forms[i].Name)) != 'FRMMSGWINDOW'
-		statdesktop.Message = [Busy Mode....]
-		=beep(600,200)
-		statdesktop.Message = [User :]+musername
-		Return .F.
-	Endif
-Next i
+	******************
+	For i = 1 To _Screen.FormCount
+		If Allt(Upper(_Screen.Forms[i].BaseClass)) != "TOOLBAR" And Left(Upper(Alltrim(_Screen.Forms[i].Name)),5) != 'UDYOG' ;
+				AND Upper(Alltrim(_Screen.Forms[i].Name)) != 'FRMLOGINUSERS' And Upper(Alltrim(_Screen.Forms[i].Name)) != 'FRMMSGWINDOW'
+			statdesktop.Message = [Busy Mode....]
+			=beep(600,200)
+			statdesktop.Message = [User :]+musername
+			Return .F.
+		Endif
+	Next i
 
-*!*	If !Empty(company.Dir_Bk)
-*!*		If Messagebox("Do you want to take Backup...",4+32,VuMess) = 6
-*!*			Do Uemirror.App
-*!*		Endif
-*!*	Endif
+	*!*	If !Empty(company.Dir_Bk)
+	*!*		If Messagebox("Do you want to take Backup...",4+32,VuMess) = 6
+	*!*			Do Uemirror.App
+	*!*		Endif
+	*!*	Endif
 
-Keyboard "{ALT+F4}"
-Return
+	Keyboard "{ALT+F4}"
+	Return

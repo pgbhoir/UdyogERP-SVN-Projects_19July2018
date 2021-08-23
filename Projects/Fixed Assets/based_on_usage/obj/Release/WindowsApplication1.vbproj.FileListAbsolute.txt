@@ -117,3 +117,43 @@ F:\Installer 12.0 issue\Based on usage\obj\Release\WindowsApplication1.vbproj.Ge
 F:\Installer 12.0 issue\Based on usage\obj\Release\UeBasedOnUsages.exe
 F:\Installer 12.0 issue\Based on usage\obj\Release\UeBasedOnUsages.xml
 F:\Installer 12.0 issue\Based on usage\obj\Release\UeBasedOnUsages.pdb
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\UeBasedOnUsages.exe.config
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\Interop.CrystalActiveXReportViewerLib10.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\Interop.RepositoryExplorerLib.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\AxInterop.CrystalActiveXReportViewerLib10.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\AxInterop.RepositoryExplorerLib.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\WindowsApplication1.vbproj.ResolveComReference.cache
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\UeBasedOnUsages.exe
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\UeBasedOnUsages.pdb
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\UeBasedOnUsages.xml
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.CrystalReports.Engine.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportSource.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.Shared.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.Windows.Forms.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\FlashControlV71.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\stdole.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\ShockwaveFlashObjects.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\Interop.CrystalActiveXReportViewerLib10.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\Interop.RepositoryExplorerLib.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\AxInterop.CrystalActiveXReportViewerLib10.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\bin\Release\AxInterop.RepositoryExplorerLib.dll
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\WindowsApplication1.vbprojResolveAssemblyReference.cache
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.Resources.resources
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.USAGE.resources
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.usage_locate.resources
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\WindowsApplication1.vbproj.GenerateResource.Cache
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.exe
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.xml
+E:\SVNProjects\STD Installer 2.0.0.0\Fixed Assets\based_on_usage\obj\Release\UeBasedOnUsages.pdb

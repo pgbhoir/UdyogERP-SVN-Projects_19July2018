@@ -1,9 +1,9 @@
 Para Flag,pType,pRange
-****Versioning****
+****Versioning**** Added By Amrendra On 01/06/2011
 	LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
 	_VerValidErr = ""
 	_VerRetVal  = 'NO'
-_CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
+	_CurrVerVal='2.0.0.0' &&[VERSIONNUMBER]
 	TRY
 		_VerRetVal = AppVerChk('ITEMMAST',_CurrVerVal,JUSTFNAME(SYS(16)))
 	CATCH TO _VerValidErr
