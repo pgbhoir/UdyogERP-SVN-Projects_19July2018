@@ -19,8 +19,8 @@ namespace DadosReports
             //Testing Archana 
             if (args.Length < 15)
             {
-                args = new string[] { "003780|[UserName=Admin][Domain=Adaequare]|[FParty=][TParty=work order][FItem=Finished 1][TItem=Item 2]||[FrmDate=04/01/2013][Todate=03/31/2014]|Data Source=Sachin-PC;Persist Security Info=True;Password=sa1985;User ID=sa;Initial Catalog=B091314", "11", "B091314", @"Archana", "sa", "sa1985", "^19003", "ADMIN", @"E:\Vudyog Sdk_11\Bmp\Icon_VudyogSDK.ico", "Usquare10", "Usquare10.EXE", "4764", "udPID4764DTM20111213125821", "", "", "", "01-04-2012", "31-03-2013" };
-                //args = new string[] { "17", "D011213", @"sachin", "sa", "sa1985", "^19003", "ADMIN", @"C:\VU10\VudyogSTD\Bmp\Icon_VudyogSTD.ico", "USquare10", "USQUARE10.EXE", "4764", "udPID4764DTM20111213125821", "", "01-04-2012", "31-03-2013" };
+                args = new string[] { "000506|[UserName=Admin][Domain=Adaequare]|[FParty=][TParty=work order][FItem=][TItem=WIRE ROPE]||[FrmDate=04/01/2018][Todate=03/31/2019]|Data Source=AIPLDTM019\\SQLEXPRESS;Persist Security Info=True;Password=sa1985;User ID=sa;Initial Catalog=U051819", "9", "U051819", @"AIPLDTM019\SQLEXPRESS", "sa", "sa1985", "^19031", "ADMIN", @"E:\U3\UdyogERPSDK\Bmp\Icon_VudyogGST.ico", "UdyogERPSDK", "UdyogERPSDK.EXE", "4764", "udPID4764DTM20111213125821", "", "", "", "01-04-2018", "31-03-2019" };
+                //args = new string[] { "9", "U051819", @"AIPLDTM019\SQLEXPRESS", "sa", "sa1985", "^19031", "ADMIN", @"E:\U3\UdyogERPSDK\Bmp\Icon_VudyogGST.ico", "UdyogERPSDK", "UdyogERPSDK.EXE", "4764", "udPID4764DTM20111213125821", "", "01-04-2018", "31-03-2019" };
             }
             if (args.Length != 0)
             {

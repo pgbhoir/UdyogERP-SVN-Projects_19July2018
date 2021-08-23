@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_6D5FBFEB1AA845509130BF8997D7214F"
+        "MsmKey" = "8:_B947B304346E4A32B36316F4839C73C7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -116,9 +116,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6D5FBFEB1AA845509130BF8997D7214F"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B947B304346E4A32B36316F4839C73C7"
             {
-            "SourcePath" = "8:D:\\USquare\\vunettofx.exe"
+            "SourcePath" = "8:D:\\SVNGST\\DotNet to Visual Udyog\\vunettofx.exe"
             "TargetName" = "8:vunettofx.exe"
             "Tag" = "8:"
             "Folder" = "8:_61F2F5096DFF4DDF912218A1F1520FCC"
@@ -131,7 +131,7 @@
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
-            "Register" = "3:1"
+            "Register" = "3:2"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
@@ -193,8 +193,9 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DotnetToVoucher"
         "ProductCode" = "8:{7642D52C-68D5-4FE6-B1BD-52BBABB66C92}"
-        "PackageCode" = "8:{86E800FE-FF0A-4D2F-B34B-A32A79536412}"
+        "PackageCode" = "8:{F82F6183-CBB0-493E-8E95-B38BF0D76738}"
         "UpgradeCode" = "8:{E8A6390A-F5FF-4AB1-8400-6BB89B03F394}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"

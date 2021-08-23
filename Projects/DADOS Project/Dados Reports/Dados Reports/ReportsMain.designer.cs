@@ -70,6 +70,7 @@ namespace DadosReports
             DevExpress.Utils.ToolTipItem toolTipItem15 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip17 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem16 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.SuperToolTip superToolTip18 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem17 = new DevExpress.Utils.ToolTipItem();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -133,6 +134,7 @@ namespace DadosReports
             this.barButtonItem_Export_Excel = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Export_XML = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_Export_Text = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem_Export_PDF = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem_Skin = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem_UserFormat1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_UserFormat2 = new DevExpress.XtraBars.BarButtonItem();
@@ -149,7 +151,7 @@ namespace DadosReports
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.hideContainerBottom = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.panelContainer2 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel_Comments = new DevExpress.XtraBars.Docking.DockPanel();
@@ -211,6 +213,7 @@ namespace DadosReports
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
@@ -226,7 +229,6 @@ namespace DadosReports
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lblLayoutnm = new DevExpress.XtraEditors.LabelControl();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem_Export_PDF = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -283,17 +285,22 @@ namespace DadosReports
             this.gridView2.GridControl = this.gridControl1;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridView2.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridView2.OptionsLayout.StoreAllOptions = true;
+            this.gridView2.OptionsLayout.StoreAppearance = true;
+            this.gridView2.OptionsLayout.StoreFormatRules = true;
             this.gridView2.OptionsView.ShowFooter = true;
             // 
             // gridControl1
             // 
+            this.gridControl1.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.gridControl1.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControl1.EmbeddedNavigator.Name = "";
             this.gridControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             gridLevelNode1.LevelTemplate = this.gridView2;
             gridLevelNode1.RelationName = "Level1";
@@ -314,12 +321,12 @@ namespace DadosReports
             gridLevelNode4,
             gridLevelNode5,
             gridLevelNode6});
-            this.gridControl1.Location = new System.Drawing.Point(22, 51);
-            this.gridControl1.LookAndFeel.UseWindowsXPTheme = true;
+            this.gridControl1.Location = new System.Drawing.Point(19, 53);
+            this.gridControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(970, 539);
+            this.gridControl1.Size = new System.Drawing.Size(973, 537);
             this.gridControl1.TabIndex = 22;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -336,6 +343,11 @@ namespace DadosReports
             this.gridView3.GridControl = this.gridControl1;
             this.gridView3.Name = "gridView3";
             this.gridView3.OptionsBehavior.Editable = false;
+            this.gridView3.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridView3.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridView3.OptionsLayout.StoreAllOptions = true;
+            this.gridView3.OptionsLayout.StoreAppearance = true;
+            this.gridView3.OptionsLayout.StoreFormatRules = true;
             this.gridView3.OptionsView.ShowFooter = true;
             // 
             // cardView1
@@ -344,6 +356,11 @@ namespace DadosReports
             this.cardView1.GridControl = this.gridControl1;
             this.cardView1.Name = "cardView1";
             this.cardView1.OptionsBehavior.Editable = false;
+            this.cardView1.OptionsLayout.Columns.StoreAllOptions = true;
+            this.cardView1.OptionsLayout.Columns.StoreAppearance = true;
+            this.cardView1.OptionsLayout.StoreAllOptions = true;
+            this.cardView1.OptionsLayout.StoreAppearance = true;
+            this.cardView1.OptionsLayout.StoreFormatRules = true;
             // 
             // bandedGridView1
             // 
@@ -351,12 +368,18 @@ namespace DadosReports
             this.gridBand1});
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.Name = "bandedGridView1";
+            this.bandedGridView1.OptionsLayout.Columns.StoreAllOptions = true;
+            this.bandedGridView1.OptionsLayout.Columns.StoreAppearance = true;
+            this.bandedGridView1.OptionsLayout.StoreAllOptions = true;
+            this.bandedGridView1.OptionsLayout.StoreAppearance = true;
+            this.bandedGridView1.OptionsLayout.StoreFormatRules = true;
             this.bandedGridView1.OptionsView.ShowFooter = true;
             // 
             // gridBand1
             // 
             this.gridBand1.Caption = "gridBand1";
             this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
             // 
             // advBandedGridView1
             // 
@@ -365,27 +388,42 @@ namespace DadosReports
             this.advBandedGridView1.GridControl = this.gridControl1;
             this.advBandedGridView1.Name = "advBandedGridView1";
             this.advBandedGridView1.OptionsBehavior.Editable = false;
+            this.advBandedGridView1.OptionsLayout.Columns.StoreAllOptions = true;
+            this.advBandedGridView1.OptionsLayout.Columns.StoreAppearance = true;
+            this.advBandedGridView1.OptionsLayout.StoreAllOptions = true;
+            this.advBandedGridView1.OptionsLayout.StoreAppearance = true;
+            this.advBandedGridView1.OptionsLayout.StoreFormatRules = true;
             this.advBandedGridView1.OptionsView.ShowFooter = true;
             // 
             // gridBand2
             // 
             this.gridBand2.Caption = "gridBand2";
             this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 0;
             // 
             // gridView4
             // 
             this.gridView4.GridControl = this.gridControl1;
             this.gridView4.Name = "gridView4";
             this.gridView4.OptionsBehavior.Editable = false;
+            this.gridView4.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridView4.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridView4.OptionsLayout.StoreAllOptions = true;
+            this.gridView4.OptionsLayout.StoreAppearance = true;
+            this.gridView4.OptionsLayout.StoreFormatRules = true;
             this.gridView4.OptionsView.ShowFooter = true;
             // 
             // gridView1
             // 
             this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsLayout.Columns.StoreAllOptions = true;
+            this.gridView1.OptionsLayout.Columns.StoreAppearance = true;
+            this.gridView1.OptionsLayout.StoreAllOptions = true;
+            this.gridView1.OptionsLayout.StoreAppearance = true;
+            this.gridView1.OptionsLayout.StoreFormatRules = true;
             this.gridView1.OptionsPrint.ExpandAllDetails = true;
             this.gridView1.OptionsPrint.PrintDetails = true;
             this.gridView1.OptionsPrint.PrintFilterInfo = true;
@@ -393,11 +431,13 @@ namespace DadosReports
             this.gridView1.OptionsView.AutoCalcPreviewLineCount = true;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.GroupDrawMode = DevExpress.XtraGrid.Views.Grid.GroupDrawMode.Standard;
+            this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+            this.gridView1.OptionsView.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowOnlyInEditor;
             this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowOnlyInEditor;
+            this.gridView1.PaintStyleName = "Skin";
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
-            this.gridView1.ShowGridMenu += new DevExpress.XtraGrid.Views.Grid.GridMenuEventHandler(this.gridView1_ShowGridMenu);
             // 
             // barManager1
             // 
@@ -478,7 +518,7 @@ namespace DadosReports
             this.barButtonItem_Export_PDF});
             this.barManager1.LargeImages = this.imageCollection2;
             this.barManager1.MainMenu = this.Filemenu;
-            this.barManager1.MaxItemId = 93;
+            this.barManager1.MaxItemId = 94;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTrackBar1,
             this.repositoryItemButtonEdit1,
@@ -695,7 +735,7 @@ namespace DadosReports
             new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle))), this.barSubItem_File, "&File", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Standard),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, this.barSubItem_View, "&View"),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem_Options),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem_Skin),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem_Skin, DevExpress.XtraBars.BarItemPaintStyle.Caption),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem_Toggle)});
             this.Filemenu.OptionsBar.AllowQuickCustomization = false;
             this.Filemenu.OptionsBar.MultiLine = true;
@@ -769,8 +809,8 @@ namespace DadosReports
             this.barCheckItem_SummaryFooter.Caption = "Show Summary Footer";
             this.barCheckItem_SummaryFooter.Id = 46;
             this.barCheckItem_SummaryFooter.Name = "barCheckItem_SummaryFooter";
-            this.barCheckItem_SummaryFooter.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_SummaryFooter_ItemClick);
             this.barCheckItem_SummaryFooter.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_SummaryFooter_CheckedChanged);
+            this.barCheckItem_SummaryFooter.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_SummaryFooter_ItemClick);
             // 
             // barCheckItem_GroupSummaryFooter
             // 
@@ -784,8 +824,8 @@ namespace DadosReports
             this.barCheckItem_ShowHeaders.Caption = "Show Headers";
             this.barCheckItem_ShowHeaders.Id = 48;
             this.barCheckItem_ShowHeaders.Name = "barCheckItem_ShowHeaders";
-            this.barCheckItem_ShowHeaders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_ShowHeaders_ItemClick);
             this.barCheckItem_ShowHeaders.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_ShowHeaders_CheckedChanged);
+            this.barCheckItem_ShowHeaders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_ShowHeaders_ItemClick);
             // 
             // barCheckItem_ShowBands
             // 
@@ -854,9 +894,10 @@ namespace DadosReports
             // 
             // barCheckItem_AutoHight
             // 
-            this.barCheckItem_AutoHight.Caption = "Auto Hight(Row/Field)";
+            this.barCheckItem_AutoHight.Caption = "Auto Height(Row/Field)";
             this.barCheckItem_AutoHight.Id = 60;
             this.barCheckItem_AutoHight.Name = "barCheckItem_AutoHight";
+            this.barCheckItem_AutoHight.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_AutoHight_CheckedChanged);
             this.barCheckItem_AutoHight.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem_AutoHight_ItemClick);
             // 
             // barSubItem_Options
@@ -976,15 +1017,23 @@ namespace DadosReports
             this.barButtonItem_Export_Text.Name = "barButtonItem_Export_Text";
             this.barButtonItem_Export_Text.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Export_Text_ItemClick);
             // 
+            // barButtonItem_Export_PDF
+            // 
+            this.barButtonItem_Export_PDF.Caption = "PDF";
+            this.barButtonItem_Export_PDF.Id = 92;
+            this.barButtonItem_Export_PDF.ImageIndex = 211;
+            this.barButtonItem_Export_PDF.Name = "barButtonItem_Export_PDF";
+            this.barButtonItem_Export_PDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Export_PDF_ItemClick);
+            // 
             // barSubItem_Skin
             // 
             this.barSubItem_Skin.Caption = "S&kin";
             this.barSubItem_Skin.Id = 3;
             this.barSubItem_Skin.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_UserFormat1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_UserFormat2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_UserFormat3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_UserFormat4)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem_UserFormat1, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem_UserFormat2, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem_UserFormat3, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem_UserFormat4, DevExpress.XtraBars.BarItemPaintStyle.Standard)});
             this.barSubItem_Skin.Name = "barSubItem_Skin";
             // 
             // barButtonItem_UserFormat1
@@ -1071,6 +1120,7 @@ namespace DadosReports
             this.barStaticItem1.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.barStaticItem1.Id = 88;
             this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.Size = new System.Drawing.Size(32, 0);
             this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
             this.barStaticItem1.Width = 32;
             // 
@@ -1078,23 +1128,37 @@ namespace DadosReports
             // 
             this.barAndDockingController1.PaintStyleName = "Skin";
             this.barAndDockingController1.PropertiesBar.AllowLinkLighting = false;
+            this.barAndDockingController1.PropertiesBar.DefaultGlyphSize = new System.Drawing.Size(16, 16);
+            this.barAndDockingController1.PropertiesBar.DefaultLargeGlyphSize = new System.Drawing.Size(32, 32);
             // 
             // barDockControlTop
             // 
-            this.toolTipController1.SetSuperTip(this.barDockControlTop, null);
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(992, 53);
             // 
             // barDockControlBottom
             // 
-            this.toolTipController1.SetSuperTip(this.barDockControlBottom, null);
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 612);
+            this.barDockControlBottom.Size = new System.Drawing.Size(992, 25);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.Appearance.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal;
-            this.toolTipController1.SetSuperTip(this.barDockControlLeft, null);
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 559);
             // 
             // barDockControlRight
             // 
-            this.toolTipController1.SetSuperTip(this.barDockControlRight, null);
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(992, 53);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 559);
             // 
             // dockManager1
             // 
@@ -1103,6 +1167,7 @@ namespace DadosReports
             this.autoHideContainer1});
             this.dockManager1.Form = this;
             this.dockManager1.Images = this.imageCollection1;
+            this.dockManager1.MenuManager = this.barManager1;
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "System.Windows.Forms.StatusBar",
@@ -1111,12 +1176,12 @@ namespace DadosReports
             // 
             // hideContainerBottom
             // 
+            this.hideContainerBottom.BackColor = System.Drawing.SystemColors.Control;
             this.hideContainerBottom.Controls.Add(this.panelContainer2);
             this.hideContainerBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hideContainerBottom.Location = new System.Drawing.Point(22, 590);
+            this.hideContainerBottom.Location = new System.Drawing.Point(19, 590);
             this.hideContainerBottom.Name = "hideContainerBottom";
-            this.hideContainerBottom.Size = new System.Drawing.Size(970, 22);
-            this.toolTipController1.SetSuperTip(this.hideContainerBottom, null);
+            this.hideContainerBottom.Size = new System.Drawing.Size(973, 22);
             // 
             // panelContainer2
             // 
@@ -1128,6 +1193,7 @@ namespace DadosReports
             this.panelContainer2.ID = new System.Guid("98c05f75-17d2-40e4-9a72-c4306ed039f3");
             this.panelContainer2.Location = new System.Drawing.Point(0, 0);
             this.panelContainer2.Name = "panelContainer2";
+            this.panelContainer2.OriginalSize = new System.Drawing.Size(0, 0);
             this.panelContainer2.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
             this.panelContainer2.SavedIndex = 0;
             this.panelContainer2.Size = new System.Drawing.Size(970, 139);
@@ -1143,6 +1209,7 @@ namespace DadosReports
             this.dockPanel_Comments.ImageIndex = 118;
             this.dockPanel_Comments.Location = new System.Drawing.Point(3, 25);
             this.dockPanel_Comments.Name = "dockPanel_Comments";
+            this.dockPanel_Comments.OriginalSize = new System.Drawing.Size(0, 0);
             this.dockPanel_Comments.Size = new System.Drawing.Size(964, 111);
             this.dockPanel_Comments.Text = "Comments";
             // 
@@ -1152,7 +1219,6 @@ namespace DadosReports
             this.dockPanel2_Container.Location = new System.Drawing.Point(0, 0);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
             this.dockPanel2_Container.Size = new System.Drawing.Size(964, 111);
-            this.toolTipController1.SetSuperTip(this.dockPanel2_Container, null);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // listView1
@@ -1163,7 +1229,6 @@ namespace DadosReports
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(964, 111);
-            this.toolTipController1.SetSuperTip(this.listView1, null);
             this.listView1.TabIndex = 32;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -1176,6 +1241,7 @@ namespace DadosReports
             this.dockPanel_Summary.ImageIndex = 121;
             this.dockPanel_Summary.Location = new System.Drawing.Point(3, 25);
             this.dockPanel_Summary.Name = "dockPanel_Summary";
+            this.dockPanel_Summary.OriginalSize = new System.Drawing.Size(0, 0);
             this.dockPanel_Summary.Size = new System.Drawing.Size(964, 111);
             this.dockPanel_Summary.Text = "Summary";
             // 
@@ -1185,7 +1251,6 @@ namespace DadosReports
             this.controlContainer5.Location = new System.Drawing.Point(0, 0);
             this.controlContainer5.Name = "controlContainer5";
             this.controlContainer5.Size = new System.Drawing.Size(964, 111);
-            this.toolTipController1.SetSuperTip(this.controlContainer5, null);
             this.controlContainer5.TabIndex = 0;
             // 
             // listView2
@@ -1196,18 +1261,17 @@ namespace DadosReports
             this.listView2.Location = new System.Drawing.Point(0, 0);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(964, 111);
-            this.toolTipController1.SetSuperTip(this.listView2, null);
             this.listView2.TabIndex = 32;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
             // autoHideContainer1
             // 
+            this.autoHideContainer1.BackColor = System.Drawing.SystemColors.Control;
             this.autoHideContainer1.Controls.Add(this.dockPanel_RunTimeCustomizetion);
             this.autoHideContainer1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.autoHideContainer1.Location = new System.Drawing.Point(0, 51);
+            this.autoHideContainer1.Location = new System.Drawing.Point(0, 53);
             this.autoHideContainer1.Name = "autoHideContainer1";
-            this.autoHideContainer1.Size = new System.Drawing.Size(22, 561);
-            this.toolTipController1.SetSuperTip(this.autoHideContainer1, null);
+            this.autoHideContainer1.Size = new System.Drawing.Size(19, 559);
             // 
             // dockPanel_RunTimeCustomizetion
             // 
@@ -1216,6 +1280,7 @@ namespace DadosReports
             this.dockPanel_RunTimeCustomizetion.ID = new System.Guid("d339f736-0f4d-4a0d-b0e9-d3715844568a");
             this.dockPanel_RunTimeCustomizetion.Location = new System.Drawing.Point(0, 0);
             this.dockPanel_RunTimeCustomizetion.Name = "dockPanel_RunTimeCustomizetion";
+            this.dockPanel_RunTimeCustomizetion.OriginalSize = new System.Drawing.Size(0, 0);
             this.dockPanel_RunTimeCustomizetion.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel_RunTimeCustomizetion.SavedIndex = 0;
             this.dockPanel_RunTimeCustomizetion.Size = new System.Drawing.Size(227, 539);
@@ -1228,7 +1293,6 @@ namespace DadosReports
             this.controlContainer2.Location = new System.Drawing.Point(3, 25);
             this.controlContainer2.Name = "controlContainer2";
             this.controlContainer2.Size = new System.Drawing.Size(221, 511);
-            this.toolTipController1.SetSuperTip(this.controlContainer2, null);
             this.controlContainer2.TabIndex = 0;
             // 
             // navBarControl1
@@ -1250,12 +1314,13 @@ namespace DadosReports
             this.navBarGpLayout});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 221;
             this.navBarControl1.Size = new System.Drawing.Size(221, 511);
             this.navBarControl1.SkinExplorerBarViewScrollStyle = DevExpress.XtraNavBar.SkinExplorerBarViewScrollStyle.Buttons;
             this.navBarControl1.SmallImages = this.imageCollection1;
+            this.navBarControl1.StoreDefaultPaintStyleName = true;
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.View = new DevExpress.XtraNavBar.ViewInfo.StandardSkinExplorerBarViewInfoRegistrator("Black");
             // 
             // navBarGroup_SelectLevel
             // 
@@ -1273,8 +1338,7 @@ namespace DadosReports
             this.navBarGroupControlContainer1.Controls.Add(this.simpleButton_Apply);
             this.navBarGroupControlContainer1.Controls.Add(this.lblControl_LevelNames);
             this.navBarGroupControlContainer1.Name = "navBarGroupControlContainer1";
-            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(220, 77);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer1, null);
+            this.navBarGroupControlContainer1.Size = new System.Drawing.Size(213, 76);
             this.navBarGroupControlContainer1.TabIndex = 0;
             // 
             // comboBoxEdit_SelectLevel
@@ -1310,7 +1374,6 @@ namespace DadosReports
             this.navBarGroupControlContainer2.Controls.Add(this.checkEdit1);
             this.navBarGroupControlContainer2.Name = "navBarGroupControlContainer2";
             this.navBarGroupControlContainer2.Size = new System.Drawing.Size(220, 77);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer2, null);
             this.navBarGroupControlContainer2.TabIndex = 1;
             // 
             // simpleButton_Apply_1
@@ -1341,7 +1404,6 @@ namespace DadosReports
             this.navBarGroupControlContainer3.Controls.Add(this.cbeSelectLevel);
             this.navBarGroupControlContainer3.Name = "navBarGroupControlContainer3";
             this.navBarGroupControlContainer3.Size = new System.Drawing.Size(220, 77);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer3, null);
             this.navBarGroupControlContainer3.TabIndex = 2;
             // 
             // btnSetCondition
@@ -1400,8 +1462,7 @@ namespace DadosReports
             this.navBarGroupControlContainer4.Controls.Add(this.lblSelectLevel1);
             this.navBarGroupControlContainer4.Controls.Add(this.cbeSelectLevel1);
             this.navBarGroupControlContainer4.Name = "navBarGroupControlContainer4";
-            this.navBarGroupControlContainer4.Size = new System.Drawing.Size(220, 110);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer4, null);
+            this.navBarGroupControlContainer4.Size = new System.Drawing.Size(213, 109);
             this.navBarGroupControlContainer4.TabIndex = 3;
             // 
             // simpleButton1
@@ -1478,7 +1539,6 @@ namespace DadosReports
             this.navBarGroupControlContainer5.Controls.Add(this.lblSelectLevel2);
             this.navBarGroupControlContainer5.Name = "navBarGroupControlContainer5";
             this.navBarGroupControlContainer5.Size = new System.Drawing.Size(220, 177);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer5, null);
             this.navBarGroupControlContainer5.TabIndex = 4;
             // 
             // btnApply3
@@ -1555,8 +1615,7 @@ namespace DadosReports
             this.navBarGroupControlContainer6.Controls.Add(this.btnApply);
             this.navBarGroupControlContainer6.Controls.Add(this.labelControl1);
             this.navBarGroupControlContainer6.Name = "navBarGroupControlContainer6";
-            this.navBarGroupControlContainer6.Size = new System.Drawing.Size(220, 77);
-            this.toolTipController1.SetSuperTip(this.navBarGroupControlContainer6, null);
+            this.navBarGroupControlContainer6.Size = new System.Drawing.Size(213, 76);
             this.navBarGroupControlContainer6.TabIndex = 5;
             // 
             // cboReportLayout
@@ -1694,12 +1753,16 @@ namespace DadosReports
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
+            // workspaceManager1
+            // 
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 21);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
             this.dockPanel1_Container.Size = new System.Drawing.Size(192, 364);
-            this.toolTipController1.SetSuperTip(this.dockPanel1_Container, null);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // controlContainer1
@@ -1707,16 +1770,15 @@ namespace DadosReports
             this.controlContainer1.Location = new System.Drawing.Point(4, 21);
             this.controlContainer1.Name = "controlContainer1";
             this.controlContainer1.Size = new System.Drawing.Size(932, 108);
-            this.toolTipController1.SetSuperTip(this.controlContainer1, null);
             this.controlContainer1.TabIndex = 0;
             this.controlContainer1.UseWaitCursor = true;
             // 
             // hideContainerLeft
             // 
+            this.hideContainerLeft.BackColor = System.Drawing.SystemColors.Control;
             this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
             this.hideContainerLeft.Name = "hideContainerLeft";
             this.hideContainerLeft.Size = new System.Drawing.Size(0, 0);
-            this.toolTipController1.SetSuperTip(this.hideContainerLeft, null);
             // 
             // Comments
             // 
@@ -1726,6 +1788,7 @@ namespace DadosReports
             this.Comments.ImageIndex = 119;
             this.Comments.Location = new System.Drawing.Point(0, 0);
             this.Comments.Name = "Comments";
+            this.Comments.OriginalSize = new System.Drawing.Size(0, 0);
             this.Comments.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
             this.Comments.SavedIndex = 0;
             this.Comments.Size = new System.Drawing.Size(940, 200);
@@ -1737,7 +1800,6 @@ namespace DadosReports
             this.controlContainer3.Location = new System.Drawing.Point(3, 25);
             this.controlContainer3.Name = "controlContainer3";
             this.controlContainer3.Size = new System.Drawing.Size(934, 172);
-            this.toolTipController1.SetSuperTip(this.controlContainer3, null);
             this.controlContainer3.TabIndex = 0;
             // 
             // toolTipController1
@@ -1749,7 +1811,6 @@ namespace DadosReports
             this.controlContainer4.Location = new System.Drawing.Point(0, 0);
             this.controlContainer4.Name = "controlContainer4";
             this.controlContainer4.Size = new System.Drawing.Size(986, 128);
-            this.toolTipController1.SetSuperTip(this.controlContainer4, null);
             this.controlContainer4.TabIndex = 0;
             // 
             // panelContainer1
@@ -1758,6 +1819,7 @@ namespace DadosReports
             this.panelContainer1.ID = new System.Guid("3024224a-f3c5-4440-b2dc-16158dd6bcfc");
             this.panelContainer1.Location = new System.Drawing.Point(3, 25);
             this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(0, 0);
             this.panelContainer1.Size = new System.Drawing.Size(992, 156);
             // 
             // barStaticItem_DumpText
@@ -1765,11 +1827,13 @@ namespace DadosReports
             this.barStaticItem_DumpText.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.barStaticItem_DumpText.Id = 81;
             this.barStaticItem_DumpText.Name = "barStaticItem_DumpText";
+            this.barStaticItem_DumpText.Size = new System.Drawing.Size(32, 0);
             this.barStaticItem_DumpText.TextAlignment = System.Drawing.StringAlignment.Near;
             this.barStaticItem_DumpText.Width = 32;
             // 
             // listBoxTheme
             // 
+            this.listBoxTheme.Cursor = System.Windows.Forms.Cursors.Default;
             this.listBoxTheme.Location = new System.Drawing.Point(760, 29);
             this.listBoxTheme.Name = "listBoxTheme";
             this.listBoxTheme.Size = new System.Drawing.Size(120, 18);
@@ -1812,14 +1876,6 @@ namespace DadosReports
             superToolTip18.Items.Add(toolTipItem17);
             this.barButtonItem2.SuperTip = superToolTip18;
             // 
-            // barButtonItem_Export_PDF
-            // 
-            this.barButtonItem_Export_PDF.Caption = "PDF";
-            this.barButtonItem_Export_PDF.Id = 92;
-            this.barButtonItem_Export_PDF.ImageIndex = 211;
-            this.barButtonItem_Export_PDF.Name = "barButtonItem_Export_PDF";
-            this.barButtonItem_Export_PDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_Export_PDF_ItemClick);
-            // 
             // ReportsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1840,11 +1896,10 @@ namespace DadosReports
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "ReportsMain";
-            this.toolTipController1.SetSuperTip(this, null);
             this.Text = "";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportsMain_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -2061,6 +2116,7 @@ namespace DadosReports
         private DevExpress.XtraBars.BarButtonItem barButtonItem_ClearLayout;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Export_PDF;
+        private DevExpress.Utils.WorkspaceManager workspaceManager1;
     }
 }
 

@@ -12,3 +12,12 @@ E:\Prajakta\Projects\Dados Report Project\Dados Reports\CryptoLib\bin\Release\Cr
 E:\Prajakta\Projects\Dados Report Project\Dados Reports\CryptoLib\bin\Release\CryptoLib.pdb
 E:\Prajakta\Projects\Dados Report Project\Dados Reports\CryptoLib\obj\Release\CryptoLib.dll
 E:\Prajakta\Projects\Dados Report Project\Dados Reports\CryptoLib\obj\Release\CryptoLib.pdb
+D:\SVNGST\Dados Reports\CryptoLib\bin\Release\CryptoLib.dll
+D:\SVNGST\Dados Reports\CryptoLib\bin\Release\CryptoLib.pdb
+D:\SVNGST\Dados Reports\CryptoLib\obj\Release\CryptoLib.csprojResolveAssemblyReference.cache
+D:\SVNGST\Dados Reports\CryptoLib\obj\Release\CryptoLib.dll
+D:\SVNGST\Dados Reports\CryptoLib\obj\Release\CryptoLib.pdb
+D:\WorkingGST\Dados Reports\CryptoLib\bin\Release\CryptoLib.dll
+D:\WorkingGST\Dados Reports\CryptoLib\bin\Release\CryptoLib.pdb
+D:\WorkingGST\Dados Reports\CryptoLib\obj\Release\CryptoLib.dll
+D:\WorkingGST\Dados Reports\CryptoLib\obj\Release\CryptoLib.pdb

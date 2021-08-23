@@ -85,9 +85,7 @@ namespace DadosReports
             this.panelControl3.Location = new System.Drawing.Point(0, 119);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(579, 206);
-            this.toolTipController1.SetSuperTip(this.panelControl3, null);
             this.panelControl3.TabIndex = 5;
-            this.panelControl3.Text = "panelControl3";
             // 
             // pictureBox1
             // 
@@ -95,9 +93,9 @@ namespace DadosReports
             this.pictureBox1.Location = new System.Drawing.Point(123, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.toolTipController1.SetSuperTip(this.pictureBox1, null);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txtMailBody
             // 
@@ -107,13 +105,11 @@ namespace DadosReports
             this.txtMailBody.Name = "txtMailBody";
             this.txtMailBody.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMailBody.Size = new System.Drawing.Size(570, 162);
-            this.toolTipController1.SetSuperTip(this.txtMailBody, null);
             this.txtMailBody.TabIndex = 2;
             // 
             // lblAttachmentFileName
             // 
             this.lblAttachmentFileName.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lblAttachmentFileName.Appearance.Options.UseFont = true;
             this.lblAttachmentFileName.Location = new System.Drawing.Point(145, 9);
             this.lblAttachmentFileName.Name = "lblAttachmentFileName";
             this.lblAttachmentFileName.Size = new System.Drawing.Size(49, 13);
@@ -123,7 +119,6 @@ namespace DadosReports
             // lblAttachment
             // 
             this.lblAttachment.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblAttachment.Appearance.Options.UseFont = true;
             this.lblAttachment.Location = new System.Drawing.Point(6, 6);
             this.lblAttachment.Name = "lblAttachment";
             this.lblAttachment.Size = new System.Drawing.Size(87, 16);
@@ -149,14 +144,11 @@ namespace DadosReports
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(579, 119);
-            this.toolTipController1.SetSuperTip(this.panelControl2, null);
             this.panelControl2.TabIndex = 4;
-            this.panelControl2.Text = "panelControl2";
             // 
             // lblFrom
             // 
             this.lblFrom.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblFrom.Appearance.Options.UseFont = true;
             this.lblFrom.Location = new System.Drawing.Point(6, 72);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(40, 16);
@@ -175,7 +167,6 @@ namespace DadosReports
             // lblSubject
             // 
             this.lblSubject.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblSubject.Appearance.Options.UseFont = true;
             this.lblSubject.Location = new System.Drawing.Point(6, 93);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(58, 16);
@@ -221,9 +212,7 @@ namespace DadosReports
             this.panelControl1.Location = new System.Drawing.Point(0, 325);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(579, 43);
-            this.toolTipController1.SetSuperTip(this.panelControl1, null);
             this.panelControl1.TabIndex = 3;
-            this.panelControl1.Text = "panelControl1";
             // 
             // txtSend
             // 
@@ -251,7 +240,6 @@ namespace DadosReports
             // lblBCC
             // 
             this.lblBCC.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblBCC.Appearance.Options.UseFont = true;
             this.lblBCC.Location = new System.Drawing.Point(6, 50);
             this.lblBCC.Name = "lblBCC";
             this.lblBCC.Size = new System.Drawing.Size(33, 16);
@@ -275,7 +263,6 @@ namespace DadosReports
             // lblCC
             // 
             this.lblCC.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblCC.Appearance.Options.UseFont = true;
             this.lblCC.Location = new System.Drawing.Point(6, 26);
             this.lblCC.Name = "lblCC";
             this.lblCC.Size = new System.Drawing.Size(25, 16);
@@ -299,7 +286,6 @@ namespace DadosReports
             // lblTO
             // 
             this.lblTO.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.lblTO.Appearance.Options.UseFont = true;
             this.lblTO.Location = new System.Drawing.Point(6, 5);
             this.lblTO.Name = "lblTO";
             this.lblTO.Size = new System.Drawing.Size(25, 16);
@@ -322,7 +308,6 @@ namespace DadosReports
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.toolTipController1.SetSuperTip(this, null);
             this.Text = "Send Mail";
             this.Load += new System.EventHandler(this.SendMail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();

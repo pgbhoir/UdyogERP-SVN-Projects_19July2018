@@ -232,7 +232,7 @@ namespace LogicalLibrary
         /// <param name="AttachmentLocation">take paramenter as string, you con't send null or ""</param>
         /// <param name="XSLAttachmentLocation">take paramenter as string, if it will be mail attachment is XML File Then You will Send this string or you can send as null or ""</param>
         /// <returns>if sucsses true, not sucsses false </returns>
-        public bool sendMail(string[] strToMailID, string strFromMailID, string[] strCCMailID, string[] strBCCMailID, string strSubject, string strMailBody, string AttachmentLocation, string XSLAttachmentLocation, string SMPTHost, string SMPTPort, string NetworkCredentialUserName, string NetworkCredentialPassword)
+        public bool sendMail(string[] strToMailID, string strFromMailID, string[] strCCMailID, string[] strBCCMailID, string strSubject, string strMailBody, string AttachmentLocation, string XSLAttachmentLocation, string SMPTHost, string SMPTPort, string NetworkCredentialUserName, string NetworkCredentialPassword,bool EnableSSl)
         {
             #region Configring smtpClient
 
@@ -254,7 +254,7 @@ namespace LogicalLibrary
             System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(struserName, strPassword);
             client.UseDefaultCredentials = false;
             client.UseDefaultCredentials = true;
-            client.EnableSsl = true;
+            client.EnableSsl = EnableSSl;
             client.Credentials = credentials;
             MailMessage msg = new MailMessage();
             msg.From = new MailAddress(strFromAddress);

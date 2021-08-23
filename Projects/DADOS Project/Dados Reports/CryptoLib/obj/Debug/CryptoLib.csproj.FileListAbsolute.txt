@@ -23,3 +23,7 @@ D:\1 Development\Dotnet\Dados Report VS2008\Bug-22080\DADOS Project_200314\Dados
 D:\1 Development\Dotnet\Dados Report VS2008\Bug-22080\DADOS Project_200314\Dados Reports\CryptoLib\obj\Debug\ResolveAssemblyReference.cache
 D:\1 Development\Dotnet\Dados Report VS2008\Bug-22080\DADOS Project_200314\Dados Reports\CryptoLib\obj\Debug\CryptoLib.dll
 D:\1 Development\Dotnet\Dados Report VS2008\Bug-22080\DADOS Project_200314\Dados Reports\CryptoLib\obj\Debug\CryptoLib.pdb
+D:\WorkingGST\Dados Reports\CryptoLib\bin\Debug\CryptoLib.dll
+D:\WorkingGST\Dados Reports\CryptoLib\bin\Debug\CryptoLib.pdb
+D:\WorkingGST\Dados Reports\CryptoLib\obj\Debug\CryptoLib.dll
+D:\WorkingGST\Dados Reports\CryptoLib\obj\Debug\CryptoLib.pdb

@@ -1,4 +1,4 @@
-Form e:\...\gst\shrikant sir\serialize inventory\gst\department master\deptmast.scx has the following errors:
+Form d:\svn development\department master\deptmast.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UDAPPMASTFINALUPDATE - Undefined
     Unknown UDTRIGMASTFINALUPDATE - Undefined
@@ -16,6 +16,6 @@ Form e:\...\gst\shrikant sir\serialize inventory\gst\department master\deptmast.
     Proc./Func. UEEXTRA - Undefined
     Unknown UEGETPOP - Undefined
 
-Program e:\...\gst\shrikant sir\serialize inventory\gst\department master\dpchoice.prg has the following errors:
+Program d:\svn development\department master\dpchoice.prg has the following errors:
     Unknown APPVERCHK - Undefined
 

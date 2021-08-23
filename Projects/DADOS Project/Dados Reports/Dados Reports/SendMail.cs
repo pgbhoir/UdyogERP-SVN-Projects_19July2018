@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -30,7 +31,8 @@ namespace DadosReports
         bool validMailIDs = false;
         string ReportsName = string.Empty;
         string ReportLoginUser = string.Empty;
-
+        private DataTable _CredentialDetail;            //Added by Shrikant S. on 30/01/2019    for Bug-32212
+        private string sqlconstr = string.Empty;        //Added by Shrikant S. on 30/01/2019    for Bug-32212
         CommonInfo commonInfo = new CommonInfo();
 
         #endregion
@@ -39,7 +41,7 @@ namespace DadosReports
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        public SendMail(string AttachmentPath, string AttachmentFileName, string ReportName, string LoginUser)
+        public SendMail(string AttachmentPath, string AttachmentFileName, string ReportName, string LoginUser,string SqlConStr)
         {
             // Required for Windows Form Designer support
             InitializeComponent();
@@ -67,6 +69,7 @@ namespace DadosReports
             }
             ReportsName = ReportName;
             ReportLoginUser = LoginUser;
+            sqlconstr = SqlConStr;          //Added by Shrikant S. on 30/01/2019 for Bug-32212
             //lblAttachmentFileName.Text=
             // TODO: Add any constructor code after InitializeComponent call
         }
@@ -76,8 +79,11 @@ namespace DadosReports
 
         private void SendMail_Load(object sender, EventArgs e)
         {
-            string strFromMailAdd = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
-            txtFrom.Text = strFromMailAdd;
+            _CredentialDetail = this.GetCredentials();
+
+            //string strFromMailAdd = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
+
+            txtFrom.Text = _CredentialDetail.Rows[0]["username"].ToString(); 
             txtSubject.Text = "Dados Reports : " + ReportsName;
             StringBuilder mailbody = new StringBuilder();
 
@@ -89,7 +95,7 @@ namespace DadosReports
             mailbody.AppendLine(ReportLoginUser);
 
             txtMailBody.Text = mailbody.ToString();
-
+            
         }
 
         private void txtCancel_Click(object sender, EventArgs e)
@@ -229,11 +235,23 @@ namespace DadosReports
                                             {
                                                 try
                                                 {
-                                                    string strSmptHost = ConfigurationManager.AppSettings["SMPTHost"].ToString();
-                                                    string strSmptPort = ConfigurationManager.AppSettings["SMPTPort"].ToString();
-                                                    string struserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
-                                                    string strPassword = ConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString();
-                                                    if (commonInfo.sendMail(ToMails, txtFrom.Text, CCMails, BCCMails, txtSubject.Text, txtMailBody.Text, AttachmentFilePath, AttachmentFilePathXSL,strSmptHost,strSmptPort,struserName,strPassword))
+                                                    //Commented by Shrikant S. on 30/01/2019 for Bug-32212      //Start
+                                                    //string strSmptHost = ConfigurationManager.AppSettings["SMPTHost"].ToString();
+                                                    //string strSmptPort = ConfigurationManager.AppSettings["SMPTPort"].ToString();
+                                                    //string struserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
+                                                    //string strPassword = ConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString();
+                                                    //Commented by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
+                                                    //Added by Shrikant S. on 30/01/2019 for Bug-32212      //Start
+                                                    string strSmptHost = _CredentialDetail.Rows[0]["Host"].ToString();
+                                                    string strSmptPort = _CredentialDetail.Rows[0]["Port"].ToString();
+                                                    string struserName = _CredentialDetail.Rows[0]["username"].ToString();
+                                                    string strPassword = this.GetPassWord(_CredentialDetail.Rows[0]["password"].ToString());
+                                                    bool enableSSL = Convert.ToBoolean(_CredentialDetail.Rows[0]["enablessl"]);
+                                                    //Added by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
+
+                                                    if (commonInfo.sendMail(ToMails, txtFrom.Text, CCMails, BCCMails, txtSubject.Text, txtMailBody.Text, AttachmentFilePath, AttachmentFilePathXSL,strSmptHost,strSmptPort,struserName,strPassword, enableSSL))
                                                     {
                                                         MessageBox.Show("Mail Sent Sucsessfully", "Information - Send Mail", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                                                         this.Close();
@@ -255,11 +273,22 @@ namespace DadosReports
                                         {
                                             try
                                             {
-                                                string strSmptHost = ConfigurationManager.AppSettings["SMPTHost"].ToString();
-                                                string strSmptPort = ConfigurationManager.AppSettings["SMPTPort"].ToString();
-                                                string struserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
-                                                string strPassword = ConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString();
-                                                if (commonInfo.sendMail(ToMails, txtFrom.Text, CCMails, BCCMails, txtSubject.Text, txtMailBody.Text, AttachmentFilePath, AttachmentFilePathXSL, strSmptHost, strSmptPort, struserName, strPassword))
+                                                //Commented by Shrikant S. on 30/01/2019 for Bug-32212      //Start
+                                                //string strSmptHost = ConfigurationManager.AppSettings["SMPTHost"].ToString();
+                                                //string strSmptPort = ConfigurationManager.AppSettings["SMPTPort"].ToString();
+                                                //string struserName = ConfigurationManager.AppSettings["NetworkCredentialUserName"].ToString();
+                                                //string strPassword = ConfigurationManager.AppSettings["NetworkCredentialPassword"].ToString();
+                                                //Commented by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
+                                                //Added by Shrikant S. on 30/01/2019 for Bug-32212      //Start
+                                                string strSmptHost = _CredentialDetail.Rows[0]["Host"].ToString();
+                                                string strSmptPort = _CredentialDetail.Rows[0]["Port"].ToString();
+                                                string struserName = _CredentialDetail.Rows[0]["username"].ToString();
+                                                string strPassword = this.GetPassWord(_CredentialDetail.Rows[0]["password"].ToString());
+                                                bool enableSSL = Convert.ToBoolean(_CredentialDetail.Rows[0]["enablessl"]);
+                                                //Added by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
+                                                if (commonInfo.sendMail(ToMails, txtFrom.Text, CCMails, BCCMails, txtSubject.Text, txtMailBody.Text, AttachmentFilePath, AttachmentFilePathXSL, strSmptHost, strSmptPort, struserName, strPassword, enableSSL))
                                                 {
                                                     MessageBox.Show("Mail Sent Sucsessfully", "Information - Send Mail", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                                                     this.Close();
@@ -318,5 +347,34 @@ namespace DadosReports
         }
 
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Added by Shrikant S. on 30/01/2019 for Bug-32212      //Start       
+        private DataTable GetCredentials()
+        {
+            DataTable ldt = new DataTable();
+            SqlConnection oconn = new SqlConnection(sqlconstr);
+            SqlDataAdapter lda = new SqlDataAdapter("Select * From eMailSettings", oconn);
+            lda.Fill(ldt);
+            return ldt;
+        }
+        private string GetPassWord(string encryptpwd)
+        {
+            string decryptpwd = string.Empty;
+            UTF8Encoding encodepwd = new UTF8Encoding();
+            Decoder decode = encodepwd.GetDecoder();
+            byte[] todecode_byte = Convert.FromBase64String(encryptpwd);
+            int charCount = decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+            char[] decoded_char = new char[charCount];
+            decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+            decryptpwd = new String(decoded_char);
+            return decryptpwd;
+        }
+        //Added by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
     }
 }

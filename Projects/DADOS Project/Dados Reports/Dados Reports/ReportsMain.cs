@@ -31,6 +31,7 @@ using vunettofx;           // Added By Shrikant S. on 29/12/2012
 using System.Text.RegularExpressions;//Added By Archana K. on 11/12/2012  for Bug-7316
 using DataAccess_Net;//Added by Archana K. on 11/10/13 for Bug-19926
 using System.Diagnostics;//Added by Archana K. on 11/10/13 for Bug-19926
+using DevExpress.UserSkins;
 
 namespace DadosReports
 {
@@ -89,8 +90,8 @@ namespace DadosReports
         DBOperations dbOperations = new DBOperations();
         //Added by Archana K. on 11/10/13 for Bug-19926 start
         const int Timeout = 5000;
-        private String cAppPId, cAppName, pPApplCode, pPApplName, pPApplText;
-        private Icon pFrmIcon;
+        private String cAppPId, cAppName;// , pPApplCode, pPApplName, pPApplText;
+        //private Icon pFrmIcon;
           //private short pPApplPID;//Commented by Archana K. on 12/11/13 for Bug-19806
           private double pPApplPID1;//Added by Archana K. on 12/11/13 for Bug-19806
         //Added by Archana K. on 11/10/13 for Bug-19926 end
@@ -156,8 +157,10 @@ namespace DadosReports
         #region Constractor
         public ReportsMain(string[] args)
         {
+            
             System.Threading.Thread.Sleep(5000);
             InitializeComponent();
+            DevExpress.UserSkins.BonusSkins.Register();
             string[] argument = null; //new string[args.Length];
 
             //if (args.Length == 1)             //Commented By Shrikant S. on 09/06/2012
@@ -202,11 +205,19 @@ namespace DadosReports
         {
             try
             {
+                //Added by Shrikant S. on 20/06/2018 for Bug-31269      //Start
+                DevExpress.Skins.SkinManager.EnableFormSkins();
+                DevExpress.UserSkins.BonusSkins.Register();
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Caramel";
+                this.gridControl1.LookAndFeel.SetSkinStyle("Caramel");
+                DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+                //Added by Shrikant S. on 20/06/2018 for Bug-31269      //End
+
                 BindGrid();//binding the grid
 
                 #region binding thems in list box and combo box
-                listBoxTheme = controlsLogic.bindListBox(listBoxTheme, navBarControl1);//binding the list box with availble themes but it will not appear in the screen
-                comboBoxEdit2 = controlsLogic.InitSkinNames(gridControl1.LookAndFeel, comboBoxEdit2);// binding the dropdown box with default theams but it will not appear in the screen
+                //listBoxTheme = controlsLogic.bindListBox(listBoxTheme, navBarControl1);//binding the list box with availble themes but it will not appear in the screen
+                //comboBoxEdit2 = controlsLogic.InitSkinNames(gridControl1.LookAndFeel, comboBoxEdit2);// binding the dropdown box with default theams but it will not appear in the screen
 
                 #endregion
                 #region Binding ListView Columns
@@ -266,7 +277,9 @@ namespace DadosReports
                 #endregion
 
                 #region GroupSummaryFooter
-                GroupfooterMode = gridView1.GroupFooterShowMode.ToString();
+                
+                //GroupfooterMode = gridView1.GroupFooterShowMode.ToString();       //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                GroupfooterMode = gridView1.OptionsView.GroupFooterShowMode.ToString();         //Added by Shrikant S. on 13/06/2018 for Bug-31269
 
                 if (GroupfooterMode == "VisibleAlways")
                 {
@@ -299,9 +312,10 @@ namespace DadosReports
                 #endregion
 
                 #region ShowVLines
-                if (this.gridView1.OptionsView.ShowVertLines)
+                //if (this.gridView1.OptionsView.ShowVertLines)             //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                if (this.gridView1.OptionsView.ShowVerticalLines==DefaultBoolean.True)               //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 {
-                    barCheckItem_ShowVLines.Checked = true;
+                    barCheckItem_ShowVLines.Checked = true;                 
                 }
                 else
                 {
@@ -310,7 +324,8 @@ namespace DadosReports
                 #endregion
 
                 #region ShowHorzLines
-                if (this.gridView1.OptionsView.ShowHorzLines)
+                //if (this.gridView1.OptionsView.ShowHorzLines)         //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                if (this.gridView1.OptionsView.ShowHorizontalLines==DefaultBoolean.True) //Commented by Shrikant S. on 13/06/2018 for Bug-31269
                 {
                     barCheckItem_ShowHLines.Checked = true;
                 }
@@ -479,6 +494,7 @@ namespace DadosReports
         {
             try
             {
+                
                 #region Verifying Report ID is Blank or not
                 if (ReportID != "")
                 {
@@ -535,6 +551,7 @@ namespace DadosReports
                                 DS = new DataSet();
                                 gridControl1.DataSource = null;
                                 gridView1.Columns.Clear();
+                                
                                 #region Based on the Display Count binding the table in DataSet
                                 for (int LevelValue = 0; LevelValue < LevelCount; LevelValue++)
                                 {
@@ -683,6 +700,9 @@ namespace DadosReports
                             gridControl1.ForceInitialize();
                             gridView1.PopulateColumns();
                             gridView1.OptionsPrint.AutoWidth = false;//Added by Archana Khade on 05/04/2012 for TKT-3143 
+                            gridView1.OptionsView.AllowHtmlDrawHeaders = true;                          //Added by Shrikant S. on 13/06/2018 for Bug-31269
+                            gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;             //Added by Shrikant S. on 13/06/2018 for Bug-31269
+                            gridView1.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap; //Added by Shrikant S. on 13/06/2018 for Bug-31269
                             //gridView1.BestFitColumns();//Comment by Archana Khade 05/4/2012 for TKT-3143 
 
                             #endregion
@@ -713,7 +733,8 @@ namespace DadosReports
                                             for (int j = 0; j < ColumnDetailsDS.Tables["ColumnsList"].Rows.Count; j++)
                                             {
                                                 //if (gridView1.Columns[i].Caption.Trim() == ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Name"].ToString().Trim())        //Commented By Shrikant S. on 21/05/2013 for Bug-11169
-                                                if (gridView1.Columns[i].Caption.Trim().ToUpper() == ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Name"].ToString().Trim().ToUpper())          //Commented By Shrikant S. on 21/05/2013 for Bug-11169
+                                                //if (gridView1.Columns[i].Caption.Trim().ToUpper() == ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Name"].ToString().Trim().ToUpper())          //Commented By Shrikant S. on 21/05/2013 for Bug-11169    //Commented by Shrikant S. on 13/06/2018 for Bug-31269     
+                                                if (gridView1.Columns[i].FieldName.Trim().ToUpper() == ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Name"].ToString().Trim().ToUpper())          //Added by Shrikant S. on 13/06/2018 for Bug-31269
                                                 {
                                                     //if ((bool)ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Is Grouped"] == true)        // Commented By Shrikant S. on 06/06/2012 for Bug-4522
                                                     //{
@@ -722,7 +743,6 @@ namespace DadosReports
                                                     //Added by Archana Khade on 05/04/2012 for display the caption in gridview start(TKT-3143)
                                                     if (ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Caption"].ToString() != string.Empty)
                                                     {
-
                                                         gridView1.Columns[i].Caption = ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Caption"].ToString();
                                                     }
                                                     else
@@ -744,11 +764,21 @@ namespace DadosReports
                                                     {
                                                         gridView1.Columns[i].SummaryItem.DisplayFormat = "SUM={0}";
                                                         gridView1.Columns[i].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+
+                                                        //added by Shrikant S. on 12/06/2018 for Bug-31269      // Start 
+                                                        GridGroupSummaryItem gsi = new GridGroupSummaryItem();
+                                                        gsi.FieldName = ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column Name"].ToString();
+                                                        gsi.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                                                        gsi.ShowInGroupColumnFooter = gridView1.Columns[i];
+                                                        gsi.DisplayFormat = "SUM={0}";
+                                                        gridView1.GroupSummary.Add(gsi);
+                                                        //added by Shrikant S. on 12/06/2018 for Bug-31269      // End   
                                                     }
                                                     if ((bool)ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Is Displayed"] == false)
                                                     {
                                                         gridView1.Columns[i].Visible = false;
                                                     }
+                                                    
                                                 }
                                             }
                                         }
@@ -765,6 +795,7 @@ namespace DadosReports
                                                     {
                                                         gridView1.Columns[i].GroupIndex = Convert.ToInt32(ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["grouporder"]);
                                                         // gridView1.Columns[i].VisibleIndex = Convert.ToInt32(ColumnDetailsDS.Tables["ColumnsList"].Rows[j]["Column order"]);//added archana 11/05/12
+
                                                     }
                                                     else
                                                     {
@@ -1565,7 +1596,8 @@ namespace DadosReports
 
         private void barButtonItem_PrintPrivew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridControl1.ShowPreview();
+            //gridControl1.ShowPreview();           //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            gridControl1.ShowPrintPreview();
         }
 
         #endregion
@@ -1589,14 +1621,17 @@ namespace DadosReports
 
         private void barButtonItem_GroupSummaryFooter_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.gridView1.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)
+            //if (this.gridView1.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)       //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            if (this.gridView1.OptionsView.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)         //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
-                this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;
+                //this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;               //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;                 //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 //barButtonItem_GroupSummaryFooter.ImageIndex = 148;
             }
             else
             {
-                this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+                //this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;        //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;          //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 //barButtonItem_GroupSummaryFooter.ImageIndex = 163;
             }
             this.SetToolTip();  //Added By Shrikant S. on 25/06/2012 for Bug-4575
@@ -1682,11 +1717,13 @@ namespace DadosReports
         {
             if (barCheckItem_GroupSummaryFooter.Checked)
             {
-                this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+                //this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;        //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;          //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
             else
             {
-                this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;
+                //this.gridView1.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;       //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.Hidden;         //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
         }
 
@@ -1706,11 +1743,13 @@ namespace DadosReports
         {
             if (barCheckItem_ShowVLines.Checked)
             {
-                this.gridView1.OptionsView.ShowVertLines = true;
+                //this.gridView1.OptionsView.ShowHorzLines = true;                      //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.True;    //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
             else
             {
-                this.gridView1.OptionsView.ShowVertLines = false;
+                //this.gridView1.OptionsView.ShowHorzLines = false;         //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.False;    //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
         }
 
@@ -1718,11 +1757,13 @@ namespace DadosReports
         {
             if (barCheckItem_ShowHLines.Checked)
             {
-                this.gridView1.OptionsView.ShowHorzLines = true;
+                //this.gridView1.OptionsView.ShowHorzLines = true;                      //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines= DefaultBoolean.True;    //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
             else
             {
-                this.gridView1.OptionsView.ShowHorzLines = false;
+                //this.gridView1.OptionsView.ShowHorzLines = false;         //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.False;    //Added by Shrikant S. on 13/06/2018 for Bug-31269
             }
         }
 
@@ -1838,14 +1879,17 @@ namespace DadosReports
 
         private void barButtonItem_VerticalLines_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.gridView1.OptionsView.ShowVertLines == true)
+            //if (this.gridView1.OptionsView.ShowVertLines == true)     //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            if (this.gridView1.OptionsView.ShowHorizontalLines == DefaultBoolean.True)       //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
-                this.gridView1.OptionsView.ShowVertLines = false;
+                //this.gridView1.OptionsView.ShowVertLines = false;         //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.False;           //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 //barButtonItem_VerticalLines.ImageIndex = 132;
             }
             else
             {
-                this.gridView1.OptionsView.ShowVertLines = true;
+                //this.gridView1.OptionsView.ShowVertLines = true;          //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.True;            //Added by Shrikant S. on 13/06/2018 for Bug-31269    
                 //barButtonItem_VerticalLines.ImageIndex = 184;
             }
             this.SetToolTip();      //Added By Shrikant S. on 25/06/2012 for Bug-4575
@@ -1853,14 +1897,17 @@ namespace DadosReports
 
         private void barButtonItem_HorizontalLines_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.gridView1.OptionsView.ShowHorzLines == true)
+            //if (this.gridView1.OptionsView.ShowHorzLines == true)             //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            if (this.gridView1.OptionsView.ShowHorizontalLines == DefaultBoolean.True)               //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
-                this.gridView1.OptionsView.ShowHorzLines = false;
+                //this.gridView1.OptionsView.ShowHorzLines = false;             //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.False;               //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 //barButtonItem_HorizontalLines.ImageIndex = 137;
             }
             else
             {
-                this.gridView1.OptionsView.ShowHorzLines = true;
+                //this.gridView1.OptionsView.ShowHorzLines = true;                  //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                this.gridView1.OptionsView.ShowHorizontalLines = DefaultBoolean.True;                    //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 //barButtonItem_HorizontalLines.ImageIndex = 163;
             }
             this.SetToolTip();      //Added By Shrikant S. on 25/06/2012 for Bug-4575
@@ -1982,6 +2029,7 @@ namespace DadosReports
             //SaveLayOut();//commented by Archana K. on 14/03/14 for Bug-22080
             flag = true;
             SaveLayOutNew();//Added by Archana K. on 14/03/14 for Bug-22080
+            
         }
         
         private void RestoreReportLayOut(string LayOutName, int type)         // Added By Shrikant S. on 08/06/2012   
@@ -2009,49 +2057,67 @@ namespace DadosReports
                         IsDefault = Convert.ToBoolean(rows[0]["IsDefault"]);
                         ReportLvlId = Convert.ToInt32(rows[0]["LayOutId"]);
                         //Added by Archana K. on 21/03/14 for Bug-22080 End
-                        if (type == 0)
-                        {
-                            for (int i = 0; i < gridControl1.ViewCollection.Count; i++)
-                            {
-                                XmlDocument xmlDocument = new XmlDocument();
-                                int level = i;
-                                //Commented by Archana K. on 18/03/14 for Bug-22080 start
-                                //switch (i)
-                                //{
-                                //    case 0:
-                                //        level = 1;
-                                //        break;
-                                //    case 1:
-                                //        level = 0;
-                                //        break;
-                                //}
-                                //Commented by Archana K. on 18/03/14 for Bug-22080 end
-                                byte[] myArray = (System.Byte[])rows[0]["Level" + (level + 1).ToString() + "_Layout"];
-                                System.Text.Encoding enc = System.Text.Encoding.ASCII;
-                                string myString = enc.GetString(myArray);
-                                xmlDocument.LoadXml(myString);
-                                string fileName = Path.Combine(Path.GetTempPath(), User + "_" +"Level" + (level + 1).ToString() + "_Layout"+"_"+ DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
-                                xmlDocument.Save(fileName);
-                                gridControl1.ViewCollection[i].RestoreLayoutFromXml(fileName);
-                                File.Delete(fileName);
-                            }
-                        }
-                        else
-                        {
-                            XmlDocument xmlDocument = new XmlDocument();
-                            byte[] myArray = (System.Byte[])rows[0]["Level" + (type).ToString() + "_Layout"];
-                            System.Text.Encoding enc = System.Text.Encoding.ASCII;
-                            string myString = enc.GetString(myArray);
-                            xmlDocument.LoadXml(myString);
-                            string fileName = Path.Combine(Path.GetTempPath(), User + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
-                            xmlDocument.Save(fileName);
-                            gridControl1.ViewCollection[1].RestoreLayoutFromXml(fileName);
-                            File.Delete(fileName);
-                        }
-                        this.SetSkin(Convert.ToString(rows[0]["SkinName"]));
-                       
+
+                        //Added by Shrikant S. on 21/06/2018 for Bug-31269  //Start
+                        XmlDocument xmlDocument = new XmlDocument();
+                        byte[] myArray = (System.Byte[])rows[0]["Level1_Layout"];
+                        System.Text.Encoding enc = System.Text.Encoding.ASCII;
+                        string myString = enc.GetString(myArray);
+                        xmlDocument.LoadXml(myString);
+                        string fileName = Path.Combine(Path.GetTempPath(), User + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
+                        xmlDocument.Save(fileName);
+                        workspaceManager1.LoadWorkspace(LayOutName, fileName);
+                        workspaceManager1.ApplyWorkspace(LayOutName);
+                        File.Delete(fileName);
+                        //Added by Shrikant S. on 21/06/2018 for Bug-31269  //End
+
+                        //Commented by Shrikant S. on 21/06/2018 for Bug-31269  //Start
+                        ////if (type == 0)
+                        ////{
+                        ////    for (int i = 0; i < gridControl1.ViewCollection.Count; i++)
+                        ////    {
+                        ////        XmlDocument xmlDocument = new XmlDocument();
+                        ////        int level = i;
+                        ////        //Commented by Archana K. on 18/03/14 for Bug-22080 start
+                        ////        //switch (i)
+                        ////        //{
+                        ////        //    case 0:
+                        ////        //        level = 1;
+                        ////        //        break;
+                        ////        //    case 1:
+                        ////        //        level = 0;
+                        ////        //        break;
+                        ////        //}
+                        ////        //Commented by Archana K. on 18/03/14 for Bug-22080 end
+                        ////        byte[] myArray = (System.Byte[])rows[0]["Level" + (level + 1).ToString() + "_Layout"];
+                        ////        System.Text.Encoding enc = System.Text.Encoding.ASCII;
+                        ////        string myString = enc.GetString(myArray);
+                        ////        xmlDocument.LoadXml(myString);
+                        ////        string fileName = Path.Combine(Path.GetTempPath(), User + "_" +"Level" + (level + 1).ToString() + "_Layout"+"_"+ DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
+                        ////        xmlDocument.Save(fileName);
+                        ////        gridControl1.ViewCollection[i].RestoreLayoutFromXml(fileName);
+                        ////        dockManager1.RestoreLayoutFromXml(fileName);            //added by Shrikant S. on 19/06/2018 for Bug-31269
+                        ////        File.Delete(fileName);
+                        ////    }
+
+                        ////}
+                        ////else
+                        ////{
+                        ////    XmlDocument xmlDocument = new XmlDocument();
+                        ////    byte[] myArray = (System.Byte[])rows[0]["Level" + (type).ToString() + "_Layout"];
+                        ////    System.Text.Encoding enc = System.Text.Encoding.ASCII;
+                        ////    string myString = enc.GetString(myArray);
+                        ////    xmlDocument.LoadXml(myString);
+                        ////    string fileName = Path.Combine(Path.GetTempPath(), User + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
+                        ////    xmlDocument.Save(fileName);
+                        ////    gridControl1.ViewCollection[1].RestoreLayoutFromXml(fileName);
+                        ////    dockManager1.RestoreLayoutFromXml(fileName);            //added by Shrikant S. on 19/06/2018 for Bug-31269
+                        ////    File.Delete(fileName);
+                        ////}
+                        ////this.SetSkin(Convert.ToString(rows[0]["SkinName"]));
+                        //Commented by Shrikant S. on 21/06/2018 for Bug-31269  //End
                     }
-                 
+
                 }
                 //Added by Archana K. on 20/03/14 for Bug-22080 start
                 if (LayOutName == "")
@@ -2097,7 +2163,8 @@ namespace DadosReports
                 superToolTip3.Items.Add(toolTipItem3);
                 this.barButtonItem_HideHeaders.SuperTip = superToolTip3;
             }
-            if (this.gridView1.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)
+            //if (this.gridView1.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)           //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            if (this.gridView1.OptionsView.GroupFooterShowMode == DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways)             //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
                 DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
                 DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
@@ -2114,7 +2181,8 @@ namespace DadosReports
                 this.barButtonItem_GroupSummaryFooter.SuperTip = superToolTip3;
             }
 
-            if (this.gridView1.OptionsView.ShowVertLines)
+            //if (this.gridView1.OptionsView.ShowVertLines)          //Commented by Shrikant S. on 13/06/2018 for Bug-31269       
+            if (this.gridView1.OptionsView.ShowVerticalLines==DefaultBoolean.True)           //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
                 DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
                 DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
@@ -2131,7 +2199,8 @@ namespace DadosReports
                 this.barButtonItem_VerticalLines.SuperTip = superToolTip3;
             }
 
-            if (this.gridView1.OptionsView.ShowHorzLines)
+            //if (this.gridView1.OptionsView.ShowHorzLines)         //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+            if (this.gridView1.OptionsView.ShowHorizontalLines==DefaultBoolean.True)           //Added by Shrikant S. on 13/06/2018 for Bug-31269
             {
                 DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
                 DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
@@ -2190,7 +2259,7 @@ namespace DadosReports
             {
                 string viewName = gridControl1.ViewCollection[i].Name.ToString().Trim();
                 string fileName = Path.Combine(Path.GetTempPath(), User + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
-                gridControl1.ViewCollection[i].SaveLayoutToXml(fileName);
+                gridControl1.ViewCollection[i].SaveLayoutToXml(fileName);      
                 XmlDocument xmlDocument = new XmlDocument();
                 xmlDocument.Load(fileName);
                 command.Parameters.Add("@Level" + (i + 1).ToString() + "_Layout", SqlDbType.VarChar);
@@ -2334,11 +2403,13 @@ namespace DadosReports
             ReportLayoutnm = frmReportLayout.LayoutName;//Added by Archana K. on 18/03/14 for Bug-22080
             IsDefault = Convert.ToBoolean(frmReportLayout.IsDefault);//Added by Archana K. on 21/03/14 for Bug-22080
             ReportLvlId = frmReportLayout.LayOutId;
+            
+
             if (frmReportLayout.LayoutName.Length != 0)
                 {
                     if (flag == true)//Added by Archana K. on 14/03/14 for Bug-22080
                     {
-
+                        workspaceManager1.CaptureWorkspace(ReportLayoutnm, true);       //20/06/2018 for Bug-31269
                        // string sqlStr = string.Empty;//Commented by Archana K. on 18/03/14 for Bug-22080
                         switch (frmReportLayout.Status)
                         {
@@ -2418,14 +2489,38 @@ namespace DadosReports
                     for (int i = 0; i < gridControl1.ViewCollection.Count; i++)
                     {
                         string viewName = gridControl1.ViewCollection[i].Name.ToString().Trim();
-                        string fileName = Path.Combine(Path.GetTempPath(), User + "Level" + (i + 1).ToString() + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
-                        gridControl1.ViewCollection[i].SaveLayoutToXml(fileName);
-                        //gridControl1.ViewCollection[i].SaveLayoutToXml(fileName, DevExpress.Utils.OptionsLayoutGrid.FullLayout);//Added & Commented by Archana K. on 18/03/14 for Bug-22080
-                        XmlDocument xmlDocument = new XmlDocument();
-                        xmlDocument.Load(fileName);
-                        command.Parameters.Add("@Level" + (i + 1).ToString() + "_Layout", SqlDbType.VarChar);
-                        command.Parameters["@Level" + (i + 1).ToString() + "_Layout"].Value = xmlDocument.OuterXml.ToString();
+
+                        //Commented by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+                        //string fileName = Path.Combine(Path.GetTempPath(), User + "Level" + (i + 1).ToString() + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
+                        //gridControl1.ViewCollection[i].SaveLayoutToXml(fileName);     //Commented by Shrikant S. on 20/06/2018 for bug-31269
+                        //XmlDocument xmlDocument  = new XmlDocument();
+                        //xmlDocument.Load(fileName);
+                        //command.Parameters.Add("@Level" + (i + 1).ToString() + "_Layout", SqlDbType.VarChar);
+                        //command.Parameters["@Level" + (i + 1).ToString() + "_Layout"].Value = string.Empty;
+                        //Commented by Shrikant S. on 21/06/2018 for Bug-31269      //End
+
+                        //Added by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+                        XmlDocument xmlDocument = null;
+                        if (i == 0)
+                        {
+                            string fileName = Path.Combine(Path.GetTempPath(), User + "Level" + (i + 1).ToString() + "_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss")) + ".xml";
+                            workspaceManager1.SaveWorkspace("@Level1_Layout", fileName, true);
+                            
+                            //gridControl1.ViewCollection[i].SaveLayoutToXml(fileName, DevExpress.Utils.OptionsLayoutGrid.FullLayout);//Added & Commented by Archana K. on 18/03/14 for Bug-22080
+
+                            xmlDocument = new XmlDocument();
+                            xmlDocument.Load(fileName);
+                            command.Parameters.Add("@Level" + (i + 1).ToString() + "_Layout", SqlDbType.VarChar);
+                            command.Parameters["@Level" + (i + 1).ToString() + "_Layout"].Value = xmlDocument.OuterXml.ToString();
+                        }
+                        else
+                        {
+                            command.Parameters.Add("@Level" + (i + 1).ToString() + "_Layout", SqlDbType.VarChar);
+                            command.Parameters["@Level" + (i + 1).ToString() + "_Layout"].Value = string.Empty;
+                        }
+                        //Added by Shrikant S. on 21/06/2018 for Bug-31269      //End
                     }
+
                     command.ExecuteNonQuery();
                     // Added by Archana K. on 19/03/14 For Bug-22080 start
                     MessageBox.Show(msg, "Layout saved...", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -2514,13 +2609,72 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("XML Document", "XML Documents|*.xml");
             if (fileName != "")
             {
-                ExportTo(new ExportXmlProvider(fileName));
+                ExportTo(new ExportXmlProvider(fileName));        //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                
                 OpenFile(fileName);
             }
         }
         #endregion
 
         #region Send Mails With Attachment
+        //Added by Shrikant S. on 30/01/2019 for Bug-32212      //Start
+        private string GetDefaultEmailSetting()
+        {
+            string retvalue = string.Empty;
+            DataTable ldt = new DataTable();
+            SqlConnection oconn = new SqlConnection(this.ReportConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = oconn;
+            cmd.CommandText = "select * from emailsettings";
+            SqlDataAdapter lda = new SqlDataAdapter(cmd);
+            lda.Fill(ldt);
+
+            if (ldt.Columns.Contains("IsSMTPDefa"))
+            {
+                retvalue = ((ldt.Rows.Count > 0 ? Convert.ToBoolean(ldt.Rows[0]["IsSMTPDefa"]) : false) ? "SMTP" : "");
+            }
+            return retvalue;
+        }
+
+        private void SendMail(string fileName)
+        {
+            string defaSetting = this.GetDefaultEmailSetting();
+
+            if (defaSetting != "SMTP")
+            {
+                try
+                {
+                    var oApp = new Microsoft.Office.Interop.Outlook.Application();
+                    Microsoft.Office.Interop.Outlook._NameSpace ns = oApp.GetNamespace("MAPI");
+                    //var f = ns.GetDefaultFolder(Microsoft.Office.Interop.Outlook.OlDefaultFolders.olFolderInbox);
+                    //Thread.Sleep(5000); // a bit of startup grace time.
+
+                    var mailItem = (Microsoft.Office.Interop.Outlook._MailItem)oApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+                    mailItem.BodyFormat = Microsoft.Office.Interop.Outlook.OlBodyFormat.olFormatHTML;
+                    mailItem.Subject = "Reports : " + ReportName;
+                    StringBuilder mailbody = new StringBuilder();
+
+
+                    mailItem.HTMLBody = "<html><body> Dear Sir / Madam, <br> <br> Please Find the Attached Report:" + ReportName + ".</b> <br><br><br> Thanks & Regards,<br> " + User + "</body></html>";
+                    mailItem.To = "";
+                    mailItem.Attachments.Add(fileName, Microsoft.Office.Interop.Outlook.OlAttachmentType.olByValue, 1, Path.GetFileName(fileName));
+                    mailItem.Display(true);
+                    //mailItem.Send();
+                }
+                catch (Exception)
+                {
+                    defaSetting = "SMTP";
+                }
+            }
+            if (defaSetting == "SMTP")
+            {
+                SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User,this.ReportConnectionString);
+                sendmail.LookAndFeel.SetSkinStyle(this.gridControl1.LookAndFeel.SkinName);
+                sendmail.ShowDialog();
+            }
+        }
+        //Added by Shrikant S. on 30/01/2019 for Bug-32212      //End
+
         /// <summary>
         /// Sending mail with Excel File
         /// </summary>
@@ -2531,14 +2685,17 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("Microsoft Excel Document", "Microsoft Excel|*.xls");
             if (fileName != "")
             {
-                ExportTo(new ExportXlsProvider(fileName));
+                //ExportTo(new ExportXlsProvider(fileName));                //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                gridControl1.ExportToXls(fileName);                         //Added by Shrikant S. on 13/06/2018 for Bug-31269
+
                 DialogResult DR = MessageBox.Show("You Want To Send A Mail ??", "Information - Send Exel File", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 if (DR == DialogResult.Yes)
                 {
                     try
                     {
-                        SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);
-                        sendmail.ShowDialog();
+                        //SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);      //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        //sendmail.ShowDialog();                                                            //Commented by Shrikant S. on 30/01/2019 for Bug-32212          
+                        this.SendMail(fileName);        //Added by Shrikant S. on 30/01/2019 for Bug-32212
                     }
                     catch (Exception ex)
                     {
@@ -2571,8 +2728,9 @@ namespace DadosReports
                 {
                     try
                     {
-                        SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);
-                        sendmail.ShowDialog();
+                        //SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);      //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        //sendmail.ShowDialog();                                                            //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        this.SendMail(fileName);        //Added by Shrikant S. on 30/01/2019 for Bug-32212
                     }
                     catch (Exception ex)
                     {
@@ -2599,14 +2757,16 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("HTML Document", "HTML Documents|*.html");
             if (fileName != "")
             {
-                ExportTo(new ExportHtmlProvider(fileName));
+                //ExportTo(new ExportHtmlProvider(fileName));                   //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                gridControl1.ExportToHtml(fileName);                     //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 DialogResult DR = MessageBox.Show("You Want To Send A Mail ??", "Information - Send XML File", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 if (DR == DialogResult.Yes)
                 {
                     try
                     {
-                        SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);
-                        sendmail.ShowDialog();
+                        //SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);          //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        //sendmail.ShowDialog();                                                                //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        this.SendMail(fileName);        //Added by Shrikant S. on 30/01/2019 for Bug-32212
                     }
                     catch (Exception ex)
                     {
@@ -2642,14 +2802,18 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("Text Document", "Text Files|*.txt");
             if (fileName != "")
             {
-                ExportTo(new ExportTxtProvider(fileName));
+                //ExportTo(new ExportTxtProvider(fileName));            //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                gridControl1.ExportToText(fileName);                    //Added by Shrikant S. on 13/06/2018 for Bug-31269
+
+
                 DialogResult DR = MessageBox.Show("You Want To Send A Mail ??", "Information - Send XML File", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 if (DR == DialogResult.Yes)
                 {
                     try
                     {
-                        SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);
-                        sendmail.ShowDialog();
+                        //SendMail sendmail = new SendMail(fileName, attachfilename, this.Text, User);      //Commented by Shrikant S. on 30/01/2019 for Bug-32212  
+                        //sendmail.ShowDialog();                                                            //Commented by Shrikant S. on 30/01/2019 for Bug-32212      
+                        this.SendMail(fileName);        //Added by Shrikant S. on 30/01/2019 for Bug-32212
                     }
                     catch (Exception ex)
                     {
@@ -2680,7 +2844,8 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("HTML Document", "HTML Documents|*.html");
             if (fileName != "")
             {
-                ExportTo(new ExportHtmlProvider(fileName));
+                gridControl1.ExportToHtml(fileName);                //Added by Shrikant S. on 13/06/2018 for Bug-31269
+                //ExportTo(new ExportHtmlProvider(fileName));       //Commented by Shrikant S. on 13/06/2018 for Bug-31269
                 OpenFile(fileName);
 
             }
@@ -2695,11 +2860,13 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("Microsoft Excel Document", "Microsoft Excel|*.xls");
             if (fileName != "")
             {
-
+                
                 //ExportTo(new ExportXlsProvider(fileName));//Commented by Archana on 13/03/14 
                 gridControl1.ExportToXls(fileName);//Changed by Archana on 13/03/14 
                 OpenFile(fileName);
+                
             }
+            
         }
         /// <summary>
         /// Exporting with XML file
@@ -2728,7 +2895,8 @@ namespace DadosReports
             string fileName = ShowSaveFileDialog("Text Document", "Text Files|*.txt");
             if (fileName != "")
             {
-                ExportTo(new ExportTxtProvider(fileName));
+                //ExportTo(new ExportTxtProvider(fileName));            //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+                gridControl1.ExportToText(fileName);                //Added by Shrikant S. on 13/06/2018 for Bug-31269
                 OpenFile(fileName);
             }
         }
@@ -2752,13 +2920,15 @@ namespace DadosReports
         #region Private Methods
 
         #region For Export Reports Methods
+
         private void ExportTo(IExportProvider provider)
         {
             BaseExportLink link = gridView1.CreateExportLink(provider);
-            (link as GridViewExportLink).ExpandAll = false;
+            //(link as GridViewExportLink).ExpandAll = false;
             link.ExportTo(true);
             provider.Dispose();
         }
+
 
         private void OpenFile(string fileName)
         {
@@ -3083,122 +3253,159 @@ namespace DadosReports
         private void barButtonItem_UserFormat1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //this is the default them for the window.
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Caramel");
-            int intTheme = 0;
-            for (int i = 0; i < listBoxTheme.Items.Count; i++)
-            {
-                if (listBoxTheme.Items[i].ToString() == "Skin:Caramel")
-                    intTheme = i;
-            }
-            listBoxTheme.SelectedIndex = intTheme;
-            navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
-            navBarControl1.ResetStyles();
-            barManager1.GetController().PaintStyleName = "Skin";
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Caramel";
+            this.gridControl1.LookAndFeel.SetSkinStyle("Caramel");
+            DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //end
 
-            int gridtheme = 0;
-            for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
-            {
-                if (comboBoxEdit2.Properties.Items[j].ToString() == "Caramel")
-                    gridtheme = j;
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //Start
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Caramel");
+            //int intTheme = 0;
+            //for (int i = 0; i < listBoxTheme.Items.Count; i++)
+            //{
+            //    if (listBoxTheme.Items[i].ToString() == "Skin:Caramel")
+            //        intTheme = i;
+            //}
+            //listBoxTheme.SelectedIndex = intTheme;
+            //navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
+            //navBarControl1.ResetStyles();
+            //barManager1.GetController().PaintStyleName = "Skin";
 
-            }
-            System.EventArgs e1 = new EventArgs();
-            comboBoxEdit2.SelectedIndex = gridtheme;
-            comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //int gridtheme = 0;
+            //for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
+            //{
+            //    if (comboBoxEdit2.Properties.Items[j].ToString() == "Caramel")
+            //        gridtheme = j;
 
+            //}
+            //System.EventArgs e1 = new EventArgs();
+            //comboBoxEdit2.SelectedIndex = gridtheme;
+            //comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
 
-
+            //DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //End
         }
 
         private void barButtonItem_UserFormat2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Blue");
-            //gridControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Blue");
-            int intTheme = 0;
-            for (int i = 0; i < listBoxTheme.Items.Count; i++)
-            {
-                if (listBoxTheme.Items[i].ToString() == "Skin:Blue")
-                    intTheme = i;
-            }
-            listBoxTheme.SelectedIndex = intTheme;
-            navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
-            navBarControl1.ResetStyles();
-            barManager1.GetController().PaintStyleName = "Skin";
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Blue";
+            this.gridControl1.LookAndFeel.SetSkinStyle("Blue");
+            DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //End
 
-            int gridtheme = 0;
-            for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
-            {
-                if (comboBoxEdit2.Properties.Items[j].ToString() == "Blue")
-                    gridtheme = j;
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //Start
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Blue");
+            ////gridControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Blue");
+            //int intTheme = 0;
+            //for (int i = 0; i < listBoxTheme.Items.Count; i++)
+            //{
+            //    if (listBoxTheme.Items[i].ToString() == "Skin:Blue")
+            //        intTheme = i;
+            //}
+            //listBoxTheme.SelectedIndex = intTheme;
+            //navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
+            //navBarControl1.ResetStyles();
+            //barManager1.GetController().PaintStyleName = "Skin";
 
-            }
-            System.EventArgs e1 = new EventArgs();
-            comboBoxEdit2.SelectedIndex = gridtheme;
-            comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //int gridtheme = 0;
+            //for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
+            //{
+            //    if (comboBoxEdit2.Properties.Items[j].ToString() == "Blue")
+            //        gridtheme = j;
 
+            //}
+            //System.EventArgs e1 = new EventArgs();
+            //comboBoxEdit2.SelectedIndex = gridtheme;
+            //comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //End
         }
 
         private void barButtonItem_UserFormat3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Lilian");
-            navBarControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Lilian");
-            int intTheme = 0;
-            for (int i = 0; i < listBoxTheme.Items.Count; i++)
-            {
-                if (listBoxTheme.Items[i].ToString() == "Skin:Lilian")
-                    intTheme = i;
-            }
-            listBoxTheme.SelectedIndex = intTheme;
-            navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
-            navBarControl1.ResetStyles();
-            barManager1.GetController().PaintStyleName = "Skin";
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Lilian";
+            this.gridControl1.LookAndFeel.SetSkinStyle("Lilian");
+            DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //End
 
-            int gridtheme = 0;
-            for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
-            {
-                if (comboBoxEdit2.Properties.Items[j].ToString() == "Lilian")
-                    gridtheme = j;
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //Start
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Lilian");
+            //navBarControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Lilian");
+            //int intTheme = 0;
+            //for (int i = 0; i < listBoxTheme.Items.Count; i++)
+            //{
+            //    if (listBoxTheme.Items[i].ToString() == "Skin:Lilian")
+            //        intTheme = i;
+            //}
+            //listBoxTheme.SelectedIndex = intTheme;
+            //navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
+            //navBarControl1.ResetStyles();
+            //barManager1.GetController().PaintStyleName = "Skin";
 
-            }
-            System.EventArgs e1 = new EventArgs();
-            comboBoxEdit2.SelectedIndex = gridtheme;
-            comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //int gridtheme = 0;
+            //for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
+            //{
+            //    if (comboBoxEdit2.Properties.Items[j].ToString() == "Lilian")
+            //        gridtheme = j;
 
+            //}
+            //System.EventArgs e1 = new EventArgs();
+            //comboBoxEdit2.SelectedIndex = gridtheme;
+            //comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //End
         }
 
         private void barButtonItem_UserFormat4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Black");
-            navBarControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Black");
-            int intTheme = 0;
-            for (int i = 0; i < listBoxTheme.Items.Count; i++)
-            {
-                if (listBoxTheme.Items[i].ToString() == "Skin:Black")
-                    intTheme = i;
-            }
-            listBoxTheme.SelectedIndex = intTheme;
-            navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
-            navBarControl1.ResetStyles();
-            barManager1.GetController().PaintStyleName = "Skin";
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //Start
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "Black";
+            this.gridControl1.LookAndFeel.SetSkinStyle("Black");
+            DevExpress.LookAndFeel.LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            //Added by Shrikant S. on 21/06/2018 for Bug-31269      //End
 
-            int gridtheme = 0;
-            for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
-            {
-                if (comboBoxEdit2.Properties.Items[j].ToString() == "Black")
-                    gridtheme = j;
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //Start
+            //DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Black");
+            //navBarControl1.LookAndFeel.SetStyle(DevExpress.LookAndFeel.LookAndFeelStyle.Skin, false, false, "Black");
+            //int intTheme = 0;
+            //for (int i = 0; i < listBoxTheme.Items.Count; i++)
+            //{
+            //    if (listBoxTheme.Items[i].ToString() == "Skin:Black")
+            //        intTheme = i;
+            //}
+            //listBoxTheme.SelectedIndex = intTheme;
+            //navBarControl1.View = listBoxTheme.SelectedItem as DevExpress.XtraNavBar.ViewInfo.BaseViewInfoRegistrator;
+            //navBarControl1.ResetStyles();
+            //barManager1.GetController().PaintStyleName = "Skin";
 
-            }
-            System.EventArgs e1 = new EventArgs();
-            comboBoxEdit2.SelectedIndex = gridtheme;
-            comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //int gridtheme = 0;
+            //for (int j = 0; j < comboBoxEdit2.Properties.Items.Count; j++)
+            //{
+            //    if (comboBoxEdit2.Properties.Items[j].ToString() == "Black")
+            //        gridtheme = j;
 
+            //}
+            //System.EventArgs e1 = new EventArgs();
+            //comboBoxEdit2.SelectedIndex = gridtheme;
+            //comboBoxEdit1_SelectedIndexChanged(comboBoxEdit2, e1);
+            //Commented by Shrikant S. on 19/06/2018 for Bug-31269      //End
         }
 
         #endregion
 
         #region adding Right Click Menu Items with Column Freezing
 
-        private void gridView1_ShowGridMenu(object sender, GridMenuEventArgs e)
+        //private void gridView1_ShowGridMenu(object sender, GridMenuEventArgs e)       //Commented by Shrikant S. on 13/06/2018 for Bug-31269
+        private void gridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)       //Added by Shrikant S. on 13/06/2018 for Bug-31269
         {
             if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Column)
             {
@@ -3309,7 +3516,12 @@ namespace DadosReports
             SaveLayOutNew();
 
         }
-        
+
+        private void barCheckItem_AutoHight_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
         private void barButtonItem_ClearLayout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             RefreshLayout();//Added by Archana K. on 21/03/14 for Bug-22080
