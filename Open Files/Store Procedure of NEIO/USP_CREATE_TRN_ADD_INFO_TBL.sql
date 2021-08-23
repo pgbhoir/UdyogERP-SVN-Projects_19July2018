@@ -1,0 +1,37 @@
+IF EXISTS(SELECT [NAME] FROM SYS.PROCEDURES WHERE [NAME]='USP_CREATE_TRN_ADD_INFO_TBL')
+BEGIN
+	DROP PROCEDURE USP_CREATE_TRN_ADD_INFO_TBL
+END
+GO 
+
+--******************************************************************************************************************
+-- Stored Procedure Name : USP_CREATE_TRN_ADD_INFO_TBL
+-- CREATED BY/ON/FOR : Sachin N. S. on 13/07/2020 for Bug-33615
+--******************************************************************************************************************
+
+CREATE PROCEDURE DBO.[USP_CREATE_TRN_ADD_INFO_TBL]
+	@ENTRY_TY VARCHAR(2), @MAINITEM VARCHAR(10), @AINFOTBLNAME VARCHAR(20)
+AS 
+BEGIN
+
+	DECLARE @STR NVARCHAR(MAX), @FLDLST NVARCHAR(MAX), @TBLNAME VARCHAR(20)
+	SELECT @TBLNAME = RTRIM(@MAINITEM)
+
+	IF NOT EXISTS(SELECT [NAME] FROM SYS.TABLES WHERE [NAME]=@AINFOTBLNAME)
+	BEGIN
+		IF @MAINITEM='MAIN'
+		BEGIN
+			SET @FLDLST='AITran_cd Int Identity(1,1), ENTRY_TY VARCHAR(2), TRAN_CD INT'
+		END
+		ELSE
+		BEGIN
+			SET @FLDLST='AITran_cd Int Identity(1,1), ENTRY_TY VARCHAR(2), TRAN_CD INT, ITSERIAL VARCHAR(5), ItemRowId Numeric(10,0)'
+		END
+	
+		SET @STR=' CREATE TABLE '+@AINFOTBLNAME+' ('+@FLDLST+') '
+		EXECUTE sp_sqlexec @STR
+		PRINT @STR
+		
+	END
+
+END

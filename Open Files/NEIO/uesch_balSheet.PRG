@@ -1,0 +1,6 @@
+PARAMETERS lPara
+
+LOCAL EXPARA
+EXPARA=' '
+EXPARA="',"+ALLTRIM(lPara)+"'"
+REPLACE _rstatusclonesex.xTraParam WITH EXPARA
