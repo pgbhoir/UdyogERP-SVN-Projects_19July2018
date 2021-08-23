@@ -1,0 +1,2 @@
+LPARAMETER cTitle,pRange
+do form frmcashflowhead with pRange

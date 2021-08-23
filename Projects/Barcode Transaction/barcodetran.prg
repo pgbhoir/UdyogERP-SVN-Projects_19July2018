@@ -1,34 +1,34 @@
 &&Changes done by Vasant on 30/04/2013 as per Bug 7303(Barcode Printing Details).
 Parameter lmainfrm,lrectype
-	LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
-	_VerValidErr = ""
+Local _VerValidErr,_VerRetVal,_CurrVerVal
+_VerValidErr = ""
+_VerRetVal  = 'NO'
+Try
+	_VerRetVal = AppVerChk('BARCODETRAN',GetFileVersion(),Justfname(Sys(16)))
+Catch To _VerValidErr
 	_VerRetVal  = 'NO'
-	TRY
-		_VerRetVal = AppVerChk('BARCODETRAN',GetFileVersion(),JUSTFNAME(SYS(16)))
-	CATCH TO _VerValidErr
-		_VerRetVal  = 'NO'
-	Endtry	
-	IF TYPE("_VerRetVal")="L"
-		cMsgStr="Version Error occured!"
-		cMsgStr=cMsgStr+CHR(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
-		Messagebox(cMsgStr,64,VuMess)
-		Return .F.
-	ENDIF
-	IF _VerRetVal  = 'NO'
-		Return .F.
-	Endif
+Endtry
+If Type("_VerRetVal")="L"
+	cMsgStr="Version Error occured!"
+	cMsgStr=cMsgStr+Chr(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
+	Messagebox(cMsgStr,64,VuMess)
+	Return .F.
+Endif
+If _VerRetVal  = 'NO'
+	Return .F.
+Endif
 ****Versioning****
 
 Sele BarCodeMast_vw
-Do Form frmBarCodeTran WITH lmainfrm,lrectype
+Do Form frmBarCodeTran With lmainfrm,lrectype
 
 
-FUNCTION GetFileVersion
-PARAMETERS lcTable
+Function GetFileVersion
+	Parameters lcTable
 	_CurrVerVal='10.0.0.0'
-	IF !EMPTY(lcTable)
-		SELECT(lcTable)
-		APPEND BLANK 
-		replace fVersion WITH JUSTFNAME(SYS(16))+'   '+_CurrVerVal
-	ENDIF 
-RETURN _CurrVerVal
+	If !Empty(lcTable)
+		Select(lcTable)
+		Append Blank
+		Replace fVersion With Justfname(Sys(16))+'   '+_CurrVerVal
+	Endif
+	Return _CurrVerVal

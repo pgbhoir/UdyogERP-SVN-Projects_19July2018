@@ -1,4 +1,4 @@
-Form e:\svnprojects\bug-31598\approval\frmapproval.scx has the following errors:
+Form e:\...\projects\au_2.2.5 projects\bug_33475\approval\approval\frmapproval.scx has the following errors:
     Proc./Func. UENRENTRY - Undefined
     Unknown BARSTAT - Undefined
     Unknown UDAPPVOUAPPROVAL - Undefined
@@ -15,12 +15,12 @@ Form e:\svnprojects\bug-31598\approval\frmapproval.scx has the following errors:
     Program UDTRIGAPPROVALREFRESH - Undefined
     Proc./Func. UETRIGAPPROVALREFRESH - Undefined
 
-Program e:\svnprojects\bug-31598\approval\main.prg has the following errors:
+Program e:\...\projects\au_2.2.5 projects\bug_33475\approval\approval\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Visual Class Library e:\svnprojects\bug-31598\approval\_base.vcx has the following errors:
+Visual Class Library e:\...\projects\au_2.2.5 projects\bug_33475\approval\approval\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Program e:\svnprojects\bug-31598\approval\locaterecords.prg has the following errors:
+Program e:\...\projects\au_2.2.5 projects\bug_33475\approval\approval\locaterecords.prg has the following errors:
     Visual Class Library SQLCONNECTION - Undefined
 

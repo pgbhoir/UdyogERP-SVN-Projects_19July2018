@@ -1,3 +1,4 @@
+&&Changes done by Vasant on 30/04/2013 as per Bug 7303(Barcode Printing Details).
 Parameter lmainfrm,lrectype
 	LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
 	_VerValidErr = ""

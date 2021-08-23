@@ -1,7 +1,7 @@
-Program f:\working\barcode\vss\barcodetran\barcodetran.prg has the following errors:
+Program d:\...\barcode transaction\working folder for bug-33209\barcodetran.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form f:\working\barcode\vss\barcodetran\frmbarcodetran.scx has the following errors:
-    Visual Class Library XTRA - Undefined
+Form d:\...\barcode transaction\working folder for bug-33209\frmbarcodetran.scx has the following errors:
     Unknown BARSTAT - Undefined
+    Visual Class Library XTRA - Undefined
 

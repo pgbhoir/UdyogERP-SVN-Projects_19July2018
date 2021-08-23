@@ -25,8 +25,8 @@ namespace Cost_Centre_master
             oFrmDynamic.pPApplRange = args[5];
             oFrmDynamic.pPApplRange = args[5];
             oFrmDynamic.pAppUerName = args[7];
-            Icon MainIcon = new System.Drawing.Icon(args[8].Replace("<*#*>", " "));
-            oFrmDynamic.pFrmIcon = MainIcon;
+            //Icon MainIcon = new System.Drawing.Icon(args[8].Replace("<*#*>", " "));
+           // oFrmDynamic.pFrmIcon = MainIcon;
             oFrmDynamic.pPApplText = args[9].Replace("<*#*>", " ");
             oFrmDynamic.pPApplName = args[10];
             oFrmDynamic.pPApplPID = Convert.ToInt16(args[11]);

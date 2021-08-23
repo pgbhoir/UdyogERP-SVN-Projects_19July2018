@@ -16,3 +16,17 @@ E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost
 E:\Dotnet Projects\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csproj.GenerateResource.Cache
 E:\CostCentre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.exe
 E:\CostCentre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.pdb
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.exe.config
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.exe
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\UeCost_Cen_master.pdb
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\uBaseForm.dll
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\udAddInfo.dll
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\uNumericTextBox.dll
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\udSelectPop.dll
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\bin\Release\udAddInfo.pdb
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csprojResolveAssemblyReference.cache
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.Cost_Centre_Mast.resources
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_cat_master.Properties.Resources.resources
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\Cost_Centre_master.csproj.GenerateResource.Cache
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.exe
+D:\svn\25072019\Cost Centre\Cost_Centre_master\Cost_Centre_master\Cost_Centre_master\Cost_centre_master\obj\Release\UeCost_Cen_master.pdb

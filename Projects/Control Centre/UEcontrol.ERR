@@ -1,4 +1,4 @@
-Form d:\svngst\control centre\control.scx has the following errors:
+Form d:\1 development\control centre\working folder for bug-33477\control.scx has the following errors:
     Unknown ONDECRYPT - Undefined
     Unknown DEC - Undefined
     Unknown BARSTAT - Undefined
@@ -7,48 +7,52 @@ Form d:\svngst\control centre\control.scx has the following errors:
     Unknown NEWDECRY - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\svngst\control centre\controls_accounts.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\controls_accounts.scx has the following errors:
     Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
 
-Form d:\svngst\control centre\controls_inventory.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\controls_inventory.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
     Visual Class Library VOUCLASS - Undefined
 
-Form d:\svngst\control centre\controls_itemfield.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\controls_itemfield.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\svngst\control centre\frmnegbal.scx has the following errors:
+Form d:\1 development\control centre\working folder for bug-33477\frmnegbal.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Program d:\svngst\control centre\control.prg has the following errors:
+Program d:\1 development\control centre\working folder for bug-33477\control.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Visual Class Library d:\svngst\control centre\_base.vcx has the following errors:
+Visual Class Library d:\1 development\control centre\working folder for bug-33477\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Form d:\svngst\control centre\frmmultiuom.scx has the following errors:
+Form d:\1 development\control centre\working folder for bug-33477\frmmultiuom.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\svngst\control centre\frmmulticurrency.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\frmmulticurrency.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\svngst\control centre\frmsms.scx has the following errors:
+Form d:\1 development\control centre\working folder for bug-33477\frmsms.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\svngst\control centre\control_setinvfldlenght.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\control_setinvfldlenght.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\svngst\control centre\controls_barcode.scx has the following errors:
+Form d:\...\control centre\working folder for bug-33477\controls_barcode.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\svngst\control centre\frmgstinautho.scx has the following errors:
-    Unknown ONDECRYPT - Undefined
-    Unknown DEC - Undefined
+Form d:\1 development\control centre\working folder for bug-33477\frmgstinautho.scx has the following errors:
     Unknown BARSTAT - Undefined
-    Unknown ENC - Undefined
-    Unknown ONENCRYPT - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown NEWENCRY - Undefined
+
+Form d:\1 development\control centre\working folder for bug-33477\frmirnautho.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown NEWENCRY - Undefined
 

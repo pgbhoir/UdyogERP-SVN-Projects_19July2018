@@ -1,14 +1,23 @@
-Form d:\svngst\account allocation\frmalloc.scx has the following errors:
+Form d:\...\account allocation\working folder for bug-34443_au 2.2.6\frmalloc.scx has the following errors:
     Unknown UEGETPOP - Undefined
+    Visual Class Library SQLCONNECTION - Undefined
+    Unknown UDAPPALLOCATE - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
+    Unknown UDTRIGALLOCATE - Undefined
+    Unknown UETRIGALLOCATE - Undefined
     Unknown BARSTAT - Undefined
-    Proc./Func. UETRIGALLOCATE - Undefined
     Unknown CHECK_ADVANCEALLOCATION - Undefined
 
-Program d:\svngst\account allocation\progalloc.prg has the following errors:
-    Proc./Func. UETRIGALLOCATE - Undefined
+Program d:\...\account allocation\working folder for bug-34443_au 2.2.6\progalloc.prg has the following errors:
+    Unknown UDAPPALLOCATE - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
+    Unknown UDTRIGALLOCATE - Undefined
+    Unknown UETRIGALLOCATE - Undefined
     Unknown APPVERCHK - Undefined
 
-Form d:\svngst\account allocation\frmtaxalloc.scx has the following errors:
+Form d:\...\account allocation\working folder for bug-34443_au 2.2.6\frmtaxalloc.scx has the following errors:
     Unknown GET_PAYMENTDETAILS - Undefined
     Unknown GET_TAXALLOCATION - Undefined
 

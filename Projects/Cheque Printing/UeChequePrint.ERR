@@ -1,11 +1,11 @@
-Program f:\kishor\original-bug-projects\28186_bank payment\cheque printing\main.prg has the following errors:
+Program d:\01 rrg\01 bug work\16 bug 32350\svn project\work\cheque printing\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form f:\...\28186_bank payment\cheque printing\frmchequeprint.scx has the following errors:
+Form d:\...\16 bug 32350\svn project\work\cheque printing\frmchequeprint.scx has the following errors:
     Application UECRVIEWER - Undefined
     Unknown UEGETPOP - Undefined
     Unknown BARSTAT - Undefined
 
-Visual Class Library f:\kishor\original-bug-projects\28186_bank payment\cheque printing\_base.vcx has the following errors:
+Visual Class Library d:\01 rrg\01 bug work\16 bug 32350\svn project\work\cheque printing\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 

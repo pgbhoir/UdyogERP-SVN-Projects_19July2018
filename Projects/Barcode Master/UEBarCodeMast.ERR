@@ -1,8 +1,8 @@
-Form d:\svngst\barcode master\frmbarcodemast.scx has the following errors:
+Form d:\1 development\barcode master\working folder for bug-33144\frmbarcodemast.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEJOUR_OP - Undefined
     Unknown UEGETPOP - Undefined
 
-Program d:\svngst\barcode master\barcodemast.prg has the following errors:
+Program d:\1 development\barcode master\working folder for bug-33144\barcodemast.prg has the following errors:
     Unknown APPVERCHK - Undefined
 

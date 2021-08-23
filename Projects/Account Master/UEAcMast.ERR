@@ -1,6 +1,8 @@
-Form d:\multilevel\account master\acmast.scx has the following errors:
+Form e:\...\updated project_08052020\account master\acmast.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UDAPPACSAVEBEFORE - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Unknown UDTRIGACSAVEBEFORE - Undefined
     Unknown UETRIGACSAVEBEFORE - Undefined
     Unknown GETCONNECTIONSTRING - Undefined
@@ -15,18 +17,21 @@ Form d:\multilevel\account master\acmast.scx has the following errors:
     Proc./Func. UETRIGMASTTABLEUPDATE - Undefined
     Unknown UEGETPOP - Undefined
     Proc./Func. UEEXTRA - Undefined
+    Unknown UEMGETPOP - Undefined
     Proc./Func. UENRENTRY - Undefined
 
-Program d:\multilevel\account master\main.prg has the following errors:
+Program e:\...\updated project_08052020\account master\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\multilevel\account master\shipto.scx has the following errors:
+Form e:\...\updated project_08052020\account master\shipto.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
     Proc./Func. UEEXTRA - Undefined
 
-Form d:\multilevel\account master\frmgl.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frmgl.scx has the following errors:
     Unknown BARSTAT - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Unknown UDAPPMASTFINALUPDATE - Undefined
     Unknown UDTRIGMASTFINALUPDATE - Undefined
     Unknown UETRIGMASTFINALUPDATE - Undefined
@@ -39,28 +44,25 @@ Form d:\multilevel\account master\frmgl.scx has the following errors:
     Unknown UEGETPOP - Undefined
     Proc./Func. UEEXTRA - Undefined
     Proc./Func. UEFIND - Undefined
-    File LOC.BMP - Undefined
 
-Visual Class Library d:\multilevel\account master\_base.vcx has the following errors:
-    Program SETOBJRF - Undefined
-
-Form d:\multilevel\account master\frmtdsdetail2.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frmtdsdetail2.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\multilevel\account master\frmtdsdetail1.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frmtdsdetail1.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\multilevel\account master\frmsrvdetail.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frmsrvdetail.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Visual Class Library d:\multilevel\account master\uitools.vcx has the following errors:
+Visual Class Library e:\...\updated project_08052020\account master\uitools.vcx has the following errors:
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Unknown UEGETPOP - Undefined
     Proc./Func. UEEXTRA - Undefined
     Proc./Func. UENRENTRY - Undefined
-    Unknown UETRIGVOUITFIRE - Undefined
     Form UEETITDETINAR - Undefined
     Form UEETDETAILINAR - Undefined
     Form UEETITDETINDC - Undefined
@@ -76,14 +78,22 @@ Visual Class Library d:\multilevel\account master\uitools.vcx has the following 
     Form UEFRM_OPSTITEMALLOCATION - Undefined
     Form UEFRM_BOMDETAILSIP - Undefined
     Form UEFRM_BOMDETAILSOP - Undefined
+    Unknown UETRIGVOUITFIRE - Undefined
     Application UDAPPETVALID - Undefined
     Program UDTRIGETVALID - Undefined
     Program UETRIGETVALID - Undefined
 
-Form d:\multilevel\account master\frminterestperiods.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frminterestperiods.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\multilevel\account master\frmservicedetails.scx has the following errors:
+Form e:\...\updated project_08052020\account master\frmservicedetails.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
+
+Form e:\...\updated project_08052020\account master\frmpharmaretails.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form e:\...\updated project_08052020\account master\frmgstinsearch.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Visual Class Library SQLCONNECTION - Undefined
 

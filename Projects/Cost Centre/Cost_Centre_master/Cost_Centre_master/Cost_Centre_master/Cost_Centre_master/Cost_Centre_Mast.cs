@@ -33,10 +33,11 @@ namespace Cost_Centre_master
         String cAppPId, cAppName;
         Boolean vValid;
         bool isSaved = false; //Added by Priyanka B on 01/06/2017
-        
+
         DataView dvwMainm = new DataView();
-        private DataSet dsMain = new DataSet();
+        DataSet dsMain = new DataSet();
         Dictionary<string, string> validations;
+        DataTable tblAddInfo = new DataTable(); //Add by Rupesh G. on 26/07/2019 for bug no.32351
         private enum FormMode
         {
             New, Edit
@@ -77,10 +78,28 @@ namespace Cost_Centre_master
             this.panel1.Enabled = false;
             this.panel2.Visible = false;
             this.panel3.Visible = false;
-            this.Height = 235 ;
-            this._strSQL = "SELECT a.cost_cen_id,a.cost_cen_name,a.cost_cat_id,b.cost_cat_name,a.validintran,a.deactivated,a.costunder,b.descript,b.activat,a.deactdate FROM cost_cen_mast a join cost_cat_mast b on a.cost_cat_id=b.cost_cat_id";
-            dsMain = GetDataFromSelectedTable(this._strSQL,this._TableName, oDataAccess);
-            ControlBind(this._TableName );
+            this.Height = 235;
+
+            //this._strSQL = "SELECT a.cost_cen_id,a.cost_cen_name,a.cost_cat_id,b.cost_cat_name,a.validintran,a.deactivated,a.costunder,b.descript,b.activat,a.deactdate FROM cost_cen_mast a join cost_cat_mast b on a.cost_cat_id=b.cost_cat_id"; //Commented by Rupesh G. on 26/07/2019 for bug no.32351
+
+
+            //Add by Rupesh G. on 26/07/2019 for bug no.32351-Start
+            _strSQL = "SELECT a.cost_cen_id,a.cost_cen_name,a.cost_cat_id,b.cost_cat_name,a.validintran,a.deactivated,a.costunder,b.descript,b.activat,a.deactdate ";
+            string sqlStr = "Select fld_Nm From LOTHER where e_code='CZ'";
+            DataTable dtRec= oDataAccess.GetDataTable(sqlStr, null, 20);
+            if(dtRec.Rows.Count>0)
+            {
+                foreach(DataRow dr in dtRec.Rows)
+                {
+                    _strSQL = _strSQL + ",a." + dr[0];
+                }
+               
+            }
+            _strSQL = _strSQL + " FROM cost_cen_mast a join cost_cat_mast b on a.cost_cat_id=b.cost_cat_id";
+            //Add by Rupesh G. on 26/07/2019 for bug no.32351--END
+
+            dsMain = GetDataFromSelectedTable(this._strSQL, this._TableName, oDataAccess);
+            ControlBind(this._TableName);
             this.mInsertProcessIdRecord();
 
         }
@@ -92,15 +111,15 @@ namespace Cost_Centre_master
             HandleNavigationButtons(false, false, false, false);
             HandleButtons(false, false, true, true, false);
 
-            EnableDiableFormControls( true);
-            this.btnLocate.Enabled = false ;
+            EnableDiableFormControls(true);
+            this.btnLocate.Enabled = false;
 
             //Added by Priyanka B on 31/05/2017 Start
             //cmbGroup.SelectedIndex = 0;
             //CmbCostUnder.SelectedIndex = 0;
             //this.cmbGroup.DisplayMember = "cost_cat_name";
             //this.cmbGroup.ValueMember = "cost_cat_name";
-            
+
             //Added by Priyanka B on 31/05/2017 End
         }
         private void mthNew()
@@ -110,11 +129,12 @@ namespace Cost_Centre_master
             object objects = this;
             DataRow drCurrent;
             dsMain.Tables[0].DefaultView.Sort = "";
+           
             drCurrent = dsMain.Tables[0].NewRow();
             dsMain.Tables[0].Rows.Add(drCurrent);
             ControlBind(this._TableName);
             dsMain.Tables[0].AcceptChanges();
-            int i =this.BindingContext[dsMain.Tables[0]].Count-1;
+            int i = this.BindingContext[dsMain.Tables[0]].Count - 1;
             this.BindingContext[dsMain.Tables[0]].Position = i;
             this.txtValidTR.Text = "";
             this.txtDeactDate.Text = "";
@@ -122,6 +142,29 @@ namespace Cost_Centre_master
             this.chkDeactivate.Checked = false;
             dsMain.Tables[0].Rows[i].BeginEdit();
 
+            //Add by Rupesh G. on 26/07/2019 for bug no.32351-Start
+            foreach (DataColumn dc in dsMain.Tables[0].Columns)
+            {
+                string sqlStr = "Select fld_Nm From LOTHER where e_code='CZ'";
+                DataTable dtRec = oDataAccess.GetDataTable(sqlStr, null, 20);
+                DataRow[] dr = dtRec.Select("fld_Nm='"+ dc.ColumnName.ToString().Trim() + "'");
+                if(dr.Length>0)
+                {
+                   
+                    if (dc.DataType.ToString().Trim().ToUpper()== "SYSTEM.BOOLEAN")
+                    {
+                        dsMain.Tables[0].Rows[i][dc.ColumnName.ToString()] = false;                        
+                    }
+                    if (dc.DataType.ToString().Trim().ToUpper() == "SYSTEM.DATETIME")
+                    {
+                        dsMain.Tables[0].Rows[i][dc.ColumnName.ToString()] = DateTime.Now;
+                    }
+                   
+                }
+               
+            }
+            //Add by Rupesh G. on 26/07/2019 for bug no.32351-End
+           
         }
 
         public void ControlBind(string tableName)
@@ -142,15 +185,15 @@ namespace Cost_Centre_master
                 HandleNavigationButtons(false, false, true, true);
             else
                 if (dsMain.Tables[0].Rows.Count > 1)
-                    HandleNavigationButtons(true, true, true, true);
-                else
-                    HandleNavigationButtons(false, false, false, false);
+                HandleNavigationButtons(true, true, true, true);
+            else
+                HandleNavigationButtons(false, false, false, false);
             //Birendra : Bug-7896 on 24/12/2012 :end:
 
             this.txtCostName.DataBindings.Add("Text", dsMain.Tables[0], "cost_cen_name");
-            this.txtDeactDate.DataBindings.Add("Text", dsMain.Tables[0], "deactdate",true,DataSourceUpdateMode.OnPropertyChanged,null,"dd/MM/yyyy");
+            this.txtDeactDate.DataBindings.Add("Text", dsMain.Tables[0], "deactdate", true, DataSourceUpdateMode.OnPropertyChanged, null, "dd/MM/yyyy");
             this.txtValidTR.DataBindings.Add("Text", dsMain.Tables[0], "validintran", true, DataSourceUpdateMode.OnPropertyChanged, false);
-            this.chkDeactivate.DataBindings.Add("checked", dsMain.Tables[0], "deactivated",true,DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDeactivate.DataBindings.Add("checked", dsMain.Tables[0], "deactivated", true, DataSourceUpdateMode.OnPropertyChanged);
             strSQL = "select * from cost_cat_mast ";
             dsData = oDataAccess.GetDataSet(strSQL, null, 20);
             dsData.Tables[0].TableName = "TempData";
@@ -186,7 +229,7 @@ namespace Cost_Centre_master
                 this.CmbCostUnder.DataBindings.Add("SelectedValue", dsMain.Tables[0], "costunder");
             }
         }
-        public DataSet GetDataFromSelectedTable(string strSQL,string tableName, DataAccess_Net.clsDataAccess oDataAccess)
+        public DataSet GetDataFromSelectedTable(string strSQL, string tableName, DataAccess_Net.clsDataAccess oDataAccess)
         {
             DataSet dsData = new DataSet();
 
@@ -200,7 +243,7 @@ namespace Cost_Centre_master
             }
             catch (Exception ex)
             {
-//                throw ex;
+                //                throw ex;
                 errorhandle(ex.Message);
             }
             finally
@@ -211,7 +254,7 @@ namespace Cost_Centre_master
             }
             return dsData;
         }
-        
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (this.dsMain.Tables[0].Rows.Count <= 0)
@@ -227,7 +270,7 @@ namespace Cost_Centre_master
             HandleNavigationButtons(false, false, false, false);
             HandleButtons(false, false, true, true, false);
             EnableDiableFormControls(true);
-            this.btnLocate.Enabled = false ;
+            this.btnLocate.Enabled = false;
             this.btnCopy.Enabled = false;
 
 
@@ -250,7 +293,7 @@ namespace Cost_Centre_master
             this.cmbGroup.Text = zCostCatName;
             this.CmbCostUnder.Text = zCostUnder;
             //Birendra : Bug-7521 on 30/11/2012:Start:
-            i=dsMain.Tables[0].Rows.Count- 1;
+            i = dsMain.Tables[0].Rows.Count - 1;
             dsMain.Tables[0].Rows[i]["validintran"] = zValidin;
             dsMain.Tables[0].Rows[i]["cost_cat_name"] = zCostCatName;
             dsMain.Tables[0].Rows[i]["CostUnder"] = zCostUnder;
@@ -268,7 +311,7 @@ namespace Cost_Centre_master
             //Birendra : Bug-7368 on 26/11/2012 :Start:
             vValid = true;
             TextBox t1 = new TextBox();
-           // Boolean RecordValidation = true;
+            // Boolean RecordValidation = true;
             t1.Visible = true;
             this.Controls.Add(t1);
             object objects = this;
@@ -303,7 +346,7 @@ namespace Cost_Centre_master
             }
         }
 
-        public int SaveFormData(string tableName,DataAccess_Net.clsDataAccess oDataAccess)
+        public int SaveFormData(string tableName, DataAccess_Net.clsDataAccess oDataAccess)
         {
             int id = 0;
             DataSet dsData = new DataSet();
@@ -315,7 +358,7 @@ namespace Cost_Centre_master
             try
             {
 
-                strSQL = "SELECT * FROM cost_cat_mast"  +" Where cost_cat_name = "+"'"+this.cmbGroup.Text +"'";
+                strSQL = "SELECT * FROM cost_cat_mast" + " Where cost_cat_name = " + "'" + this.cmbGroup.Text + "'";
                 dsData = oDataAccess.GetDataSet(strSQL, null, 20);
                 dsData.Tables[0].TableName = "TmpData";
                 //int j = this.BindingContext[dsMain.Tables[0]].Position;
@@ -375,7 +418,7 @@ namespace Cost_Centre_master
             }
             catch (Exception ex)
             {
-//                throw ex;
+                //                throw ex;
                 errorhandle(ex.Message);
             }
             finally
@@ -384,13 +427,13 @@ namespace Cost_Centre_master
                 //colParams = null;
                 //oDataAccess = null;
             }
-            
+
             return id;
         }
         public string InsertStatment(string tablename, string exclfld)
         {
-            string strfld = "", strval = "",strSQL="",paramType="";
-            bool convertstr=false;
+            string strfld = "", strval = "", strSQL = "", paramType = "";
+            bool convertstr = false;
             DataSet dsData = new DataSet();
             strSQL = "SELECT * FROM cost_cen_mast" + " Where 1=2";
             dsData = oDataAccess.GetDataSet(strSQL, null, 20);
@@ -453,16 +496,25 @@ namespace Cost_Centre_master
                         }
                     }
                 }
+
+                //foreach (DataRow dr in tblAddInfo.Rows)
+                //{
+                //    strfld = strfld + ","+dr["Fld_Nm"].ToString().Trim();                                      
+                //    strval = strval+",'"+ dsMain.Tables[0].Rows[0][dr["Fld_Nm"].ToString().Trim()].ToString()+"'";
+                //}
+               
             }
             catch (Exception ex)
             {
-//                throw ex;
+                //                throw ex;
                 errorhandle(ex.Message);
             }
             finally
             {
             }
+
             strSQL = strSQL + strfld + ") Values (" + strval + ")";
+            strSQL = strSQL.Replace("'True'", "1").Replace("'False'", "0");
             return strSQL;
         }
 
@@ -473,7 +525,7 @@ namespace Cost_Centre_master
             DataSet dsData = new DataSet();
             strSQL = "SELECT * FROM cost_cen_mast" + " Where 1=2";
             dsData = oDataAccess.GetDataSet(strSQL, null, 20);
-//            dsData.Tables[0].TableName = "TmpData";
+            //            dsData.Tables[0].TableName = "TmpData";
 
             strSQL = "set dateformat dmy Update " + tablename + " set ";
             CurrencyManager cm = (CurrencyManager)this.BindingContext[dsMain.Tables[0]];
@@ -483,76 +535,76 @@ namespace Cost_Centre_master
             {
                 for (int i = 0; i < dsMain.Tables[0].Columns.Count; i++)
                 {
-                if (dsData.Tables[0].Columns.Contains(dsMain.Tables[0].Columns[i].ToString()))
-                 {
-                    paramType = "";
-                    convertstr = false;
-                    switch (dsMain.Tables[0].Columns[i].DataType.ToString())
+                    if (dsData.Tables[0].Columns.Contains(dsMain.Tables[0].Columns[i].ToString()))
                     {
-                        case "System.String":
-                            paramType = "'";
-                            break;
-                        case "System.Decimal":
-                            paramType = "";
-                            break;
-                        case "System.Boolean":
-                            paramType = "";
-                            convertstr = true;
-                            break;
-                        case "System.DateTime":
-                            paramType = "'";
-                            break;
-                        case "System.Int32":
-                            paramType = "";
-                            break;
-                        case "System.Byte[]":
-                            paramType = "";
-                            break;
-                    }
+                        paramType = "";
+                        convertstr = false;
+                        switch (dsMain.Tables[0].Columns[i].DataType.ToString())
+                        {
+                            case "System.String":
+                                paramType = "'";
+                                break;
+                            case "System.Decimal":
+                                paramType = "";
+                                break;
+                            case "System.Boolean":
+                                paramType = "";
+                                convertstr = true;
+                                break;
+                            case "System.DateTime":
+                                paramType = "'";
+                                break;
+                            case "System.Int32":
+                                paramType = "";
+                                break;
+                            case "System.Byte[]":
+                                paramType = "";
+                                break;
+                        }
 
-                    if ((dsMain.Tables[0].Rows[j][i].ToString() == "" || (dsMain.Tables[0].Rows[j][i].ToString() != "" || convertstr)) && !exclfld.Contains(dsMain.Tables[0].Columns[i].ColumnName.ToString()))
-//                    if (convertstr  && !exclfld.Contains(dsMain.Tables[0].Columns[i].ColumnName.ToString()))
-                    {
-                        strfld = dsMain.Tables[0].Columns[i].ToString();
-                        if (strval == "")
+                        if ((dsMain.Tables[0].Rows[j][i].ToString() == "" || (dsMain.Tables[0].Rows[j][i].ToString() != "" || convertstr)) && !exclfld.Contains(dsMain.Tables[0].Columns[i].ColumnName.ToString()))
+                        //                    if (convertstr  && !exclfld.Contains(dsMain.Tables[0].Columns[i].ColumnName.ToString()))
                         {
-                            if (convertstr)
-                                strval = strfld+" = "+ paramType +Convert.ToByte( dsMain.Tables[0].Rows[j][i]) + paramType;
+                            strfld = dsMain.Tables[0].Columns[i].ToString();
+                            if (strval == "")
+                            {
+                                if (convertstr)
+                                    strval = strfld + " = " + paramType + Convert.ToByte(dsMain.Tables[0].Rows[j][i]) + paramType;
+                                else
+                                    strval = strfld + " = " + paramType + dsMain.Tables[0].Rows[j][i].ToString() + paramType;
+                            }
                             else
-                                strval = strfld + " = " + paramType + dsMain.Tables[0].Rows[j][i].ToString() + paramType;
-                        }
-                        else
-                        {
-                            if (convertstr)
-                                strval = strval + "," + strfld + " = " + paramType + Convert.ToByte( dsMain.Tables[0].Rows[j][i]) + paramType;
-                            else
-                                strval = strval + "," + strfld + " = " + paramType + dsMain.Tables[0].Rows[j][i].ToString() + paramType;
+                            {
+                                if (convertstr)
+                                    strval = strval + "," + strfld + " = " + paramType + Convert.ToByte(dsMain.Tables[0].Rows[j][i]) + paramType;
+                                else
+                                    strval = strval + "," + strfld + " = " + paramType + dsMain.Tables[0].Rows[j][i].ToString() + paramType;
+                            }
                         }
                     }
-                  }
                 }
             }
             catch (Exception ex)
             {
-//                throw ex;
+                //                throw ex;
                 errorhandle(ex.Message);
             }
             finally
             {
             }
-            strSQL = strSQL+strval;
+            strSQL = strSQL + strval;
             return strSQL;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            EnableDiableFormControls( false);
+            EnableDiableFormControls(false);
             this.pAddMode = false;
             this.pEditMode = false;
             HandleButtons(true, true, false, false, true);
             this.btnLocate.Enabled = true;
             int i = this.BindingContext[dsMain.Tables[0]].Position;
-            dsMain = GetDataFromSelectedTable(this._strSQL ,this._TableName, oDataAccess);
+            dsMain = GetDataFromSelectedTable(this._strSQL, this._TableName, oDataAccess);
             ControlBind(this._TableName);
             if (this.BindingContext[dsMain.Tables[0]].Count > i)
                 this.BindingContext[dsMain.Tables[0]].Position = i;
@@ -560,9 +612,9 @@ namespace Cost_Centre_master
 
         }
 
-        private void EnableDiableFormControls( bool enabled)
+        private void EnableDiableFormControls(bool enabled)
         {
-            
+
             this.panel1.Enabled = enabled;
             if (enabled)
             {
@@ -627,8 +679,8 @@ namespace Cost_Centre_master
 
         private void btnForward_Click(object sender, EventArgs e)
         {
-             
-             int i = this.BindingContext[dsMain.Tables[0]].Position;
+
+            int i = this.BindingContext[dsMain.Tables[0]].Position;
             this.BindingContext[dsMain.Tables[0]].Position += 1;
             if (this.BindingContext[dsMain.Tables[0]].Position > i)
             {
@@ -801,7 +853,7 @@ namespace Cost_Centre_master
             {
                 string strSQL = "";
                 DataSet dsData = new DataSet();
-                strSQL = "SELECT top 1 cost_cen_name FROM CostAllocation_VW" + " Where cost_cen_name='"+this.txtCostName.Text+"'";
+                strSQL = "SELECT top 1 cost_cen_name FROM CostAllocation_VW" + " Where cost_cen_name='" + this.txtCostName.Text + "'";
                 dsData = oDataAccess.GetDataSet(strSQL, null, 20);
 
                 this.pAddMode = false;
@@ -813,12 +865,12 @@ namespace Cost_Centre_master
                 {
                     dsMain.Tables[0].DefaultView.Sort = "";
                     MessageBox.Show("There is one or more dependent entry !!!", this.pPApplText,
-                MessageBoxButtons.OK , MessageBoxIcon.Stop ) ;
+                MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
                 dsMain.Tables[0].DefaultView.Sort = "";
                 string vDelString = string.Empty;
-                vDelString = "Delete from " + _TableName + " Where Cost_Cen_Name='" + dsMain.Tables[0].Rows[j]["cost_Cen_name"]+"'";
+                vDelString = "Delete from " + _TableName + " Where Cost_Cen_Name='" + dsMain.Tables[0].Rows[j]["cost_Cen_name"] + "'";
                 oDataAccess.ExecuteSQLStatement(vDelString, null, 20, true);
                 // Added By Pankaj B. on 16-02-2015 for Bug-25197 Start
                 strSQL = "select cmastcode,dbexport from Tbl_DataExport_Mast where ctype='M' and cmastcode='cost_Cen_mast'";
@@ -845,17 +897,17 @@ namespace Cost_Centre_master
 
         private void MasterForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+
             mDeleteProcessIdRecord();
-        } 
-    
+        }
+
         private void btnLocate_Click(object sender, EventArgs e)
         {
-           //Birendra : Bug-7520 on 29/11/2012 :Start:
+            //Birendra : Bug-7520 on 29/11/2012 :Start:
             toolStrip1.Enabled = false;
             //Birendra : Bug-7520 on 29/11/2012 :End:
             DataSet dsData = new DataSet();
-            this.panel2.Top = this.label1.Top + 15; 
+            this.panel2.Top = this.label1.Top + 15;
             this.panel2.Visible = true;
             this.cmbval.ValueMember = "";
             this.cmbfield.DataBindings.Clear();
@@ -972,7 +1024,7 @@ namespace Cost_Centre_master
                 }
 
             }
-           //MessageBox.Show(e.KeyCode.ToString());
+            //MessageBox.Show(e.KeyCode.ToString());
         }
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -1012,13 +1064,13 @@ namespace Cost_Centre_master
         {
             DataSet dsData1 = new DataSet();
             this.cmbval.DataBindings.Clear();
-            string strSQL = "select distinct "+this.cmbfield.Text + " from  " + this._TableName ;
+            string strSQL = "select distinct " + this.cmbfield.Text + " from  " + this._TableName;
             dsData1 = oDataAccess.GetDataSet(strSQL, null, 20);
             dsData1.Tables[0].TableName = "TempData";
 
             this.cmbval.DataSource = dsData1.Tables[0];
-            this.cmbval.DisplayMember = this.cmbfield.Text ;
-            this.cmbval.ValueMember = this.cmbfield.Text ;
+            this.cmbval.DisplayMember = this.cmbfield.Text;
+            this.cmbval.ValueMember = this.cmbfield.Text;
         }
 
         private void Cost_Centre_Mast_KeyDown(object sender, KeyEventArgs e)
@@ -1028,22 +1080,22 @@ namespace Cost_Centre_master
 
         private void btnValidTR_Click(object sender, EventArgs e)
         {
-//Birendra : Bug-7520 on 29/11/2012 :Start:
+            //Birendra : Bug-7520 on 29/11/2012 :Start:
             toolStrip1.Enabled = false;
-//Birendra : Bug-7520 on 29/11/2012 :End:
+            //Birendra : Bug-7520 on 29/11/2012 :End:
 
             DataSet dsData = new DataSet();
-            this.lstValidTR.Items.Clear(); 
-            string strSQL = "select code_nm,entry_ty,bcode_nm  from lcode" ;
+            this.lstValidTR.Items.Clear();
+            string strSQL = "select code_nm,entry_ty,bcode_nm  from lcode";
             dsData = oDataAccess.GetDataSet(strSQL, null, 20);
             dsData.Tables[0].TableName = "TempData";
-            Boolean chkStat=false;
+            Boolean chkStat = false;
             int itemlen = 0;
-            float firstitemlen=0;
+            float firstitemlen = 0;
 
             foreach (DataRow dr in dsData.Tables[0].Rows)
             {
-                chkStat=false;
+                chkStat = false;
                 if (this.txtValidTR.Text != "")
                 {
                     if (this.txtValidTR.Text.IndexOf(dr["entry_ty"].ToString()) >= 0)
@@ -1051,13 +1103,13 @@ namespace Cost_Centre_master
                         chkStat = true;
                     }
                 }
-                this.lstValidTR.Items.Add(dr["code_nm"].ToString(),chkStat);
+                this.lstValidTR.Items.Add(dr["code_nm"].ToString(), chkStat);
                 if (itemlen < dr["code_nm"].ToString().Trim().Length)
                     itemlen = dr["code_nm"].ToString().Trim().Length;
             }
-            firstitemlen=this.lstValidTR.CreateGraphics().MeasureString("j", lstValidTR.Font).Width  ;
+            firstitemlen = this.lstValidTR.CreateGraphics().MeasureString("j", lstValidTR.Font).Width;
             this.lstValidTR.ColumnWidth = (int)itemlen * (int)firstitemlen;
-            this.panel3.Top = this.panel1.Top+3;
+            this.panel3.Top = this.panel1.Top + 3;
             this.panel3.Visible = true;
         }
 
@@ -1077,12 +1129,12 @@ namespace Cost_Centre_master
             dsData.Tables[0].TableName = "TempData";
             DataColumn[] dcPK = new DataColumn[1];
             dcPK[0] = dsData.Tables[0].Columns["code_nm"];
-            dsData.Tables[0].PrimaryKey = dcPK ;
-            string  strEntryTy = "";
+            dsData.Tables[0].PrimaryKey = dcPK;
+            string strEntryTy = "";
             foreach (object i in lstValidTR.CheckedItems)
             {
-              DataRow   dcrow = dsData.Tables[0].Rows.Find(i.ToString()) ;
-              strEntryTy = strEntryTy+dcrow["entry_ty"].ToString()+" ";
+                DataRow dcrow = dsData.Tables[0].Rows.Find(i.ToString());
+                strEntryTy = strEntryTy + dcrow["entry_ty"].ToString() + " ";
 
             }
             this.txtValidTR.Text = strEntryTy;
@@ -1094,7 +1146,7 @@ namespace Cost_Centre_master
 
         private void lstValidTR_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-           // this.lblValidTR.Text = lstValidTR.GetItemText( lstValidTR.SelectedItem).ToString();
+            // this.lblValidTR.Text = lstValidTR.GetItemText( lstValidTR.SelectedItem).ToString();
         }
 
         private void lstValidTR_SelectedIndexChanged(object sender, EventArgs e)
@@ -1176,7 +1228,7 @@ namespace Cost_Centre_master
 
         private void cmbGroup_Enter(object sender, EventArgs e)
         {
-//            this.cmbGroup.DroppedDown = true; 
+            //            this.cmbGroup.DroppedDown = true; 
         }
 
         private void cmbGroup_Leave(object sender, EventArgs e)
@@ -1184,7 +1236,7 @@ namespace Cost_Centre_master
             //if (this.cmbGroup.Text.Length == 0)
             //if (this.cmbGroup.Text.Trim().Length == 0) //Birendra : Bug-8356 on 17/01/2013  //Commented by Priyanka B on 01/06/2017
             if (this.cmbGroup.Text.Trim().Length == 0 && this.txtCostName.Text.Trim() != "")   //Added by Priyanka B on 01/06/2017
-                {
+            {
                 this.errorProvider1.SetError(this.cmbGroup, "Cost Category Can Not Be Empty!!!");
                 this.cmbGroup.Focus();
                 return;
@@ -1212,13 +1264,13 @@ namespace Cost_Centre_master
             }
         }
         #region Validation handle
-            private Boolean CheckValidation()
-            {
-                Boolean zret = false;
-                zret = this.txtCostName_valid();
+        private Boolean CheckValidation()
+        {
+            Boolean zret = false;
+            zret = this.txtCostName_valid();
 
-                return zret;
-            }
+            return zret;
+        }
         #endregion
 
         #region Error handle
@@ -1258,8 +1310,8 @@ namespace Cost_Centre_master
 
         private void dateTimePicker1_CloseUp(object sender, EventArgs e)
         {
-//            this.txtDeactDate.Text = this.dateTimePicker1.Value.Day.ToString() + "/" + this.dateTimePicker1.Value.Month.ToString() + "/" + this.dateTimePicker1.Value.Year.ToString();
-              this.txtDeactDate.Text = this.dateTimePicker1.Value.ToShortDateString() ;
+            //            this.txtDeactDate.Text = this.dateTimePicker1.Value.Day.ToString() + "/" + this.dateTimePicker1.Value.Month.ToString() + "/" + this.dateTimePicker1.Value.Year.ToString();
+            this.txtDeactDate.Text = this.dateTimePicker1.Value.ToShortDateString();
         }
 
         private void Cost_Centre_Mast_FormClosing(object sender, FormClosingEventArgs e)
@@ -1278,6 +1330,41 @@ namespace Cost_Centre_master
             cAppPId = Convert.ToString(Process.GetCurrentProcess().Id);
             sqlstr = "Set DateFormat dmy insert into vudyog..ExtApplLog (pApplCode,CallDate,pApplNm,pApplId,pApplDesc,cApplNm,cApplId,cApplDesc) Values('" + this.pPApplCode + "','" + DateTime.Now.Date.ToString() + "','" + this.pPApplName + "'," + this.pPApplPID + ",'" + this.pPApplText + "','" + cAppName + "'," + cAppPId + ",'" + this.Text.Trim() + "')";
             oDataAccess.ExecuteSQLStatement(sqlstr, null, 20, true);
+        }
+
+        private void BtnAddInfo_Click(object sender, EventArgs e)
+        {
+            if (tblAddInfo.Rows.Count == 0)
+            {
+                string SqlStr;
+                SqlStr = "Select Head_Nm,Fld_Nm,Data_Ty,Fld_Wid=cast(Fld_Wid as int),fld_Dec=cast(fld_Dec as int),FiltCond From Lother Where e_Code='CZ' Order By Serial";
+                tblAddInfo = new DataTable();
+                tblAddInfo = oDataAccess.GetDataTable(SqlStr, null, 20);
+            }
+            if (dsMain.Tables[0].Rows.Count == 0)
+            {
+               
+                DataRow dr = dsMain.Tables[0].NewRow();
+                dsMain.Tables[0].Rows.Add(dr);
+            }
+
+            CurrencyManager cm = (CurrencyManager)this.BindingContext[dsMain.Tables[0]];
+            DataRow findRow = ((DataRowView)cm.Current).Row;
+            int j = dsMain.Tables[0].Rows.IndexOf(findRow);
+
+            //frmAddInfo oFrmAddInfo = new frmAddInfo();
+            //oFrmAddInfo.pTblAddInfo = tblAddInfo;
+            //oFrmAddInfo.pTblMain = dtMachineDet;
+            //oFrmAddInfo.pParentForm = this;
+
+            udAddInfo.frmAddInfo oFrmAddInfo = new udAddInfo.frmAddInfo();
+            oFrmAddInfo.rowId = j;
+            oFrmAddInfo.pTblAddInfo = tblAddInfo;
+            oFrmAddInfo.pTblMain = dsMain.Tables["forminfo"];
+            oFrmAddInfo.pParentForm = this;
+            oFrmAddInfo.pTblMainNm = "cost_cen_mast";
+            oFrmAddInfo.ShowDialog();
+         //   MessageBox.Show(dsMain.Tables[0].Rows[0]["U_AA"].ToString());
         }
 
         private void mDeleteProcessIdRecord()
@@ -1302,6 +1389,6 @@ namespace Cost_Centre_master
 
         }
 
-        
+
     }
 }

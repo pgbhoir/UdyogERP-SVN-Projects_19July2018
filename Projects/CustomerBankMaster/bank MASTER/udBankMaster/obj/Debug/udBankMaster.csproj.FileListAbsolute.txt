@@ -1,0 +1,16 @@
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\udBankMaster.exe.config
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\udBankMaster.exe
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\udBankMaster.pdb
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\DataAccess-Net.dll
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\uBaseForm.dll
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\udSelectPop.dll
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.Form1.resources
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.Properties.Resources.resources
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.csproj.GenerateResource.Cache
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.exe
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.pdb
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.InterestRateDetails.resources
+D:\RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.csprojResolveAssemblyReference.cache
+D:\01 RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\bin\Debug\udBankMaster.exe.config
+D:\01 RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.exe
+D:\01 RRG\02 Project Work\05 Bank Master\udBankMaster\udBankMaster\obj\Debug\udBankMaster.pdb

@@ -19,7 +19,7 @@ namespace Cost_Centre_master
                 //return 0;
                 //args = new string[] { "1", "Test", "Udyog12\\SQLEXPRESS", "sa", "sa1985", "12005", "tst", "ADMIN" };
                 //args = new string[] { "9", "D011415", "PRO_PANKAJ\\PRO", "sa", "sa1985", "13032", "DEG", "ADMIN", @"D:\VudyogPRO\Bmp\Icon_VudyogPRO.ico", "Usquare pack", "VudyogPRO.exe", "1", "udpid6096DTM20110307112715" };/*Rup Add ICO Path,Parent Appl Caption,Parent Appl. Name,Parent Appl PId,Application Log Table*/
-                //args = new string[] { "6", "P011718", "AIPLDTM010\\SQLEXPRESS", "sa", "sa1985", "13032", "DEG", "ADMIN", @"\\AIPLDTM010\VudyogGST\Bmp\Icon_VudyogGST.ico", "VudyogGST", "VudyogGST.exe", "1", "udpid6096DTM20110307112715" };/*Rup Add ICO Path,Parent Appl Caption,Parent Appl. Name,Parent Appl PId,Application Log Table*/
+                args = new string[] { "1", "U011920", "AIPLDTM024\\SQLExpress", "sa", "sa1985", "13032", "DEG", "ADMIN", @"\\AIPLDTM010\VudyogGST\Bmp\Icon_VudyogGST.ico", "VudyogGST", "VudyogGST.exe", "1", "udpid6096DTM20110307112715" };/*Rup Add ICO Path,Parent Appl Caption,Parent Appl. Name,Parent Appl PId,Application Log Table*/
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -1,22 +1,22 @@
-lparameters pRange
+Lparameters pRange
 ****Versioning****  Added By Amrendra On 01/06/2011
-	LOCAL _VerValidErr,_VerRetVal,_CurrVerVal
-	_VerValidErr = ""
-	_VerRetVal  = 'NO'
+Local _VerValidErr,_VerRetVal,_CurrVerVal
+_VerValidErr = ""
+_VerRetVal  = 'NO'
 _CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
-	TRY
-		_VerRetVal = AppVerChk('CONTROL',_CurrVerVal,JUSTFNAME(SYS(16)))
-	CATCH TO _VerValidErr
-		_VerRetVal  = 'NO'
-	Endtry	
-	IF TYPE("_VerRetVal")="L"
-		cMsgStr="Version Error occured!"
-		cMsgStr=cMsgStr+CHR(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
-		Messagebox(cMsgStr,64,VuMess)
-		Return .F.
-	ENDIF
-	IF _VerRetVal  = 'NO'
-		Return .F.
-	Endif
+Try
+	_VerRetVal = AppVerChk('CONTROL',_CurrVerVal,Justfname(Sys(16)))
+Catch To _VerValidErr
+	_VerRetVal  = 'NO'
+Endtry
+If Type("_VerRetVal")="L"
+	cMsgStr="Version Error occured!"
+	cMsgStr=cMsgStr+Chr(13)+"Kindly update latest version of "+GlobalObj.getPropertyval("ProductTitle")
+	Messagebox(cMsgStr,64,VuMess)
+	Return .F.
+Endif
+If _VerRetVal  = 'NO'
+	Return .F.
+Endif
 ****Versioning****
-do form control with pRange
+Do Form Control With pRange

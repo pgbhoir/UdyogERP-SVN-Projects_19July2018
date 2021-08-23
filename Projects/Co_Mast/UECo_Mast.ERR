@@ -1,62 +1,73 @@
-Form d:\1 development\co_mast\working folder for bug-31401\co_mast.scx has the following errors:
-    Unknown BARSTAT - Undefined
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\co_mast.scx has the following errors:
     Unknown NEWDECRY - Undefined
-    Proc./Func. READINFFILE - Undefined
+    Unknown BARSTAT - Undefined
     Unknown NEWENCRY - Undefined
+    Proc./Func. READINFFILE - Undefined
     Unknown MVAR - Undefined
     Unknown DECODER - Undefined
     Unknown UEGETPOP - Undefined
     Unknown LAFIELDS - Undefined
+    Unknown GETPRIVSTR - Undefined
+    Proc./Func. EXITUPDT - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\sel_prod.scx has the following errors:
-    Unknown BARSTAT - Undefined
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\sel_prod.scx has the following errors:
     Unknown NEWDECRY - Undefined
+    Unknown BARSTAT - Undefined
     Unknown GETPRIVSTR - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\manufact.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\manufact.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Program d:\1 development\co_mast\working folder for bug-31401\co_mast.prg has the following errors:
+Program d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\co_mast.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\eoudetails.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\eoudetails.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmextrading.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\frmextrading.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Visual Class Library d:\1 development\co_mast\working folder for bug-31401\_base.vcx has the following errors:
+Visual Class Library d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmsrvdetail.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\frmsrvdetail.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmselvatstates.scx has the following errors:
+Form d:\...\co_mast\working folder for bug-34236 au 2.2.6\frmselvatstates.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmtdsdetail.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\frmtdsdetail.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\sel_prod_new.scx has the following errors:
-    Unknown BARSTAT - Undefined
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\sel_prod_new.scx has the following errors:
     Unknown NEWDECRY - Undefined
+    Unknown BARSTAT - Undefined
+    Unknown NEWENCRY - Undefined
+    Proc./Func. READINFFILE - Undefined
     Unknown GETPRIVSTR - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmvatdetail.scx has the following errors:
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\frmvatdetail.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmothdetails.scx has the following errors:
+Form d:\...\co_mast\working folder for bug-34236 au 2.2.6\frmothdetails.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\sel_industry.scx has the following errors:
-    Unknown BARSTAT - Undefined
+Form d:\1 development\co_mast\working folder for bug-34236 au 2.2.6\sel_industry.scx has the following errors:
     Unknown NEWDECRY - Undefined
+    Unknown BARSTAT - Undefined
 
-Form d:\1 development\co_mast\working folder for bug-31401\frmgstdetails.scx has the following errors:
+Form d:\...\co_mast\working folder for bug-34236 au 2.2.6\frmgstdetails.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
+
+Form d:\...\co_mast\working folder for bug-34236 au 2.2.6\frmpharmaretails.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form d:\...\co_mast\working folder for bug-34236 au 2.2.6\sel_industry2.scx has the following errors:
+    Unknown NEWDECRY - Undefined
+    Unknown BARSTAT - Undefined
 

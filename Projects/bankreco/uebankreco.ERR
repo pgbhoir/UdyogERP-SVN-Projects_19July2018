@@ -1,19 +1,22 @@
-Form d:\svngst\bankreco\bankreco.scx has the following errors:
+Form e:\1 development\bankreco\working folder for bug-34460 au 2.2.6\bankreco.scx has the following errors:
     Unknown BARSTAT - Undefined
     Proc./Func. UECRVIEWER - Undefined
     Proc./Func. UEMAILING - Undefined
     Proc./Func. TOUEVOUCHER - Undefined
     Unknown UEGETPOP - Undefined
+    File LOC.BMP - Undefined
+    File NEW.GIF - Undefined
 
-Program d:\svngst\bankreco\main.prg has the following errors:
+Program e:\1 development\bankreco\working folder for bug-34460 au 2.2.6\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Visual Class Library d:\svngst\bankreco\grdclass.vcx has the following errors:
+Visual Class Library e:\1 development\bankreco\working folder for bug-34460 au 2.2.6\grdclass.vcx has the following errors:
     Unknown UEGETPOP - Undefined
+    File LOC.BMP - Undefined
 
-Visual Class Library d:\svngst\bankreco\_base.vcx has the following errors:
+Visual Class Library e:\1 development\bankreco\working folder for bug-34460 au 2.2.6\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Form d:\svngst\bankreco\on_clause.scx has the following errors:
+Form e:\1 development\bankreco\working folder for bug-34460 au 2.2.6\on_clause.scx has the following errors:
     File H_NODROP.CUR - Undefined
 

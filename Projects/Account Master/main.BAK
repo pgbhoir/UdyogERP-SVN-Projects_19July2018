@@ -1,5 +1,5 @@
 PARA cAcGroup,mType,pRange
-
+SET STEP ON 
 IF ! "\datepicker." $ LOWER(SET("Classlib"))
 	SET CLASSLIB TO apath+"class\datepicker.vcx" ADDITIVE
 ENDIF
@@ -38,25 +38,18 @@ mGroup=ALLTRIM(cAcGroup)
 
 && Added by Shrikant S. on 26/04/2017 for GST		Start
 lcFilter=""
-MESSAGEBOX("a1")
 If ("#pid=" $ mType)
-	MESSAGEBOX("a2")
 	lcval=Strextract(mType,"#pid=","#")
 	If Len(lcval) >0
-		MESSAGEBOX("a3")
 		mType=Strtran(mType,"#pid="+lcval+"#","")
 	Endif
 ENDIF
-MESSAGEBOX("a4")
-MESSAGEBOX(mType)
-MESSAGEBOX(lcval)
 && Added by Shrikant S. on 26/04/2017 for GST		End
 
 IF EMPTY(mGroup)
 	If Type('lcval')='C'
 		lcFilter="Ac_id="+Transform(lcval)		&& Added by Shrikant S. on 26/04/2017 for GST
 	ENDIF
-	MESSAGEBOX(lcFilter)
 	DO FORM acmast WITH cAcGroup,mType,pRange,lcFilter		&& Changed by Shrikant S. on 26/04/2017 for GST
 ENDIF
 IF UPPER(mGroup)="GROUP"
