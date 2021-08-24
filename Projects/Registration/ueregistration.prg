@@ -3,6 +3,7 @@ Para lAboutUs,cRights
 &&vasant16/11/2010	Changes done for VU 10 (Standard/Professional/Enterprise)
 *!*	NOTE : All product starting with VU has been changed to UV	&&04/05/10
 
+
 r_coof = 0
 r_noof = 0
 xvalue		=   ''
@@ -55,13 +56,17 @@ If File(vufile)
 	Endif
 	_regform = .T.
 Endif
+
 ueReadRegMe = Createobject("ueReadRegisterMe")
 If Type('ueReadRegMe') != 'O'
 	=Messagebox("Registration details not found.",0+16,vuMess)
 	Return .F.
 Endif
 
+ueReadRegMe.ProdCheck=Dec(GlobalObj.getPropertyval("MainProduct(1,3)"))				&& Added by Shrikant S. on 10/04/2019 for registration
+
 _UnqVal = GlobalObj.getPropertyval('UnqVal')
+
 _UnqVal = Substr(Dec(_UnqVal),2,8)
 ueReadRegMe._ueReadRegisterMe(apath,_UnqVal)
 
@@ -75,18 +80,20 @@ unreg_msg		=	Icase(Empty(ueReadRegMe.r_srvtype),'Un-registered',;
 	Upper(Alltrim(ueReadRegMe.r_srvtype))='DEVELOPER',Alltrim(ueReadRegMe.r_svcname)+' Developer Version',;
 	Upper(Alltrim(ueReadRegMe.r_srvtype))='VIEWER VERSION','',;  &&Added by Archana K. on 20/03/13 for Bug-7899
 'Un-registered')
+
 xvalue = ueReadRegMe.xvalue
 r_coof = ueReadRegMe.r_coof
 r_noof = ueReadRegMe.r_noof
+
 
 && Added By Amrendra for TKT 8121 on 13-06-2011 Start
 ****Versioning****
 Local _VerValidErr,_VerRetVal,_CurrVerVal
 _VerValidErr = ""
 _VerRetVal  = 'NO'
-_CurrVerVal='10.0.0.0' && [VERSIONNUMBER]
+_CurrVerVal='2.0.0.0' && [VERSIONNUMBER]
 Try
-	_VerRetVal = AppVerChk('SOFTWARE',_CurrVerVal,Justfname(Sys(16)))
+	_VerRetVal = AppVerChk('REGISTRATION',_CurrVerVal,Justfname(Sys(16)))
 Catch To _VerValidErr
 	_VerRetVal  = 'NO'
 Endtry
@@ -176,7 +183,7 @@ If !Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERS
 
 	r_coof = 9999
 	***** Added by Sachin N. S. on 11/05/2017 for GST -- Start
-	If mudProdCode == 'VudyogGSSDK'
+	If Inlist(mudProdCode,'VudyogGSSDK','uERPSdk')		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
 		r_noof = 2
 	Else
 		***** Added by Sachin N. S. on 11/05/2017 for GST -- End
@@ -186,15 +193,29 @@ Else
 
 	********** Added By Sachin N. S. on 17/02/2012 for Bug-2289 ********** Start
 	*!*		If Inlist(mudProdCode,'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax')
-	If Inlist(mudProdCode,'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VudyogGST')		&& Changed by Sachin N. S. on 09/11/2016 for GST
+	*!*		If Inlist(mudProdCode,'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VudyogGST')		&& Changed by Sachin N. S. on 09/11/2016 for GST
+	*!*		If Inlist(mudProdCode,'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VudyogGST','uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')		&& Changed by Sachin N. S. on 06/08/2018 for Bug-31756		&& Commented by Shrikant S. on 27/04/2019 for Registration
+	If Inlist(mudProdCode,'VudyogSTD','VudyogPRO','VudyogENT','10USquare','10iTax','VudyogGST','uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt')		&& Added by Shrikant S. on 27/04/2019 for Registration
 		vuFile1 = vufile
 		cProd=""
 		cInfFile = Sys(2000,apath+"*info.inf")
 		If !Empty(cInfFile)
 			Do readinffile
 			If Used('custinfo_vw')
+				***** Added by Sachin N. S. on 11/02/2020 for Bug-33284 -- Start
 				Select custinfo_vw
-				Scan
+				Go Top
+				Locate For Alltrim(custinfo_vw.MainProdCd) == Alltrim(Dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993')))
+				If Found()
+					cFiltCond="Alltrim(custinfo_vw.MainProdCd) == Alltrim(Dec(NewDecry(GlobalObj.getPropertyVal('UdProdCode'),'Ud*yog+1993')))"
+				Else
+					cFiltCond="empty(Alltrim(custinfo_vw.MainProdCd))"
+				Endif
+				***** Added by Sachin N. S. on 11/02/2020 for Bug-33284 -- End
+
+				Select custinfo_vw
+				*!*					SCAN
+				Scan For &cFiltCond			&& Added by Sachin N. S. on 11/02/2020 for Bug-33284
 					Select custinfo_vw
 					cProd = cProd + Iif(!Empty(cProd),',','') + Alltrim(custinfo_vw.prodcd)
 					Select custinfo_vw
@@ -270,7 +291,13 @@ If !Empty(xvalue)
 Endif
 
 *!*	If ((mudProdCode = 'iTax' And ('US ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1 )) Or (mudProdCode = 'USquare' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1)) Or (Inlist(mudProdCode,'VudyogMFG','VudyogTRD') And ('IT ' $ xvalue1 Or 'US ' $ xvalue1 Or 'VS ' $ xvalue1)) Or (mudProdCode = 'VudyogServiceTax' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'US ' $ xvalue1)) Or !(Upper(Left(ueReadRegMe.xvalue,Len(cPrdVrsn))) == Upper(cPrdVrsn))) And Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL') && Commented by Archana K. on 20/2/13 for Bug-7899
-If ((mudProdCode = 'iTax' And ('US ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1 )) Or (mudProdCode = 'USquare' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1)) Or (Inlist(mudProdCode,'VudyogMFG','VudyogTRD') And ('IT ' $ xvalue1 Or 'US ' $ xvalue1 Or 'VS ' $ xvalue1)) Or (mudProdCode = 'VudyogServiceTax' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'US ' $ xvalue1)) Or !(Upper(Left(ueReadRegMe.xvalue,Len(cPrdVrsn))) == Upper(cPrdVrsn))) And Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION')&& Changed by Archana K. on 20/2/13 for Bug-7899
+If ((mudProdCode = 'iTax' And ('US ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1 )) Or ;
+		(mudProdCode = 'USquare' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1)) Or ;
+		(Inlist(mudProdCode,'VudyogMFG','VudyogTRD') And ('IT ' $ xvalue1 Or 'US ' $ xvalue1 Or 'VS ' $ xvalue1)) Or ;
+		(mudProdCode = 'VudyogServiceTax' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'US ' $ xvalue1)) Or ;
+		!(Upper(Left(ueReadRegMe.xvalue,Len(cPrdVrsn))) == Upper(cPrdVrsn))) And Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION','SUPPORT VERSION','MARKETING VERSION','DEVELOPER VERSION','EDUCATIONAL VERSION')	&& Added by Shrikant S. on 13/04/2019 for Registration
+	*!*			!(Upper(Left(ueReadRegMe.xvalue,Len(cPrdVrsn))) == Upper(cPrdVrsn))) And Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'PREMIUM','NORMAL','VIEWER VERSION') && Changed by Archana K. on 20/2/13 for Bug-7899		&& Commented by Shrikant S. on 13/04/2019 for Registration
+
 	vumessr = Iif((mudProdCode = 'iTax' And ('US ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1)),'iTax',Iif((mudProdCode = 'USquare' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'VS ' $ xvalue1)),'USquare',Iif((mudProdCode = 'VudyogServiceTax' And ('IT ' $ xvalue1 Or 'UV ' $ xvalue1 Or 'US ' $ xvalue1)),'VudyogServiceTax',mudProdCode)))
 	Do Unreg_data
 	If _regform = .T.
@@ -284,7 +311,9 @@ Else
 	&&Changes has been done as per TKT-9721 by Vasant on 30/09/2011
 	If _regform = .T.
 		*!*			If !Upper(Alltrim(ueReadRegMe.r_srvtype))='DEVELOPER' And Inlist(mudProdCode,'VudyogSDK')
-		If !Upper(Alltrim(ueReadRegMe.r_srvtype))='DEVELOPER' And Inlist(mudProdCode,'VudyogSDK','VudyogGSSDK')		&& Changed by Sachin N. S. on 11/05/2017 for GST
+		*!*			If !Upper(Alltrim(ueReadRegMe.r_srvtype))='DEVELOPER' And Inlist(mudProdCode,'VudyogSDK','VudyogGSSDK')		&& Changed by Sachin N. S. on 11/05/2017 for GST
+		*!*			If !Upper(Alltrim(ueReadRegMe.r_srvtype)) = 'DEVELOPER' And Inlist(mudProdCode,'VudyogSDK','VudyogGSSDK','uERPSdk')		&& Changed by Sachin N. S. on 06/08/2018 for Bug-31756
+		If ! ('DEVELOPER' $ Upper(Alltrim(ueReadRegMe.r_srvtype))) And Inlist(mudProdCode,'VudyogSDK','VudyogGSSDK','uERPSdk')		&& Changed by Sachin N. S. on 06/08/2018 for Bug-31756 && Added by Shrikant S. on 25/07/2019 for old Registration Process
 			=Messagebox("For this Product, Only Developer Version Registration is allowed",32,vuMess)
 			ExitClick = .T.
 			Return .F.
@@ -292,11 +321,78 @@ Else
 	Endif
 	&&Changes has been done as per TKT-9721 by Vasant on 30/09/2011
 
+	&& Added by Shrikant S. on 13/04/2019 for Registration		&& Start
+	If File(vufile) And reg_value = 'DONE' And Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'SUPPORT VERSION','MARKETING VERSION','DEVELOPER VERSION','EDUCATIONAL VERSION')	&& Added by Shrikant S. on 13/04/2019 for Registration
+		&& Added by Shrikant S. on 25/04/2019 for Registration		&& Start
+		_ProdCode=Cast(GlobalObj.getPropertyval("udProdCode") As Varbinary(250))
+		nHandle=0
+		mSqlStr = " select co_name,MailName from vudyog..co_mast Where com_type<>'M' and Prodcode=?_ProdCode"
+		nretval = sqlconobj.dataconn("EXE","vUdyog",mSqlStr,"_comList","nHandle")
+		If nretval >0
+			_lnCnt=0		&& Added by Sachin N. S. on 13/02/2021 for Bug-34236
+			_lnCnt1=0		&& Added by Sachin N. S. on 13/02/2021 for Bug-34236
+			Select _comList
+			Scan
+				If !(Left(Upper(Alltrim(_comList.co_name)),22)=='UDYOG SOFTWARE TESTING')
+					*!*					If !(Left(Upper(Alltrim(_comList.co_name)),22)=='UDYOG SOFTWARE TESTING') And !Inlist(Upper(Alltrim(ueReadRegMe.r_srvtype)),'MARKETING VERSION')	&& Changed by Sachin N. S. on 01/06/2020 for Bug-33527		&& Commented by Sachin N. S. on 06/02/2021 for Bug-34236
+					_lnCnt=_lnCnt+1			&& Added by Sachin N. S. on 13/02/2021 for Bug-34236
+					&& Commented by Sachin N. S. on 13/02/2021 for Bug-34236 -- Start
+					*!*						Messagebox("Company Name should start with 'Udyog Software Testing' in company master."+Chr(13)+"Could not be logged in.",64,vuMess)
+					*!*						ExitClick = .T.
+					*!*						Return .F.
+					&& Commented by Sachin N. S. on 13/02/2021 for Bug-34236 -- End
+				Endif
+				***** Added by Sachin N. S. on 01/06/2020 for Bug-33527 -- Start
+				If !(Left(Upper(Alltrim(_comList.co_name)),22)=='UDYOG SOFTWARE TESTING')
+					_lnCnt1=_lnCnt1+1			&& Added by Sachin N. S. on 13/02/2021 for Bug-34236
+				Endif
+				***** Added by Sachin N. S. on 01/06/2020 for Bug-33527 -- End
+
+				*!*				If !Empty(_comList.MailName)
+				*!*					If !('UDYOG SOFTWARE TESTING' $ Upper(Alltrim(_comList.MailName)))
+				*!*						Messagebox("Mailing Name should start with 'Udyog Software Testing' in company master.",64,vuMess)
+				*!*						ExitClick = .T.
+				*!*						Return .F.
+				*!*					Endif
+				*!*				Endif
+			ENDSCAN
+			&& Added by Sachin N. S. on 13/02/2021 for Bug-34236 -- Start
+			If _lnCnt>0
+				Messagebox("All Company Name should start with 'Udyog Software Testing' in company master."+Chr(13)+"Could not be logged in.",64,vuMess)
+				ExitClick = .T.
+				Return .F.
+			ENDIF
+			If _lnCnt1>0
+				Messagebox("All Company MailName should start with 'Udyog Software Testing' in company master."+Chr(13)+"Could not be logged in.",64,vuMess)
+				ExitClick = .T.
+				Return .F.
+			ENDIF
+
+			&& Added by Sachin N. S. on 13/02/2021 for Bug-34236 -- End
+		Endif
+		&& Added by Shrikant S. on 25/04/2019 for Registration		&& End
+
+		If Type('ueReadRegMe.LogMachineId')<>'U'
+			If Alltrim(ueReadRegMe.LogMachineId) != Alltrim(ueReadRegMe.r_MACId) Or Alltrim(ueReadRegMe.LogMachineNm) != Alltrim(ueReadRegMe.r_Apsrvname)
+				=Messagebox("Improper Register.me or running from a non-application Server/Computer.",0+16,vuMess)
+				ExitClick = .T.
+				Return .F.
+			Endif
+		Else
+			If Getwordnum(Sys(0),1)!=Alltrim(ueReadRegMe.r_Apsrvname)
+				=Messagebox("Improper Register.me or running from a non-application Server/Computer.",0+16,vuMess)
+				ExitClick = .T.
+				Return .F.
+			Endif
+		Endif
+	Endif
+	&& Added by Shrikant S. on 13/04/2019 for Registration		&& End
+
 	*********** Company Check ************* Start
 	nHandle = 0
 	mSqlStr = " If Not Exists(select [Name] from vudyog..sysobjects where xtype = 'U' and [name] = 'register') "+;
 		" Begin "+;
-		" create table vudyog..Register ( appsrvno numeric(4), userno numeric(4), dbsrvnm varChar(20), dbsrvid varChar(20), "+;
+		" create table vudyog..Register( appsrvno numeric(4), userno numeric(4), dbsrvnm varChar(20), dbsrvid varChar(20), "+;
 		"      appsrvnm varChar(20), appsrvid varChar(20), regd varChar(15), Status varChar(10), UProduct Varchar(25), MacRegId Varchar(25)) "+;
 		" End "
 	nretval = sqlconobj.dataconn("EXE","vUdyog",mSqlStr,"_sysobjects","nHandle")
@@ -331,7 +427,14 @@ If File(vufile) And reg_value # 'DONE'
 	If nretval<0
 		Return .F.
 	Endif
-	dCurDate = enc(Alltrim(Dtoc(Ttod(_CurSysDate.CurSysDate))))
+	***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- Start
+	If Inlist(mudProdCode,'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+		_cCur_Date = Dtoc(Ttod(_CurSysDate.CurSysDate))+"<>"+Dtoc(Ttod(_CurSysDate.CurSysDate))
+		dCurDate = NewEncry(enc(Alltrim(_cCur_Date)),'Ud*yog+1993')
+	Else
+		***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- End
+		dCurDate = enc(Alltrim(Dtoc(Ttod(_CurSysDate.CurSysDate))))
+	Endif
 
 	****** Changed by Sachin N. S. on 06/12/2016 for GST Vudyog Database Working -- Start
 	*!*		mSqlStr = "	update vudyog..co_mast set coFormdt=ISNULL(coFormdt,'') "+;
@@ -360,9 +463,15 @@ If File(vufile) And reg_value # 'DONE'
 		Return .F.
 	Endif
 	If !Empty(_coFormDt.coFormDt)		&& Added by Sachin N. S. on 20/06/2017 for GST
-		r_instdate1 = Iif(Type("_coFormDt.coFormDt")="T",Dtoc(Ttod(_coFormDt.coFormDt)),Dec(Alltrim(_coFormDt.coFormDt)))
+		r_instdate1 = Iif(Type("_coFormDt.coFormDt")="T",Dtoc(Ttod(_coFormDt.coFormDt)),Iif(Inlist(mudProdCode,'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk'),Dec(NewDecry(Alltrim(_coFormDt.coFormDt),'Ud*yogERP+1993')),Dec(Alltrim(_coFormDt.coFormDt))))
 	Else		&& Added by Sachin N. S. on 20/06/2017 for GST -- Start
-		r_instdate1 = Dec(Alltrim(dCurDate))
+		***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- Start
+		If Inlist(mudProdCode,'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+			r_instdate1 = Dec(NewDecry(Alltrim(dCurDate),'Ud*yogERP+1993'))
+		Else
+			***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- End
+			r_instdate1 = Dec(Alltrim(dCurDate))
+		Endif
 	Endif		&& Added by Sachin N. S. on 20/06/2017 for GST -- End
 	Do Unreg_data
 Else
@@ -382,7 +491,13 @@ Else
 	If nretval<0
 		Return .F.
 	Endif
-	dCurDate = enc(Alltrim(Dtoc(Ttod(_CurSysDate.CurSysDate))))
+	***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- Start
+	If Inlist(mudProdCode,'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')
+		dCurDate = NewEncry(enc(Alltrim(Dtoc(Ttod(_CurSysDate.CurSysDate)))),'Ud*yogERP+1993')
+	Else
+		***** Added by Sachin N. S. on 06/08/2018 for Bug-31756 -- End
+		dCurDate = enc(Alltrim(Dtoc(Ttod(_CurSysDate.CurSysDate))))
+	Endif
 	*!*		nHandle = 0
 	****** Changed by Sachin N. S. on 06/12/2016 for GST Vudyog Database Working -- Start
 	*!*		mSqlStr = "	 update vudyog..co_mast set coFormdt=ISNULL(coFormdt,'') "+;
@@ -413,9 +528,13 @@ Else
 	Endif
 
 	If !Empty(_coFormDt.coFormDt)		&& Added by Sachin N. S. on 20/06/2017 for GST
-		r_instdate1 = Iif(Type("_coFormDt.coFormDt")="T",Dtoc(Ttod(_coFormDt.coFormDt)),Dec(Alltrim(_coFormDt.coFormDt)))
+		r_instdate1 = Iif(Type("_coFormDt.coFormDt")="T",Dtoc(Ttod(_coFormDt.coFormDt)),Iif(Inlist(mudProdCode,'uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk'),Dec(NewDecry(Alltrim(_coFormDt.coFormDt),'Ud*yogERP+1993')),Dec(Alltrim(_coFormDt.coFormDt))))		&& Changed by Sachin N. S. on 07/08/2018 for Bug-31756
 	Else		&& Added by Sachin N. S. on 20/06/2017 for GST -- Start
-		r_instdate1 = Dec(Alltrim(dCurDate))
+		If Inlist(mudProdCode,'VudyogGST','uERPStd','uERPSilvPro','uERPGoldPro','uERPEnt','uERPSdk')		&& Changed by Sachin N. S. on 06/08/2018 for Bug-31756
+			r_instdate1 = Dtoc(Ctod(Dec(NewDecry(Alltrim(dCurDate),'Ud*yogERP+1993')))-27)
+		Else
+			r_instdate1 = Dec(Alltrim(dCurDate))
+		Endif
 	Endif		&& Added by Sachin N. S. on 20/06/2017 for GST -- End
 Endif
 

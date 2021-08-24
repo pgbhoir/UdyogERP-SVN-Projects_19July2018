@@ -1,12 +1,13 @@
-Program e:\...\gst_final\serialize inventory\serialize inventory\ueserializeinv.prg has the following errors:
+Program d:\...\serialize inventory\working folder for bug-34528\ueserializeinv.prg has the following errors:
     Visual Class Library VOUCLASS - Undefined
 
-Form e:\...\gst_final\serialize inventory\serialize inventory\uefrmbatchserialno.scx has the following errors:
+Form d:\...\serialize inventory\working folder for bug-34528\uefrmbatchserialno.scx has the following errors:
+    Unknown PKARRAY - Undefined
     Unknown UEGETPOP - Undefined
 
-Visual Class Library e:\...\gst_final\serialize inventory\serialize inventory\batchserialstk.vcx has the following errors:
+Visual Class Library d:\...\serialize inventory\working folder for bug-34528\batchserialstk.vcx has the following errors:
     Unknown UEGETPOP - Undefined
 
-Form e:\...\serialize inventory\serialize inventory\uefrmbatchserialnostkresrv.scx has the following errors:
+Form d:\...\working folder for bug-34528\uefrmbatchserialnostkresrv.scx has the following errors:
     Unknown UEGETPOP - Undefined
 

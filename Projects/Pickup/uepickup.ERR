@@ -1,23 +1,22 @@
-Form d:\workinggst\pickup\pickup_050418\formpickup.scx has the following errors:
+Form e:\...\od_1_8-11-2020_projects\pickup\pickup\formpickup.scx has the following errors:
     Form UEETPAGEPOP - Undefined
     Unknown UEGETPOP - Undefined
     Unknown BARSTAT - Undefined
     Unknown UEENTRYSELECT - Undefined
     Unknown UDAPPPICKUPINIT - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
     Unknown UDTRIGPICKUPINIT - Undefined
     Unknown UETRIGPICKUPINIT - Undefined
     Unknown UEPICKUPSPLIT - Undefined
     Unknown VUFIND - Undefined
 
-Visual Class Library d:\workinggst\pickup\pickup_050418\_base.vcx has the following errors:
-    Program SETOBJRF - Undefined
-
-Program d:\workinggst\pickup\pickup_050418\main.prg has the following errors:
+Program e:\...\od_1_8-11-2020_projects\pickup\pickup\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Visual Class Library d:\workinggst\pickup\pickup_050418\pickclass.vcx has the following errors:
-    Unknown UEGETPOP - Undefined
-
-Form d:\workinggst\pickup\pickup_050418\frmdatafilt.scx has the following errors:
+Form e:\...\od_1_8-11-2020_projects\pickup\pickup\frmdatafilt.scx has the following errors:
     Visual Class Library XTRA - Undefined
+
+Visual Class Library e:\...\od_1_8-11-2020_projects\udyogerpsdk\class\xtra.vcx has the following errors:
+    Unknown UEGETPOP - Undefined
 

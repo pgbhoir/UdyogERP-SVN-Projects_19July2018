@@ -1,0 +1,75 @@
+*!*	Parameters oControl
+
+SET STEP ON 
+sql_con = 0
+oactive=_Screen.ActiveForm
+If Type('oactive.pcvtype')<>'U'
+	If Inlist(oactive.pcvtype,"RD","OC")
+*!*			If Type('oControl')='C'
+*!*				lcfld=oControl
+*!*			Else
+*!*				lcfld=Justext(oControl.ControlSource)
+*!*			Endif
+
+*!*			If Type(this)='C'
+*!*				lcfld=This
+*!*			Else
+*!*				lcfld=Justext(This.ControlSource)
+*!*			Endif
+
+
+		If (oactive.addmode Or oactive.editmode) And Upper(Alltrim(lcfld))=="flotno"
+			If oactive.pcvtype="RD"
+				sq1 = "Execute USP_GetLot_Details ?main_vw.entry_ty,?main_vw.party_nm,?item_vw.flotno"
+				nretval = oactive.sqlconobj.dataconn([EXE],company.dbname,sq1,"_updtlot","oactive.nHandle",oactive.DataSessionId)
+				If nretval <=0
+					Return .F.
+				Endif
+				If Used("_updtlot")
+					If nretval > 0 And Reccount('_updtlot') > 0
+						lcTitle = "Select Lot No..."
+						lcSrcFld  = [flotno+item]
+						lcFldList = [flotno,item,qty,allocqty,balqty]
+						lcFldCapt = [flotno:Lot No.,item:Goods Name,qty:Quantity,allocqty:Allocated Qty.,balqty:Balance Qty.]
+						lcFldExcl = []
+						lcFldRtrn = [flotno,item,qty,allocqty,balqty]
+*!*							If Type('oControl')='O'
+*!*								lcstr = oControl.Value
+*!*							Else
+*!*								lcstr =""
+*!*							Endif
+
+						If Type('this')='O'
+							lcstr = This.Value
+						Else
+							lcstr =""
+						Endif
+
+						RetItem=Uegetpop([_updtlot],lcTitle,lcSrcFld,lcFldList,lcstr,[],[],[],.F.,[],lcFldRtrn,lcFldCapt,lcFldExcl)
+
+						If Vartype(RetItem)="O"
+*!*								If Type('oControl')='O'
+*!*									oControl.Value = RetItem.flotno
+*!*								ENDIF
+							If Type('this')='O'
+								This.Value = RetItem.flotno
+							Endif
+							Replace flotno With RetItem.flotno In Item_vw
+							Messagebox(RetItem.Item)
+						Endif
+					Else
+						sql_con = oactive.sqlconobj.sqlconnclose("oactive.nHandle")
+						If Used('_updtlot')
+							Use In _updtlot
+						Endif
+						Return .F.
+					Endif
+				Endif
+				sql_con = oactive.sqlconobj.sqlconnclose("oactive.nHandle")
+				If Used('_updtlot')
+					Use In _updtlot
+				Endif
+			Endif
+		Endif
+	Endif
+Endif

@@ -1,6 +1,6 @@
 Parameters mRepType,ShowForm,SessionId,_tcrstatus,_tctmpvar
 ****Versioning**** Added By Amrendra On 01/06/2011
-SET STEP ON 
+
 Local _VerValidErr,_VerRetVal,_CurrVerVal
 _VerValidErr = ""
 _VerRetVal  = 'NO'
@@ -29,17 +29,21 @@ Public _Orstatus,_Otmpvar
 
 If ShowForm = .T.
 	Select _rstatus
-	Scatter Name _Orstatus
+*!*		SCATTER Name _Orstatus  &&Commented by Priyanka B on 11022019 for Bug-32272
+	Scatter Memo Name _Orstatus  &&Modified by Priyanka B on 11022019 for Bug-32272
 	Select _tmpvar
-	Scatter Name _Otmpvar
+*!*		Scatter Name _Otmpvar  &&Commented by Priyanka B on 11022019 for Bug-32272
+	Scatter Memo Name _Otmpvar  &&Modified by Priyanka B on 11022019 for Bug-32272
 Else
 	If Vartype(_tcrstatus) <> 'O'
 		Select _rstatus
-		Scatter Name _tcrstatus
+*!*			Scatter Name _tcrstatus  &&Commented by Priyanka B on 11022019 for Bug-32272
+		Scatter Memo Name _tcrstatus  &&Modified by Priyanka B on 11022019 for Bug-32272
 	Endif
 	If Vartype(_tctmpvar) <> 'O'
 		Select _tmpvar
-		Scatter Name _tctmpvar
+*!*			Scatter Name _tctmpvar  &&Commented by Priyanka B on 11022019 for Bug-32272
+		Scatter Memo Name _tctmpvar  &&Modified by Priyanka B on 11022019 for Bug-32272
 	Endif
 	_Orstatus = _tcrstatus
 	_Otmpvar = _tctmpvar
@@ -64,9 +68,8 @@ If Type("_Orstatus.Vou_Type") = 'C'
 			macnarr		= Substr(macnarr,1,Iif(At(';',macnarr) > 0,At(';',macnarr)-1,Len(macnarr)))
 
 && Added by Shrikant S. on 21/11/2017 for Bug-30912	 	&& Start
-			MESSAGEBOX(_rstatus.ZoomInFld)
-			If Len(ALLTRIM(_rstatus.ZoomInFld)) > 0
-				macnarr		= macnarr+ IIF(LEFT(_rstatus.ZoomInFld,1)=',',Alltrim(_rstatus.ZoomInFld),','+Alltrim(_rstatus.ZoomInFld))
+			If Len(Alltrim(_rstatus.zoomadflds)) > 0
+				macnarr		= macnarr+ Iif(Left(_rstatus.zoomadflds,1)=',',Alltrim(_rstatus.zoomadflds),','+Alltrim(_rstatus.zoomadflds))
 			Endif
 && Added by Shrikant S. on 21/11/2017 for Bug-30912	 	&& End
 		Endif
@@ -94,15 +97,20 @@ Endif
 If ShowForm = .T.
 	OrdObj.sdate = Iif(_Orstatus.isfr_date,_Otmpvar.sdate,{})
 	OrdObj.edate = Iif(_Orstatus.isto_date,_Otmpvar.edate,{})
+
+	*OrdObj.spl_condn = Iif(!Empty(_Orstatus.spl_condn),_Orstatus.spl_condn,"''")	 &&Added by Priyanka B on 11022019 for Bug-32272
+	
 	Do Case
-	Case _Orstatus.isfr_date And _Orstatus.isto_date
-		OrdObj.dateFilter = 'And Betw(a.Date,_Otmpvar.Sdate,_Otmpvar.edate) '
-	Case _Orstatus.isfr_date And _Orstatus.isto_date = .F.
-		OrdObj.dateFilter = 'And a.Date <=_Otmpvar.Sdate '
-	Case _Orstatus.isfr_date = .F. And _Orstatus.isto_date = .F.
-		OrdObj.dateFilter = ''
+		Case _Orstatus.isfr_date And _Orstatus.isto_date
+			OrdObj.dateFilter = 'And Betw(a.Date,_Otmpvar.Sdate,_Otmpvar.edate) '
+		Case _Orstatus.isfr_date And _Orstatus.isto_date = .F.
+			OrdObj.dateFilter = 'And a.Date <=_Otmpvar.Sdate '
+		Case _Orstatus.isfr_date = .F. And _Orstatus.isto_date = .F.
+			OrdObj.dateFilter = ''
 	Endcase
 Endif
+
+OrdObj.spl_condn = Iif(!Empty(_Orstatus.spl_condn),_Orstatus.spl_condn,"''")
 
 OrdObj.Exec_Order_Report()
 

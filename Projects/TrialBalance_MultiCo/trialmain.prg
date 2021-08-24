@@ -12,7 +12,7 @@
 Parameters mFromDt,mTodate,mReportType,GCode,sqldatasession
 *!*	mFromDt		 : From Date
 *!*	mTodate		 : To Date
-*!*	mReportType	 : 'T' For Trial Balanace 'G' - Group Summary
+*!*	mReportType	 : 'T' For Trial Balance 'G' - Group Summary
 *!*	GCode		 : Group Code
 *!*	sqldatasession : Datasession
 
@@ -21,22 +21,12 @@ If Parameters() <> 5
 	Return .T.
 Endif
 
-
-
-SET STEP ON 
-
-
-
-=MESSAGEBOX("SACHIN - TRIALMAIN - START")
-
-
 If !("GRIDFIND.VCX" $ Upper(Set("Classlib")))
 	Set Classlib To gridfind.vcx Additive
 Endif
 If !("CONFA.VCX" $ Upper(Set("Classlib")))
 	Set Classlib To confa.vcx Additive
 Endif
-
 
 Local lnI
 Set Talk Off
@@ -45,46 +35,26 @@ Set Deleted On
 mFromDt = Ttod(mFromDt)
 mTodate = Ttod(mTodate)
 
-llRet = MakeAcmast(mFromDt,mTodate,sqldatasession,mReportType)		&& Make Accounts Master
+_dbNames = ueTrig_MultiCoFinStmnt(sqldatasession)
+
+llRet = MakeAcmast(mFromDt,mTodate,sqldatasession,mReportType,_dbNames)		&& Make Accounts Master
+
 If llRet = .F.
 	Return .F.
 Endif
-lnI=MakeLevel(mReportType)												&& Make Level
+
+lnI=MakeLevel(mReportType)													&& Make Level
+
 If Type('Statdesktop') = 'O'
 	Statdesktop.ProgressBar.Value = 80
-ENDIF
+Endif
 
-cAlias=ALIAS()
+cAlias=Alias()
 
-=MESSAGEBOX(" Sachin - 545234465 ")
-
-
-
-
-SELECT _TBAcMast
-COPY TO "c:\Sachin1.dbf"
-GO top
-
-
-
-=MESSAGEBOX(" Sachin - 65432135465 ")
-
-
-SELECT (cAlias)
-
-
-=MESSAGEBOX(" Sachin - 111111 ")
-
-
+Select (cAlias)
 Do Form finalacc With mReportType,GCode,mFromDt,mTodate,sqldatasession,lnI
-
-
-=MESSAGEBOX(" Sachin - 222222 ")
-
 
 If Type('Statdesktop') = 'O'
 	Statdesktop.ProgressBar.Value = 100
 	Statdesktop.ProgressBar.Visible = .F.
 Endif
-
-=MESSAGEBOX("SACHIN - TRIALMAIN - END")

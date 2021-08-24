@@ -1,10 +1,19 @@
-Form e:\svnprojects\projects updated for au 13.0.6\price list master\item_rat.scx has the following errors:
+Form d:\1 development\price list master\working folder for bug-33526\item_rat.scx has the following errors:
     Unknown BARSTAT - Undefined
+    Unknown UDAPPPRICELISTSAVEBEFORE - Undefined
+    Unknown NEWDECRY - Undefined
+    Unknown DEC - Undefined
+    Unknown UDTRIGPRICELISTSAVEBEFORE - Undefined
+    Unknown UETRIGPRICELISTSAVEBEFORE - Undefined
+    Unknown UDAPPPRICELISTGETDATA - Undefined
+    Unknown UDTRIGPRICELISTGETDATA - Undefined
+    Unknown UETRIGPRICELISTGETDATA - Undefined
     Unknown UEGETPOP - Undefined
     Visual Class Library VOUCLASS - Undefined
     Visual Class Library DATEPICKER - Undefined
     Proc./Func. UEEXTRA - Undefined
 
-Program e:\svnprojects\projects updated for au 13.0.6\price list master\itrat.prg has the following errors:
+Program d:\1 development\price list master\working folder for bug-33526\itrat.prg has the following errors:
+    Visual Class Library DATEPICKER - Undefined
     Unknown APPVERCHK - Undefined
 

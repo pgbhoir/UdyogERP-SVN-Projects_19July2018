@@ -6,8 +6,6 @@
 *:			AIM  : Update Groupwise Opening,Debit And Credit
 *:*****************************************************************************
 
-=MESSAGEBOX("SACHIN - UPDATEDEBITCREDIT - START")
-
 Select Max(Level) As Maxlevel From _CTBAcMast Into Cursor CurMaxLevel
 Go Top
 If Type('Statdesktop') = 'O'
@@ -20,10 +18,11 @@ For I = mMaxlevel To 1 Step -1
 	Set Filter To Level = I And MainFlg = 'G'
 	Scan
 *!*			mAcId = Ac_Id		&& Changed By Sachin N. S. on 11/07/2009
-		mAcId = Ac_Name		
-		mCompId = CompId
+		mAcId = Ac_Name
+*!*			mCompId = CompId
+		mCompId = DbName
 
-		********** Changed By Sachin N. S. on 11/07/2009 ********** Start
+********** Changed By Sachin N. S. on 11/07/2009 ********** Start
 *!*			Select Sum(a.Opbal) As Opbal,;
 *!*				SUM(a.debit) As debit,;
 *!*				SUM(a.credit) As credit;
@@ -37,12 +36,12 @@ For I = mMaxlevel To 1 Step -1
 			SUM(a.debit) As debit,;
 			SUM(a.credit) As credit;
 			FROM _CTBAcMast a;
-			ORDER By a.Group;
 			GROUP By a.Group;
-			WHERE a.Group = mAcId ;
+			ORDER By a.Group;
+			WHERE a.Group = mAcId And a.DbName=mCompId ;
 			INTO Cursor SumCur
-		
-		********** Changed By Sachin N. S. on 11/07/2009 ********** End
+
+********** Changed By Sachin N. S. on 11/07/2009 ********** End
 
 		Go Top
 		m.Opbal = Iif(Isnull(SumCur.Opbal),0,SumCur.Opbal)
@@ -58,9 +57,10 @@ For I = mMaxlevel To 1 Step -1
 	Endscan
 Endfor
 
+Select _CTBAcMast
+Set Filter To
+
 If Type('Statdesktop') = 'O'
 	Statdesktop.ProgressBar.Value = 70
 Endif
 
-
-=MESSAGEBOX("SACHIN - UPDATEDEBITCREDIT - END")

@@ -144,7 +144,8 @@ Define Class TrdPl As Custom
 	If Empty(This.ParentObj.torvformat) Or This.ParentObj.torvformat='T' 	&& Added By Sachin N. S. on 03/07/2012 for Bug-4539
 		Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "GROSS LOSS c/d"		&&vasant021109
 	Else		&& Added By Sachin N. S. on 03/07/2012 for Bug-4539 -- Start
-		Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "GROSS LOSS c/d" And (Substr(Alltrim(DISPTYPE),2,1)='R') And Deleted()=.F.		&&vasant021109  && Changed By Sachin N. S. on 03/07/2012 for Bug-4539
+*!*			Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "GROSS LOSS c/d" And (Substr(Alltrim(DISPTYPE),2,1)='R') And Deleted()=.F.		&&vasant021109  && Changed By Sachin N. S. on 03/07/2012 for Bug-4539
+		Sum LCLBAL To m.cr For LLevel = 1 And LAC_NAME <> "GROSS LOSS c/d" And (Substr(Alltrim(DISPTYPE),2,1)='R') And Deleted()=.F.		&& Changed by Sachin N. S. on 26/07/2019 for Bug-31982
 	Endif		&& Added By Sachin N. S. on 03/07/2012 for Bug-4539 -- End
 
 	Do Case
@@ -263,6 +264,7 @@ Define Class TrdPl As Custom
 
 	Procedure UpdateNP
 
+
 	Select (This.Rightcursor)
 	
 	If Empty(This.ParentObj.torvformat) Or This.ParentObj.torvformat='T' 	&& Added By Sachin N. S. on 03/07/2012 for Bug-4539
@@ -274,7 +276,9 @@ Define Class TrdPl As Custom
 	If Empty(This.ParentObj.torvformat) Or This.ParentObj.torvformat='T' 	&& Added By Sachin N. S. on 03/07/2012 for Bug-4839
 		Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "NET LOSS b/d"		&&vasant021109
 	Else	&& Added By Sachin N. S. on 03/07/2012 for Bug-4539 -- Start
-		Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "NET LOSS b/d" And (Substr(Alltrim(DISPTYPE),2,1)='R' Or Substr(Alltrim(DISPTYPE),2,1)='A') And Deleted()=.F.
+**		Sum LCLBAL To m.cr For LLevel = 1 And LAC_NAME <> "NET LOSS b/d" And (Substr(Alltrim(DISPTYPE),2,1)='L' Or Substr(Alltrim(DISPTYPE),2,1)='A') And Deleted()=.F.		&& Changed by Sachin N. S. on 26/07/2019 for Bug-31982    &&Commented by Divyang P on 31/01/2020 for Bug - 33147
+		Sum LCLBAL To m.cr For LLevel = 1 And LAC_NAME <> "NET LOSS b/d" And  (Substr(Alltrim(DISPTYPE),2,1)='R' Or Substr(Alltrim(DISPTYPE),2,1)='A') And Deleted()=.F.		  &&Changed by Divyang P on 31/01/2020 for Bug-33147
+*!*			Sum RCLBAL To m.cr For RLevel = 1 And RAC_NAME <> "NET LOSS b/d" And (Substr(Alltrim(DISPTYPE),2,1)='R' Or Substr(Alltrim(DISPTYPE),2,1)='A') And Deleted()=.F.
 	Endif	&& Added By Sachin N. S. on 03/07/2012 for Bug-4539 -- End
 
 	Go Top

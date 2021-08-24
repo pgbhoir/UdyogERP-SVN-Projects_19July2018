@@ -1,20 +1,25 @@
-Program d:\...\registration\working folder for gst_vudyogdb\ueregistration.prg has the following errors:
+Program d:\...\registration\working folder for bug-34236 au 2.2.5\ueregistration.prg has the following errors:
     Visual Class Library SQLCONNECTION - Undefined
     Unknown NEWDECRY - Undefined
     Unknown DEC - Undefined
     Unknown APPVERCHK - Undefined
     Proc./Func. READINFFILE - Undefined
     Unknown ENC - Undefined
+    Unknown NEWENCRY - Undefined
 
-Form d:\...\registration\working folder for gst_vudyogdb\frmregistration1.scx has the following errors:
+Form d:\...\registration\working folder for bug-34236 au 2.2.5\frmregistration1.scx has the following errors:
     Unknown NEWDECRY - Undefined
     Unknown DEC - Undefined
+    Proc./Func. READINFFILE - Undefined
     Unknown ENC - Undefined
+    Unknown NEWENCRY - Undefined
     Unknown GETMACHINEDETAILS - Undefined
 
-Form d:\...\registration\working folder for gst_vudyogdb\frmregistration2.scx has the following errors:
+Form d:\...\registration\working folder for bug-34236 au 2.2.5\frmregistration2.scx has the following errors:
     Unknown NEWDECRY - Undefined
     Unknown DEC - Undefined
+    Proc./Func. READINFFILE - Undefined
     Unknown ENC - Undefined
+    Unknown NEWENCRY - Undefined
     Unknown GETMACHINEDETAILS - Undefined
 

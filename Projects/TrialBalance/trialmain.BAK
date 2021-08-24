@@ -61,6 +61,8 @@ If llRet = .F.
 	Return .F.
 Endif
 
+SET STEP ON 
+
 lnI=MakeLevel(mReportType)												&& Make Level
 If Type('Statdesktop') = 'O'
 	Statdesktop.ProgressBar.Value = 80
@@ -74,7 +76,7 @@ Endif
 &&vasant041109
 
 Select _TBAcMast
-Copy To "D:\_TBAcMast.dbf"
+COPY TO "d:\_TBAcMast.dbf"
 Go Top
 
 Do Form finalacc With mReportType,GCode,mFromDt,mTodate,sqldatasession,lnI

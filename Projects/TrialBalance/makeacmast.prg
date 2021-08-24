@@ -8,8 +8,6 @@
 *!*	Parameters FRDATE,TODate,sqldatasession,mReportType,vsDept,veDept,vsCat,veCat
 Parameters FRDATE,TODate,sqldatasession,mReportType
 
-
-
 If Type('sqldatasession') ='N'
 	Set DataSession To sqldatasession
 Endif
@@ -63,9 +61,17 @@ If Type('_rstatus.iscostcent')<>'U'
 		Endif
 
 		Strdrcr = Strdrcr + ",'"+_Costcentre.ccfilter+"'"
-	Endif
+		ELSE
+		Strdrcr=Strdrcr+",''"		&& Added by Sachin N. S. on 12/05/2020 for AU 2.2.5 Bug-33477
+	ENDIF
+ELSE
+	Strdrcr=Strdrcr+",''"		&& Added by Sachin N. S. on 12/05/2020 for AU 2.2.5 Bug-33477
 Endif
 && Added by Shrikant S. on 22/12/2017 for Bug-31086			&& End
+
+***** Added by Sachin N. S. on 12/05/2020 for AU 2.2.5 Bug-33477 -- Start
+Strdrcr=Strdrcr+","+TRANSFORM(Company.CompId)
+***** Added by Sachin N. S. on 12/05/2020 for AU 2.2.5 Bug-33477 -- End
 
 *!*	sql_con=sqlconobj.dataconn("EXE",company.dbname,Strdrcr,"_CTBAcMast","nHandle",sqldatasession)
 sql_con=sqlconobj.dataconn("EXE",company.dbname,Strdrcr,"_CTBAcMast1","nHandle",sqldatasession)		&& Changed by Sachin N. S. on 03/04/2018 for Bug-31398
@@ -77,9 +83,9 @@ Endif
 
 ***** Added by Sachin N. S. on 03/04/2018 for Bug-31398 -- Start
 Select *,opbal*0 opdebit,opbal*0 opcredit,clbal*0 cldebit, clbal*0 clcredit From _CTBAcMast1 Into Cursor _CTBAcMast Readwrite
-Update _CTBAcMast Set opdebit = Iif(opbal>=0, opbal,0), opcredit = Iif(opbal<0, opbal,0)
+*!*	Update _CTBAcMast Set opdebit = Iif(opbal>=0, opbal,0), opcredit = Iif(opbal<0, opbal,0)	
+Update _CTBAcMast Set opdebit = Iif(opbal>=0, opbal,0), opcredit = ABS(Iif(opbal<0, opbal,0))		&& Changed by Sachin N. S. on 30/01/2020 for Bug-32893
 ***** Added by Sachin N. S. on 03/04/2018 for Bug-31398 -- End
-
 
 *!*	Collecting Debit and Credit Balance [End]
 Set Date &Ldate
@@ -91,9 +97,9 @@ Endif
 If mReportType = 'P'
 *!*		UPDATE _CTBAcMast SET ClBal = Debit-ABS(Credit)
 	Update _CTBAcMast Set clbal = opbal+Debit-Abs(Credit)	&& Changed By Sachin N. S. on 18/03/2009
-	Update _CTBAcMast Set cldebit = Iif(clbal>=0, clbal,0), clcredit = Iif(clbal<0, clbal,0)		&& Added by Sachin N. S. on 03/04/2018 for Bug-31398
 Endif
-
+*!*	Update _CTBAcMast Set cldebit = Iif(clbal>=0, clbal,0), clcredit = Iif(clbal<0, clbal,0)		&& Added by Sachin N. S. on 03/04/2018 for Bug-31398
+Update _CTBAcMast Set cldebit = opdebit+debit, clcredit = ABS(opcredit)+ABS(credit)		&& Added by Sachin N. S. on 30/01/2020 for Bug-32893
 
 *!* Inserting Additional Fields [START]
 Select Space(1) As LevelFlg,;
@@ -108,7 +114,6 @@ Select Space(1) As LevelFlg,;
 *!*	Close Temp Cursors [Start]
 =CloseTmpCursor()
 *!*	Close Temp Cursors [End]
-
 
 If Inlist(mReportType,'B','P','T')		&&vasant021109		,'T'
 	mShowStkfrm = 0
@@ -131,6 +136,8 @@ If Inlist(mReportType,'B','P','T')		&&vasant021109		,'T'
 	Endif		&&vasant021109
 
 	Select _CTBAcMast
+*!*		COPY TO "d:\_CTBAcMast.dbf"
+	
 &&added by satish pal for bug-20309 dated 20/11/2013-start
 *Locate For Allt(Ac_Name)=Iif(mReportType='P','OPENING STOCK','OPENING STOCK') And MainFlg = 'L' &&vasant021109	And opBal <> 0
 *If Found()

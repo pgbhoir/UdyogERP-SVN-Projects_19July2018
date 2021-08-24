@@ -74,6 +74,7 @@ Endif
 &&vasant041109
 
 Select _TBAcMast
+*!*	COPY TO "d:\_TBAcMast.dbf"
 Go Top
 
 Do Form finalacc With mReportType,GCode,mFromDt,mTodate,sqldatasession,lnI

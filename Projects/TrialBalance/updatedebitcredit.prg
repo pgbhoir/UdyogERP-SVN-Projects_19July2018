@@ -12,6 +12,8 @@ If Type('Statdesktop') = 'O'
 Endif
 mMaxlevel = Maxlevel
 
+SELECT _CTBAcMast
+
 For I = mMaxlevel To 1 Step -1
 	Select _CTBAcMast
 	Set Filter To Level = I And MainFlg = 'G'
@@ -31,6 +33,7 @@ For I = mMaxlevel To 1 Step -1
 			SUM(a.credit) As credit;
 			,Sum(OpDebit) As OpDebit;		&& Added by Sachin N. S. on 13/04/2018 for Bug-31398
 			,Sum(OpCredit) As OpCredit;		&& Added by Sachin N. S. on 13/04/2018 for Bug-31398
+			,Sum(PT_Opening) As PT_Opening;		&& Added by Sachin N. S. on 08/08/2020 for Bug-33603
 			FROM _CTBAcMast a;
 			ORDER By a.Ac_Group_Id;
 			GROUP By a.Ac_Group_Id;
@@ -42,7 +45,10 @@ For I = mMaxlevel To 1 Step -1
 		m.Opbal = Iif(Isnull(SumCur.Opbal),0,SumCur.Opbal)
 		m.debit = Iif(Isnull(SumCur.debit),0,SumCur.debit)
 		m.credit = Iif(Isnull(SumCur.credit),0,SumCur.credit)
+		m.PT_Opening = Iif(Isnull(SumCur.PT_Opening),0,SumCur.PT_Opening)				&& Added by Sachin N. S. on 08/08/2020 for Bug-33603
+*!*			m.Opbal = m.Opbal - m.PT_Opening												&& Added by Sachin N. S. on 08/08/2020 for Bug-33603
 		m.ClBal = m.Opbal+m.debit-m.credit
+		
 
 ***** Added by Sachin N. S. on 13/04/2018 for Bug-31398 -- Start
 		m.Opdebit = Iif(Isnull(SumCur.Opdebit),0,SumCur.Opdebit)
@@ -56,6 +62,7 @@ For I = mMaxlevel To 1 Step -1
 		Replace	debit With m.debit
 		Replace	credit With m.credit
 		Replace	ClBal With m.ClBal
+		Replace PT_Opening WITH m.PT_Opening					&& Added by Sachin N. S. on 08/08/2020 for Bug-33603
 		***** Added by Sachin N. S. on 13/04/2018 for Bug-31398 -- Start
 		Replace	Opdebit With m.Opdebit
 		Replace	Opcredit With m.Opcredit

@@ -19,4 +19,11 @@ _CurrVerVal='10.0.0.0' &&[VERSIONNUMBER]
 		Return .F.
 	Endif
 ****Versioning****
+
+**** Added by Sachin N. S. on 11/10/2019 for Bug-32896 -- Start
+If !'\DATEPICKER.' $ Upper(Set('class'))
+	Set Classlib To DATEPICKER AddIt
+Endif
+**** Added by Sachin N. S. on 11/10/2019 for Bug-32896 -- End
+
 Do Form item_rat With pRange

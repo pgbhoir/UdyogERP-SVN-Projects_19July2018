@@ -1,20 +1,34 @@
-Form d:\vss for verson\usquare 10\transaction_settings\vouwiz.scx has the following errors:
+Form c:\au2.2.5\transaction_settings\vouwiz.scx has the following errors:
     Unknown NEWDECRY - Undefined
     Unknown DEC - Undefined
     Unknown NEWENCRY - Undefined
     Unknown BARSTAT - Undefined
     Unknown UEGETPOP - Undefined
 
-Form d:\vss for verson\usquare 10\transaction_settings\entry_sel.scx has the following errors:
+Form c:\au2.2.5\transaction_settings\entry_sel.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Program d:\vss for verson\usquare 10\transaction_settings\main.prg has the following errors:
+Program c:\au2.2.5\transaction_settings\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\vss for verson\usquare 10\transaction_settings\frmuomchk.scx has the following errors:
+Form c:\au2.2.5\transaction_settings\frmuomchk.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form d:\vss for verson\usquare 10\transaction_settings\frmpickup.scx has the following errors:
+Form c:\au2.2.5\transaction_settings\frmpickup.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UEJOUR_OP - Undefined
+
+Form c:\au2.2.5\transaction_settings\frmtranfor.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form c:\au2.2.5\transaction_settings\frmautoposting.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
+
+Form c:\au2.2.5\transaction_settings\frminvsr.scx has the following errors:
+    Unknown BARSTAT - Undefined
+
+Form c:\au2.2.5\transaction_settings\frmitemwiseautotran.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEGETPOP - Undefined
 
