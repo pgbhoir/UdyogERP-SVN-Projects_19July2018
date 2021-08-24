@@ -229,7 +229,7 @@ namespace UdyogMaterialRequirementPlanning
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, clsCommon.pApplNm, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

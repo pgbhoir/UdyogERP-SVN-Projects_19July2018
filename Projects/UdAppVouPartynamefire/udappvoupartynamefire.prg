@@ -2,7 +2,7 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 
 	mAlias = Alias()
 
-&& Added by Shrikant S. on 21/06/2012 for Bug-4744		&& Start
+	&& Added by Shrikant S. on 21/06/2012 for Bug-4744		&& Start
 	If Vartype(oGlblPrdFeat)='O'
 		If oGlblPrdFeat.UdChkProd('openord')
 			If Type('lcode_vw.allowzeroqty')!='U'
@@ -23,18 +23,18 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 			Endif
 		Endif
 	Endif
-&& Added by Shrikant S. on 21/06/2012 for Bug-4744		&& End
+	&& Added by Shrikant S. on 21/06/2012 for Bug-4744		&& End
 
-*------------------------------------------FOR DEBIT NOTE --------------------------------------------------
+	*------------------------------------------FOR DEBIT NOTE --------------------------------------------------
 	If Used('main_vw') And (_Screen.ActiveForm.addmode Or _Screen.ActiveForm.editmode) && Birendra : Bug-21315 on 10/01/2014 :Added condition:
 		If Inlist(Main_Vw.Entry_ty,'ST','PT')
-*IF INLIST(MAIN_VW.ENTRY_tY,'ST','PT')
+			*IF INLIST(MAIN_VW.ENTRY_tY,'ST','PT')
 			Select Main_Vw
 			If Type('U_INTR_PER')#'U'
 				_curfrmobj = _Screen.ActiveForm
 				If Type( "_curfrmobj.sqlconobj")='O'
-*!*				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days,intpay from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
-*!*						"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)   && Commented by Archana K. on 2/1/2013 for Bug-7858
+					*!*				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days,intpay from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
+					*!*						"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)   && Commented by Archana K. on 2/1/2013 for Bug-7858
 					nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days,intpay from ac_mast where ac_name=?main_vw.party_nm",[tmp_acmast],;
 						"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)  && Changes by Archana K. on 2/1/2013 for Bug-7858
 					If nRet <= 0
@@ -51,7 +51,7 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 			Endif
 		Endif
 	Endif
-*!*	IF INLIST(MAIN_VW.ENTRY_tY,'D1','D2','D3','D4','D5','C3','C2','C4','C5') AND (_screen.ActiveForm.addmode OR _screen.ActiveForm.editmode)		&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
+	*!*	IF INLIST(MAIN_VW.ENTRY_tY,'D1','D2','D3','D4','D5','C3','C2','C4','C5') AND (_screen.ActiveForm.addmode OR _screen.ActiveForm.editmode)		&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
 	If Inlist(Main_Vw.Entry_ty,'D2','D3','D4','D5','C3','C2','C4','C5') And (_Screen.ActiveForm.addmode Or _Screen.ActiveForm.editmode)			&& Added by Shrikant S. on 17/03/2012 for Bug-2276
 		With _Screen.ActiveForm
 			tot_grd_col=.voupage.page1.grditem.ColumnCount
@@ -65,7 +65,7 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 
 					Case .voupage.page1.grditem.Columns(i).header1.Caption='Quantity'
 						.voupage.page1.grditem.Columns(i).Visible=Iif(Inlist(Main_Vw.Entry_ty,'D5','D4','C4','C5'),.T.,.F.)		&& Added by Shrikant S. on 17/03/2012 for Bug-2276
-*!*					 		.voupage.page1.grditem.columns(i).visible=IIF(INLIST(main_vw.entry_ty,'D1','D5','D4','C4','C5'),.t.,.f.)	&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
+						*!*					 		.voupage.page1.grditem.columns(i).visible=IIF(INLIST(main_vw.entry_ty,'D1','D5','D4','C4','C5'),.t.,.f.)	&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
 
 					Case .voupage.page1.grditem.Columns(i).header1.Caption='Sale Bill No.'
 						.voupage.page1.grditem.Columns(i).Width=70
@@ -73,16 +73,16 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 					Case .voupage.page1.grditem.Columns(i).header1.Caption='Item Name'
 						.voupage.page1.grditem.Columns(i).Width=120
 						.voupage.page1.grditem.Columns(i).Visible=.F.		&& Added by Shrikant S. on 04/01/2013 for Bug-7269
-*!*					.voupage.page1.grditem.Columns(i).Visible=Iif(Inlist(_Screen.ActiveForm.pcvtype,'D3','C3'),.T.,.F.)		&& Added by Shrikant S. on 17/03/2012 for Bug-2276	&& Commented by Shrikant S. on 04/01/2013 for Bug-7269
-*!*							.voupage.page1.grditem.columns(i).visible=IIF(INLIST(_screen.ActiveForm.pcvtype,'D3','D1','C3'),.t.,.f.)		&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
+						*!*					.voupage.page1.grditem.Columns(i).Visible=Iif(Inlist(_Screen.ActiveForm.pcvtype,'D3','C3'),.T.,.F.)		&& Added by Shrikant S. on 17/03/2012 for Bug-2276	&& Commented by Shrikant S. on 04/01/2013 for Bug-7269
+						*!*							.voupage.page1.grditem.columns(i).visible=IIF(INLIST(_screen.ActiveForm.pcvtype,'D3','D1','C3'),.t.,.f.)		&& Commented by Shrikant S. on 17/03/2012 for Bug-2276
 
 
-*				   CASE .voupage.page1.grditem.columns(i).header1.caption='Payment Recd. Date'
+						*				   CASE .voupage.page1.grditem.columns(i).header1.caption='Payment Recd. Date'
 					Case .voupage.page1.grditem.Columns(i).header1.Caption=Iif(Inlist(Main_Vw.Entry_ty,'C3'),'Payment Made Date','Payment Recd. Date')
 						.voupage.page1.grditem.Columns(i).header1.Caption=Iif(Inlist(Main_Vw.Entry_ty,'C3'),'Payment Made Date','Payment Recd. Date')
 						.voupage.page1.grditem.Columns(i).Visible=Iif(Inlist(Main_Vw.Entry_ty,'D3','C3'),.T.,.F.)
 
-*				   CASE .voupage.page1.grditem.columns(i).header1.caption='Recd. Amount'
+						*				   CASE .voupage.page1.grditem.columns(i).header1.caption='Recd. Amount'
 					Case .voupage.page1.grditem.Columns(i).header1.Caption=Iif(Inlist(Main_Vw.Entry_ty,'C3'),'Made Amount','Recd. Amount')
 						.voupage.page1.grditem.Columns(i).header1.Caption=Iif(Inlist(Main_Vw.Entry_ty,'C3'),'Made Amount','Recd. Amount')
 						.voupage.page1.grditem.Columns(i).Visible=Iif(Inlist(Main_Vw.Entry_ty,'D3','C3'),.T.,.F.)
@@ -101,7 +101,7 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 		Endwith
 		Select item_vw
 		If Main_Vw.Entry_ty='D3'   And _Screen.ActiveForm.addmode
-* Check for Interest Pay Party :Start
+			* Check for Interest Pay Party :Start
 			_curfrmobj = _Screen.ActiveForm
 			nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days,intpay from ac_mast where ac_name='"+Main_Vw.party_nm+"'",[tmp_acmast],;
 				"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
@@ -117,13 +117,13 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 					Use In tmp_acmast
 				Endif
 
-* Check for Interest Pay Party :End
+				* Check for Interest Pay Party :End
 
 				Do Form frmgetdate With Date()
 				nRet=0
 				mAlias = Alias()
 				_curfrmobj = _Screen.ActiveForm
-* Cash Receipt
+				* Cash Receipt
 				sqlstr1="select stmain.inv_no as sbillno,stmain.inv_sr as sinvsr,'Interest' as item ,crmall.new_all as recdamt,stmain.date as sdate,stmain.due_dt as sduedt,crmain.date as brdate,stmain.net_amt as sbillamt ,crmain.net_amt , "
 				sqlstr2="ltdays=convert(int,(crmain.date-stmain.due_dt)),stmain.U_INTR_PER as intper from crmain inner join crmall on crmain.tran_cd=crmall.tran_cd "
 				sqlstr3="left join stacdet on stacdet.tran_cd=crmall.main_tran and stacdet.acserial=crmall.acseri_all "
@@ -131,21 +131,21 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 
 				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,sqlstr1+sqlstr2+sqlstr3+sqlstr4,[tmp_sdetail_vw1],;
 					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
-* Bank Receipt
+				* Bank Receipt
 				sqlstr1="select stmain.inv_no as sbillno,stmain.inv_sr as sinvsr,'Interest' as item ,brmall.new_all as recdamt,stmain.date as sdate,stmain.due_dt as sduedt,brmain.date as brdate,stmain.net_amt as sbillamt ,brmain.net_amt , "
 				sqlstr2="ltdays=convert(int,(brmain.date-stmain.due_dt)),stmain.U_INTR_PER as intper from brmain inner join brmall on brmain.tran_cd=brmall.tran_cd "
 				sqlstr3="left join stacdet on stacdet.tran_cd=brmall.main_tran and stacdet.acserial=brmall.acseri_all "
 				sqlstr4="inner join stmain on stmain.tran_cd=stacdet.tran_cd where  brmain.date BETWEEN  ?brsdate and ?bredate AND BRMAIN.AC_ID = ?MAIN_VW.AC_ID"
 
-*!*					nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
-*!*							"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)
-*!*						If nRet <= 0
-*!*						RETURN .f.
-*!*						ENDIF
+				*!*					nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
+				*!*							"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)
+				*!*						If nRet <= 0
+				*!*						RETURN .f.
+				*!*						ENDIF
 
-*!*					IF USED("tmp_acmast")
-*!*					USE IN tmp_acmast
-*!*					ENDIF
+				*!*					IF USED("tmp_acmast")
+				*!*					USE IN tmp_acmast
+				*!*					ENDIF
 
 				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select it_code from it_mast where it_name='Interest'",[tmp_itcode],;
 					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
@@ -184,9 +184,9 @@ If Type('_screen.ActiveForm.txtpartyname')=='O' And Type('_screen.ActiveForm.cur
 					Scan
 						mitem_no=mitem_no+1
 						Select item_vw
-*						LOCATE FOR ALLTRIM(item_vw.sinvsr) = ALLTRIM(tmp_sdetail_vw.sinvsr) AND item_vw.sbdate = tmp_sdetail_vw.sdate ;
-AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_vw.item) = ALLTRIM(tmp_sdetail_vw.item)
-*						IF NOT FOUND()
+						*						LOCATE FOR ALLTRIM(item_vw.sinvsr) = ALLTRIM(tmp_sdetail_vw.sinvsr) AND item_vw.sbdate = tmp_sdetail_vw.sdate ;
+						AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_vw.item) = ALLTRIM(tmp_sdetail_vw.item)
+						*						IF NOT FOUND()
 						Append Blank
 						Replace item_vw.sinvsr With tmp_sdetail_vw.sinvsr In item_vw
 						Replace item_vw.sbdate With tmp_sdetail_vw.sdate In item_vw
@@ -199,7 +199,7 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 						Replace item_vw.sduedt With tmp_sdetail_vw.sduedt In item_vw
 						Replace item_vw.intper With tmp_sdetail_vw.intper In item_vw
 						Replace item_no With Str(mitem_no,4),itserial With Padl(Alltrim(Str(mitem_no)),Len(itserial),'0') In item_vw
-*			ENDIF
+						*			ENDIF
 					Endscan
 					Select item_vw
 					Replace All item_vw.Entry_ty With Main_Vw.Entry_ty In item_vw
@@ -217,8 +217,8 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 			Endif
 		Endif
 
-**************************************** FORWARDING ***************************************************
-*--------------------------------------- FOR DEBIT NOTE -----------------------------------------------
+		**************************************** FORWARDING ***************************************************
+		*--------------------------------------- FOR DEBIT NOTE -----------------------------------------------
 		If Main_Vw.Entry_ty='D2'   And _Screen.ActiveForm.addmode  &&Birendra
 			nRet=0
 			_curfrmobj = _Screen.ActiveForm
@@ -270,10 +270,10 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 
 		Endif
 
-***credit note late payment***
+		***credit note late payment***
 
 		If Inlist(Main_Vw.Entry_ty,'C3') And _Screen.ActiveForm.addmode
-* Check for Interest Pay Party :Start
+			* Check for Interest Pay Party :Start
 			_curfrmobj = _Screen.ActiveForm
 			nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days,intpay from ac_mast where ac_name='"+Main_Vw.party_nm+"'",[tmp_acmast],;
 				"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
@@ -289,13 +289,13 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 					Use In tmp_acmast
 				Endif
 
-* Check for Interest Pay Party :End
+				* Check for Interest Pay Party :End
 
 				Do Form frmgetdate With Date()
 				nRet=0
 				mAlias = Alias()
 				_curfrmobj = _Screen.ActiveForm
-* Cash payment
+				* Cash payment
 				sqlstr1="select ptmain.u_pinvno as sbillno,'Interest' as item ,cpmall.new_all as recdamt,ptmain.date as sdate,ptmain.due_dt as sduedt,cpmain.date as brdate,ptmain.net_amt as sbillamt ,cpmain.net_amt , "
 				sqlstr2="ltdays=convert(int,(cpmain.date-ptmain.due_dt)),ptmain.U_INTR_PER as intper from cpmain inner join cpmall on cpmain.tran_cd=cpmall.tran_cd "
 				sqlstr3="left join ptacdet on ptacdet.tran_cd=cpmall.main_tran and ptacdet.acserial=cpmall.acseri_all "
@@ -303,24 +303,24 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 
 				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,sqlstr1+sqlstr2+sqlstr3+sqlstr4,[tmp_sdetail_vw1],;
 					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
-* Bank Payment
+				* Bank Payment
 
 				sqlstr1="select ptmain.u_pinvno as sbillno,'Interest' as item ,bpmall.new_all as recdamt,ptmain.date as sdate,ptmain.due_dt as sduedt,bpmain.date as brdate,ptmain.net_amt as sbillamt ,bpmain.net_amt , "
 				sqlstr2="ltdays=convert(int,(bpmain.date-ptmain.due_dt)),ptmain.U_INTR_PER as intper from bpmain inner join bpmall on bpmain.tran_cd=bpmall.tran_cd "
 				sqlstr3="left join ptacdet on ptacdet.tran_cd=bpmall.main_tran and ptacdet.acserial=bpmall.acseri_all "
 				sqlstr4="inner join ptmain on ptmain.tran_cd=ptacdet.tran_cd where bpmain.date BETWEEN  ?brsdate and ?bredate AND BpMAIN.AC_ID = ?MAIN_VW.AC_ID"
 
-*!*			nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
-*!*					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)
-*!*				If nRet <= 0
-*!*				RETURN .f.
-*!*				ENDIF
-*!*			SELECT tmp_acmast
-*!*			_curfrmobj.intbaseday=tmp_acmast.i_days
+				*!*			nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select ac_name,i_rate,i_days from ac_mast where ac_name='"+main_vw.party_nm+"'",[tmp_acmast],;
+				*!*					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.f.)
+				*!*				If nRet <= 0
+				*!*				RETURN .f.
+				*!*				ENDIF
+				*!*			SELECT tmp_acmast
+				*!*			_curfrmobj.intbaseday=tmp_acmast.i_days
 
-*!*			IF USED("tmp_acmast")
-*!*			USE IN tmp_acmast
-*!*			ENDIF
+				*!*			IF USED("tmp_acmast")
+				*!*			USE IN tmp_acmast
+				*!*			ENDIF
 
 				nRet = _curfrmobj.sqlconobj.DataConn([EXE],Company.DbName,"select it_code from it_mast where it_name='Interest'",[tmp_itcode],;
 					"_curfrmobj.nHandle",_curfrmobj.DataSessionId,.F.)
@@ -360,9 +360,9 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 					Scan
 						mitem_no=mitem_no+1
 						Select item_vw
-*					LOCATE FOR ALLTRIM(item_vw.sinvsr) = ALLTRIM(tmp_sdetail_vw.sinvsr) AND item_vw.sbdate = tmp_sdetail_vw.sdate ;
-AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_vw.item) = ALLTRIM(tmp_sdetail_vw.item)
-*					IF NOT FOUND()
+						*					LOCATE FOR ALLTRIM(item_vw.sinvsr) = ALLTRIM(tmp_sdetail_vw.sinvsr) AND item_vw.sbdate = tmp_sdetail_vw.sdate ;
+						AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_vw.item) = ALLTRIM(tmp_sdetail_vw.item)
+						*					IF NOT FOUND()
 						Append Blank
 						Replace item_vw.sbdate With tmp_sdetail_vw.sdate In item_vw
 						Replace item_vw.sbillno With tmp_sdetail_vw.sbillno In item_vw
@@ -374,7 +374,7 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 						Replace item_vw.sduedt With tmp_sdetail_vw.sduedt In item_vw
 						Replace item_vw.intper With tmp_sdetail_vw.intper In item_vw
 						Replace item_no With Str(mitem_no,4),itserial With Padl(Alltrim(Str(mitem_no)),Len(itserial),'0') In item_vw
-*					ENDIF
+						*					ENDIF
 					Endscan
 					Select item_vw
 					Replace All item_vw.Entry_ty With Main_Vw.Entry_ty In item_vw
@@ -392,9 +392,9 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 				Endif
 			Endif
 		Endif
-*end credit note late payment
+		*end credit note late payment
 
-***for forwarding credit note***
+		***for forwarding credit note***
 
 		If Main_Vw.Entry_ty='C2'   And _Screen.ActiveForm.addmode  &&Birendra
 
@@ -449,14 +449,14 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 			Endif
 		Endif
 
-*!*	*end forwarding credit note
+		*!*	*end forwarding credit note
 
 
 	Endif
 
-&&Added by Priyanka B on 28042018 for UERP Installer 1.0.0 Start
+	&&Added by Priyanka B on 28042018 for UERP Installer 1.0.0 Start
 	If Used('Main_vw') And (_Screen.ActiveForm.addmode Or _Screen.ActiveForm.editmode)
-		If ALLTRIM(_Screen.ActiveForm.FldVals) <> ALLTRIM(Main_Vw.party_nm)
+		If Alltrim(_Screen.ActiveForm.FldVals) <> Alltrim(Main_Vw.party_nm)
 			mewbdist=Iif(Type('Main_vw.EWBDIST')='N','Main_vw',Iif(Type('Lmc_vw.EWBDIST')='N','Lmc_vw',Iif(Type('MainAdd_vw.EWBDIST')='N','MainAdd_vw','')))
 
 			If !Empty(mewbdist)
@@ -476,8 +476,38 @@ AND ALLTRIM(item_vw.sbillno) = ALLTRIM(tmp_sdetail_vw.sbillno) AND ALLTRIM(item_
 			Endif
 		Endif
 	Endif
-&&Added by Priyanka B on 28042018 for UERP Installer 1.0.0 End
+	&&Added by Priyanka B on 28042018 for UERP Installer 1.0.0 End
 Endif
+
+&&Added by Priyanka B on 26072019 for Bug-32747 Start
+_curvouobj = _Screen.ActiveForm
+If Vartype(oGlblPrdFeat)='O'
+	If oGlblPrdFeat.UdChkProd('efabric')
+
+		If Used('Main_vw') And (_curvouobj.addmode Or _curvouobj.editmode)
+			If Alltrim(_Screen.ActiveForm.FldVals) <> Alltrim(Main_Vw.party_nm)
+				If Type('_curvouobj.PCVTYPE')='C'
+					*!*						If Inlist(_curvouobj.PCVTYPE,'SG','AF','DF')  && Included 'DF' by Anil on 14-02-2020 for Bug-33252  &&Commented by Priyanka B on 17022020 for Bug-33252
+					If Inlist(_curvouobj.PCVTYPE,'SG','AF','DF','FS')  && Included 'DF' by Anil on 14-02-2020 for Bug-33252  &&Modified by Priyanka B on 17022020 for Bug-33252
+						cSql = "SELECT fBroker,fTranspor FROM AC_MAST WHERE AC_ID = " +Alltrim(Str(Main_Vw.AC_ID))+ ""
+						etsql_con = _curvouobj.sqlconobj.DataConn([EXE], Company.DbName, cSql, [AC_TMP], "_curvouobj.nHandle",_curvouobj.DataSessionId,.F.)
+
+						&&Commented by Priyanka B on 17022020 for Bug-33252 Start
+						*!*							If _curvouobj.PCVTYPE="AF"
+						*!*								Replace fBroker With AC_TMP.fBroker,fTranspor With AC_TMP.fTranspor In Main_Vw
+						*!*							Else
+						*!*								Replace U_BROKER With AC_TMP.fBroker,fTranspor With AC_TMP.fTranspor In Main_Vw
+						*!*							Endif
+						&&Commented by Priyanka B on 17022020 for Bug-33252 End
+
+						Replace fBroker With AC_TMP.fBroker,fTranspor With AC_TMP.fTranspor In Main_Vw  	&&Modified by Priyanka B on 17022020 for Bug-33252
+					Endif
+				Endif
+			Endif
+		Endif
+	Endif
+Endif
+&&Added by Priyanka B on 26072019 for Bug-32747 End
 
 
 *-------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+Parameters tcWherestr As String
+tcWherestr=Strtran(tcWherestr,Upper("this"),"lcValue")
+If !Empty(tcWherestr)
+	tcWherestr=Transform(EVALUATE(Evaluate(tcWherestr)))
+Endif
+Return tcWherestr

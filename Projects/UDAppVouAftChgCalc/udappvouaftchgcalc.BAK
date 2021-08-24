@@ -3,7 +3,9 @@
 Lparameters _custvouobj,_udtrigvoutype,_udtrigvoufldnm,_udtrigvoucol
 _custalias         = Alias()
 _custrecno		   = Recno()
-_custdatasessionid = _Screen.ActiveForm.DataSessionId
+
+*!*	_custdatasessionid = _Screen.ActiveForm.DataSessionId		&& Commented by Shrikant S. on 16/12/2017 for auto updater 13.0.5
+_custdatasessionid = _custvouobj.DataSessionId					&& Added by Shrikant S. on 16/12/2017 for auto updater 13.0.5
 _custhowtoCalculateExAmt = _custvouobj.howtoCalculateExAmt
 
 fldLen=15		&& Added by Shrikant S. on 14/11/2015 for Swachh Bharat Cess Bug-27242
@@ -26,8 +28,8 @@ If _custvouobj.Servicetaxpage = .T. And !Inlist(_custvouobj.pcvtype,'IB')
 
 
 && Added by Shrikant S. on 21/12/2016 for GST		&& Start
-			If Type('_curvouobj.mainalias') = 'C'
-				If Upper(_curvouobj.mainalias) <> 'MAIN_VW'
+			If Type('_custvouobj.mainalias') = 'C'
+				If Upper(_custvouobj.mainalias) <> 'MAIN_VW'
 					Return
 				Endif
 			ENDIF
@@ -84,11 +86,19 @@ If _custvouobj.Servicetaxpage = .T. And !Inlist(_custvouobj.pcvtype,'IB')
 			Endif
 
 
-		
-
+			
 
 *lcserty=IIF(INLIST(_custvouobj.pcvtype,"E1","S1"),Item_vw.serty,Acdetalloc_vw.Serty)		&& Added by Shrikant S. on 06/10/2016 for GST
 			lcserty=Acdetalloc_vw.Serty
+
+&& Added by Shrikant S. on 14/03/2019 for Bug-32266				&& Start			
+			IF TYPE('Item_vw.RCMCATE')='C'
+				IF !EMPTY(Item_vw.RCMCATE)
+					lcserty=ALLTRIM(Item_vw.RCMCATE)
+				endif
+			endif
+&& Added by Shrikant S. on 14/03/2019 for Bug-32266				&& End
+
 			custsql_str = "Select Top 1 PerPayReceiver From SerTax_Mast"
 *!*				custsql_str = custsql_str + " Where Name = ?Acdetalloc_vw.Serty and (?Main_vw.Date Between sdate and edate)"		&& Commented by Shrikant S. on 06/10/2016 for GST
 			custsql_str = custsql_str + " Where Name = ?lcserty and (?Main_vw.Date Between sdate and edate)"						&& Added by Shrikant S. on 06/10/2016 for GST

@@ -53,10 +53,14 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataAccess-Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="getinfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="DataAccess-Net">
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\DataAccess-Net.dll</HintPath>
+    </Reference>
+    <Reference Include="GetInfo">
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\GetInfo.DLL</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
-      <HintPath>E:\U3\USquare\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -74,14 +78,28 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="uBaseForm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="udselectpop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="uBaseForm, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\uBaseForm.dll</HintPath>
+    </Reference>
+    <Reference Include="udclsDGVNumericColumn">
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\udclsDGVNumericColumn.dll</HintPath>
+    </Reference>
+    <Reference Include="udSelectPop">
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\udSelectPop.dll</HintPath>
+    </Reference>
     <Reference Include="Udyog.Library.Common">
-      <HintPath>C:\Users\shrikant.USQURE\Documents\Visual Studio 2013\Projects\UdyogLibraryCommon\UdyogLibraryCommon\bin\Debug\Udyog.Library.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\29AUG\UdyogERP\Udyog.Library.Common.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptorEngine.cs" />
+    <Compile Include="frmDigitalSigProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDigitalSigProperty.Designer.cs">
+      <DependentUpon>frmDigitalSigProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDigitalSigSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,8 +114,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDigitalSigProperty.resx">
+      <DependentUpon>frmDigitalSigProperty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDigitalSigSetting.resx">
       <DependentUpon>frmDigitalSigSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmValidIn.resx">
       <DependentUpon>frmValidIn.cs</DependentUpon>

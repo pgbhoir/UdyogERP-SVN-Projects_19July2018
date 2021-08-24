@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using UdyogDataOperation;
 
 
@@ -22,6 +23,8 @@ namespace UdyogTranOperation
             string v_i_middle = string.Empty;
             string cond = string.Empty;
 
+            //MessageBox.Show("Testing 1.1 : ");
+
             SqlTransaction SqlTran = null;
             int rowsAffected = 0;
             SqlCommand cmd = new SqlCommand("Select top 1 * From Series Where Inv_sr=@Series", oSqlConObj);
@@ -35,10 +38,21 @@ namespace UdyogTranOperation
             if (oSqlConObj.State == ConnectionState.Closed)
                 oSqlConObj.Open();
 
+            //MessageBox.Show("Testing 1.2 : " + Series.Rows.Count.ToString());
+
             if (Series.Rows.Count > 0)
             {
                 SeriesType = (Convert.ToString(Series.Rows[0]["s_Type"])).Trim();
-                prefix = (Convert.ToString(Series.Rows[0]["i_prefix"]).Replace('"', ' ').Replace("'", "").Trim()).Trim();
+                //******* Added by Sachin N. S. on 28/02/2018 for Bug-30938 -- Start
+                if (vInvoiceSeries == "")
+                {
+                    prefix = ventryType+"/"+ vdSta_Dt.ToString("yy")+vdEnd_Dt.ToString("yy") + "/";
+                }
+                else
+                {
+                    //******* Added by Sachin N. S. on 28/02/2018 for Bug-30938 -- End
+                    prefix = (Convert.ToString(Series.Rows[0]["i_prefix"]).Replace('"', ' ').Replace("'", "").Trim()).Trim();
+                }
                 suffix = (Convert.ToString(Series.Rows[0]["i_suffix"]).Replace('"', ' ').Replace("'", "")).Trim();
                 monthFormat = (Convert.ToString(Series.Rows[0]["mnthformat"])).Trim();
 
@@ -78,6 +92,8 @@ namespace UdyogTranOperation
             vInvoiceNo = vInvoiceNo.Trim() == "" ? "0" : Convert.ToInt32(vInvoiceNo).ToString();
             vInvoiceNo = (vInvoiceNo.Trim() == "0" ? "1" : vInvoiceNo);
 
+            //MessageBox.Show("Testing 1.3 : " + vInvoiceNo.ToString());
+
             if (SeriesType == "MONTHWISE")
             {
                 VentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -107,6 +123,8 @@ namespace UdyogTranOperation
                     if (startDate.Contains(VentDate.Month))
                         vctrYear = (VentDate.Year).ToString().Trim() + "-" + (VentDate.Year + 1).ToString().Trim();
             }
+
+            //MessageBox.Show("Testing 1.4 : " + vInvoiceNo.ToString());
 
             DataTable GenInv = new DataTable("Gen_Inv_vw");
             DataTable GenMiss = new DataTable("Gen_Miss_vw");
@@ -143,6 +161,8 @@ namespace UdyogTranOperation
                 //DataTable TmpTbl = new DataTable();
                 DataTable TmpTbl;
 
+                //MessageBox.Show("Testing 1.5 : " + vInvoiceNo.ToString());
+
                 string sqlStr = string.Empty;
                 while (true)
                 {
@@ -154,6 +174,9 @@ namespace UdyogTranOperation
                     //    TmpTbl.Clear();
                     //    TmpTbl = null;
                     //}
+
+                    //MessageBox.Show("Testing 1.6 : " + SeriesType.ToString());
+
                     switch (SeriesType)
                     {
                         case "DAYWISE":
@@ -188,6 +211,8 @@ namespace UdyogTranOperation
                     cmd.Transaction = SqlTran;
                     da = new SqlDataAdapter(cmd);
                     da.Fill(TmpTbl);
+
+                    //MessageBox.Show("Testing 1.7 : " + TmpTbl.Rows.Count.ToString());
 
                     DBOperation op = new DBOperation();
                     if (TmpTbl.Rows.Count <= 0)
@@ -235,6 +260,9 @@ namespace UdyogTranOperation
                             rowsAffected = cmd.ExecuteNonQuery();
                         }
                     }
+
+                    //MessageBox.Show("Testing 1.8 : " + rowsAffected.ToString());
+
                     if (rowsAffected > 0)
                     {
                         switch (SeriesType)
@@ -277,6 +305,10 @@ namespace UdyogTranOperation
                         da.Fill(TmpTbl);
                         cmd.Parameters.Clear();
                         string vFoundInMiss = "Y";
+
+                        //MessageBox.Show("Testing 1.9 : " + TmpTbl.Rows.Count.ToString());
+
+
                         if (TmpTbl.Rows.Count <= 0)
                         {
                             vFoundInMiss = "N";
@@ -326,6 +358,9 @@ namespace UdyogTranOperation
                                 rowsAffected = cmd.ExecuteNonQuery();
                             }
                         }
+
+                        //MessageBox.Show("Testing 1.10 : " + vFoundInMiss.ToString());
+
                         if (vFoundInMiss == "N")
                         {
                             SqlTran.Commit();
@@ -361,14 +396,23 @@ namespace UdyogTranOperation
                                 vFoundInMiss = "Y";
                             }
                         }
+
+                        //MessageBox.Show("Testing 1.11 : " + vFoundInMiss.ToString());
+
                         if (vFoundInMiss == "Y")
                         {
                             GenInv.Rows[0]["Inv_no"] = Convert.ToInt32(GenInv.Rows[0]["Inv_no"]) + 1;
                             GenMiss.Rows[0]["Inv_no"] = GenInv.Rows[0]["Inv_no"];
                         }
+                        //MessageBox.Show("Testing 1.12 : " + vFoundInMiss.ToString());
                     }
 
+                    //MessageBox.Show("Testing 1.13 : ");
+
                 }
+
+                //MessageBox.Show("Testing 1.14 : ");
+
                 if (IsRollBack == false)
                 {
                     GenInv.Rows[0]["Entry_ty"] = ventryType;
@@ -385,6 +429,8 @@ namespace UdyogTranOperation
                     GenMiss.Rows[0]["Flag"] = "N";
 
                     //string cond = string.Empty;
+
+                    //MessageBox.Show("Testing 1.15 : ");
 
                     DBOperation op = new DBOperation();
                     cmd.Parameters.Clear();
@@ -420,7 +466,12 @@ namespace UdyogTranOperation
                     //cmd.Transaction = SqlTran;
                     cmd.Connection = oSqlConObj;
                     rowsAffected = cmd.ExecuteNonQuery();
+
+
+                    //MessageBox.Show("Testing 1.16 : " + rowsAffected.ToString());
                 }
+
+                //MessageBox.Show("Testing 1.17 : ");
             }
             catch (Exception ex)
             {
@@ -444,6 +495,8 @@ namespace UdyogTranOperation
             }
             GenInv = null;
             GenMiss = null;
+
+            //MessageBox.Show("Testing 1.18 : " + ReturnInvNo.ToString());
             return ReturnInvNo;
         }
 

@@ -5,3 +5,22 @@ D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Releas
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\ResolveAssemblyReference.cache
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.dll
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.csprojResolveAssemblyReference.cache
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Release\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Release\UdyogTransOperation.pdb

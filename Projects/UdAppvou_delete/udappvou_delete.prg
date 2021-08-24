@@ -53,38 +53,38 @@ If Type('_curvouobj.PCVTYPE')='C' And ([vuexc] $ vchkprod)
 		Endif
 
 		Do Case
-		Case lResultInsp =.F. And lResultCtrl =.F.
-			Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
-				"Are you sure you wish to delete this Voucher?"
-			If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
-				Return .F.
-			Endif
-		Case lResultInsp =.F.
-			Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
-				"Are you sure you wish to delete this Voucher?"
-			If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
-				Return .F.
-			Endif
-		Case lResultCtrl =.F.
-			Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
-				"Are you sure you wish to delete this Voucher?"
-			If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
-				Return .F.
-			Endif
+			Case lResultInsp =.F. And lResultCtrl =.F.
+				Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
+					"Are you sure you wish to delete this Voucher?"
+				If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
+					Return .F.
+				Endif
+			Case lResultInsp =.F.
+				Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
+					"Are you sure you wish to delete this Voucher?"
+				If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
+					Return .F.
+				Endif
+			Case lResultCtrl =.F.
+				Msg = "QC Entry Passed against this Voucher,"+Chr(13)+;
+					"Are you sure you wish to delete this Voucher?"
+				If .ShowMessageBox(Msg,4+32+256,vuMess,1)=7
+					Return .F.
+				Endif
 *** Added for Bug-6965 on 23/10/2012 ---->
-		Case lResultInsp =.T. And lResultCtrl =.T.
-			If !Empty(_Malias)
-				Select &_Malias
-			Endif
-			If Betw(_mRecNo,1,Reccount())
-				Go _mRecNo
-			ENDIF
-			QcRetstate=.t.		&& Added by Shrikant S. on 14/04/2018 for Auto updater 13.0.6	
+			Case lResultInsp =.T. And lResultCtrl =.T.
+				If !Empty(_Malias)
+					Select &_Malias
+				Endif
+				If Betw(_mRecNo,1,Reccount())
+					Go _mRecNo
+				Endif
+				QcRetstate=.T.		&& Added by Shrikant S. on 14/04/2018 for Auto updater 13.0.6
 *!*				Return .T.			&& Commented by Shrikant S. on 14/04/2018 for Auto updater 13.0.6
 *** Added for Bug-6965 on 23/10/2012 <----
 		Endcase
 
-		If (lResultCtrl =.F. Or lResultInsp =.F.) AND !(lResultInsp =.T. And lResultCtrl =.T.)				&& Added by Shrikant S. on 14/04/2018 for Auto updater 13.0.6	
+		If (lResultCtrl =.F. Or lResultInsp =.F.) And !(lResultInsp =.T. And lResultCtrl =.T.)				&& Added by Shrikant S. on 14/04/2018 for Auto updater 13.0.6
 *!*			If lResultCtrl =.F. Or lResultInsp =.F.			&& Commented by Shrikant S. on 14/04/2018 for Auto updater 13.0.6
 && Added by Shrikant S. on 29/09/2014 	for Bug-23879		&& Start
 			lnInsp_id=0
@@ -103,6 +103,12 @@ If Type('_curvouobj.PCVTYPE')='C' And ([vuexc] $ vchkprod)
 				mSqlStr = _curvouobj.sqlconobj.GenDelete("QC_INSPECTION_PARAMETER","Insp_Id=?lnInsp_id")
 				sql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,mSqlStr,[],;
 					"This.Parent.nHandle",_curvouobj.DataSessionId,.T.)
+
+***** Added by Sachin N. S. on 18/09/2018 for Bug-31756 -- Start
+				mSqlStr = _curvouobj.sqlconobj.GenDelete("QcSampleValue","Insp_Id=?lnInsp_id")
+				sql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,mSqlStr,[],;
+					"This.Parent.nHandle",_curvouobj.DataSessionId,.T.)
+***** Added by Sachin N. S. on 18/09/2018 for Bug-31756 -- End
 			Endif
 && Added by Shrikant S. on 29/09/2014 	for Bug-23879		&& End
 			mSqlStr = _curvouobj.sqlconobj.GenDelete("qc_inspection_master","Entry_ty = ?Main_vw.Entry_ty And Tran_cd = ?Main_vw.Tran_cd")
@@ -171,7 +177,8 @@ Endif
 && Added By Shrikant S. on 29/12/2012 for Bug-2267 		&&End 	&&vasant030412
 
 && Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- Start
-If oGlblPrdFeat.UdChkProd('vugst')
+*!*	If oGlblPrdFeat.UdChkProd('vugst')     &&Commented by Priyanka B on 19032019 for Bug-32067
+If oGlblPrdFeat.UdChkProd('vugst') Or oGlblPrdFeat.UdChkProd('vuisd') Or oGlblPrdFeat.UdChkProd('isdkgen')  &&Modified by Priyanka B on 19032019 for Bug-32067
 	cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
 	If !Empty(cdAmendDt)
 		If !Empty(Evaluate(cdAmendDt)) And Evaluate(cdAmendDt)!=Ctod('01/01/1900')
@@ -181,6 +188,183 @@ If oGlblPrdFeat.UdChkProd('vugst')
 	Endif
 Endif
 && Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- End
+
+&&Added by Priyanka B on 25082018 for Bug-31756 Start
+_curscrobj=_curvouobj
+If (_curscrobj.addmode = .F. And _curscrobj.editmode = .F. And Inlist(main_vw.entry_ty,"BP","RV","CO","GS"))
+	vChqErrMsg = ""
+	If !Empty(main_vw.cheq_no)
+		msql_str1="Select top 1 * From (Select cd.Chq_No,BCode_Nm=isnull(l.BCode_Nm,''),Inv_No=isnull(m.Inv_No,''),Status,Iss_Entry_Ty,Iss_Tran_cd From Cheque_Details cd"
+		msql_str2=" inner join ChequeBookMaster cb on (cb.Book_Id=cd.Book_Id) Left join Lcode l on (l.Entry_Ty=cd.Iss_Entry_Ty ) Left Join BpMain m on (cd.Iss_Tran_Cd=m.Tran_cd)"
+		msql_str3=" Where cb.Bank_Nm='"+Alltrim(main_vw.Bank_nm)+"' and cd.Chq_No='"+Alltrim(main_vw.cheq_no)+"' and Iss_Entry_Ty='"+main_vw.entry_ty+"' and Iss_Tran_cd="+Alltrim(Str(main_vw.tran_cd))
+		msql_str3= msql_str3 + " Union Select cd.Chq_No,BCode_Nm=isnull(l.BCode_Nm,''),Inv_No=isnull(m.Inv_No,''),Status,Iss_Entry_Ty,Iss_Tran_cd From Cheque_Details cd"+;
+			" inner join ChequeBookMaster cb on (cb.Book_Id=cd.Book_Id) Left join Lcode l on (l.Entry_Ty=cd.Iss_Entry_Ty ) Left Join BrMain m on (cd.Iss_Tran_Cd=m.Tran_cd) "+;
+			" Where cb.Bank_Nm='"+Alltrim(main_vw.Bank_nm)+"' and cd.Chq_No='"+Alltrim(main_vw.cheq_no)+"' and Iss_Entry_Ty='"+main_vw.entry_ty+;
+			"' and Iss_Tran_cd="+Alltrim(Str(main_vw.tran_cd))+")aa where inv_no<>'' "
+		etsql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,msql_str1+msql_str2+msql_str3,"_delchkChqNo","_curvouobj.nHandle",_curvouobj.DataSessionId,.T.)
+
+		If etsql_con > 0 And Used("_delchkChqNo")
+			Select _delchkChqNo
+			If Reccount("_delchkChqNo")>0
+				Select _delchkChqNo
+				If Alltrim(Upper(main_vw.party_nm)) = "CANCELLED."
+					vChqErrMsg=	"Cheque No. " + Alltrim(_delchkChqNo.Chq_No) + " is Dishonor/Cancelled!!"
+				Endif
+				If (_delchkChqNo.Status="Reconciled" And (_delchkChqNo.Iss_Entry_Ty=main_vw.entry_ty And _delchkChqNo.Iss_Tran_cd =main_vw.tran_cd))
+					If !Empty(vChqErrMsg)
+						vChqErrMsg=	vChqErrMsg + Chr(13) + "And also Reconciled!!"
+					Else
+						vChqErrMsg=	"Cheque No. " + Alltrim(_delchkChqNo.Chq_No) + " is Reconciled!!"
+					Endif
+				Endif
+				If !Empty(vChqErrMsg)
+					vChqErrMsg = vChqErrMsg + Chr(13)+"Cannot delete this entry!!"
+				Endif
+
+				Use In _delchkChqNo
+				If !Empty(vChqErrMsg)
+					=Messagebox(vChqErrMsg,16,vuMess)
+					Return .F.
+				Else
+					msql_str1= "Update cd set Status='Available',Iss_Entry_Ty='',Iss_Tran_cd='0' from Cheque_Details cd"
+					msql_str2= " Left Join Lcode l on (l.Entry_Ty=cd.Iss_Entry_Ty ) Left Join "+ Alltrim(lcode_vw.bcode_nm)+"Main m on (cd.Iss_Tran_Cd=m.Tran_cd)"
+					msql_str3= " Where cd.Bank_Nm='"+Alltrim(main_vw.Bank_nm)+"' and Iss_Entry_Ty='"+main_vw.entry_ty+"' and Iss_Tran_cd="+Alltrim(Str(main_vw.tran_cd))+" and cd.Status<>'Reconciled'"
+					etsql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,msql_str1+msql_str2+msql_str3,[_delChqNo],"_curvouobj.nHandle",_curvouobj.DataSessionId,.T.)
+
+					If etsql_con > 0 And Used('_delChqNo')
+						Use In _delChqNo
+					Endif
+				Endif
+			Endif
+		Endif
+	Endif
+Endif
+&&Added by Priyanka B on 25082018 for Bug-31756 End
+
+&&Added by Priyanka B on 12122018 for Bug-31930 Start
+_curscrobj=_curvouobj
+*!*	If (_curscrobj.addmode = .F. And _curscrobj.editmode = .F. And Inlist(main_vw.entry_ty,"HS"))
+If (_curscrobj.addmode = .F. And _curscrobj.editmode = .F. And Inlist(main_vw.entry_ty,"HS","PS"))		&& Changed by Sachin N. S. on 22/01/2019 for Bug-32215
+	msql_str=""
+	msql_str= "Select ISNULL(POSOUTTRAN,0) as POSOUTTRAN from dcmain where entry_ty=?main_vw.entry_ty and tran_cd=?main_vw.tran_cd"
+	etsql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,msql_str,[_delPpos],"_curvouobj.nHandle",_curvouobj.DataSessionId,.T.)
+	Select _delPpos
+	If Reccount()>0
+		If _delPpos.posouttran > 0
+			Messagebox("Cash out entry is passed against this transaction."+Chr(13)+"Cannot delete!!",0+16,vuMess)
+			Return .F.
+		Endif
+	Endif
+
+	If Used('_delPpos')
+		Use In _delPpos
+	Endif
+Endif
+&&Added by Priyanka B on 12122018 for Bug-31930 End
+
+
+&&Added by Priyanka B on 28012019 for Bug-32210 Start
+_curscrobj=_curvouobj
+If (_curscrobj.addmode = .F. And _curscrobj.editmode = .F. And Inlist(main_vw.entry_ty,"Q1","S2"))
+	msql_str=""
+	msql_str= "Select rtrim(code_nm) as tran_name From Lcode Where entry_ty=(Select top 1 rentry_ty From Autotranref Where entry_ty=?main_vw.entry_ty and tran_cd=?main_vw.tran_cd)"
+	etsql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,msql_str,[_delautotran],"_curvouobj.nHandle",_curvouobj.DataSessionId,.T.)
+	Select _delautotran
+	If Reccount()>0
+		Messagebox(Alltrim(_delautotran.tran_name) + " entry is passed against this transaction."+Chr(13)+"Cannot delete!!",0+16,vuMess)
+		Return .F.
+	Endif
+
+	If Used('_delautotran')
+		Use In _delautotran
+	Endif
+Endif
+
+If ! _curscrobj.addmode And ! _curscrobj.editmode And Inlist(main_vw.entry_ty,"PQ","PO")
+	etsql_str="Delete From AutoTranRef Where REntry_ty=?Main_vw.Entry_ty and RTran_cd=?Main_vw.Tran_cd "
+	etsql_con  = _curscrobj.sqlconobj.Dataconn([EXE],company.dbname,etsql_str,"","_curscrobj.nHandle",_curscrobj.DataSessionId,.T.)
+Endif
+&&Added by Priyanka B on 28012019 for Bug-32210 End
+
+&&Added by Priyanka B on 07082019 for Bug-32747 Start
+If ([efabric] $ vchkprod)
+	_curscrobj=_curvouobj
+	If (_curscrobj.addmode = .F. And _curscrobj.editmode = .F. And Inlist(main_vw.entry_ty,"W1","ID","AF","IC"))
+		etsql_str =""
+		Do Case
+			Case main_vw.entry_ty = "W1"
+				etsql_str = "Select top 1 b.code_nm as tran_name,a.flotno from iritem a inner join lcode b on (a.entry_ty=b.entry_ty) "
+				etsql_str = etsql_str + " inner join iritref c on (a.entry_ty=c.entry_ty and a.tran_cd=c.tran_cd and a.itserial=c.itserial)"
+				etsql_str = etsql_str + " where a.entry_ty='RD' and c.itref_tran=?Main_vw.tran_cd and a.flotno=?Main_vw.flotno and a.flotno<>''''"
+
+			Case main_vw.entry_ty = "ID"
+*!*					etsql_str = "Declare @mflotno varchar(100),@sqlcommand nvarchar(max)"
+*!*					etsql_str = etsql_str + " Select @mflotno = cast(stuff((select ','+char(39)+rtrim(flotno)+char(39) from iiitem where entry_ty=?Main_vw.Entry_ty "
+*!*					etsql_str = etsql_str + " and tran_cd=?Main_vw.Tran_cd order by flotno for xml path('')),1,1,'') as varchar)"
+*!*					etsql_str = etsql_str + " set @sqlcommand='Select top 1 b.code_nm as tran_name,a.flotno from main a inner join lcode b on (a.entry_ty=b.entry_ty) where a.entry_ty=''W1'' and flotno in ('+@mflotno+') and flotno<>'''''"
+*!*					etsql_str = etsql_str + " execute sp_executesql @sqlcommand"
+
+				etsql_str = "select a.entry_ty tran_type, c.code_nm as tran_name,i.flotno into #a from armain a inner join iimain b on (a.linked_with = rtrim(b.entry_ty)+ltrim(str(b.tran_cd))+rtrim(b.l_yn) "
+				etsql_str = etsql_str + " and b.linked_with = rtrim(a.entry_ty)+ltrim(str(a.tran_cd))+rtrim(a.l_yn)) inner join iiitem i on (b.entry_ty=i.entry_ty and b.tran_cd=i.tran_cd) "
+				etsql_str = etsql_str + " inner join lcode c on (b.entry_ty=c.entry_ty) where b.entry_ty=?Main_vw.entry_ty and b.tran_cd=?Main_vw.tran_cd"
+				etsql_str = etsql_str + " select distinct tran_name from ("
+				etsql_str = etsql_str + " Select m.entry_ty tran_type,c.code_nm as tran_name,m.flotno from main m inner join lcode c on (m.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from iritem i inner join lcode c on (i.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from ipitem i inner join lcode c on (i.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from opitem i inner join lcode c on (i.entry_ty=c.entry_ty) )aa where flotno in (select flotno from #a)"
+
+
+			Case main_vw.entry_ty = "AF"
+*!*					etsql_str = "Select top 1 c.code_nm as tran_name from armain a inner join iimain b on (a.linked_with = rtrim(b.entry_ty)+ltrim(str(b.tran_cd))+rtrim(b.l_yn)"
+*!*					etsql_str = etsql_str + " and b.linked_with = rtrim(a.entry_ty)+ltrim(str(a.tran_cd))+rtrim(a.l_yn)) inner join lcode c on (b.entry_ty=c.entry_ty) "
+*!*					etsql_str = etsql_str + " where a.entry_ty=?Main_vw.entry_ty and a.tran_cd=?Main_vw.tran_cd"
+
+				etsql_str = "select a.entry_ty tran_type, c.code_nm as tran_name,i.flotno into #a from armain a inner join iimain b on (a.linked_with = rtrim(b.entry_ty)+ltrim(str(b.tran_cd))+rtrim(b.l_yn) "
+				etsql_str = etsql_str + " and b.linked_with = rtrim(a.entry_ty)+ltrim(str(a.tran_cd))+rtrim(a.l_yn)) inner join iiitem i on (b.entry_ty=i.entry_ty and b.tran_cd=i.tran_cd) "
+				etsql_str = etsql_str + " inner join lcode c on (b.entry_ty=c.entry_ty) where a.entry_ty=?Main_vw.entry_ty and a.tran_cd=?Main_vw.tran_cd"
+				etsql_str = etsql_str + " select distinct tran_name from ("
+				etsql_str = etsql_str + " Select m.entry_ty tran_type,c.code_nm as tran_name,m.flotno from main m inner join lcode c on (m.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from iritem i inner join lcode c on (i.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from ipitem i inner join lcode c on (i.entry_ty=c.entry_ty) "
+				etsql_str = etsql_str + " union all Select i.entry_ty tran_type,c.code_nm as tran_name,i.flotno from opitem i inner join lcode c on (i.entry_ty=c.entry_ty) )aa where flotno in (select flotno from #a)"
+
+			Case main_vw.entry_ty = "IC"
+				etsql_str = "Declare @mflotno varchar(100),@sqlcommand nvarchar(max)"
+				etsql_str = etsql_str + " Select @mflotno = cast(stuff((select ','+char(39)+rtrim(flotno)+char(39) from ipitem where entry_ty=?Main_vw.Entry_ty "
+				etsql_str = etsql_str + " and tran_cd=?Main_vw.Tran_cd order by flotno for xml path('')),1,1,'') as varchar)"
+				etsql_str = etsql_str + " set @sqlcommand='Select top 1 b.code_nm as tran_name,a.flotno from main a inner join lcode b on (a.entry_ty=b.entry_ty) where a.entry_ty=''W2'' and flotno in ('+@mflotno+') and flotno<>'''''"
+				etsql_str = etsql_str + " execute sp_executesql @sqlcommand"
+
+			Otherwise
+
+		Endcase
+		etsql_con = _curvouobj.sqlconobj.Dataconn([EXE],company.dbname,etsql_str,[_delFTran],"_curvouobj.nHandle",_curvouobj.DataSessionId,.T.)
+		Select _delFTran
+		If Reccount()>0
+			If Inlist(main_vw.entry_ty,"AF","ID")
+				tname= ""
+				Select _delFTran
+				Scan
+					tname = Iif(Empty(tname),Alltrim(_delFTran.tran_name),tname+ "," + Alltrim(_delFTran.tran_name))
+					Select _delFTran
+				Endscan
+				If Reccount('_delFTran')>1
+					Messagebox(Alltrim(tname) +" entries are passed against this transaction."+Chr(13)+"You cannot delete this transaction!!",0+16,vuMess)
+				Else
+					Messagebox(Alltrim(tname) +" entry is passed against this transaction."+Chr(13)+"You cannot delete this transaction!!",0+16,vuMess)
+				Endif
+			Else
+				Messagebox(Alltrim(_delFTran.tran_name) +" entry is passed against this transaction."+Chr(13)+"You cannot delete this transaction!!",0+16,vuMess)
+			Endif
+			Return .F.
+		Endif
+
+		If Used('_delFTran')
+			Use In _delFTran
+		Endif
+	Endif
+Endif
+&&Added by Priyanka B on 07082019 for Bug-32747 End
 
 If !Empty(_Malias)
 	Select &_Malias

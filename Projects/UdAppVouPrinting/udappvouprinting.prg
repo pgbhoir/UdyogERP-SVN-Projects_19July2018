@@ -1,11 +1,13 @@
-Lparameters _prinpara
+Lparameters _prinpara ,_printtype  &&Modified by Prajakta B. on 28/08/2019 for Bug 32777
+&&Lparameters _prinpara &&Commented by Prajakta B. on 28/08/2019 for Bug 32777
 _actfrm = _Screen.ActiveForm
 _actprintflag = 0
 If Type('printflag') = 'N'
 	_actprintflag = printflag
 Endif
 
-If _prinpara = 'AFTER' And _actprintflag = 4
+&&If _prinpara = 'AFTER' And _actprintflag = 4 &&Commented by Prajakta B. on 28/08/2019 for Bug 32777
+If _prinpara = 'AFTER' And _actprintflag = 4 AND _printtype = 'M'  &&Modified by Prajakta B. on 28/08/2019 for Bug 32777
 	nHandle = 0
 	_mailto = ''
 	_actfrmcon = _actfrm.SqlConObj.DataConn([EXE],Company.DbName,;

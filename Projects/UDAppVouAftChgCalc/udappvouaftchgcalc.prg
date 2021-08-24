@@ -86,11 +86,19 @@ If _custvouobj.Servicetaxpage = .T. And !Inlist(_custvouobj.pcvtype,'IB')
 			Endif
 
 
-		
-
+			
 
 *lcserty=IIF(INLIST(_custvouobj.pcvtype,"E1","S1"),Item_vw.serty,Acdetalloc_vw.Serty)		&& Added by Shrikant S. on 06/10/2016 for GST
 			lcserty=Acdetalloc_vw.Serty
+
+&& Added by Shrikant S. on 14/03/2019 for Bug-32266				&& Start			
+			IF TYPE('Lit_vw.RCMCATE')='C'
+				IF !EMPTY(Lit_vw.RCMCATE)
+					lcserty=ALLTRIM(Lit_vw.RCMCATE)
+				endif
+			endif
+&& Added by Shrikant S. on 14/03/2019 for Bug-32266				&& End
+
 			custsql_str = "Select Top 1 PerPayReceiver From SerTax_Mast"
 *!*				custsql_str = custsql_str + " Where Name = ?Acdetalloc_vw.Serty and (?Main_vw.Date Between sdate and edate)"		&& Commented by Shrikant S. on 06/10/2016 for GST
 			custsql_str = custsql_str + " Where Name = ?lcserty and (?Main_vw.Date Between sdate and edate)"						&& Added by Shrikant S. on 06/10/2016 for GST

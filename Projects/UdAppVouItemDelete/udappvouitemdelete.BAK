@@ -70,6 +70,17 @@ If Type('_curvouobj.PcvType') = 'C' AND vbefore = 'BEFORE'
 Endif
 && Added By Shrikant S. on 29/12/2012 for Bug-2267		&& End	 	&&vasant030412
 
+&& Added by Shrikant S. on 29/11/2016 for GST		&& Start
+If Type('_curvouobj.PcvType') = 'C' AND vbefore = 'BEFORE'
+	IF USED('Acdetalloc_vw')	
+		SELECT Acdetalloc_vw
+		LOCATE FOR Entry_ty=Main_vw.Entry_ty AND Tran_cd=Main_vw.Tran_cd AND Itserial=Item_vw.Itserial
+		IF FOUND()
+			DELETE IN Acdetalloc_vw	
+		endif
+	endif
+Endif
+&& Added by Shrikant S. on 29/11/2016 for GST		&& End
 
 If !Empty(_Malias)
 	Select &_Malias

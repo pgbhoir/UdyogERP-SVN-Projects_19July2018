@@ -30,11 +30,14 @@
         {
             this.btnProceed = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Item = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rmItem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Req_qty = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ItemBom = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rdoMultiple = new System.Windows.Forms.RadioButton();
             this.rdoSingle = new System.Windows.Forms.RadioButton();
@@ -42,21 +45,19 @@
             this.btnWorkOrder = new System.Windows.Forms.Button();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.cboExport = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnProceed
@@ -73,12 +74,12 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.gridControl1);
             this.panel1.Controls.Add(this.gridControl3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.btnIndent);
             this.panel1.Controls.Add(this.btnWorkOrder);
             this.panel1.Controls.Add(this.gridControl2);
-            this.panel1.Controls.Add(this.gridControl1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnExport);
@@ -89,6 +90,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1253, 605);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Location = new System.Drawing.Point(5, 53);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(858, 207);
+            this.gridControl1.TabIndex = 8;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
             // 
             // gridControl3
             // 
@@ -105,8 +126,10 @@
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Item,
             this.rmItem,
-            this.Req_qty});
+            this.Req_qty,
+            this.ItemBom});
             this.gridView3.GridControl = this.gridControl3;
+            this.gridView3.GroupFormat = "{0} : [#image][{1} {2}]";
             this.gridView3.Name = "gridView3";
             this.gridView3.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView3_ShowingEditor);
             // 
@@ -130,6 +153,13 @@
             this.Req_qty.Name = "Req_qty";
             this.Req_qty.Visible = true;
             this.Req_qty.VisibleIndex = 2;
+            // 
+            // ItemBom
+            // 
+            this.ItemBom.Caption = "gridColumn1";
+            this.ItemBom.Name = "ItemBom";
+            this.ItemBom.Visible = true;
+            this.ItemBom.VisibleIndex = 3;
             // 
             // panel2
             // 
@@ -201,22 +231,6 @@
             this.gridView2.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gridView2_RowCellStyle);
             this.gridView2.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView2_ShowingEditor);
             // 
-            // gridControl1
-            // 
-            this.gridControl1.Location = new System.Drawing.Point(5, 53);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(858, 207);
-            this.gridControl1.TabIndex = 8;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -285,14 +299,14 @@
             this.Load += new System.EventHandler(this.frmMRPPlan2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,5 +334,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn Item;
         private DevExpress.XtraGrid.Columns.GridColumn rmItem;
         private DevExpress.XtraGrid.Columns.GridColumn Req_qty;
+        private DevExpress.XtraGrid.Columns.GridColumn ItemBom;   //Added by Priyanka B on 27042018 for Bugs 31390 & 31306
     }
 }

@@ -95,3 +95,65 @@ E:\Suraj\GST\Shrikant Sir\Serialize Inventory\UdyogMaterialRequirementPlanning\U
 E:\Suraj\GST\Shrikant Sir\Serialize Inventory\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
 E:\Suraj\GST\Shrikant Sir\Serialize Inventory\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.exe
 E:\Suraj\GST\Shrikant Sir\Serialize Inventory\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.exe
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.exe
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.exe
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\DataAccess-Net.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\udAdditionalInfo.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\uNumericTextBox.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\Interop.ueconnect.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\Interop.ueconnect.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRP.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.exe
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\Interop.ueconnect.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.exe
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.exe
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\DataAccess-Net.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\udAdditionalInfo.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\uNumericTextBox.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogDataOperation.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\UdyogTransOperation.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Debug\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Debug\UdSalesProjection.pdb

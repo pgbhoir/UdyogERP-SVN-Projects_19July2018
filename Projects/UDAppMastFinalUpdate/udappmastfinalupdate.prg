@@ -8,6 +8,8 @@ If Type("_Screen.ActiveForm.Mainalias")<>"U"
 	Endif
 Endif
 
+DO VouFinalUpdate IN uemastamendment.app
+
 && Added by Shrikant S. on 280/06/2018 for Bug-30904		&& Start
 *!*	** Start : Added by Uday on 29/04/2014 for Bug-21965		
 _mMLA = .f.                              

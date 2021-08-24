@@ -54,6 +54,8 @@
             this.txtCert = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grpView = new System.Windows.Forms.GroupBox();
+            this.btnSigProperty = new System.Windows.Forms.Button();
+            this.chkissigninvalid = new System.Windows.Forms.CheckBox();
             this.chkLocation = new System.Windows.Forms.CheckBox();
             this.chkReason = new System.Windows.Forms.CheckBox();
             this.txtHeight = new System.Windows.Forms.TextBox();
@@ -361,6 +363,8 @@
             // 
             // grpView
             // 
+            this.grpView.Controls.Add(this.btnSigProperty);
+            this.grpView.Controls.Add(this.chkissigninvalid);
             this.grpView.Controls.Add(this.chkLocation);
             this.grpView.Controls.Add(this.chkReason);
             this.grpView.Controls.Add(this.txtHeight);
@@ -395,10 +399,34 @@
             this.grpView.Controls.Add(this.label3);
             this.grpView.Location = new System.Drawing.Point(7, 156);
             this.grpView.Name = "grpView";
-            this.grpView.Size = new System.Drawing.Size(463, 379);
+            this.grpView.Size = new System.Drawing.Size(463, 435);
             this.grpView.TabIndex = 108;
             this.grpView.TabStop = false;
             this.grpView.Text = "Digital Signature Details";
+            this.grpView.Enter += new System.EventHandler(this.grpView_Enter);
+            // 
+            // btnSigProperty
+            // 
+            this.btnSigProperty.Location = new System.Drawing.Point(314, 406);
+            this.btnSigProperty.Name = "btnSigProperty";
+            this.btnSigProperty.Size = new System.Drawing.Size(143, 23);
+            this.btnSigProperty.TabIndex = 33;
+            this.btnSigProperty.Text = "Digital Signature Property";
+            this.btnSigProperty.UseVisualStyleBackColor = true;
+            this.btnSigProperty.Click += new System.EventHandler(this.btnSigProperty_Click);
+            // 
+            // chkissigninvalid
+            // 
+            this.chkissigninvalid.AutoSize = true;
+            this.chkissigninvalid.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkissigninvalid.Checked = true;
+            this.chkissigninvalid.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkissigninvalid.Location = new System.Drawing.Point(11, 232);
+            this.chkissigninvalid.Name = "chkissigninvalid";
+            this.chkissigninvalid.Size = new System.Drawing.Size(110, 17);
+            this.chkissigninvalid.TabIndex = 32;
+            this.chkissigninvalid.Text = "Display Valid Sign";
+            this.chkissigninvalid.UseVisualStyleBackColor = true;
             // 
             // chkLocation
             // 
@@ -425,7 +453,7 @@
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(406, 229);
+            this.txtHeight.Location = new System.Drawing.Point(407, 255);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(42, 20);
             this.txtHeight.TabIndex = 28;
@@ -433,7 +461,7 @@
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(313, 229);
+            this.txtWidth.Location = new System.Drawing.Point(314, 255);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(42, 20);
             this.txtWidth.TabIndex = 27;
@@ -441,7 +469,7 @@
             // 
             // txtBottom
             // 
-            this.txtBottom.Location = new System.Drawing.Point(228, 227);
+            this.txtBottom.Location = new System.Drawing.Point(229, 253);
             this.txtBottom.Name = "txtBottom";
             this.txtBottom.Size = new System.Drawing.Size(42, 20);
             this.txtBottom.TabIndex = 26;
@@ -449,7 +477,7 @@
             // 
             // txtLeft
             // 
-            this.txtLeft.Location = new System.Drawing.Point(139, 228);
+            this.txtLeft.Location = new System.Drawing.Point(140, 254);
             this.txtLeft.Name = "txtLeft";
             this.txtLeft.Size = new System.Drawing.Size(42, 20);
             this.txtLeft.TabIndex = 25;
@@ -467,7 +495,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(365, 232);
+            this.label21.Location = new System.Drawing.Point(366, 258);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(38, 13);
             this.label21.TabIndex = 24;
@@ -476,7 +504,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(277, 232);
+            this.label20.Location = new System.Drawing.Point(278, 258);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(35, 13);
             this.label20.TabIndex = 24;
@@ -485,7 +513,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(188, 232);
+            this.label19.Location = new System.Drawing.Point(189, 258);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(40, 13);
             this.label19.TabIndex = 24;
@@ -494,7 +522,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(108, 232);
+            this.label18.Location = new System.Drawing.Point(109, 258);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(25, 13);
             this.label18.TabIndex = 24;
@@ -503,7 +531,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 232);
+            this.label17.Location = new System.Drawing.Point(11, 258);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(75, 13);
             this.label17.TabIndex = 24;
@@ -564,7 +592,7 @@
             this.grpSelect.Controls.Add(this.label12);
             this.grpSelect.Controls.Add(this.label11);
             this.grpSelect.Controls.Add(this.label10);
-            this.grpSelect.Location = new System.Drawing.Point(8, 254);
+            this.grpSelect.Location = new System.Drawing.Point(8, 278);
             this.grpSelect.Name = "grpSelect";
             this.grpSelect.Size = new System.Drawing.Size(446, 119);
             this.grpSelect.TabIndex = 31;
@@ -796,7 +824,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 537);
+            this.ClientSize = new System.Drawing.Size(473, 592);
             this.Controls.Add(this.grpView);
             this.Controls.Add(this.grpAdd);
             this.Controls.Add(this.toolStrip1);
@@ -894,7 +922,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox chkReason;
         private System.Windows.Forms.CheckBox chkLocation;
-
+        private System.Windows.Forms.CheckBox chkissigninvalid;
+        private System.Windows.Forms.Button btnSigProperty;
     }
 }
 

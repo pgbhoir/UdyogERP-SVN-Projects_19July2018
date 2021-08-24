@@ -13,7 +13,8 @@
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','OB','DP','DR','BI','FP','FR','VR','BC','BD','BP','CP','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB')  && Added by Shrikant S. on 06/02/2017 for GST		&& Commented by Shrikant S. on 20/04/2017 for GST
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','OB','DP','DR','BI','FP','FR','VR','BC','BD','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB')  && Added by Shrikant S. on 20/04/2017 for GST	&& Commented  by Shrikant S. on 26/04/2017 for GST
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Commented by Priyanka B on 22012018 for Bug-31087
-If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087
+*!*	If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087  &&Commented by Priyanka B on 08082019 for Bug-32747
+If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV','BP') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS','IC')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087  &&Modified by Priyanka B on 08082019 for Bug-32747   &&Modified by Divyang P for Bug-33068
 	If "VOUCLASS" $ Upper(Set('classlib'))
 	Else
 		Set Classlib To vouclass Additive
@@ -70,6 +71,9 @@ If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or In
 			.cmdexdetail.Caption = 'ESIC Details'
 			.cmdexdetail.AutoSize=.T.
 			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'BP')
+			.cmdexdetail.Caption = 'GSTR Status' &&Added by Divyang for Bug-33068 
+			.cmdexdetail.AutoSize=.T.
 && Added By Rup For Bug-4885 on 21/09/2012 <----
 
 *!*		Case Inlist(.pcvtype,'BP','CP',"B3","B4") &&-->Rup 16/06/2009 TDS Payment Entry &&TCS TKT-5692 Add B3,B4		&& Commented by Shrikant S. on 20/04/2017 for GST
@@ -313,11 +317,27 @@ If Vartype(oglblprdfeat)="O"
 			Endif
 		Endif
 	Endif
+****** Added by Sachin N. S. on 16/11/2018 for Bug-31943 -- Start
+	If oglblprdfeat.udchkprod('phrmretlr')
+		If .pcvtype = 'HS'
+			If Type('Thisform._udClsPointOfSale')!='O'
+				If File('udVouPointOfSale.app')
+					If !("UDCLSPOINTOFSALE" $ Upper(Set('classlib')))
+						Set Classlib To udClsPointOfSale In "udVouPointOfSale.app" Additive
+					Endif
+					.AddObject("_udClsPointOfSale","udClsPointOfSale.udClsPointOfSale")
+				Endif
+			Endif
+		Endif
+	Endif
+****** Added by Sachin N. S. on 16/11/2018 for Bug-31943 -- End
+
 Endif
 ***** Added by Sachin N. S. on 01/04/2016 for Bug-27503 -- End
 
 ***** Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- Start
-If oglblprdfeat.udchkprod('vugst')
+*!*	If oglblprdfeat.udchkprod('vugst')   &&Commented by Priyanka B on 22032019 for Bug-32067
+If oglblprdfeat.udchkprod('vugst') Or oglblprdfeat.udchkprod('vuisd') Or oglblprdfeat.udchkprod('isdkgen')  &&Modified by Priyanka B on 22032019 for Bug-32067
 	cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
 	If !Empty(cdAmendDt)
 		If Used('main_vw')
@@ -334,3 +354,201 @@ If oglblprdfeat.udchkprod('vugst')
 Endif
 
 ***** Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- End
+
+
+&& Added by Shrikant S. on 19/10/2018 FOR BUG-31942		&& Start
+If Inlist(.pcvtype,'PK')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdcsv","VOUCLASS.cmdBom")
+	.cmdcsv.Picture = apath+'bmp\raw_material.gif'
+	.cmdcsv.Caption="Import File"
+	.cmdcsv.Visible=.T.
+	.cmdcsv.Enabled=.T.
+	.cmdcsv.Width=.cmdnarration.Width
+	.cmdcsv.Top = .txtInvoiceNo.Top
+	.cmdcsv.Left = .txtInvoiceNo.Left + .txtInvoiceNo.Width + 20
+	.cmdcsv.SpecialEffect=2
+Endif
+&& Added by Shrikant S. on 19/10/2018 FOR Bug-31942		&& Start
+
+&& Added by Shrikant S. on 24/11/2018 FOR Auto updater 2.0.1		&& Start
+If Inlist(.pcvtype,'SK')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdcsv","VOUCLASS.cmdBom")
+	.cmdcsv.Picture = apath+'bmp\raw_material.gif'
+	.cmdcsv.Caption="Export CSV"
+	.cmdcsv.Visible=.T.
+*!*		.cmdcsv.Enabled=IIF(.addmode or .editmode,.f.,.t.)
+	.cmdcsv.Enabled=.T.
+	.cmdcsv.Width=.cmdnarration.Width
+	.cmdcsv.Top = .txtDate.Top
+	.cmdcsv.Left = .txtDate.Left + .txtDate.Width + 20
+	.cmdcsv.SpecialEffect=2
+Endif
+&& Added by Shrikant S. on 24/11/2018 FOR Auto updater 2.0.1		&& End
+
+
+&&Added by Priyanka B on 04122018 for Bug-31930 Start
+If oglblprdfeat.udchkprod('phrmretlr')
+	If Inlist(.pcvtype,'MO')
+		If "VOUCLASS" $ Upper(Set('classlib'))
+		Else
+			Set Classlib To vouclass Additive
+		Endif
+		.AddObject("cmdexcel","VOUCLASS.cmdBom")
+		.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+		.cmdexcel.Caption="Import Excel"
+		.cmdexcel.Visible=.T.
+		.cmdexcel.Enabled=.T.
+		.cmdexcel.Width=.cmdnarration.Width
+		.cmdexcel.Top = .txtDate.Top
+		.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+		.cmdexcel.SpecialEffect=2
+	Endif
+Endif
+&&Added by Priyanka B on 04122018 for Bug-31930 End
+
+&&Added by Rupesh G. on 04012019 for Bug-32194 Start
+If oglblprdfeat.udchkprod('eautomob')
+	If Inlist(.pcvtype,'M3')
+		If "VOUCLASS" $ Upper(Set('classlib'))
+		Else
+			Set Classlib To vouclass Additive
+		Endif
+		.AddObject("cmdexcel","VOUCLASS.cmdBom")
+		.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+		.cmdexcel.Caption="Import Excel"
+		.cmdexcel.Visible=.T.
+		.cmdexcel.Enabled=.T.
+		.cmdexcel.Width=.cmdnarration.Width
+		.cmdexcel.Top = .txtDate.Top
+		.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+		.cmdexcel.SpecialEffect=2
+	Endif
+Endif
+&&Added by Rupesh G. on 04012019 for Bug-32194 End
+
+&&Added by Priyanka B on 05022019 for Bug-31797 Start
+If Inlist(.pcvtype,'PT')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdexcel","VOUCLASS.cmdBom")
+	.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+	.cmdexcel.Caption="Import Excel"
+	.cmdexcel.Visible=.T.
+	.cmdexcel.Enabled=.T.
+	.cmdexcel.Width=.cmdnarration.Width
+	.cmdexcel.Top = .txtDate.Top
+	.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+	.cmdexcel.SpecialEffect=2
+Endif
+&&Added by Priyanka B on 05022019 for Bug-31797 End
+
+&&Added by Priyanka B on 05042019 for Bug-32067 Start
+If Vartype(oglblprdfeat)='O'
+	If oglblprdfeat.udchkprod('vuisd') Or oglblprdfeat.udchkprod('isdkgen')
+		If Used("Lother_vw")
+			Select lother_vw
+			Do Case
+				Case Inlist(.pcvtype,"J7")
+					Update lother_vw Set filtcond="SELECT DISTINCT DESCR FROM REVERSALMAST WHERE CATEGORY = 'ISD' AND ISACTIVE = 0 {DESCR#DESCR}";
+						Where e_code In ('J7') And Alltrim(Lower(fld_nm))='revstype'
+			Endcase
+			Select lother_vw
+			Go Top
+		Endif
+	Endif
+Endif
+
+&&Added by Priyanka B on 05042019 for Bug-32067 End
+
+&&Added by Priyanka B on 04102019 for Bug-32747 Start
+If Vartype(oglblprdfeat)='O'
+	If oglblprdfeat.udchkprod('efabric')
+*!*			If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID') && Ccmmented by Anil on 05-03-2020 for Bug 33328
+*!*				.voupage.page1.grditem.column2.header1.Caption="Total Length" && Ccmmented by Anil on 05-03-2020 for Bug 33328
+*!*				If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID','I7','W3','R2','I8','W4','R3','I6','O6','DF','FO') %% Commented By Anil on 18-04-2020 && Added by Anil on 01-04-2020 for Bug 33328 
+			If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID','I7','W3','R2','I8','W4','R3','I6','O6','DF','FO','BS','RB') ;
+			OR Inlist(.pcvtype,'R4','R5','S3','S4') OR Inlist(.pcvtype,'O1','P7','LD','W5','DR')
+				.voupage.page1.grditem.column2.header1.Caption="Total Meters" && Added by Anil on 01-04-2020 for Bug 33328
+			Endif
+	Endif
+Endif
+&&Added by Priyanka B on 04102019 for Bug-32747 End
+
+&&Added by Rupesh G on 03022020 for Bug-33181 Start
+If Inlist(.pcvtype,'ST') And [udewaygen] $ vchkprod
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdGen","VOUCLASS.cmdBom")
+	.cmdGen.Picture = apath+'bmp\raw_material.gif'
+	.cmdGen.Caption="Generate e-Invoice"
+	.cmdGen.Visible=.T.
+	.cmdGen.Enabled=Iif(.addmode Or .editmode,.F.,.T.)
+	.cmdGen.Width=.cmdnarration.Width+10
+	.cmdGen.Top = .cmdnarration.Top+.cmdnarration.Height+10
+	.cmdGen.Left = .cmdnarration.Left-20
+	.cmdGen.SpecialEffect=2
+Endif
+&&Added by Rupesh G on 03022020 for Bug-33181 End
+
+*!*	&& Added by Shrikant S. on 07/08/2019 for Bug-32412			&& Start
+*!*	If Type('Lcode_vw.unitbc')='L'
+*!*		If lcode_vw.unitbc=.T.
+*!*			If Type('Thisform._unitbcserialize')!='O'
+*!*				If File('ueunitbcserialize.app')
+*!*					If !(Upper("ueunitbcserialize") $ Upper(Set('classlib')))
+*!*						Set Classlib To ueunitbcserialize In "ueunitbcserialize.app" Additive
+*!*					Endif
+*!*					.AddObject("_unitbcserialize","ueunitbcserialize.unitbcserialize")
+*!*				Endif
+*!*			Endif
+*!*			If Type('thisform.cmdscanbc')!='O'
+*!*				.AddObject("cmdscanbc", "cmdscanbarcode")
+*!*				.cmdscanbc.Visible = .T.
+*!*				.cmdscanbc.Height = .cmdnarration.Height
+*!*				.cmdscanbc.Width = .cmdnarration.Width
+*!*				.cmdscanbc.Top = .cmdnarration.Top+5
+*!*				.cmdscanbc.Left = .cmdnarration.Left-30
+*!*				.cmdscanbc.SpecialEffect = 0
+*!*				.cmdscanbc.Picture=apath+"bmp\additional_info.gif"
+*!*				.cmdscanbc.PicturePosition=1
+*!*				.cmdscanbc.SpecialEffect=2
+*!*				.cmdscanbc.AutoSize=.T.
+*!*				If lcode_vw.Inv_stk='+'
+*!*					.cmdscanbc.Caption = ' Print Barcode'
+*!*					.cmdscanbc.Enabled =Iif(.addmode = .T. Or .editmode = .T.,.F.,.T.)
+*!*				Else
+*!*					.cmdscanbc.Caption = ' Scan Barcode'
+*!*					.cmdscanbc.Enabled =Iif(.addmode = .T. Or .editmode = .T.,.T.,.F.)
+*!*				Endif
+*!*			Endif
+*!*		Endif
+*!*	Endif
+*!*	Define Class cmdscanbarcode As CommandButton
+*!*		Procedure Click()
+*!*	*	If _Screen.ActiveForm.addmode = .T. Or _Screen.ActiveForm.editmode = .T.
+*!*			If Alltrim(This.Caption)=="Print Barcode"
+*!*				Messagebox("Printing Barcode")
+*!*			Else
+*!*				Do ueunitbcserialize With _Screen.ActiveForm.pcvtype,_Screen.ActiveForm.DataSessionId,_Screen.ActiveForm
+*!*			Endif
+*!*	*	Endif
+*!*		Endproc
+*!*	Enddefine
+
+*!*	&& Added by Shrikant S. on 07/08/2019 for Bug-32412			&& End
+
+*-- Moved the Code to UDAPPETVALID.APP  Anil on 20052020 FOR BALE NO VALIDATION
+
+

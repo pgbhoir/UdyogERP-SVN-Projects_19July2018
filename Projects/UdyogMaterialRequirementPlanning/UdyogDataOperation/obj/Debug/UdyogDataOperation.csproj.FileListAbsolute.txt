@@ -13,3 +13,13 @@ E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogDataOperation\
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.dll
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.pdb
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Debug\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Debug\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Debug\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Debug\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.csprojResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Debug\UdyogDataOperation.pdb

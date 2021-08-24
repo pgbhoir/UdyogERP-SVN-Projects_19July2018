@@ -13,7 +13,7 @@ Endif
 && Added By Shrikant S. on 05/11/2011 for Bug-259	&&Start
 *!*	If Inlist(main_Vw.entry_ty,"S1")		&& Commented by Shrikant S. on 10/10/2017 for GST
 *!*	If Inlist(main_Vw.entry_ty,"S1") Or Lcode_vw.IsservItem=.T.		&& Added by Shrikant S. on 10/10/2017 for GST
-If Inlist(main_Vw.entry_ty,"S1") 		&& Added by Shrikant S. on 01/12/2017 for Bg-30581	
+If Inlist(main_Vw.entry_ty,"S1") 		&& Added by Shrikant S. on 01/12/2017 for Bg-30581
 	oFrm=_Screen.ActiveForm
 	_datasessionid=_Screen.ActiveForm.DataSessionId
 	If oFrm.Addmode Or oFrm.Editmode
@@ -143,7 +143,7 @@ If ("exim" $ vchkprod) Or ("dbk" $ vchkprod) Then
 	oFrm=_Screen.ActiveForm
 	_datasessionid=_Screen.ActiveForm.DataSessionId
 *!*		If oFrm.Addmode Or oFrm.Editmode 		&& Commented by Shrikant S. on 10/04/2018 for auto updater 13.0.6
-	If (oFrm.Addmode Or oFrm.Editmode) AND USED('Header')				&& Added by Shrikant S. on 10/04/2018 for auto updater 13.0.6
+	If (oFrm.Addmode Or oFrm.Editmode) And Used('Header')				&& Added by Shrikant S. on 10/04/2018 for auto updater 13.0.6
 		sql_con = oFrm.SqlConObj.DataConn([EXE],Company.DbName,[select * from Container_det where Entry_ty =?header.Entry_ty and Tran_cd=?header.Tran_cd],[Container_vw],;
 			"This.Parent.nHandle",_datasessionid,.F.)
 		If sql_con<0
@@ -162,7 +162,9 @@ Endif
 
 
 && Added By Shrikant S. on 28/11/2016 for GST	&&Start
-If Inlist(_Screen.ActiveForm.pcvtype,"SR","PR","GC","GD","C6","D6") And ("vugst" $ vchkprod)
+*!*	If Inlist(_Screen.ActiveForm.pcvtype,"SR","PR","GC","GD","C6","D6") And ("vugst" $ vchkprod)  &&Commented by Priyanka B on 03122018 for Bug-31930
+*!*	If (Inlist(_Screen.ActiveForm.pcvtype,"SR","PR","GC","GD","C6","D6") And ("vugst" $ vchkprod)) Or (Inlist(_Screen.ActiveForm.pcvtype,"PU","RA") And ("phrmretlr" $ vchkprod))  &&Modified by Priyanka B on 04012019 for Bug-31930  &&Commented by Priyanka B on 22032019 for Bug-32067
+If (Inlist(_Screen.ActiveForm.pcvtype,"SR","PR","GC","GD","C6","D6") And ("vugst" $ vchkprod)) Or (Inlist(_Screen.ActiveForm.pcvtype,"PU","RA") And ("phrmretlr" $ vchkprod) Or (Inlist(_Screen.ActiveForm.pcvtype,"GC","GD") And (("vuisd" $ vchkprod) Or ("isdkgen" $ vchkprod))))  &&Modified by Priyanka B on 04012019 for Bug-31930  &&Modified by Priyanka B on 22032019 for Bug-32067
 	oFrm=_Screen.ActiveForm
 	_datasessionid=_Screen.ActiveForm.DataSessionId
 	If (oFrm.Addmode Or oFrm.Editmode) And Type('Item_vw.sbillno')<>'U'
@@ -270,7 +272,10 @@ Endif
 *!*	Endif
 && Added by Shrikant S. on 07/02/2017 for GST		&& End
 
-If Inlist(_Screen.ActiveForm.pcvtype,"SO","PO") And ("vugst" $ vchkprod)
+
+
+
+If (Inlist(_Screen.ActiveForm.pcvtype,"SO","PO") Or Inlist(_Screen.ActiveForm.behave,"SO","PO") )And ("vugst" $ vchkprod)
 	oFrm=_Screen.ActiveForm
 	_datasessionid=_Screen.ActiveForm.DataSessionId
 	If oFrm.Addmode Or oFrm.Editmode
@@ -319,7 +324,9 @@ If Inlist(_Screen.ActiveForm.pcvtype,"SO","PO") And ("vugst" $ vchkprod)
 			Select Itref_vw
 			mrecno=Iif(!Eof(),Recno(),0)
 
-			Scan For Inlist(Itref_vw.rentry_ty,"SQ","PD","EQ")		&& Commented by Shrikant S. on 14/06/2017 for GST
+*!*				Scan For Inlist(Itref_vw.rentry_ty,"SQ","PD","EQ")		&& Commented by Shrikant S. on 14/06/2017 for GST		&& Commented by Shrikant S. on 28/01/2019 for Bug-32028
+			Scan For Inlist(Itref_vw.rentry_ty,"SQ","PD","EQ","OO")		&& Added by Shrikant S. on 28/01/2019 for Bug-32028
+
 *!*				Scan
 				Select item_vw
 				Scan For ItSerial==Itref_vw.ItSerial
@@ -475,7 +482,8 @@ Endif
 && Added By Shrikant S. on 28/11/2016 for GST	&&End
 
 && Added by Shrikant S. on 23/02/2017 for GST		&& Start
-If Inlist(_Screen.ActiveForm.pcvtype,"GC","GD") And ("vugst" $ vchkprod)
+*!*	If Inlist(_Screen.ActiveForm.pcvtype,"GC","GD") And ("vugst" $ vchkprod)  &&Commented by Priyanka B on 22032019 for Bug-32067
+If Inlist(_Screen.ActiveForm.pcvtype,"GC","GD") And (("vugst" $ vchkprod) Or ("vuisd" $ vchkprod) Or ("isdkgen" $ vchkprod))  &&Modified by Priyanka B on 22032019 for Bug-32067
 	If Type('Item_vw.actRate')<>'U'
 		Select item_vw
 		mrecno=Iif(!Eof(),Recno(),0)
@@ -636,10 +644,259 @@ Endif
 && Added by Shrikant S. on 16/10/2017 for GST		&& End
 
 && Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- Start
-If oGlblPrdFeat.UdChkProd('vugst')
+*!*	If oGlblPrdFeat.UdChkProd('vugst')   &&Commented by Priyanka B on 22032019 for Bug-32067
+If oGlblPrdFeat.UdChkProd('vugst') Or oGlblPrdFeat.UdChkProd('vuisd') Or oGlblPrdFeat.UdChkProd('isdkgen')   &&Modified by Priyanka B on 22032019 for Bug-32067
 	cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
 	If !Empty(cdAmendDt)
 		Replace &cdAmendDt With {//} In (Left(cdAmendDt,At('.',cdAmendDt)-1))
 	Endif
-ENDIF
+Endif
 && Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- End
+
+&&Added by Priyanka B on 17082018 for Bug-31756 Start
+oFrm=_Screen.ActiveForm
+If oFrm.Addmode
+	If Inlist(main_Vw.entry_ty,"PR","GC","GD")
+		If Type('main_vw.U_ITCDATE')<>'U'
+			Replace main_Vw.U_ITCDATE With {  /  /    } In main_Vw
+		Endif
+	Endif
+Endif
+&&Added by Priyanka B on 17082018 for Bug-31756 End
+
+&&Added by Priyanka B on 05122018 for Bug-31930 Start
+If (Inlist(_Screen.ActiveForm.pcvtype,"SU") And ("phrmretlr" $ vchkprod))
+	oFrm=_Screen.ActiveForm
+	_datasessionid=_Screen.ActiveForm.DataSessionId
+
+	If (oFrm.Addmode Or oFrm.Editmode) And Type('Item_vw.ware_nm')<>'U'
+		Select item_vw
+		mrecno=Iif(!Eof(),Recno(),0)
+		Replace All item_vw.ware_nm With "Scrap Store" In item_vw
+
+		If mrecno>0
+			Select item_vw
+			Go mrecno
+		Endif
+
+		oFrm.Refresh
+	Endif
+Endif
+&&Added by Priyanka B on 05122018 for Bug-31930 End
+
+&& Added by Shrikant S. on 05/03/2019 for AU 2.1.1		&& Start
+If Inlist(_Screen.ActiveForm.pcvtype,"M7") And ("eautomob" $ vchkprod)
+	oFrm=_Screen.ActiveForm
+	_datasessionid=_Screen.ActiveForm.DataSessionId
+	If oFrm.Addmode Or oFrm.Editmode
+
+		If Type('Main_vw.gstscode')<>'U' And Type('Header.gstscode')='U'
+			Select Header
+			Scan
+				If Header.ticked = .T.
+					If Type('Main_vw.Cons_id') = 'N'
+						Replace Cons_id With Iif(Header.Cons_id > 0,Header.Cons_id,main_Vw.Ac_id) In main_Vw
+
+						If Type('Main_vw.Scons_id') = 'N'
+							Replace Scons_id With Iif(Header.Scons_id > 0,Header.Scons_id,main_Vw.Sac_id) In main_Vw
+						Endif
+					Endif
+				Endif
+				Select Header
+			Endscan
+
+			lnconsid=0
+			lnsconsid=0
+			If Type('Main_vw.Cons_id')<>'U'
+				lnconsid=main_Vw.Cons_id
+			Endif
+			If Type('Main_vw.sCons_id')<>'U'
+				lnsconsid=main_Vw.Scons_id
+			Endif
+			If lnsconsid>0
+				lcstr="Select Top 1 State,Statecode From Shipto Where Ac_id=?lnconsid and Shipto_Id=?lnsconsid"
+			Else
+				lcstr="Select Top 1 State,Statecode From Shipto Where Ac_id=?lnconsid "
+			Endif
+			sql_con = oFrm.SqlConObj.DataConn([EXE],Company.DbName,lcstr,[statedet],"This.Parent.nHandle",_datasessionid,.F.)
+			If sql_con<0
+				Return .F.
+			Endif
+			Replace gstscode With statedet.Statecode,gststate With statedet.State In main_Vw
+			If Type('oFrm.txtState')='O'
+				oFrm.txtState.Value=statedet.State
+			Endif
+		Endif
+
+		If Used('Itref_vw')
+			Select Itref_vw
+			mrecno=Iif(!Eof(),Recno(),0)
+
+			Scan For Inlist(Itref_vw.rentry_ty,"M5")
+
+				Select item_vw
+				Scan For ItSerial==Itref_vw.ItSerial
+					oFrm.get_gst_rate_statewise()
+				Endscan
+				Select Itref_vw
+			Endscan
+			If mrecno>0
+				Select Itref_vw
+				Go mrecno
+			Endif
+		Endif
+
+		Select item_vw
+		Go Top
+
+	Endif
+Endif
+&& Added by Shrikant S. on 05/03/2019 for AU 2.1.1		&& End
+
+
+&&Added by Priyanka B on 24082019 for Bug-32361 Start
+
+oFrm=_Screen.ActiveForm
+_datasessionid=_Screen.ActiveForm.DataSessionId
+If (Inlist(oFrm.pcvtype,"GC","GD","SR","PR") Or Inlist(oFrm.behave,"GC","GD","SR","PR")) And ("vugst" $ vchkprod)
+	If oFrm.Addmode Or oFrm.Editmode
+		If Used('Itref_vw')
+			Select Itref_vw
+			mrecno=Iif(!Eof(),Recno(),0)
+
+			Scan
+				Select item_vw
+				Scan For ItSerial==Itref_vw.ItSerial
+					oFrm.get_gst_rate_statewise()
+				Endscan
+				Select Itref_vw
+			Endscan
+			If mrecno>0
+				Select Itref_vw
+				Go mrecno
+			Endif
+		Endif
+
+		If Used('OthItref_vw')
+			Select OthItref_vw
+			mrecno=Iif(!Eof(),Recno(),0)
+
+			Scan
+				Select item_vw
+				Scan For ItSerial==OthItref_vw.ItSerial
+					oFrm.get_gst_rate_statewise()
+				Endscan
+				Select OthItref_vw
+			Endscan
+			If mrecno>0
+				Select OthItref_vw
+				Go mrecno
+			Endif
+		Endif
+
+		Select item_vw
+		Go Top
+
+	Endif
+Endif
+&&Added by Priyanka B on 24082019 for Bug-32361 End
+
+&&Added by Priyanka B on 22082019 for Bug-32747 Start
+oFrm=_Screen.ActiveForm
+_datasessionid=_Screen.ActiveForm.DataSessionId
+If (Inlist(oFrm.pcvtype,"ID") And ("efabric" $ vchkprod))
+
+	If (oFrm.Addmode Or oFrm.Editmode)
+		If Type('Item_vw.FRECQTY')<>'U' And Type('Item_vw.FSHEXQTY')<>'U'
+			Replace item_vw.FSHEXQTY With (item_vw.qty - item_vw.FRECQTY) In item_vw
+
+			If Used('Itref_vw')
+				Select Itref_vw
+				mrecno=Iif(!Eof(),Recno(),0)
+
+				Scan For Inlist(Itref_vw.rentry_ty,"AF")
+
+					Select item_vw
+					Scan For ItSerial==Itref_vw.ItSerial
+						Replace item_vw.FRECQTY With item_vw.qty In item_vw
+						Replace item_vw.FSHEXQTY With (item_vw.qty - item_vw.FRECQTY) In item_vw
+					Endscan
+					Select Itref_vw
+				Endscan
+				If mrecno>0
+					Select Itref_vw
+					Go mrecno
+				Endif
+			Endif
+		Endif
+
+		Select item_vw
+		Go Top
+	Endif
+Endif
+&&Added by Priyanka B on 22082019 for Bug-32747 End
+
+&&Added by Prajakta B. on 26/09/2019 for Bug 32845  --Start
+oFrm=_Screen.ActiveForm
+_datasessionid=_Screen.ActiveForm.DataSessionId
+If Inlist(oFrm.pcvtype,"PI")
+	If (oFrm.Addmode Or oFrm.Editmode)
+		If !Used("PayTerms_vw")
+			sql_con = oFrm.SqlConObj.DataConn([EXE],Company.DbName,[Select * From Payterms],[PayTerms_vw],;
+				"This.Parent.nHandle",_datasessionid,.F.)
+			If sql_con<0
+				Return .F.
+			Endif
+			Update PayTerms_vw Set Checked=.F. Where VALIDIN Like '%'+main_Vw.entry_ty+'%'
+		Endif
+		
+		If !Used("PayTermsdet_vw")
+			lcstr = "Select * From Paytermsdet"
+			sql_con = oFrm.SqlConObj.DataConn([EXE],Company.DbName,lcstr,[PayTermsdet_vw],;
+				"This.Parent.nHandle",_datasessionid,.F.)
+			If sql_con<0
+				Return .F.
+			Endif
+		Endif
+
+		If Used('Itref_vw')
+			Select Itref_vw
+			Scan
+				mrecno=Iif(!Eof(),Recno(),0)
+
+				Select PayTermsdet_vw
+				Go Top
+				Scan
+					If tran_cd==Itref_vw.itref_tran And entry_ty== Itref_vw.rentry_ty
+						Select PayTerms_vw
+						Go Top
+						Locate For (PayTermsdet_vw.entry_ty $ PayTerms_vw.VALIDIN And main_Vw.entry_ty $ PayTerms_vw.VALIDIN) ;
+							And Alltrim(Upper(PayTermsdet_vw.ptname)) == Alltrim(Upper(PayTerms_vw.ptname))
+						If Found()
+							Replace Checked With .T. In PayTerms_vw
+						Endif
+						Select PayTermsdet_vw
+					Endif
+				Endscan
+
+				Select Itref_vw
+			Endscan
+			If mrecno>0
+				Select Itref_vw
+				Go mrecno
+			Endif
+		Endif
+	Endif
+Endif
+&&Added by Prajakta B. on 26/09/2019 for Bug 32845  --End
+
+*-- Added By Anil A on Date 12-02-2020 for Bug 33252 Start
+
+IF main_Vw.entry_ty="AF"	
+	SELECT Header
+	Replace cons_id  WITH main_vw.ac_id
+	SELECT main_vw
+	Replace main_vw.cons_id WITH main_vw.ac_id IN main_vw
+ENDIF
+*-- Added By Anil A on Date 12-02-2020 for Bug 33252 End
+

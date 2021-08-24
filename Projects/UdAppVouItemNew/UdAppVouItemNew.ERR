@@ -1,5 +1,7 @@
-Program d:\svngst\udappvouitemnew\udappvouitemnew.prg has the following errors:
+Program e:\...\udappvouitemnew\udappvouitemnew\udappvouitemnew.prg has the following errors:
     Form FRM_PRESHIPMENTINFO - Undefined
+    Form UEFRM_ITEMPICKUP_M4 - Undefined
+    Form UEFRM_ITEMPICKUPQ2_PQ - Undefined
     Form UEFRM_ITEMPICKUP - Undefined
     Form UEFRM_ITPOPICKUP - Undefined
     Form UEFRM_BOMDETAILSIP_AUTO - Undefined

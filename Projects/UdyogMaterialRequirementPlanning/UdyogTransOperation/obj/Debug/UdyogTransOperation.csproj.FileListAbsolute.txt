@@ -19,3 +19,17 @@ E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogTransOperation
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.csprojResolveAssemblyReference.cache
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.dll
 E:\Suraj\Regular Bugs\29249\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.csprojResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\bin\Debug\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogTransOperation\obj\Debug\UdyogTransOperation.pdb

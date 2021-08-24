@@ -41,6 +41,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,8 +51,15 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_vudyoggst.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAccess-Net">
+      <HintPath>..\..\..\..\..\Divyang Panchal\Udyog\UdyogERPSDK\DataAccess-Net.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v12.2">
       <HintPath>..\..\..\Installer12.0\VudyogSDK\DevExpress.Data.v12.2.dll</HintPath>
     </Reference>
@@ -84,6 +93,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="udAdditionalInfo">
+      <HintPath>..\..\..\..\..\Divyang Panchal\Udyog\UdyogERPSDK\udAdditionalInfo.dll</HintPath>
+    </Reference>
     <Reference Include="udselectpop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\udselectpop.dll</HintPath>
@@ -94,7 +106,7 @@
     </Reference>
     <Reference Include="UdyogTransOperation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UdyogTransOperation\bin\Debug\UdyogTransOperation.dll</HintPath>
+      <HintPath>..\UdyogTransOperation\bin\Release\UdyogTransOperation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +137,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ueFrmAddlInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ueFrmAddlInfo.Designer.cs">
+      <DependentUpon>ueFrmAddlInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMRP.resx">
       <DependentUpon>frmMRP.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +165,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ueFrmAddlInfo.resx">
+      <DependentUpon>ueFrmAddlInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -168,6 +189,20 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ueconnect">
+      <Guid>{AA48EFC1-8DD7-4B92-AAF9-FCA0F0FBBF3A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon_vudyoggst.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

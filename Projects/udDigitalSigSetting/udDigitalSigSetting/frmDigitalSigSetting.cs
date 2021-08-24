@@ -36,6 +36,8 @@ namespace udDigitalSigSetting
         string VForText = string.Empty, vSearchCol = string.Empty, strSQL = string.Empty, Vstr = string.Empty, vColExclude = string.Empty, vDisplayColumnList = string.Empty, vReturnCol = string.Empty;
 
         SqlConnection conn = new SqlConnection();
+        public static DataTable dtDigProperty = new DataTable(); //Added By Rupesh G on 23122019 for bug no.33134--Start
+        DataTable dtRecId = new DataTable();
 
         DataSet tDs, DS1, dsMain;
         private RegisterMeInfo m_info;           //Added by Shrikant S. on 16/09/2015 for Bug-26664
@@ -150,6 +152,19 @@ namespace udDigitalSigSetting
             mInsertProcessIdRecord();
             this.btnLast_Click(sender, e);
 
+            //Added By Rupesh G on 23122019 for bug no.33134--Start
+            //     dtDigProperty.Columns.Add("DigSignId", typeof(string));
+            // dtDigProperty.Columns.Add("fldnm", typeof(string));
+            // dtDigProperty.Columns.Add("prefix", typeof(string));
+            // dtDigProperty.Columns.Add("sufix", typeof(string));
+            // dtDigProperty.Columns.Add("fldval", typeof(string));
+            // dtDigProperty.Columns.Add("fldprint", typeof(bool));
+            // dtDigProperty.Columns.Add("newline", typeof(bool));
+            // dtDigProperty.Columns.Add("Serial", typeof(string));
+            //Added By Rupesh G on 23122019 for bug no.33134--End
+
+
+
         }
         #endregion
 
@@ -186,7 +201,8 @@ namespace udDigitalSigSetting
                 this.txtHeight.Enabled = true;
                 this.txtLocation.Enabled = true;
                 this.txtReason.Enabled = true;
-
+                this.chkissigninvalid.Enabled = true; //Added by Rupesh G. on 18122019 for bug no 33134
+                this.btnSigProperty.Enabled = true;//Added by Rupesh G. on 18122019 for bug no 33134
                 if (this.txtLocation.Text.Length > 0)
                     this.chkLocation.Enabled = true;
                 else
@@ -228,6 +244,7 @@ namespace udDigitalSigSetting
                 btnExit.Enabled = false;
                 grpView.Location = new Point(9, 146);
                 this.Size = new Size(488, 565);
+                this.Size = new Size(488, 630);
                 //Added by Shrikant S. on 10/09/2015 for Bug-26664      //Start
                 this.txtLeft.Enabled = true;
                 this.txtBottom.Enabled = true;
@@ -235,6 +252,9 @@ namespace udDigitalSigSetting
                 this.txtHeight.Enabled = true;
                 this.txtLocation.Enabled = true;
                 this.txtReason.Enabled = true;
+
+                this.chkissigninvalid.Enabled = true;//Added by Rupesh G. on 18122019 for bug no 33134
+                this.btnSigProperty.Enabled = true;//Added by Rupesh G. on 18122019 for bug no 33134
                 //this.chkLocation.Enabled = true;
                 //this.chkReason.Enabled = true;
                 //Added by Shrikant S. on 10/09/2015 for Bug-26664      //End
@@ -274,7 +294,7 @@ namespace udDigitalSigSetting
                 tlsbtnSearch.Enabled = true;
                 btnExit.Enabled = true;
                 grpView.Location = new Point(7, 32);
-                this.Size = new Size(488, 450);
+                this.Size = new Size(488, 510);
 
 
             }
@@ -343,6 +363,10 @@ namespace udDigitalSigSetting
             //Added by Shrikant S. on 10/09/2015 for Bug-26664      //End
             tDs.Tables[0].Rows.Add(dr1);
 
+            ////////////RUpesh-----------------
+            sqlQuery = "select DigSignId,fldnm,prefix,sufix,fldval,fldprint,newline,Serial from DigitalSignProperty where 1=2";
+            dtDigProperty = oDataAccess.GetDataTable(sqlQuery, null, 25);
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -361,7 +385,9 @@ namespace udDigitalSigSetting
                 this.pEditMode = false;
                 ControlsEnable();
                 selectrecord();
+                btnSigProperty.Enabled = false;
             }
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -472,6 +498,12 @@ namespace udDigitalSigSetting
             chkReason.Checked = false;
             chkReason.DataBindings.Add(new Binding("Checked", tDs.Tables[0], "ShowReason"));
 
+            //RRG
+            chkissigninvalid.DataBindings.Clear();
+            chkissigninvalid.Checked = false;
+            chkissigninvalid.DataBindings.Add(new Binding("Checked", tDs.Tables[0], "issignvalid"));
+            //RRG
+
             //Binding chkReasonBind = new Binding("Checked", tDs.Tables[0], "ShowReason");
             //chkReasonBind.Format += new ConvertEventHandler(BoolToString);
             //chkReasonBind.Parse += new ConvertEventHandler(StringToBool);
@@ -522,6 +554,7 @@ namespace udDigitalSigSetting
                     Hashtable certDetail = new Hashtable();
                     certDetail = PdfPKCS7.GetSubjectFields(chain[0]).GetFields();
 
+
                     if (!certDetail.ContainsKey("O"))
                     {
                         MessageBox.Show("Please check the proper Certificate is selected or not/USB Token is connected.", this.pPApplText, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -544,6 +577,55 @@ namespace udDigitalSigSetting
                     tDs.Tables[0].Rows[0]["Country"] = PdfPKCS7.GetSubjectFields(chain[0]).GetField("C").ToString();
                     tDs.Tables[0].Rows[0]["Sdate"] = certificate.NotBefore.ToString("dd/MM/yyyy");
                     tDs.Tables[0].Rows[0]["Edate"] = certificate.NotAfter.ToString("dd/MM/yyyy");
+
+                    //Added By Rupesh G on 23122019 for bug no.33134--Start
+                    string SignBy_CN = "", OrgName_O = "", OrgUnitName_OU = "", Email_E = "", State_ST = "", Country_C = "", Reason = "", Location_L = "", ValidFrom = "", ValidTo = "", PrintDate = "", PostalCode = "", SerialNumber = "";
+                    SignBy_CN = PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN").ToString();
+                    OrgName_O = PdfPKCS7.GetSubjectFields(chain[0]).GetField("O").ToString();
+
+                    if (certDetail.ContainsKey("OU"))
+                    {
+                        OrgUnitName_OU = PdfPKCS7.GetSubjectFields(chain[0]).GetField("OU").ToString();
+                    }
+                    if (certDetail.ContainsKey("E") || certDetail.ContainsKey("email"))
+                    {
+                        Email_E = PdfPKCS7.GetSubjectFields(chain[0]).GetField("E").ToString();
+                    }
+                    State_ST = PdfPKCS7.GetSubjectFields(chain[0]).GetField("ST").ToString();
+                    Country_C = PdfPKCS7.GetSubjectFields(chain[0]).GetField("C").ToString();
+                    Reason = "";
+                    Location_L = "";
+                    ValidFrom = certificate.NotBefore.ToString("dd/MM/yyyy");
+                    ValidTo = certificate.NotAfter.ToString("dd/MM/yyyy");
+                    PrintDate = "";
+
+                    if (certDetail.ContainsKey("postalCode"))
+                    {
+                        PostalCode = PdfPKCS7.GetSubjectFields(chain[0]).GetField("postalCode").ToString();
+                    }
+
+                    if (certDetail.ContainsKey("serialNumber"))
+                    {
+                        SerialNumber = PdfPKCS7.GetSubjectFields(chain[0]).GetField("serialNumber").ToString();
+                    }
+
+
+                    dtDigProperty.Clear();
+                    dtDigProperty.Rows.Add(0, "SignBy_CN", "Digitally Signed by", "", SignBy_CN, true, true, "1");
+                    dtDigProperty.Rows.Add(0, "OrgName_O", "Org Name:", "", OrgName_O, true, true, "2");
+                    dtDigProperty.Rows.Add(0, "OrgUnitName_OU", "Org Unit Name:", "", OrgUnitName_OU, true, true, "3");
+                    dtDigProperty.Rows.Add(0, "Email_E", "Email:", "", Email_E, true, true, "4");
+                    dtDigProperty.Rows.Add(0, "State_ST", "State:", "", State_ST, true, true, "5");
+                    dtDigProperty.Rows.Add(0, "Country_C", "Country:", "", Country_C, true, true, "6");
+                    dtDigProperty.Rows.Add(0, "Reason", "Reason:", "", Reason, true, true, "7");
+                    dtDigProperty.Rows.Add(0, "Location_L", "Location:", "", Location_L, true, true, "8");
+                    dtDigProperty.Rows.Add(0, "ValidFrom", "Valid From:", "", ValidFrom, true, true, "9");
+                    dtDigProperty.Rows.Add(0, "ValidTo", "Valid To:", "", ValidTo, true, true, "10");
+                    dtDigProperty.Rows.Add(0, "PrintDate", "Date:", "", PrintDate, true, true, "11");
+                    dtDigProperty.Rows.Add(0, "PostalCode", "Postal Code:", "", PostalCode, true, true, "12");
+                    dtDigProperty.Rows.Add(0, "SerialNumber", "Serial Number:", "", SerialNumber, true, true, "13");
+                    //   Added By Rupesh G on 23122019 for bug no.33134--End
+
 
                 }
                 this.txtLocation.Focus();
@@ -673,7 +755,7 @@ namespace udDigitalSigSetting
                         sqlQuery = "";
                         sqlQuery = "set dateformat mdy Insert into DigitalSign ([FileType],[FileData],[Passw],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                         //sqlQuery += "[Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]) values ";       //Commented by Shrikant S. on 09/09/2015 
-                        sqlQuery += "[Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Reason],[ShowReason],[Showlocation],[signLeft],[signBottom],[signWidth],[signHeight],[Sdate],[Edate]) values ";         //Added by Shrikant S. on 09/09/2015 
+                        sqlQuery += "[Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Reason],[ShowReason],[Showlocation],[signLeft],[signBottom],[signWidth],[signHeight],[Sdate],[Edate],[issignvalid]) values ";         //Added by Shrikant S. on 09/09/2015 //Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                         sqlQuery += "('" + (this.rdoUSBToken.Checked ? "USBTO" : "pfx") + "',";        //Changed by Shrikant S. on 09/09/2015 
                         sqlQuery += "@data,";
                         sqlQuery += "'" + Pass + "',";
@@ -700,8 +782,8 @@ namespace udDigitalSigSetting
                         //Added by Shrikant S. on 09/09/2015        //End
 
                         sqlQuery += "'" + Convert.ToDateTime(dr["Sdate"]).ToString("MM/dd/yyyy") + "',";
-                        sqlQuery += "'" + Convert.ToDateTime(dr["Edate"]).ToString("MM/dd/yyyy") + "')";
-
+                        sqlQuery += "'" + Convert.ToDateTime(dr["Edate"]).ToString("MM/dd/yyyy") + "',";
+                        sqlQuery += (Convert.ToBoolean(dr["issignvalid"]) == true ? "1" : "0") + ")";  //Added by Rupesh G. on 18122019 for bug no 33134
                         conn.Open();
                         SqlCommand cmd = new SqlCommand(sqlQuery, conn);
                         //Added by Shrikant S. on 10/09/2015 for Bug-26664          //Start
@@ -718,6 +800,23 @@ namespace udDigitalSigSetting
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }
+
+                    //Rupesh G-start
+                    sqlQuery = "select top 1 id from DigitalSign  order by id desc ";
+                    dtRecId = oDataAccess.GetDataTable(sqlQuery, null, 25);
+                    if (dtRecId.Rows.Count > 0)
+                    {
+                        if (dtDigProperty.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in dtDigProperty.Rows)
+                            {
+                                dr[0] = dtRecId.Rows[0][0];
+                            }
+                        }
+                    }
+                    //Rupesh G-start
+
+
                 }
                 if (this.pEditMode)
                 {
@@ -737,13 +836,37 @@ namespace udDigitalSigSetting
                         sqlQuery += " [signLeft]=" + Convert.ToString(dr["signLeft"]) + ",";
                         sqlQuery += " [signBottom]=" + Convert.ToString(dr["signBottom"]) + ",";
                         sqlQuery += " [signWidth]=" + Convert.ToString(dr["signWidth"]) + ",";
-                        sqlQuery += " [signHeight]=" + Convert.ToString(dr["signHeight"]);
+                        sqlQuery += " [signHeight]=" + Convert.ToString(dr["signHeight"]) + ",";
                         //Added by Shrikant S. on 10/09/2015 for Bug-26664      //End
+                        sqlQuery += " [issignvalid]=" + (this.chkissigninvalid.Checked ? 1 : 0).ToString();//Added by Rupesh G. on 18122019 for bug no 33134
                         sqlQuery += " Where id='" + dr["ID"] + "'";
                         oDataAccess.ExecuteSQLStatement(sqlQuery, null, 25, true);
                     }
                 }
-
+                //Rupesh G.---start
+                foreach (DataRow dr in dtDigProperty.Rows)
+                {
+                    sqlQuery = "select * from DigitalSignproperty where DigSignId='" + dr[0].ToString().Trim() + "' and fldnm='" + dr[1].ToString().Trim() + "'";
+                    DataTable dtDigSignPropRec = new DataTable();
+                    dtDigSignPropRec = oDataAccess.GetDataTable(sqlQuery, null, 25);
+                    if (dtDigSignPropRec.Rows.Count > 0)
+                    {
+                        string newline = dr["newline"].ToString().ToLower() == "true" ? "1" : "0";
+                        string fldprint = dr["fldprint"].ToString().ToLower() == "true" ? "1" : "0";
+                        sqlQuery = "update DigitalSignproperty set prefix='" + dr["prefix"].ToString().Replace("'", "''") + "',sufix='" + dr["sufix"].ToString().Replace("'", "''") + "',fldval='" + dr["fldval"].ToString().Replace("'", "''") + "',fldprint=" + fldprint + ",serial='" + dr["serial"].ToString() + "',newline=" + newline + "";
+                        sqlQuery = sqlQuery + " where DigSignId='" + dr["DigSignId"].ToString() + "' and fldnm='" + dr["fldnm"].ToString() + "'";
+                        oDataAccess.ExecuteSQLStatement(sqlQuery, null, 25, true);
+                    }
+                    else
+                    {
+                        string newline = dr["newline"].ToString().ToLower() == "true" ? "1" : "0";
+                        string fldprint = dr["fldprint"].ToString().ToLower() == "true" ? "1" : "0";
+                        sqlQuery = "INSERT INTO DigitalSignProperty values('" + dr["DigSignId"].ToString() + "','" + dr["fldnm"].ToString().Replace("'", "''") + "','" + dr["prefix"].ToString().Replace("'", "''") + "','" + dr["sufix"].ToString().Replace("'", "''") + "','" + dr["fldval"].ToString().Replace("'", "''") + "'," + fldprint + ",'" + dr["serial"].ToString() + "'," + newline + ")";
+                        oDataAccess.ExecuteSQLStatement(sqlQuery, null, 25, true);
+                    }
+                }
+                //Rupesh G.---end
+                dtDigProperty = new DataTable();
                 if (this.pAddMode)
                 {
 
@@ -758,8 +881,10 @@ namespace udDigitalSigSetting
                     this.pEditMode = false;
                     ControlsEnable();
                     selectrecord();
+                    dtDigProperty = new DataTable();
+                    setProperty();
+                    btnSigProperty.Enabled = false;
                 }
-
                 MessageBox.Show("Records saved successfully...!!! ", this.pPApplText, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 oDataAccess.CommitTransaction();
             }
@@ -769,6 +894,10 @@ namespace udDigitalSigSetting
                 oDataAccess.RollbackTransaction();
                 return;
             }
+
+
+
+
 
         }
 
@@ -782,16 +911,20 @@ namespace udDigitalSigSetting
                 {
                     sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                     sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664 //Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
+
                     sqlQuery += " FROM [DigitalSign]";
                     sqlQuery += " order by ID desc";
                     tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
+
+
+
                 }
                 else
                 {
                     sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                     sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight";         //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight,issignvalid";         //Added by Shrikant S. on 10/09/2015 for Bug-26664 //Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                     sqlQuery += " FROM [DigitalSign]";
                     sqlQuery += " where id='" + tDs.Tables[0].Rows[0]["ID"] + "'";
                     tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
@@ -803,7 +936,7 @@ namespace udDigitalSigSetting
                     tlsbtnSearch.Enabled = false;
                     sqlQuery = "SELECT [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                     sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight";             //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                    sqlQuery += ",Reason,showReason,showLocation,signLeft,signBottom,signWidth,signHeight,issignvalid";             //Added by Shrikant S. on 10/09/2015 for Bug-26664 //Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                     sqlQuery += " FROM [DigitalSign] where 1=2";
                     tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
                     Controlset();
@@ -814,6 +947,8 @@ namespace udDigitalSigSetting
                     tlsbtnSearch.Enabled = true;
                     Controlset();
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -821,7 +956,40 @@ namespace udDigitalSigSetting
                 Application.Exit();
             }
 
+            btnSigProperty.Enabled = false;
+            dtDigProperty = new DataTable();
+            setProperty();
+        }
 
+        public void setProperty()
+        {
+            if (dtDigProperty.Rows.Count == 0)
+            {
+
+
+                if (tDs.Tables[0].Rows.Count > 0)
+                {
+
+                    sqlQuery = "select DigSignId,fldnm,prefix,sufix,fldval,fldprint,newline,Serial from DigitalSignProperty where DigSignId='" + tDs.Tables[0].Rows[0]["ID"] + "'";
+                    dtDigProperty = oDataAccess.GetDataTable(sqlQuery, null, 25);
+
+                }
+                else
+                {
+
+                    sqlQuery = "select DigSignId,fldnm,prefix,sufix,fldval,fldprint,newline,Serial from DigitalSignProperty where 1=2";
+                    dtDigProperty = oDataAccess.GetDataTable(sqlQuery, null, 25);
+
+                    //dtDigProperty.Columns.Add("DigSignId", typeof(string));
+                    //dtDigProperty.Columns.Add("fldnm", typeof(string));
+                    //dtDigProperty.Columns.Add("prefix", typeof(string));
+                    //dtDigProperty.Columns.Add("sufix", typeof(string));
+                    //dtDigProperty.Columns.Add("fldval", typeof(string));
+                    //dtDigProperty.Columns.Add("fldprint", typeof(bool));
+                    //dtDigProperty.Columns.Add("newline", typeof(bool));
+                    //dtDigProperty.Columns.Add("Serial", typeof(string));
+                }
+            }
 
         }
         private void btnBack_Click(object sender, EventArgs e)
@@ -830,7 +998,7 @@ namespace udDigitalSigSetting
             id = tDs.Tables[0].Rows[0]["ID"].ToString();
             sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
             sqlQuery += " [Location],[Email],Dept,[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
             sqlQuery += " FROM [DigitalSign]";
             sqlQuery += " where id=(select top 1 id from DigitalSign where id<'" + tDs.Tables[0].Rows[0]["ID"] + "'  order by ID desc)";
 
@@ -840,7 +1008,7 @@ namespace udDigitalSigSetting
             {
                 sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                 sqlQuery += " [Location],[Email],Dept,[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                 sqlQuery += " FROM [DigitalSign]";
                 sqlQuery += " where id=(select top 1 id from DigitalSign where id='" + id + "'  order by ID desc)";
 
@@ -849,6 +1017,8 @@ namespace udDigitalSigSetting
             }
 
             Controlset();
+            dtDigProperty = new DataTable();
+            setProperty();
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -857,7 +1027,7 @@ namespace udDigitalSigSetting
             {
                 sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                 sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                 sqlQuery += " FROM [DigitalSign]";
                 sqlQuery += " order by ID";
                 tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
@@ -868,7 +1038,9 @@ namespace udDigitalSigSetting
             {
                 MOVEBTNSTATE(false, false, true, true);
             }
+            dtDigProperty = new DataTable();
 
+            setProperty();//Add By Rupesh G
         }
 
         private void btnForward_Click(object sender, EventArgs e)
@@ -876,7 +1048,7 @@ namespace udDigitalSigSetting
             id = tDs.Tables[0].Rows[0]["ID"].ToString();
             sqlQuery = "SELECT  [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
             sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
             sqlQuery += " FROM [DigitalSign]";
             sqlQuery += " where id=(select top 1 id from DigitalSign where id>'" + tDs.Tables[0].Rows[0]["ID"] + "'  order by ID)";
             tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
@@ -885,13 +1057,14 @@ namespace udDigitalSigSetting
             {
                 sqlQuery = "SELECT  [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
                 sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+                sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
                 sqlQuery += " FROM [DigitalSign]";
                 sqlQuery += " where id=(select top 1 id from DigitalSign where id='" + id + "'  order by ID)";
                 tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
                 MOVEBTNSTATE(true, true, false, false);
             }
             Controlset();
+            setProperty();
         }
         #endregion
 
@@ -970,6 +1143,9 @@ namespace udDigitalSigSetting
                     sqlQuery = " delete from DigitalSign where id='" + tDs.Tables[0].Rows[0]["ID"].ToString() + "'";
                     oDataAccess.ExecuteSQLStatement(sqlQuery, null, 25, true);
 
+                    sqlQuery = " delete from DigitalSignproperty where DigSignId='" + tDs.Tables[0].Rows[0]["ID"].ToString() + "'";
+                    oDataAccess.ExecuteSQLStatement(sqlQuery, null, 25, true);
+
                     this.pAddMode = false;
                     this.pEditMode = false;
                     btnLast_Click(sender, e);
@@ -1017,7 +1193,7 @@ namespace udDigitalSigSetting
         {
             sqlQuery = "SELECT top 1 [ID],[SignBy],[OrgName],[OrgUnitNm],[Country],[State],";
             sqlQuery += " [Location],[Email],[Dept],[Cate],[InvSr],[Validity],[Sdate],[Edate]";
-            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight";     //Added by Shrikant S. on 10/09/2015 for Bug-26664
+            sqlQuery += ",Reason,showLocation,showReason,signLeft,signBottom,signWidth,signHeight,issignvalid";     //Added by Shrikant S. on 10/09/2015 for Bug-26664//Added by Rupesh G. on 18122019 for bug no 33134(issignvalid field add)
             sqlQuery += " FROM [DigitalSign]";
             sqlQuery += " where id='" + tDs.Tables[0].Rows[0]["ID"] + "'";
             tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
@@ -1129,6 +1305,39 @@ namespace udDigitalSigSetting
                 e.Value = "0";
             }
         }
+
+        private void grpView_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSigProperty_Click(object sender, EventArgs e)
+        {
+            frmDigitalSigProperty frm = new frmDigitalSigProperty();
+            frm.pPApplPID = this.pPApplPID;
+            frm.pPara = this.pPara;
+            frm.pFrmCaption = "Digital Signature Property";
+            frm.pCompId = this.pCompId;
+            frm.pComDbnm = this.pComDbnm;
+
+            frm.pServerName = this.pServerName;
+            frm.pUserId = this.pUserId;
+            frm.pPassword = this.pPassword;
+            frm.pPApplRange = this.pPApplRange;
+            frm.pAppUerName = this.pAppUerName;
+            frm.pFrmIcon = this.pFrmIcon;
+            frm.pPApplText = this.pPApplText;
+            frm.pPApplName = this.pPApplName;
+            frm.pPApplPID = this.pPApplPID;
+            frm.pPApplCode = this.pPApplCode;
+            frm.pAddMode = pAddMode;
+            frm.pEditMode = pEditMode;
+            frm.dtDigSigProperty = dtDigProperty;
+            frm.ShowDialog();
+
+
+        }
+
         private void IntToString(object sender, ConvertEventArgs e)
         {
             if (e.DesiredType == typeof(string))

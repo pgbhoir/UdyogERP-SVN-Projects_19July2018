@@ -287,50 +287,17 @@ If Type('_curvouobj.pcvtype')<>'U'
 						.voupage.page1.grditem.Columns(i).header1.Caption="Diff. Taxable Value"
 						.voupage.page1.grditem.Columns(i).ReadOnly=.T.
 						.voupage.page1.grditem.Columns(i).Width=110
-					ENDIF
-					If Inlist(_Screen.ActiveForm.pcvtype,"E1","S1") 
+					Endif
+					If Inlist(_Screen.ActiveForm.pcvtype,"E1","S1")
 						.voupage.page1.grditem.Columns(i).ReadOnly=.T.
-					ENDIF
-				&& Added by Shrikant S. on 13/07/2018 for Bug-31518		&& Start	
+					Endif
+&& Added by Shrikant S. on 13/07/2018 for Bug-31518		&& Start
 				Case Alltrim(Upper(.voupage.page1.grditem.Columns(i).ControlSource))="ITEM_VW.FCRATE"
-					IF Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
+					If Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
 						.voupage.page1.grditem.Columns(i).Visible=.F.
-					ENDIF
-				Case Alltrim(Upper(.voupage.page1.grditem.Columns(i).ControlSource))="ITEM_VW.AMTINCGST"
-					IF Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
-						IF UPPER(ALLTRIM(main1_vw.Fcname)) != UPPER(ALLTRIM(Company.Currency)) AND !EMPTY(main1_vw.Fcname)	
-							.voupage.page1.grditem.Columns(i).ReadOnly=.T.
-						ELSE
-							.voupage.page1.grditem.Columns(i).ReadOnly=.F.
-						endif
-					ENDIF
-				Case Alltrim(Upper(.voupage.page1.grditem.Columns(i).ControlSource))="ITEM_VW.AMTEXCGST"
-					IF Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
-						IF UPPER(ALLTRIM(main1_vw.Fcname)) != UPPER(ALLTRIM(Company.Currency)) AND !EMPTY(main1_vw.Fcname)	
-							.voupage.page1.grditem.Columns(i).ReadOnly=.T.
-						ELSE
-							.voupage.page1.grditem.Columns(i).ReadOnly=.F.
-						endif
-					ENDIF	
-				Case Alltrim(Upper(.voupage.page1.grditem.Columns(i).ControlSource))="ITEM_VW.FCAMTINCGS"
-					IF Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
-						IF UPPER(ALLTRIM(main1_vw.Fcname)) != UPPER(ALLTRIM(Company.Currency)) AND !EMPTY(main1_vw.Fcname)	
-							.voupage.page1.grditem.Columns(i).ReadOnly=.F.
-						ELSE
-							.voupage.page1.grditem.Columns(i).ReadOnly=.T.
-						endif
-					ENDIF
-				Case Alltrim(Upper(.voupage.page1.grditem.Columns(i).ControlSource))="ITEM_VW.FCAMTEXCGS"
-					IF Inlist(_Screen.ActiveForm.pcvtype,'BP','BR','CP','CR')
-						IF UPPER(ALLTRIM(main1_vw.Fcname)) != UPPER(ALLTRIM(Company.Currency)) AND !EMPTY(main1_vw.Fcname)	&&vasant300609
-							.voupage.page1.grditem.Columns(i).ReadOnly=.F.
-						ELSE
-							.voupage.page1.grditem.Columns(i).ReadOnly=.T.
-						endif
-					ENDIF	
-					
-				&& Added by Shrikant S. on 13/07/2018 for Bug-31518		&& End	
-					
+					Endif
+&& Added by Shrikant S. on 13/07/2018 for Bug-31518		&& End
+
 				Endcase
 			Endfor
 		Endwith
@@ -359,23 +326,38 @@ Endif
 && Added by Shrikant S. on 19/06/2017 for GST		&& Start
 If Type('_curvouobj.pcvtype')<> 'U'
 	If Inlist(_curvouobj.pcvtype,'UB')
-	*!*	If Inlist(_Screen.ActiveForm.pcvtype,'UB')
-	*!*		With _Screen.ActiveForm
-		WITH _curvouobj
+*!*	If Inlist(_Screen.ActiveForm.pcvtype,'UB')
+*!*		With _Screen.ActiveForm
+		With _curvouobj
 			tot_grd_col= .voupage.page1.grditem.ColumnCount
 			For i = 1 To tot_grd_col
 				Do Case
-				Case UPPER(.voupage.page1.grditem.Columns(i).controlsource)='ITEM_VW.SELFDISC'
-					.voupage.page1.grditem.Columns(i).VISIBLE=.F.
-				Case .voupage.page1.grditem.Columns(i).header1.Caption='Quantity'			&& Added by Shrikant S. on 12/08/2017 for GST	
-					.voupage.page1.grditem.Columns(i).Enabled=.F.							&& Added by Shrikant S. on 12/08/2017 for GST		
+				Case Upper(.voupage.page1.grditem.Columns(i).ControlSource)='ITEM_VW.SELFDISC'
+					.voupage.page1.grditem.Columns(i).Visible=.F.
+				Case .voupage.page1.grditem.Columns(i).header1.Caption='Quantity'			&& Added by Shrikant S. on 12/08/2017 for GST
+					.voupage.page1.grditem.Columns(i).Enabled=.F.							&& Added by Shrikant S. on 12/08/2017 for GST
 				Endcase
 			Endfor
-		ENDWITH
-	ENDIF 
-ENDIF
+		Endwith
+	Endif
+Endif
 
 && Added by Shrikant S. on 19/06/2017 for GST		&& End
+
+&& Added by Shrikant S. on 24/11/2018 for Pharma		&& Start
+If Type('_curvouobj.pcvtype')<> 'U'
+	If Inlist(_curvouobj.pcvtype,'SK')
+		llshowexport=.F.
+		If Type('Lcode_vw.lcecsv')<>'U'
+			llshowexport=Lcode_vw.lcecsv
+		Endif
+		If Type('_curvouobj.cmdcsv')='O'
+*!*			_curvouobj.cmdcsv.Enabled=Iif( _curvouobj.addmode Or _curvouobj.editmode or llshowexport=.f. ,.F.,.T.)
+			_curvouobj.cmdcsv.Enabled=.T.
+		Endif
+	Endif
+Endif
+&& Added by Shrikant S. on 24/11/2018 for Pharma		&& end
 
 && Added by Shrikant S. on 28/06/014 for Bug-23280		&& Start
 If Vartype(oglblindfeat)='O'
@@ -531,7 +513,7 @@ If _mexim
 			Endif
 		Endif
 	Endif
-ENDIF
+Endif
 
 * End --> CR_KOEL_0005A_Form_To_Record_Pre_Shipment_Info
 
@@ -854,80 +836,81 @@ Endif
 
 
 && Added by Suraj on 05-12-2017 for Bug-30782 -- Start
-If oGlblPrdFeat.UdChkProd('vugst')
-  If Type('_curvouobj.PcvType') = 'C'
-	If _curvouobj.GetChild=.T.
-		cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
-		If !Empty(cdAmendDt)
-			If Used('main_vw')
-				msqlstr = "Select "+_curvouobj.MainFldsList+" from "+_curvouobj.entry_tbl+"MainAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MAINAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select * From main_vw Into Cursor _curTemp
-				Select MAINAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('lmc_vw')
-				Select "+_curvouobj.LmcFldsList+" From lmc_vw Into Cursor LMCAmend_VW Readwrite
-				msqlstr = "Select "+_curvouobj.LmcFldsList+" from "+_curvouobj.entry_tbl+"MainAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[LMCAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select * From lmc_vw Into Cursor _curTemp
-				Select LMCAmend_VW
-				Append From Dbf('_curTemp')
+*!*	If oGlblPrdFeat.UdChkProd('vugst')   &&Commented by Priyanka B on 22032019 for Bug-32067
+If oGlblPrdFeat.UdChkProd('vugst') Or oGlblPrdFeat.UdChkProd('vuisd') OR oGlblPrdFeat.UdChkProd('isdkgen')   &&Modified by Priyanka B on 22032019 for Bug-32067
+	If Type('_curvouobj.PcvType') = 'C'
+		If _curvouobj.GetChild=.T.
+			cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
+			If !Empty(cdAmendDt)
+				If Used('main_vw')
+					msqlstr = "Select "+_curvouobj.MainFldsList+" from "+_curvouobj.entry_tbl+"MainAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MAINAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select * From main_vw Into Cursor _curTemp
+					Select MAINAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('lmc_vw')
+					Select "+_curvouobj.LmcFldsList+" From lmc_vw Into Cursor LMCAmend_VW Readwrite
+					msqlstr = "Select "+_curvouobj.LmcFldsList+" from "+_curvouobj.entry_tbl+"MainAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[LMCAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select * From lmc_vw Into Cursor _curTemp
+					Select LMCAmend_VW
+					Append From Dbf('_curTemp')
 
-			Endif
-			If Used('MAINADD_VW')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"MainAddAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MAINAddAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select * From MAINADD_VW Into Cursor _curTemp
-				Select MAINAddAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('item_vw')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"ItemAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ITEMAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select *,Cast(0 As Int) As AmendNo From item_vw Into Cursor _curTemp
-				Select ITEMAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('ITREF_VW')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"ItRefAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ITREFAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select *,Cast(0 As Int) As AmendNo From ITREF_VW Into Cursor _curTemp
-				Select ITREFAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('ACDET_VW')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"AcDetAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ACDETAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select *,Cast(0 As Int) As AmendNo From ACDET_VW Into Cursor _curTemp
-				Select ACDETAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('MALL_VW')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"MallAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MALLAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select *,Cast(0 As Int) As AmendNo From MALL_VW Into Cursor _curTemp
-				Select MALLAmend_VW
-				Append From Dbf('_curTemp')
-			Endif
-			If Used('CALL_VW')
-				msqlstr = "Select * from "+_curvouobj.entry_tbl+"CallAm where 1=2 "
-				etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[CALLAmend_VW],;
-					"_curvouobj.nHandle",_curvouobj.DataSessionId)
-				Select *,Cast(0 As Int) As AmendNo  From CALL_VW Into Cursor _curTemp
-				Select CALLAmend_VW
-				Append From Dbf('_curTemp')
+				Endif
+				If Used('MAINADD_VW')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"MainAddAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MAINAddAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select * From MAINADD_VW Into Cursor _curTemp
+					Select MAINAddAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('item_vw')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"ItemAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ITEMAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select *,Cast(0 As Int) As AmendNo From item_vw Into Cursor _curTemp
+					Select ITEMAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('ITREF_VW')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"ItRefAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ITREFAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select *,Cast(0 As Int) As AmendNo From ITREF_VW Into Cursor _curTemp
+					Select ITREFAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('ACDET_VW')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"AcDetAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[ACDETAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select *,Cast(0 As Int) As AmendNo From ACDET_VW Into Cursor _curTemp
+					Select ACDETAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('MALL_VW')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"MallAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[MALLAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select *,Cast(0 As Int) As AmendNo From MALL_VW Into Cursor _curTemp
+					Select MALLAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
+				If Used('CALL_VW')
+					msqlstr = "Select * from "+_curvouobj.entry_tbl+"CallAm where 1=2 "
+					etsql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[CALLAmend_VW],;
+						"_curvouobj.nHandle",_curvouobj.DataSessionId)
+					Select *,Cast(0 As Int) As AmendNo  From CALL_VW Into Cursor _curTemp
+					Select CALLAmend_VW
+					Append From Dbf('_curTemp')
+				Endif
 			Endif
 		Endif
-	ENDIF
-  Endif
+	Endif
 Endif
 && Added by Suraj Kumawat on 05/12/2017 for Bug-30782 -- End
 

@@ -8,3 +8,20 @@ D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\ResolveAssemblyReference.cache
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.dll
 D:\Udyog\Working\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.tlb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.csprojResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\bin\Release\UdyogDataOperation.tlb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.csprojResolveAssemblyReference.cache
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogDataOperation\obj\Release\UdyogDataOperation.pdb

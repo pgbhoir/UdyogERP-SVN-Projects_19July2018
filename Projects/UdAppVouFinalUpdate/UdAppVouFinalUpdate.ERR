@@ -1,8 +1,11 @@
-Program d:\svngst\udappvoufinalupdate\udappvoufinalupdate.prg has the following errors:
+Program d:\...\projects\udappvoufinalupdate\udappvoufinalupdate\udappvoufinalupdate.prg has the following errors:
     Proc./Func. VOUFINALUPDATE - Undefined
     Program MAINPRG - Undefined
     Unknown ISUNDERIMPORT - Undefined
     Unknown CHECKBATCHNO - Undefined
     Unknown GENBATCHNO - Undefined
     Unknown UDAPPVOUFINALUPDATE_MLACOND - Undefined
+    Unknown CHECKTHIRDPARTY_EXISTS - Undefined
+    Unknown GETPREFIX - Undefined
+    Unknown GENMNTHWISEFORMAT - Undefined
 

@@ -1,0 +1,45 @@
+*:*****************************************************************************
+*:        Program: UETRIGETVALID--Udyog ERP
+*:        System : Udyog Software
+*:        Author :
+*: 		  Last modified:
+*:		  AIM    : To Generate Cheque Numnber.
+*:*****************************************************************************
+sqlconobj=Newobject('sqlconnudobj',"sqlconnection",xapps)
+nhandle=0
+_mChqNo=main_vw.cheq_no
+If INLIST(main_vw.entry_ty,'BP','RV','CO')  &&Added by Priyanka B on 20082018 for Bug-31756
+	If Empty(_mChqNo)
+		_malias 	= Alias()
+		Sele main_vw
+		_mrecno 	= Recno()
+		etsql_con	= 1
+		nhandle     = 0
+		_etdatasessionid = _Screen.ActiveForm.DataSessionId
+		Set DataSession To _etdatasessionid
+		sqlconobj = _Screen.ActiveForm.sqlconobj
+*!*			sq1="USP_Ent_Vou_CheqNo '"+main_vw.Bank_Nm+"'"  &&Commented by Priyanka B on 28072018 for Bug-31690
+		sq1="USP_Ent_Vou_CheqNo ?main_vw.Bank_Nm,?main_vw.Date,?main_vw.inv_sr"  &&Modified by Priyanka B on 28072018 for Bug-31690
+		nretval = sqlconobj.dataconn([EXE],company.dbname,sq1,[curChqNo],"nHandle",_etdatasessionid,.F. )
+		If nretval<0 Or !Used("curChqNo")
+			nretval =0
+			Return .F.
+		Else
+			Select curChqNo
+			If Reccount('curChqNo') > 0
+				Replace cheq_no With curChqNo.Chq_No In main_vw
+			Endif
+		Endif
+		If Used("curChqNo")
+			Use In curChqNo
+		Endif
+		If !Empty(_malias)
+			Select &_malias
+		Endif
+		Select main_vw
+		If Betw(_mrecno,1,Reccount())
+			Go _mrecno
+		Endif
+	Endif
+Endif  &&Added by Priyanka B on 20082018 for Bug-31756
+

@@ -103,6 +103,18 @@ If _curvouobj.itempage And Vartype(_curvouobj._BatchSerialStk)='O'
 Endif
 ******** Added By Sachin N. S. on 13/02/2012 for TKT-9411 and Bug-660 Batchwise/Serialize Inventory ******** End
 
+
+**** Added by Shrikant S. on 12/08/2019 for Bug-32412			&& Start
+If Type('Lcode_vw.UnitBc')='L'
+	If Lcode_vw.UnitBc=.T. AND  _curvouobj.itempage
+		If Type('_curvouobj._unitbcserialize')='O'
+			etsql_con=_curvouobj._unitbcserialize._ueTrigVouItemDelete(vbefore)
+			Return Iif(etsql_con>0,.T.,.F.)
+		Endif
+	Endif
+Endif
+**** Added by Shrikant S. on 12/08/2019 for Bug-32412			&& End
+
 && Added by Shrikant S. on 28/06/2014 for Bug-23280			&& Start
 If Vartype(oglblindfeat)='O'
 	If oglblindfeat.udchkind('pharmaind')

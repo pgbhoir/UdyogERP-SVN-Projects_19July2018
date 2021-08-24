@@ -36,3 +36,144 @@ D:\SVN\26974\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequireme
 D:\SVN\26974\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
 D:\SVN\26974\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
 D:\SVN\26974\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\Bug Issues\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\Bug Issues\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\SVNProjects\Bug-30938,31390,31306\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+C:\Users\Rupesh\Desktop\sachin sir\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\DataAccess-Net.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udAdditionalInfo.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\uNumericTextBox.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\Interop.ueconnect.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\Interop.ueconnect.dll
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+D:\1 Development\Dotnet\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\DataAccess-Net.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udAdditionalInfo.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\uNumericTextBox.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\Interop.ueconnect.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\DataAccess-Net.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udAdditionalInfo.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\uNumericTextBox.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\Interop.ueconnect.dll
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+E:\DIVYANG\Ticket\Tkt-33377 - Issue in MRP (Available Stock Not Show)\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Testing Purpose\UdyogMaterialRequirementPlanning_21042020\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.ResolveComReference.cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.exe
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdSalesProjection.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\udselectpop.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogDataOperation.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\UdyogTransOperation.pdb
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\bin\Release\Interop.ueconnect.dll
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRP.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan1.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan2.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.frmMRPPlan3.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.Properties.Resources.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.ueFrmAddlInfo.resources
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csproj.GenerateResource.Cache
+E:\office\23-03-2020\Projects\Au_2.2.5 Projects\Bug_32929\24-04-2020\My Changes\UdyogMaterialRequirementPlanning\UdyogMaterialRequirementPlanning\obj\Release\UdyogMaterialRequirementPlanning.csprojResolveAssemblyReference.cache

@@ -26,12 +26,14 @@ namespace udPdfSignature
         string Pass = string.Empty, dept = string.Empty, cate = string.Empty, inv_sr = string.Empty, entry_ty = string.Empty, invdt = string.Empty;
         string InPdfPath = string.Empty, OutPdfPath = string.Empty;
         // Added by Sachin N. S. on 18/09/2015 for Bug-26664 -- Start
-        int ApplPId = 0;
-        string ApplCode="", cAppPId="";
-        string cAppName = "", AppCaption=""; 
+        int ApplPId = 0, Methodnm;
+        string ApplCode = "", cAppPId = "";
+        string cAppName = "", AppCaption = "";
         // Added by Sachin N. S. on 18/09/2015 for Bug-26664 -- End
 
         private RegisterMeInfo m_info;           //Added by Shrikant S. on 16/09/2015 for Bug-26664
+
+
 
         DataSet tDs;
         //clsConnect oConnect;      //Commented by Shrikant S. on 16/09/2015 for Bug-26664
@@ -60,6 +62,7 @@ namespace udPdfSignature
             this.cAppName = args[12].ToString();
             this.ApplPId = Convert.ToInt16(args[13]);
             this.ApplCode = args[14].ToString();
+            this.Methodnm = Convert.ToInt16(args[15]);
             // Added by Sachin N. S. on 18/09/2015 for Bug-26664 -- End
         }
 
@@ -161,7 +164,7 @@ namespace udPdfSignature
                 MessageBox.Show("Signature details not found in Digital Signature Master, so pdf will be generated without Digital Signature.");
                 return;
             }
-            
+
             if (tDs.Tables[0].Rows.Count > 0)
             {
                 PDFSigner pdfsign = new PDFSigner();
@@ -173,6 +176,7 @@ namespace udPdfSignature
                 tDs.Tables[0].Rows.Clear();
                 tDs.Tables.RemoveAt(0);
                 sqlQuery = "set dateformat mdy select * from DigitalSign where dept='" + dept + "' and cate='" + cate + "' and invsr='" + inv_sr + "' and validity like '%" + entry_ty + "%' and ('" + date.ToString("yyyy/MM/dd") + "'>=convert(smalldatetime,sdate) and '" + date.ToString("yyyy/MM/dd") + "'<=convert(smalldatetime,edate)) and SignBy='" + certName + "'";          //Added by Shrikant S. on 10/09/2015 for Bug-26664
+
                 tDs = oDataAccess.GetDataSet(sqlQuery, null, 25);
                 pdfsign = null;
                 // Added by Shrikant S. on 06/06/2018 for Bug-31559      // Start
@@ -194,18 +198,42 @@ namespace udPdfSignature
             string location = (Convert.ToString(tDs.Tables[0].Rows[0]["Location"]).Length > 0 && Convert.ToBoolean(tDs.Tables[0].Rows[0]["ShowLocation"]) ? Convert.ToString(tDs.Tables[0].Rows[0]["Location"]) : string.Empty);
             string SignBy = Convert.ToString(tDs.Tables[0].Rows[0]["SignBy"]);
 
+            int id = Convert.ToInt32(tDs.Tables[0].Rows[0]["ID"]);//Add By Rupesh G on 17122019 for bug no.33134
+            bool issignvalid = Convert.ToBoolean(tDs.Tables[0].Rows[0]["issignvalid"]);//Add By Rupesh G on 17122019 for bug no.33134
+
             iTextSharp.text.Rectangle rect = new iTextSharp.text.Rectangle(left, bottom, width, height);
 
             InPdfPath = InPdfPath.ToLower().Replace("<*#*>", " ");              //Changed by Shrikant S. on 07/06/2018 for Bug-31559           
-            OutPdfPath = InPdfPath.ToString().Replace(".pdf", "_digital.pdf");      
+            OutPdfPath = InPdfPath.ToString().Replace(".pdf", "_digital.pdf");
 
             if (Convert.ToString(tDs.Tables[0].Rows[0]["FileType"]) == "USBTO")
             {
+                //Add By Rupesh G on 17122019 for bug no.33134--start
+                string sqlQuery;
+                sqlQuery = "select * from DigitalSignProperty where (DigSignId='" + id + "' and fldval<>'' and fldprint=1)or( fldnm='PrintDate' and fldprint=1 and DigSignId='" + id+"') order by serial";
+                DataTable dtDigitalSignProperty = new DataTable();
+                dtDigitalSignProperty = oDataAccess.GetDataTable(sqlQuery, null, 25);
+                //Add By Rupesh G on 17122019 for bug no.33134--End
+
                 PDFSigner pdfs = new PDFSigner();
                 pdfs.appCap = this.AppCaption;
-                if (!pdfs.processCertificate(InPdfPath, OutPdfPath, SignBy, rect, reason, location))
+                //Added by Prajakta B. on 19/07/2019 for Bug 32632  --Start
+                if (this.Methodnm == 7)
                 {
-                    return;
+                    //if (!pdfs.processCertificate_everypage(InPdfPath, OutPdfPath, SignBy, rect, reason, location, Methodnm))//Commented By Rupesh G on 17122019 for bug no.33134
+                    if (!pdfs.processCertificate_everypage(InPdfPath, OutPdfPath, SignBy, rect, reason, location, Methodnm, dtDigitalSignProperty, issignvalid)) //Add By Rupesh G on 17122019 for bug no.33134
+                    {
+                        return;
+                    }
+                }
+                //Added by Prajakta B. on 19/07/2019 for Bug 32632  --End
+                if (this.Methodnm == 4)
+                {
+                    //if (!pdfs.processCertificate(InPdfPath, OutPdfPath, SignBy, rect, reason, location, Methodnm))   //Commented By Rupesh G on 17122019 for bug no.33134
+                    if (!pdfs.processCertificate(InPdfPath, OutPdfPath, SignBy, rect, reason, location, Methodnm, dtDigitalSignProperty, issignvalid))   //Add By Rupesh G on 17122019 for bug no.33134
+                    {
+                        return;
+                    }
                 }
             }
             else
@@ -219,7 +247,7 @@ namespace udPdfSignature
                 PDFSigner pdfs = new PDFSigner();
                 pdfs.appCap = this.AppCaption;
                 pdfs.processCert(Path, Pass);
-                pdfs.Sign(InPdfPath, OutPdfPath, "", true,rect,reason,location);
+                pdfs.Sign(InPdfPath, OutPdfPath, "", true, rect, reason, location);
             }               //Added by Shrikant S. on 10/09/2015 for Bug-26664  
             /*Delete file without having digital signature and rename digital signature 
 			file with old file name*/
@@ -255,7 +283,7 @@ namespace udPdfSignature
             oDataAccess.ExecuteSQLStatement(sqlstr, null, 20, true);
         }
         #endregion Generate Process Id's    
-        
+
         private void frmPdfSign_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.mDeleteProcessIdRecord();

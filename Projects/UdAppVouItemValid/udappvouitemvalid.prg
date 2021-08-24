@@ -20,6 +20,14 @@ If Type('_curvouobj.mainalias') = 'C'
 	Endif
 Endif
 &&vasant061009
+
+&& Added by Shrikant S. on 24/01/2019 for Installer 2.0.2		&& Start
+IF TYPE('_Screen.ActiveForm.voupage.page1.grditem')='U'
+	Return
+ENDIF
+&& Added by Shrikant S. on 24/01/2019 for Installer 2.0.2		&& End
+
+
 *Set DataSession To _curvouobj.DataSessionId	&&vasant071009
 If Type('_curvouobj.PcvType') = 'C'
 	If _Screen.ActiveForm.voupage.page1.grditem.column1.text1.Value<>_Screen.ActiveForm.voupage.page1.grditem.column1.text1.Tag
@@ -78,6 +86,21 @@ If Type('_curvouobj.PcvType') = 'C'		&& Added for auto updater 10.4.10 by Shrika
 	Endif
 Endif
 ******** Added By Sachin N. S. on 13/02/2012 for TKT-9411 and Bug-660 Batchwise/Serialize Inventory ******** End
+
+**** Added by Shrikant S. on 09/08/2019 for Bug-32412			&& Start
+If Type('_curvouobj.PcvType') = 'C'
+	If _curvouobj.itempage
+		If _curvouobj.voupage.page1.grditem.column1.text1.Value<>_curvouobj.voupage.page1.grditem.column1.text1.Tag
+			If Type('_curvouobj._unitbcserialize')='O'
+				etsql_con = _curvouobj._unitbcserialize._uetrigvouitemvalid()
+				If etsql_con <=0
+					Return .F.
+				Endif
+			Endif
+		Endif
+	Endif
+Endif
+**** Added by Shrikant S. on 09/08/2019 for Bug-32412			&& End
 
 && Added By Shrikant S. on 24/01/2012 for Bug-1180		&& Start
 If Type('_curvouobj.PcvType') = 'C' 	&& Added for auto updater 10.4.10 by Shrikant S. on 02/08/2012

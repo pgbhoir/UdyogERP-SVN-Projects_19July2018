@@ -27,8 +27,8 @@ Endif
 *!*	If ([vuexc] $ vchkprod) And Inlist(_Screen.ActiveForm.pcvtype,"ST","SR") And Upper(_Screen.ActiveForm.wtable1)="ITEM_VW" 	&& 07/02/2011 Shrikant S. && 07/02/2011 Sandeep Add Entry Type "SR"
 *!*		If(_Screen.ActiveForm.addmode )
 If ([vuexc] $ vchkprod) And Upper(_Screen.ActiveForm.wtable1)="ITEM_VW" 	&& 07/02/2011 Shrikant S. && 07/02/2011 Sandeep Add Entry Type "SR"
-	If(_Screen.ActiveForm.addmode or _Screen.ActiveForm.editmode)
-&&Changes has been done by vasant on 17/11/2012 as per Bug 7230 (RG 23 Part 1 no is not generating error).
+	If(_Screen.ActiveForm.addmode Or _Screen.ActiveForm.editmode)
+		&&Changes has been done by vasant on 17/11/2012 as per Bug 7230 (RG 23 Part 1 no is not generating error).
 		If Type('_Screen.ActiveForm.txtu_pageno')='O'
 			ms='_Screen.ActiveForm.txtu_pageno.Valid()'
 			&ms
@@ -52,15 +52,31 @@ If Vartype(oglblindfeat)='O'
 Endif
 && Added by Shrikant S. on 28/06/2014 for Bug-23280		&& End
 && Added by Sumit on 24/10/2015 for Bug - 27069 & Bug - 27122 Start
-IF Inlist(_Screen.ActiveForm.pcvtype,"PT","ST","VR") And Upper(_Screen.ActiveForm.wtable1)="MAIN_VW"
-	IF TYPE('_Screen.ActiveForm.txtU_402SRNO') == 'O'
+If Inlist(_Screen.ActiveForm.pcvtype,"PT","ST","VR") And Upper(_Screen.ActiveForm.wtable1)="MAIN_VW"
+	If Type('_Screen.ActiveForm.txtU_402SRNO') == 'O'
 		dup_No("U_402SRNO",_Screen.ActiveForm.txtU_402SRNO.Value,"STKL_VW_MAIN")
-	ENDIF
-	IF TYPE('_Screen.ActiveForm.txtU_403SRNO') == 'O'
+	Endif
+	If Type('_Screen.ActiveForm.txtU_403SRNO') == 'O'
 		dup_No("U_403SRNO",_Screen.ActiveForm.txtU_403SRNO.Value,"STKL_VW_MAIN")
-	ENDIF
-	IF TYPE('_Screen.ActiveForm.txtSERVTXSRNO') == 'O' AND !EMPTY(_Screen.ActiveForm.txtSERVTXSRNO.Value)
+	Endif
+	If Type('_Screen.ActiveForm.txtSERVTXSRNO') == 'O' And !Empty(_Screen.ActiveForm.txtSERVTXSRNO.Value)
 		Dup_ServTxSrNo("SERVTXSRNO",_Screen.ActiveForm.txtSERVTXSRNO.Value)
-	ENDIF
-ENDIF
+	Endif
+Endif
 && Added by Sumit on 24/10/2015 for Bug - 27069 & Bug - 27122 End
+
+&&Added by Priyanka B on 25112019 for Bug-33083 Start
+_actfrm = _Screen.ActiveForm
+If Type('_actfrm.pcvtype')='C'
+	If Inli(_actfrm.pcvtype,'ST')
+		If _actfrm.addmode Or _actfrm.editmode
+			If Type('item_vw.u_invnopsp')<>'U' And Type('item_vw.u_nopro')<>'U'
+				If !Empty(Item_vw.u_invnopsp) And Empty(Item_vw.u_nopro)
+					Messagebox("Nature of Processing: cannot be Empty",0+48,vumess)
+					Return .F.
+				Endif
+			Endif
+		Endif
+	Endif
+Endif
+&&Added by Priyanka B on 25112019 for Bug-33083 End

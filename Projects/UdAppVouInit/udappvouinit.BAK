@@ -13,7 +13,8 @@
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','OB','DP','DR','BI','FP','FR','VR','BC','BD','BP','CP','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB')  && Added by Shrikant S. on 06/02/2017 for GST		&& Commented by Shrikant S. on 20/04/2017 for GST
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','OB','DP','DR','BI','FP','FR','VR','BC','BD','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB')  && Added by Shrikant S. on 20/04/2017 for GST	&& Commented  by Shrikant S. on 26/04/2017 for GST
 *!*	If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Commented by Priyanka B on 22012018 for Bug-31087
-If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087
+*!*	If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087  &&Commented by Priyanka B on 08082019 for Bug-32747
+If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV','BP') Or Inlist(.pcvtype,'J2','J3','B3','B4','EI','PP','TH','RH','FH','EH','SI','PL','GA','J5','GB','UB','GS','IC')  && Added  by Shrikant S. on 26/04/2017 for GST  &&Modified by Priyanka B on 22012018 for Bug-31087  &&Modified by Priyanka B on 08082019 for Bug-32747   &&Modified by Divyang P for Bug-33068
 	If "VOUCLASS" $ Upper(Set('classlib'))
 	Else
 		Set Classlib To vouclass Additive
@@ -40,67 +41,70 @@ If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or In
 *!*			If ([vuent] $ vchkprod) &&Sandeep for TKT-7147
 *!*					.cmdexdetail.Visible=.F.
 *!*			Endif
-		.cmdexdetail.Caption = '\<Excise'
+			.cmdexdetail.Caption = '\<Excise'
 &&--->TKT-2647
-	Case Inlist(.pcvtype,'J2','J3') &&TKT-2647 &&TKT-794 GTA Add J3
-		.cmdexdetail.Caption = '\<Service Tax'
+		Case Inlist(.pcvtype,'J2','J3') &&TKT-2647 &&TKT-794 GTA Add J3
+			.cmdexdetail.Caption = '\<Service Tax'
 &&--->TKT-8320 GTA
-		.cmdexdetail.AutoSize=.T.
+			.cmdexdetail.AutoSize=.T.
 &&<---TKT-8320 GTA
 
 &&<---TKT-2647
 && Added By Rup For Bug-4885 on 21/09/2012 ---->
-	Case Inlist(.pcvtype,'PP')
-		.cmdexdetail.Caption = 'Payroll Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
-	Case Inlist(.pcvtype,'TH')
-		.cmdexdetail.Caption = 'TDS Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
-	Case Inlist(.pcvtype,'RH')
-		.cmdexdetail.Caption = 'PT Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
-	Case Inlist(.pcvtype,'FH')
-		.cmdexdetail.Caption = 'PF Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
-	Case Inlist(.pcvtype,'EH')
-		.cmdexdetail.Caption = 'ESIC Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'PP')
+			.cmdexdetail.Caption = 'Payroll Details'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'TH')
+			.cmdexdetail.Caption = 'TDS Details'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'RH')
+			.cmdexdetail.Caption = 'PT Details'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'FH')
+			.cmdexdetail.Caption = 'PF Details'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'EH')
+			.cmdexdetail.Caption = 'ESIC Details'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'BP')
+			.cmdexdetail.Caption = 'GSTR Status' &&Added by Divyang for Bug-33068 
+			.cmdexdetail.AutoSize=.T.
 && Added By Rup For Bug-4885 on 21/09/2012 <----
 
 *!*		Case Inlist(.pcvtype,'BP','CP',"B3","B4") &&-->Rup 16/06/2009 TDS Payment Entry &&TCS TKT-5692 Add B3,B4		&& Commented by Shrikant S. on 20/04/2017 for GST
-	Case Inlist(.pcvtype,"B3","B4") &&-->Rup 16/06/2009 TDS Payment Entry &&TCS TKT-5692 Add B3,B4		&& Added by Shrikant S. on 20/04/2017 for GST
+		Case Inlist(.pcvtype,"B3","B4") &&-->Rup 16/06/2009 TDS Payment Entry &&TCS TKT-5692 Add B3,B4		&& Added by Shrikant S. on 20/04/2017 for GST
 
-		If ([vutds] $ vchkprod) &&-->Rup 02/08/2009
-		
-			.cmdexdetail.Caption = Iif(Inlist(.pcvtype,"B4"),'\<TCS Details','\<TDS Details') &&TCS TKT-5692 Add B3,B4
-			.cmdexdetail.Width=.cmdnarration.Width
-			.cmdexdetail.AutoSize=.T.&&<--Rup 16/06/2009 TDS Payment Entry
-		Else
-			.cmdexdetail.Visible=.F.
-		Endif
+			If ([vutds] $ vchkprod) &&-->Rup 02/08/2009
+
+				.cmdexdetail.Caption = Iif(Inlist(.pcvtype,"B4"),'\<TCS Details','\<TDS Details') &&TCS TKT-5692 Add B3,B4
+				.cmdexdetail.Width=.cmdnarration.Width
+				.cmdexdetail.AutoSize=.T.&&<--Rup 16/06/2009 TDS Payment Entry
+			Else
+				.cmdexdetail.Visible=.F.
+			Endif
 && Added by Shrikant S. on 05/10/2016 for GST 		&& Start
 *!*		Case Inlist(.pcvtype,'GB')
 *!*			.cmdexdetail.Caption = 'GST Details exc'
 *!*			.cmdexdetail.AutoSize=.T.
 *!*			.cmdexdetail.Width=.cmdnarration.Width
-	Case Inlist(.pcvtype,'GA','J5','GB')
-		.cmdexdetail.Caption = 'GST Details'
-		.cmdexdetail.AutoSize=.T.
-		.cmdexdetail.ToolTipText = 'GST Details'
-		If .pcvtype="GB"
-			.CmdServiceTax.Visible=.T.
-		Else
+		Case Inlist(.pcvtype,'GA','J5','GB')
+			.cmdexdetail.Caption = 'GST Details'
+			.cmdexdetail.AutoSize=.T.
+			.cmdexdetail.ToolTipText = 'GST Details'
+			If .pcvtype="GB"
+				.CmdServiceTax.Visible=.T.
+			Else
+				.CmdServiceTax.Visible=.F.
+			Endif
+		Case Inlist(.pcvtype,'ST')
+			.cmdexdetail.Caption = 'Invoice Details'
+			.cmdexdetail.AutoSize=.T.
 			.CmdServiceTax.Visible=.F.
-		Endif
-	Case Inlist(.pcvtype,'ST')
-		.cmdexdetail.Caption = 'Invoice Details'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
 
 && Commented by Shrikant S. on 06/02/2017 for GST		&& Start
 *!*		Case Inlist(.pcvtype,'GC','GD','C6','D6')
@@ -112,10 +116,10 @@ If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or In
 && Added by Shrikant S. on 05/10/2016 for GST 		&& End
 
 && added by Shrikant S. on 15/06/2017 for GST		&& Start
-	Case Inlist(.pcvtype,'UB')
-		.cmdexdetail.Caption = '\<Unreg. Bills'
-		.cmdexdetail.AutoSize=.T.
-		.CmdServiceTax.Visible=.F.
+		Case Inlist(.pcvtype,'UB')
+			.cmdexdetail.Caption = '\<Unreg. Bills'
+			.cmdexdetail.AutoSize=.T.
+			.CmdServiceTax.Visible=.F.
 && added by Shrikant S. on 15/06/2017 for GST		&& End
 
 &&Added by Priyanka B on 22012018 for Bug-31087 Start
@@ -130,11 +134,11 @@ If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or In
 				.CmdServiceTax.Visible=.F.
 			Endif
 &&Added by Priyanka B on 22012018 for Bug-31087 End
-		
-	Otherwise
 
-		.cmdexdetail.Caption = '\<Other Details'
-		.cmdexdetail.AutoSize= .T.
+		Otherwise
+
+			.cmdexdetail.Caption = '\<Other Details'
+			.cmdexdetail.AutoSize= .T.
 	Endcase
 * Birendra : On 10 June 2011 :Start:
 &&--->Rup TKT-9742 Add TDS Module Checking
@@ -151,16 +155,16 @@ If Inlist(.pcvtype,'IP','VI','ST','OS','DP','DR','BI','FP','FR','VR','JV') Or In
 *!*		IF (.pcvtype="JV" AND [vutex] $ vchkprod)  OR (.pcvtype="JV" AND !([vuser] $ vchkprod)) && Birendra : On 10 June 2011		&& Commented By Shrikant S. on 07/08/2012 for Bug-5779
 	If (.pcvtype="JV" And [vutex] $ vchkprod)  Or (.pcvtype="JV" And !([vuser] $ vchkprod Or [vuisd] $ vchkprod))  && Added By Shrikant S. on 07/08/2012 for Bug-5779
 		.cmdexdetail.Visible=.F.
-	ENDIF
-	&& Added by Shrikant S. on 16/01/2017 for GST			&& Start
+	Endif
+&& Added by Shrikant S. on 16/01/2017 for GST			&& Start
 	If (.pcvtype="OS" )
 		.cmdexdetail.Caption="\<Addl. Info."
 		.cmdexdetail.Picture= apath+'bmp\Additional_Info.gif'
 		.cmdexdetail.DisabledPicture 	= apath+'bmp\Additional_Info_off.gif'
 		.cmdexdetail.ToolTipText 		= "Additional Info"
-	ENDIF
-	&& Added by Shrikant S. on 16/01/2017 for GST			&& End
-		
+	Endif
+&& Added by Shrikant S. on 16/01/2017 for GST			&& End
+
 Endif
 
 && Added by Shrikant S. on 05/10/2016 for GST 	&& Start
@@ -296,7 +300,7 @@ If Inlist(.pcvtype,'RN') And (([vuexc] $ vchkprod) Or ([vuinv] $ vchkprod))
 	.cmdSelectBom.Top = .cmdnarration.Top+.cmdnarration.Height+60
 	.cmdSelectBom.Left = .cmdnarration.Left
 	.cmdSelectBom.SpecialEffect=2
-ENDIF
+Endif
 && Added by Shrikant S. on 09/05/2016 FOR BUG-28289		&& End
 
 ***** Added by Sachin N. S. on 01/04/2016 for Bug-27503 -- Start
@@ -313,18 +317,34 @@ If Vartype(oglblprdfeat)="O"
 			Endif
 		Endif
 	Endif
+****** Added by Sachin N. S. on 16/11/2018 for Bug-31943 -- Start
+	If oglblprdfeat.udchkprod('phrmretlr')
+		If .pcvtype = 'HS'
+			If Type('Thisform._udClsPointOfSale')!='O'
+				If File('udVouPointOfSale.app')
+					If !("UDCLSPOINTOFSALE" $ Upper(Set('classlib')))
+						Set Classlib To udClsPointOfSale In "udVouPointOfSale.app" Additive
+					Endif
+					.AddObject("_udClsPointOfSale","udClsPointOfSale.udClsPointOfSale")
+				Endif
+			Endif
+		Endif
+	Endif
+****** Added by Sachin N. S. on 16/11/2018 for Bug-31943 -- End
+
 Endif
 ***** Added by Sachin N. S. on 01/04/2016 for Bug-27503 -- End
 
 ***** Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- Start
-If oglblprdfeat.udchkprod('vugst')
+*!*	If oglblprdfeat.udchkprod('vugst')   &&Commented by Priyanka B on 22032019 for Bug-32067
+If oglblprdfeat.udchkprod('vugst') Or oglblprdfeat.udchkprod('vuisd') Or oglblprdfeat.udchkprod('isdkgen')  &&Modified by Priyanka B on 22032019 for Bug-32067
 	cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
 	If !Empty(cdAmendDt)
 		If Used('main_vw')
 			msqlstr = "EXECUTE USP_ADD_MISSING_FLDS_AMENDTBL '"+.entry_tbl+"'"
 			nSqlCon = .SqlConObj.DataConn([EXE],Company.DbName,msqlstr,[],;
 				"This.Parent.nHandle",.DataSessionId)
-&& Commented by Shrikant S. on 15/12/2017 for Auto updater 13.0.5	&& Start				
+&& Commented by Shrikant S. on 15/12/2017 for Auto updater 13.0.5	&& Start
 *!*				If .nHandle>0
 *!*					.SqlConObj.sqlconnclose("This.Parent.nHandle")
 *!*				Endif
@@ -334,3 +354,600 @@ If oglblprdfeat.udchkprod('vugst')
 Endif
 
 ***** Added by Sachin N. S. on 30/10/2017 for Bug-30782 -- End
+
+
+&& Added by Shrikant S. on 19/10/2018 FOR BUG-31942		&& Start
+If Inlist(.pcvtype,'PK')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdcsv","VOUCLASS.cmdBom")
+	.cmdcsv.Picture = apath+'bmp\raw_material.gif'
+	.cmdcsv.Caption="Import File"
+	.cmdcsv.Visible=.T.
+	.cmdcsv.Enabled=.T.
+	.cmdcsv.Width=.cmdnarration.Width
+	.cmdcsv.Top = .txtInvoiceNo.Top
+	.cmdcsv.Left = .txtInvoiceNo.Left + .txtInvoiceNo.Width + 20
+	.cmdcsv.SpecialEffect=2
+Endif
+&& Added by Shrikant S. on 19/10/2018 FOR Bug-31942		&& Start
+
+&& Added by Shrikant S. on 24/11/2018 FOR Auto updater 2.0.1		&& Start
+If Inlist(.pcvtype,'SK')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdcsv","VOUCLASS.cmdBom")
+	.cmdcsv.Picture = apath+'bmp\raw_material.gif'
+	.cmdcsv.Caption="Export CSV"
+	.cmdcsv.Visible=.T.
+*!*		.cmdcsv.Enabled=IIF(.addmode or .editmode,.f.,.t.)
+	.cmdcsv.Enabled=.T.
+	.cmdcsv.Width=.cmdnarration.Width
+	.cmdcsv.Top = .txtDate.Top
+	.cmdcsv.Left = .txtDate.Left + .txtDate.Width + 20
+	.cmdcsv.SpecialEffect=2
+Endif
+&& Added by Shrikant S. on 24/11/2018 FOR Auto updater 2.0.1		&& End
+
+
+&&Added by Priyanka B on 04122018 for Bug-31930 Start
+If oglblprdfeat.udchkprod('phrmretlr')
+	If Inlist(.pcvtype,'MO')
+		If "VOUCLASS" $ Upper(Set('classlib'))
+		Else
+			Set Classlib To vouclass Additive
+		Endif
+		.AddObject("cmdexcel","VOUCLASS.cmdBom")
+		.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+		.cmdexcel.Caption="Import Excel"
+		.cmdexcel.Visible=.T.
+		.cmdexcel.Enabled=.T.
+		.cmdexcel.Width=.cmdnarration.Width
+		.cmdexcel.Top = .txtDate.Top
+		.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+		.cmdexcel.SpecialEffect=2
+	Endif
+Endif
+&&Added by Priyanka B on 04122018 for Bug-31930 End
+
+&&Added by Rupesh G. on 04012019 for Bug-32194 Start
+If oglblprdfeat.udchkprod('eautomob')
+	If Inlist(.pcvtype,'M3')
+		If "VOUCLASS" $ Upper(Set('classlib'))
+		Else
+			Set Classlib To vouclass Additive
+		Endif
+		.AddObject("cmdexcel","VOUCLASS.cmdBom")
+		.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+		.cmdexcel.Caption="Import Excel"
+		.cmdexcel.Visible=.T.
+		.cmdexcel.Enabled=.T.
+		.cmdexcel.Width=.cmdnarration.Width
+		.cmdexcel.Top = .txtDate.Top
+		.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+		.cmdexcel.SpecialEffect=2
+	Endif
+Endif
+&&Added by Rupesh G. on 04012019 for Bug-32194 End
+
+&&Added by Priyanka B on 05022019 for Bug-31797 Start
+If Inlist(.pcvtype,'PT')
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdexcel","VOUCLASS.cmdBom")
+	.cmdexcel.Picture = apath+'bmp\raw_material.gif'
+	.cmdexcel.Caption="Import Excel"
+	.cmdexcel.Visible=.T.
+	.cmdexcel.Enabled=.T.
+	.cmdexcel.Width=.cmdnarration.Width
+	.cmdexcel.Top = .txtDate.Top
+	.cmdexcel.Left = .txtDate.Left + .txtDate.Width + 20
+	.cmdexcel.SpecialEffect=2
+Endif
+&&Added by Priyanka B on 05022019 for Bug-31797 End
+
+&&Added by Priyanka B on 05042019 for Bug-32067 Start
+If Vartype(oglblprdfeat)='O'
+	If oglblprdfeat.udchkprod('vuisd') Or oglblprdfeat.udchkprod('isdkgen')
+		If Used("Lother_vw")
+			Select lother_vw
+			Do Case
+				Case Inlist(.pcvtype,"J7")
+					Update lother_vw Set filtcond="SELECT DISTINCT DESCR FROM REVERSALMAST WHERE CATEGORY = 'ISD' AND ISACTIVE = 0 {DESCR#DESCR}";
+						Where e_code In ('J7') And Alltrim(Lower(fld_nm))='revstype'
+			Endcase
+			Select lother_vw
+			Go Top
+		Endif
+	Endif
+Endif
+
+&&Added by Priyanka B on 05042019 for Bug-32067 End
+
+&&Added by Priyanka B on 04102019 for Bug-32747 Start
+If Vartype(oglblprdfeat)='O'
+	If oglblprdfeat.udchkprod('efabric')
+*!*			If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID') && Ccmmented by Anil on 05-03-2020 for Bug 33328
+*!*				.voupage.page1.grditem.column2.header1.Caption="Total Length" && Ccmmented by Anil on 05-03-2020 for Bug 33328
+*!*				If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID','I7','W3','R2','I8','W4','R3','I6','O6','DF','FO') %% Commented By Anil on 18-04-2020 && Added by Anil on 01-04-2020 for Bug 33328 
+			If Inlist(.pcvtype,'AF','DF','FO','FS','IC','OC','P6','PY','RD','SG','W1','W2','ID','I7','W3','R2','I8','W4','R3','I6','O6','DF','FO','BS','RB') ;
+			OR Inlist(.pcvtype,'R4','R5','S3','S4') OR Inlist(.pcvtype,'O1','P7','LD','W5','DR')
+				.voupage.page1.grditem.column2.header1.Caption="Total Meters" && Added by Anil on 01-04-2020 for Bug 33328
+			Endif
+	Endif
+Endif
+&&Added by Priyanka B on 04102019 for Bug-32747 End
+
+&&Added by Rupesh G on 03022020 for Bug-33181 Start
+If Inlist(.pcvtype,'ST') And [udewaygen] $ vchkprod
+	If "VOUCLASS" $ Upper(Set('classlib'))
+	Else
+		Set Classlib To vouclass Additive
+	Endif
+	.AddObject("cmdGen","VOUCLASS.cmdBom")
+	.cmdGen.Picture = apath+'bmp\raw_material.gif'
+	.cmdGen.Caption="Generate e-Invoice"
+	.cmdGen.Visible=.T.
+	.cmdGen.Enabled=Iif(.addmode Or .editmode,.F.,.T.)
+	.cmdGen.Width=.cmdnarration.Width+10
+	.cmdGen.Top = .cmdnarration.Top+.cmdnarration.Height+10
+	.cmdGen.Left = .cmdnarration.Left-20
+	.cmdGen.SpecialEffect=2
+Endif
+&&Added by Rupesh G on 03022020 for Bug-33181 End
+
+*!*	&& Added by Shrikant S. on 07/08/2019 for Bug-32412			&& Start
+*!*	If Type('Lcode_vw.unitbc')='L'
+*!*		If lcode_vw.unitbc=.T.
+*!*			If Type('Thisform._unitbcserialize')!='O'
+*!*				If File('ueunitbcserialize.app')
+*!*					If !(Upper("ueunitbcserialize") $ Upper(Set('classlib')))
+*!*						Set Classlib To ueunitbcserialize In "ueunitbcserialize.app" Additive
+*!*					Endif
+*!*					.AddObject("_unitbcserialize","ueunitbcserialize.unitbcserialize")
+*!*				Endif
+*!*			Endif
+*!*			If Type('thisform.cmdscanbc')!='O'
+*!*				.AddObject("cmdscanbc", "cmdscanbarcode")
+*!*				.cmdscanbc.Visible = .T.
+*!*				.cmdscanbc.Height = .cmdnarration.Height
+*!*				.cmdscanbc.Width = .cmdnarration.Width
+*!*				.cmdscanbc.Top = .cmdnarration.Top+5
+*!*				.cmdscanbc.Left = .cmdnarration.Left-30
+*!*				.cmdscanbc.SpecialEffect = 0
+*!*				.cmdscanbc.Picture=apath+"bmp\additional_info.gif"
+*!*				.cmdscanbc.PicturePosition=1
+*!*				.cmdscanbc.SpecialEffect=2
+*!*				.cmdscanbc.AutoSize=.T.
+*!*				If lcode_vw.Inv_stk='+'
+*!*					.cmdscanbc.Caption = ' Print Barcode'
+*!*					.cmdscanbc.Enabled =Iif(.addmode = .T. Or .editmode = .T.,.F.,.T.)
+*!*				Else
+*!*					.cmdscanbc.Caption = ' Scan Barcode'
+*!*					.cmdscanbc.Enabled =Iif(.addmode = .T. Or .editmode = .T.,.T.,.F.)
+*!*				Endif
+*!*			Endif
+*!*		Endif
+*!*	Endif
+*!*	Define Class cmdscanbarcode As CommandButton
+*!*		Procedure Click()
+*!*	*	If _Screen.ActiveForm.addmode = .T. Or _Screen.ActiveForm.editmode = .T.
+*!*			If Alltrim(This.Caption)=="Print Barcode"
+*!*				Messagebox("Printing Barcode")
+*!*			Else
+*!*				Do ueunitbcserialize With _Screen.ActiveForm.pcvtype,_Screen.ActiveForm.DataSessionId,_Screen.ActiveForm
+*!*			Endif
+*!*	*	Endif
+*!*		Endproc
+*!*	Enddefine
+
+*!*	&& Added by Shrikant S. on 07/08/2019 for Bug-32412			&& End
+
+*-- Added By Anil on 28-02-2020 for Bug 33328 Start
+
+Procedure CheckBaleNo_Whn
+	LPARAMETERS obj	
+	_curform = _Screen.ActiveForm
+	If [efabric] $ vchkprod
+		If _curform.addmode Or _curform.editmode
+		  
+			IF EMPTY(item_vw.U_BaleNo)
+				Messagebox("Bale No. Empty Is Invalid!! ",0+16,vumess)
+				RETURN .F.
+			ENDIF
+
+		ENDIF
+	ENDIF
+ENDPROC
+
+Procedure CheckBaleNo_Valid
+	Lparameters oObj
+	_curform = _Screen.ActiveForm
+	_etdatasessionid = _curform.DataSessionId
+	_curform.nhandle=0
+	_malias = Alias()
+	_mrecno	= Recno()
+	lcvalue = oObj.Value
+	If [efabric] $ vchkprod
+	
+		If _curform.addmode Or _curform.editmode
+			If Inlist(_curform.pcvtype,"RB","FO","R4","S3","S4") && AND _curform._grdaddrec = .T.
+				
+				If Empty(item_vw.U_BaleNo) AND EMPTY(lcvalue) AND RECNO() > 0
+					IF _curform.whichRec > 0 AND _curform.SetValue > 2
+						Messagebox("Bale No. Empty Is Invalid !! ",0+16,vumess)
+						oObj.SetFocus
+						oObj.Refresh
+						Return .F.
+					ELSE
+					_curform.SetValue=4
+					Return .F.
+					ENDIF
+				Endif
+			ENDIF
+				_curRecno = RECNO()
+*				sq1str=" Select U_BaleNo,'A' as iFlag From ArItem WHERE entry_ty='RB' and U_BaleNo=?lcValue"
+
+				DO CASE
+					CASE _curform.pcvtype ='FO'
+						sq1str=" Select U_BaleNo,'A' as iFlag From OSITEM WHERE entry_ty='FO' and U_BaleNo=?lcValue"
+					CASE _curform.pcvtype ='RB'
+						sq1str=" Select U_BaleNo,'A' as iFlag From ARITEM WHERE entry_ty='RB' and U_BaleNo=?lcValue"
+					CASE _curform.pcvtype ='R4'
+						sq1str=" Select U_BaleNo,'A' as iFlag From STITEM WHERE entry_ty='R4' and U_BaleNo=?lcValue"
+					CASE _curform.pcvtype ='S3'
+						sq1str=" Select U_BaleNo,'A' as iFlag From ESITEM WHERE entry_ty='S3' and U_BaleNo=?lcValue"
+					CASE _curform.pcvtype ='S4'
+						sq1str=" Select U_BaleNo,'A' as iFlag From ESITEM WHERE entry_ty='S4' and U_BaleNo=?lcValue"
+				ENDCASE		
+				nretval = _curform.sqlconobj.dataconn([EXE],company.dbname,sq1str,"tmpBaleNoVW","_curform.nHandle",_etdatasessionid )
+				If nretval<0
+					Return .F.
+				ENDIF
+				SELECT tmpBaleNoVW
+*				INSERT INTO tmpBaleNoVW(U_BaleNo,iFlag) SELECT U_BaleNo,'E' as iFlag FROM item_vw WHERE entry_ty='RB' AND U_Baleno = lcvalue 
+
+				INSERT INTO tmpBaleNoVW(U_BaleNo,iFlag) SELECT U_BaleNo,'E' as iFlag FROM item_vw WHERE entry_ty=_curform.pcvtype AND U_Baleno = lcvalue 
+				COUNT FOR iFlag = 'A' AND u_BaleNo=lcvalue TO mrecord1
+				COUNT FOR iFlag = 'E' AND u_BaleNo=lcvalue TO mrecord2
+				IF mrecord1+mrecord2=1
+							IF mrecord1=1 AND mrecord2 = 0
+								IF _curform.pcvtype ='RB'
+									Messagebox("Bale No. Already In The Packing Entry !!",0+16,vumess)
+								ELSE
+									Messagebox("Bale No. Already In The Entry !!",0+16,vumess)
+								ENDIF
+									
+								SELECT Item_VW
+								LOCATE FOR ALLTRIM(U_BaleNo) = ALLTRIM(lcvalue)
+								IF FOUND()
+									oObj.Value = ''
+									oObj.Refresh
+									oObj.SetFocus
+									RETURN .F.
+								Endif	
+							Endif	
+				ELSE
+				IF mrecord2>=1
+
+					SELECT item_vw
+	*				mrec = RECNO()
+					COUNT FOR u_BaleNo=oObj.Value TO MR1
+	*				GO mrec
+					IF mr1 > 1
+						IF _curform.pcvtype ='RB'
+							Messagebox("Bale No. Already In The Packing Entry !!",0+16,vumess)
+						ELSE
+							Messagebox("Bale No. Already In The Entry !!",0+16,vumess)
+						ENDIF
+						SELECT Item_VW
+						LOCATE FOR ALLTRIM(U_BaleNo) = ALLTRIM(lcvalue) AND EMPTY(Item_VW.Item) 
+						IF FOUND()
+								oObj.Value = ''
+								oObj.Refresh
+								oObj.SetFocus
+								RETURN .F.
+						Endif	
+					Endif	
+				ENDIF
+				ENDIF
+				SELECT item_vw
+	*			mrec = RECNO()
+	*			WAIT WINDOW STR(mrec)
+				COUNT FOR u_BaleNo=lcvalue  TO MR1
+	*			GO mrec
+				IF mr1 > 1
+					IF _curform.pcvtype ='RB'
+						Messagebox("Bale No. Already In The Packing Entry !!",0+16,vumess)
+					ELSE
+						Messagebox("Bale No. Already In The Entry !!",0+16,vumess)
+					ENDIF
+					SELECT Item_VW
+					LOCATE FOR U_BaleNo = lcvalue AND !EMPTY(Item_VW.Item) AND EMPTY(Item_VW.Qty)  
+					IF FOUND()
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							RETURN .F.
+					ELSE
+					LOCATE FOR U_BaleNo = lcvalue AND EMPTY(Item_VW.Item) 
+					IF FOUND()
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							RETURN .F.
+					Endif	
+					Endif
+					
+				Endif	
+				IF mrecord1>=1 
+					IF mrecord2 = 0
+						IF _curform.pcvtype ='RB'
+							Messagebox("Bale No. Already In The Packing Entry !!",0+16,vumess)
+						ELSE
+							Messagebox("Bale No. Already In The Entry !!",0+16,vumess)
+						ENDIF
+						LOCATE FOR U_BaleNo = lcvalue  
+						IF FOUND()
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							RETURN .F.
+						Endif	
+					ELSE
+					IF mrecord1=1 
+						SELECT Item_VW
+						LOCATE FOR U_BaleNo = lcvalue  
+						IF FOUND() 
+							IF  !EMPTY(Item_VW.Item) AND EMPTY(Item_VW.Qty) 
+								IF _curform.pcvtype ='RB'
+									Messagebox("Bale No. Already In The Packing Entry !!",0+16,vumess)
+								ELSE
+									Messagebox("Bale No. Already In The Entry !!",0+16,vumess)
+								ENDIF
+
+								oObj.Value = ''
+								oObj.Refresh
+								oObj.SetFocus
+								RETURN .F.
+							Endif	
+						Endif	
+					ENDIF
+					Endif	
+				ENDIF
+				
+				
+				SELECT Item_vw
+				GO _curRecno 
+					If Used('tmpBaleNoVW')
+						Use In tmpBaleNoVW
+					Endif
+					If Used('tmpBaleNoVW1')
+						Use In tmpBaleNoVW1
+					Endif
+			If _curform.nHandle>0
+				=_curform.sqlconobj.sqlconnclose("_curform.nHandle")
+			ENDIF
+		Endif
+	ENDIF
+
+	If !Empty(_malias)
+		Select &_malias
+	Endif
+	If Betw(_mrecno,1,Reccount())
+		Go _mrecno
+	Endif
+
+EndProc		
+*-- Added By Anil on 28-02-2020 for Bug 33328 End
+
+
+
+
+
+*-- Added By Anil on 03-03-2020 for Bug 33328 Start 
+Procedure CheckBaleNoSB
+	Lparameters oObj
+	_curform = _Screen.ActiveForm
+	_etdatasessionid = _curform.DataSessionId
+	_curform.nhandle=0
+	_malias = Alias()
+	_mrecno	= Recno()
+	lcvalue = oObj.Value
+	If [efabric] $ vchkprod
+		If _curform.addmode OR _curform.editmode
+			If _Screen.ActiveForm.addmode OR _Screen.ActiveForm.EditMode
+						
+						DO Case
+							CASE _curform.pcvtype ='BS'
+								sq1str="Select U_BaleNo, 'A' as iFlag From STItem WHERE entry_ty='BS' and u_baleno=?lcValue"
+							CASE _curform.pcvtype ='R4'
+								sq1str="Select U_BaleNo, 'A' as iFlag From SRItem WHERE entry_ty='R4' and u_baleno=?lcValue"
+						ENDCASE
+								
+						nretval = _curform.sqlconobj.dataconn([EXE],company.dbname,sq1str,"tmpSTBaleNo_vw","_curform.nHandle",_etdatasessionid )
+						SELECT tmpSTBaleNo_vw
+						INSERT INTO tmpSTBaleNo_vw(U_BaleNo,iFlag) SELECT U_BaleNo,'E' FROM item_vw WHERE entry_ty='BS' AND U_Baleno = lcvalue 
+						SELECT tmpSTBaleNo_vw
+						COUNT FOR iFlag='A' TO mcnt1
+						COUNT FOR iFlag='E' TO mcnt2
+						SELECT item_vw
+						mrec=RECNO()
+						COUNT FOR U_BALENO= lcvalue  AND EMPTY(item) TO mcnt3 
+
+						IF mcnt1+mcnt2+mcnt3>2
+							Messagebox("Bale No. Already Allocated In The Another Sales Bill ! ",0+16,vumess)
+							SELECT item_vw
+							GO mrec
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							Return .F.
+						ELSE
+						IF mcnt1+mcnt3=2
+							Messagebox("Bale No. Already Allocated In The Another Sales Bill ! ",0+16,vumess)
+							SELECT item_vw
+							GO mrec
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							Return .F.
+						ELSE
+						IF mcnt2=1 AND mcnt3 =1 
+							Messagebox("Bale No. Already Allocated In The Same Sales Bill ! ",0+16,vumess)
+							SELECT item_vw
+							GO mrec
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+							Return .F.
+						ENDIF
+						Endif
+						ENDIF
+						
+
+					sq1str=" Select Top 1 U_BaleNo,Item,Ware_nm,FDESIGN,FGRADE,FSHADE,FPCS,FCUTPER,FRATEPER,Qty,Rate From ArItem WHERE U_BaleNo=?lcValue  and entry_ty='RB'"
+					nretval = _curform.sqlconobj.dataconn([EXE],company.dbname,sq1str,"tmpBaleNo_vw","_curform.nHandle",_etdatasessionid )
+					If nretval<0
+						Return .F.
+					ENDIF
+				
+					SELECT tmpBaleNo_vw
+					If Reccount('tmpBaleNo_vw')<=0
+						Messagebox("Bale No. Doesn't  Exist!!",0+16,vumess)
+							SELECT item_vw
+							GO _mrecno
+							oObj.Value = ''
+							oObj.Refresh
+							oObj.SetFocus
+
+						Return .F.
+					ELSE
+					SELECT tmpBaleNo_vw
+					GO top
+					mitem		=	tmpBaleNo_vw.item
+					mwarenm		=	tmpBaleNo_vw.ware_nm
+					mdesg		=	tmpBaleNo_vw.FDESIGN   
+					mgrade		=	tmpBaleNo_vw.FGRADE    
+					mshade		=	tmpBaleNo_vw.FSHADE    
+					mpcs		=	tmpBaleNo_vw.FPCS      
+					mcutper		=	tmpBaleNo_vw.FCUTPER 
+					mrateper	=	tmpBaleNo_vw.FRATEPER 
+					mqty		=	tmpBaleNo_vw.Qty 
+					mrate		=	tmpBaleNo_vw.Rate
+					
+						SELECT item_vw
+						LOCATE FOR ALLTRIM(u_baleNo) = ALLTRIM(oObj.Value)
+						REPLACE item_vw.item	 	WITH mitem
+						REPLACE item_vw.ware_nm	 	WITH mwarenm
+						REPLACE item_vw.FDESIGN 	WITH mdesg  
+						REPLACE item_vw.FGRADE  	WITH mgrade
+						REPLACE item_vw.FSHADE  	WITH mshade    
+						REPLACE item_vw.FPCS		WITH mpcs     
+						REPLACE item_vw.FCUTPER		WITH mcutper 
+						REPLACE item_vw.FRATEPER	WITH mrateper
+						REPLACE item_vw.Qty 		WITH mqty 
+						REPLACE item_vw.Rate 		WITH mrate
+
+					ENDIF
+					If Used('tmpBaleNo_vw')
+						Use In tmpBaleNo_vw
+					Endif
+				
+					If _curform.nHandle>0
+						=_curform.sqlconobj.sqlconnclose("_curform.nHandle")
+					ENDIF
+				ENDIF
+		Endif
+	Endif
+	If !Empty(_malias)
+		Select &_malias
+	Endif
+	If Betw(_mrecno,1,Reccount())
+		Go _mrecno
+	Endif
+
+EndProc		
+*-- Added By Anil on 03-03-2020 for Bug 33328 End
+
+
+*--- Added By Anil on 30-03-2020 Start
+
+
+Procedure CheckBaleNoOP
+	Lparameters oObj
+	_curform = _Screen.ActiveForm
+	_etdatasessionid = _curform.DataSessionId
+	_curform.nhandle=0
+	_malias = Alias()
+	_mrecno	= Recno()
+	lcvalue = oObj.Value
+	If [efabric] $ vchkprod
+	
+		If _curform.addmode Or _curform.editmode
+			If Inlist(_curform.pcvtype,"FO") 
+				
+				If Empty(item_vw.U_BaleNo) AND EMPTY(lcvalue) AND RECNO() > 0
+					IF _curform.whichRec > 0 AND _curform.SetValue > 2
+						Messagebox("Bale No. Empty Is Invalid !! ",0+16,vumess)
+						oObj.SetFocus
+						oObj.Refresh
+						Return .F.
+					ELSE
+					_curform.SetValue=4
+					Return .F.
+					ENDIF
+				Endif
+				lcValue = oObj.Value
+*!*					SELECT u_baleNo FROM Item_VW WHERE U_BaleNo = lcValue INTO CURSOR curTmp 
+*!*					IF _Tally > 1
+*!*							Messagebox("Bale No. Already Exist In The Same Entry!! ",0+16,vumess)
+*!*							If Used('curTmp')
+*!*								Use In curTmp 
+*!*							Endif
+*!*							oObj.SetFocus
+*!*							oObj.Refresh
+*!*							Return .F.
+*!*					ENDIF
+*!*					If Used('curTmp')
+*!*						Use In curTmp 
+*!*					ENDIF
+				SELECT Item_VW 
+				mrecno = RECNO()
+				COUNT FOR U_Baleno=lcValue TO mc  
+				IF mc > 1
+					Messagebox("Bale No. Already Exist In The Same Entry!! ",0+16,vumess)
+						oObj.SetFocus
+						oObj.Refresh
+						Return .F.
+				ENDIF
+				GO mrecno
+				
+				sq1str=" Select Top 1 U_BaleNo From OSItem WHERE U_BaleNo=?lcValue  and entry_ty='FO'"
+				nretval = _curform.sqlconobj.dataconn([EXE],company.dbname,sq1str,"tmpBaleNo_vw","_curform.nHandle",_etdatasessionid )
+				If nretval<0
+					Return .F.
+				ENDIF
+				SELECT tmpBaleNo_vw
+				If Reccount('tmpBaleNo_vw')>0
+					Messagebox("Bale No Already Exist !!",0+16,vumess)
+						SELECT Item_VW 
+						oObj.Value = ''
+						oObj.Refresh
+						oObj.SetFocus
+						RETURN .F.
+				Endif	
+			ENDIF
+		Endif
+	ENDIF
+EndProc		
+*--- Added By Anil on 30-03-2020 End
+
+
+

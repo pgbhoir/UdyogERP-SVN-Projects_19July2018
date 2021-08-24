@@ -161,7 +161,7 @@ If [vutex] $ vchkprod
 		Endif
 	Endif
 	If Type('main_vw.scons_id') = 'N'
-*!*			If main_vw.scons_id = 0		&& Commented By shrikant S. on 301113 for Bug-20574
+		*!*			If main_vw.scons_id = 0		&& Commented By shrikant S. on 301113 for Bug-20574
 		If main_vw.scons_id = 0 And main_vw.cons_id=main_vw.ac_id	&& Added By shrikant S. on 301113 for Bug-20574
 			Replace scons_id With main_vw.sac_id In main_vw
 		Endif
@@ -171,7 +171,8 @@ Endif
 && Added By Shrikant S. on 20/12/2011 for Bug-870	&& Start
 
 *!*	If "vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL")
-If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL","RE")) Or ("vuinv" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE"))	&& Changed by Sachin N. S. on 02/09/2015 for Bug-26722
+*!*	If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL","RE")) Or ("vuinv" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE"))	&& Changed by Sachin N. S. on 02/09/2015 for Bug-26722  &&Commented by Priyanka B on 08082019 for Bug-32747
+If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL","RE")) Or ("vuinv" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE")) Or ("efabric" $ vchkprod  And main_vw.entry_ty="RD")	&& Changed by Sachin N. S. on 02/09/2015 for Bug-26722  &&Modified by Priyanka B on 08082019 for Bug-32747
 	If  _curvouobj.AddMode Or _curvouobj.EditMode
 		If !Used('rmdet_Vw')
 			Messagebox('Entry cannot be saved without Issue Allocation...',64,vumess)
@@ -187,8 +188,9 @@ If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL","RE")) Or ("vuinv
 				Scan
 					Select rmdet_Vw
 					Go Top
-*!*						Count For entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial To itemcnt		&& Commented by Shrikant S. on 28/03/2018 for Bug-31120 
-					Count For entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial AND qty_used >0 To itemcnt	&& Added by Shrikant S. on 28/03/2018 for Bug-31120 
+					*!*						Count For entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial To itemcnt		&& Commented by Shrikant S. on 28/03/2018 for Bug-31120
+					*!*						Count For entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial And qty_used >0 To itemcnt	&& Added by Shrikant S. on 28/03/2018 for Bug-31120  &&Commented by Priyanka B on 22112018 for Bug-31874
+					Count For entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial And (qty_used+wastage+procwaste) > 0 To itemcnt	&& Added by Shrikant S. on 28/03/2018 for Bug-31120  &&Modified by Priyanka B on 22112018 for Bug-31874
 					If itemcnt>0
 						itemcnt=0
 						Select Item_vw
@@ -203,8 +205,9 @@ If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"LR","IL","RE")) Or ("vuinv
 			Endif
 			If lexit=.T.
 				&& Messagebox("Entry cannot be saved without Issue Allocation "+Iif(!Empty(Alltrim(Item_vw.Item))," for "+Alltrim(Item_vw.Item)+" and line item "+Alltrim(Item_vw.item_no),"")+"...",64,vumess) && Commented by Suraj Kumawat date on 27-05-2017 for GST ....
-				Messagebox("Entry cannot be saved without Issue Allocation "+Iif(!Empty(Alltrim(Item_vw.Item))," for "+Alltrim(Item_vw.Item)+" and line goods "+Alltrim(Item_vw.item_no),"")+"...",64,vumess) && Added by Suraj Kumawat date on 27-05-2017 for GST
-				Select Item_vw 
+				*!*					Messagebox("Entry cannot be saved without Issue Allocation "+Iif(!Empty(Alltrim(Item_vw.Item))," for "+Alltrim(Item_vw.Item)+" and line goods "+Alltrim(Item_vw.item_no),"")+"...",64,vumess) && Added by Suraj Kumawat date on 27-05-2017 for GST  &&Commented by Priyanka B on 22112018 for Bug-31874
+				Messagebox("Entry cannot be saved without Issue/Wastage/Process Loss Allocation "+Iif(!Empty(Alltrim(Item_vw.Item))," for "+Alltrim(Item_vw.Item)+" and line goods "+Alltrim(Item_vw.item_no),"")+"...",64,vumess) && Added by Suraj Kumawat date on 27-05-2017 for GST  &&Modified by Priyanka B on 22112018 for Bug-31874
+				Select Item_vw
 				Return .F.
 			Endif
 
@@ -236,20 +239,20 @@ If Used('OTHITREF_VW')
 		Select OTHITREF_VW
 		Set Filter To
 		=Tableupdate(.T.)
-		
-		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 start 
-		SELECT inter_use FROM lother_vw WHERE ALLTRIM(UPPER(inter_use))== '.T.' AND att_file == .F. AND ALLTRIM(UPPER(fld_nm))=='U_FORPICK' INTO CURSOR CurChkpickup
-		SELECT CurChkpickup
-		IF !EOF()
+
+		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 start
+		Select inter_use From lother_vw Where Alltrim(Upper(inter_use))== '.T.' And att_file == .F. And Alltrim(Upper(fld_nm))=='U_FORPICK' Into Cursor CurChkpickup
+		Select CurChkpickup
+		If !Eof()
 			Return .T.
-		ENDIF 
-		 && Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 End 	
-		 
+		Endif
+		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 End
+
 		Select Item_vw
 		nrecno=Iif(!Eof(),Recno(),0)
 		Scan
 			Select Item_vw
-&& aDDED bY PANKAJ B. ON 14-03-2015 FOR bUG-25365 START
+			&& aDDED bY PANKAJ B. ON 14-03-2015 FOR bUG-25365 START
 			curObj = _Screen.ActiveForm
 			lcStr = "Select type From it_mast where it_code= ?Item_vw.it_code"
 			nretval = curObj.sqlconobj.dataconn("EXE",company.dbname,lcStr,"ITmastRAW_vw","curObj.nhandle",curObj.DataSessionId)
@@ -257,7 +260,7 @@ If Used('OTHITREF_VW')
 				Return .F.
 			Endif
 			nretval=curObj.sqlconobj.sqlconnclose("curObj.nHandle")
-&& aDDED bY PANKAJ B. ON 14-03-2015 FOR bUG-25365 END
+			&& aDDED bY PANKAJ B. ON 14-03-2015 FOR bUG-25365 END
 			If !Inlist(Upper(ITmastRAW_vw.Type),"FINISHED","SEMI FINISHED") && aDDED bY PANKAJ B. ON 14-03-2015 FOR bUG-25365
 				Select Sum(Iif(Isnull(rqty),0,rqty)) As qty From OTHITREF_VW Where entry_ty=Item_vw.entry_ty And Tran_cd=Item_vw.Tran_cd And ItSerial=Item_vw.ItSerial Into Cursor tibl
 				If Item_vw.qty!=tibl.qty Or (Item_vw.qty>0 And Isnull(tibl.qty)) Or Reccount('tibl')=0
@@ -271,39 +274,39 @@ If Used('OTHITREF_VW')
 			Go nrecno
 		Endif
 		If !Empty(ItemList)
-&&Commented for Bug-26269 on 03/07/2015 Start..
-*!*				=Messagebox("Quantity of some Items are not matching with the pickup quantity."+Chr(13);
-*!*				+Padr("Line #",10,' ')+"Item Name"+Chr(13)+ItemList,0+64,vumess)
-*!*				Return .F.
-*!*			Else
-*!*				Return .T.
-&&Commented for Bug-26269 on 03/07/2015 End..
+			&&Commented for Bug-26269 on 03/07/2015 Start..
+			*!*				=Messagebox("Quantity of some Items are not matching with the pickup quantity."+Chr(13);
+			*!*				+Padr("Line #",10,' ')+"Item Name"+Chr(13)+ItemList,0+64,vumess)
+			*!*				Return .F.
+			*!*			Else
+			*!*				Return .T.
+			&&Commented for Bug-26269 on 03/07/2015 End..
 
-&&Added By Kishor A. for Bug-26269 on 03/07/2015 Start..
+			&&Added By Kishor A. for Bug-26269 on 03/07/2015 Start..
 			&& nAnswer	=Messagebox("Quantity of some Items are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Item Name"; Commented by Suraj Kumawat date on 27-05-2017  for GST
 			nAnswer	=Messagebox("Quantity of some goods are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Item Name"; && Added  by Suraj Kumawat date on 27-05-2017  for GST
-				+Chr(13)+ItemList+Chr(13)+Chr(13)+Padr('',2,' ')+"Do you want to continue without pickup?",4+32+256,'Name')
+			+Chr(13)+ItemList+Chr(13)+Chr(13)+Padr('',2,' ')+"Do you want to continue without pickup?",4+32+256,'Name')
 
 			Do Case
-			Case nAnswer = 6
-				Return .T.
-			Case nAnswer = 7
-				Return .F.
+				Case nAnswer = 6
+					Return .T.
+				Case nAnswer = 7
+					Return .F.
 			Endcase
-&&Added By Kishor A. for Bug-26269 on 03/07/2015 End..
+			&&Added By Kishor A. for Bug-26269 on 03/07/2015 End..
 		Endif
 	Endif
-&& Added by Shrikant S. on 12/08/2015 for Bug-26554		&& Start
+	&& Added by Shrikant S. on 12/08/2015 for Bug-26554		&& Start
 Else
 	If Inli(main_vw.entry_ty,'IP')		&& Added by Sachin N. S. on 03/09/2015 for Bug-26722
-		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 start 
-		SELECT inter_use FROM lother_vw WHERE ALLTRIM(UPPER(inter_use))== '.T.' AND att_file == .F. AND ALLTRIM(UPPER(fld_nm))=='U_FORPICK' INTO CURSOR CurChkpickup
-		SELECT CurChkpickup
-		IF !EOF()
+		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 start
+		Select inter_use From lother_vw Where Alltrim(Upper(inter_use))== '.T.' And att_file == .F. And Alltrim(Upper(fld_nm))=='U_FORPICK' Into Cursor CurChkpickup
+		Select CurChkpickup
+		If !Eof()
 			Return .T.
-		ENDIF 
-		 && Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 End 	
-	
+		Endif
+		&& Added by Suraj Kumawat for Bug-30914 date on 29-11-2017	 End
+
 		ItemList=""
 		Select Item_vw
 		nrecno=Iif(!Eof(),Recno(),0)
@@ -326,21 +329,61 @@ Else
 			Go nrecno
 		Endif
 		If !Empty(ItemList)
-			&& nAnswer	=Messagebox("Quantity of some Items are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Item Name"; && Commented by Suraj Kumawat for GST Date on 27-05-2017 
-			nAnswer	=Messagebox("Quantity of some goods are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Goods Name"; && Added by Suraj Kumawat for GST Date on 27-056-2017 
-				+Chr(13)+ItemList+Chr(13)+Chr(13)+Padr('',2,' ')+"Do you want to continue without pickup?",4+32+256,'Name')
+			&& nAnswer	=Messagebox("Quantity of some Items are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Item Name"; && Commented by Suraj Kumawat for GST Date on 27-05-2017
+			nAnswer	=Messagebox("Quantity of some goods are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Goods Name"; && Added by Suraj Kumawat for GST Date on 27-056-2017
+			+Chr(13)+ItemList+Chr(13)+Chr(13)+Padr('',2,' ')+"Do you want to continue without pickup?",4+32+256,'Name')
 
 			Do Case
-			Case nAnswer = 6
-				Return .T.
-			Case nAnswer = 7
-				Return .F.
+				Case nAnswer = 6
+					Return .T.
+				Case nAnswer = 7
+					Return .F.
 			Endcase
 		Endif
-&& Added by Shrikant S. on 12/08/2015 for Bug-26554		&& End
+		&& Added by Shrikant S. on 12/08/2015 for Bug-26554		&& End
 	Endif		&& Added by Sachin N. S. on 03/09/2015 for Bug-26722
 Endif
 ****** Added by Sachin N. S. on 15/01/2014 for Bug-21375 ****** End
+
+*!*	&& Added by Shrikant S. on 19/09/2018 for Installer ENT 2.0.0		&& Start
+*!*	If Inli(main_vw.entry_ty,'ST','DC')
+*!*		If Type('Item_vw.batchno')='C' And oGlblPrdFeat.UdChkProd('exmfgbp') And checkbatchExp()=.T.
+*!*			ItemList=""
+*!*			Select Item_vw
+*!*			nrecno=Iif(!Eof(),Recno(),0)
+*!*			Scan
+*!*				curObj = _Screen.ActiveForm
+*!*				lcStr = "Select type From it_mast where it_code= ?Item_vw.it_code"
+*!*				nretval = curObj.sqlconobj.dataconn("EXE",company.dbname,lcStr,"ITmastRAW_vw","curObj.nhandle",curObj.DataSessionId)
+*!*				If nretval < 0
+*!*					Return .F.
+*!*				Endif
+*!*				nretval=curObj.sqlconobj.sqlconnclose("curObj.nHandle")
+*!*	*!*				If !Inlist(Upper(ITmastRAW_vw.Type),"FINISHED","SEMI FINISHED")
+*!*					ItemList = ItemList + Iif(!Empty(ItemList),Chr(13),'') + Padr(Alltrim(Item_vw.item_no),10,' ') + Alltrim(Item_vw.Item)
+*!*				Endif
+
+*!*				Select Item_vw
+*!*			Endscan
+*!*			Select Item_vw
+*!*			If nrecno!=0
+*!*				Go nrecno
+*!*			ENDIF
+*!*			If !Empty(ItemList)
+*!*				nAnswer	=Messagebox("Quantity of some goods are not matching with the pickup quantity."+Chr(13)+Chr(13)+Padr("Line #",10,' ')+"Goods Name"; && Added by Suraj Kumawat for GST Date on 27-056-2017
+*!*				+Chr(13)+ItemList+Chr(13)+Chr(13)+Padr('',2,' ')+"Do you want to continue without pickup?",4+32+256,'Name')
+
+*!*				Do Case
+*!*				Case nAnswer = 6
+*!*					Return .T.
+*!*				Case nAnswer = 7
+*!*					Return .F.
+*!*				ENDCASE
+*!*			Endif
+*!*		Endif
+*!*	Endif
+*!*	&& Added by Shrikant S. on 19/09/2018 for Installer ENT 2.0.0		&& End
+
 
 ******* Added by Sachin N. S. on 03/09/2015 for Bug-26722 -- Start
 If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE")) Or ("vuinv" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE"))	&& Changed by Sachin N. S. on 02/09/2015 for Bug-26722
@@ -359,8 +402,8 @@ If ("vuexc" $ vchkprod  And Inlist(main_vw.entry_ty ,"RE")) Or ("vuinv" $ vchkpr
 					Select tibl
 				Endscan
 				If !Empty(cItemLine)
-					&& Messagebox("The following Item quantity are not matching with the allocated quantity."+Chr(13)+cItemLine,0+16,vumess) && Commented by Suraj Kumawat Date on 27-05-2017 for GST 
-					Messagebox("The following Goods quantity are not matching with the allocated quantity."+Chr(13)+cItemLine,0+16,vumess) && Added by Suraj Kumawat Date on 27-05-2017 for GST 
+					&& Messagebox("The following Item quantity are not matching with the allocated quantity."+Chr(13)+cItemLine,0+16,vumess) && Commented by Suraj Kumawat Date on 27-05-2017 for GST
+					Messagebox("The following Goods quantity are not matching with the allocated quantity."+Chr(13)+cItemLine,0+16,vumess) && Added by Suraj Kumawat Date on 27-05-2017 for GST
 					Return .F.
 				Endif
 			Endif
@@ -370,16 +413,19 @@ Endif
 ******* Added by Sachin N. S. on 03/09/2015 for Bug-26722 -- End
 
 ***** Added by Sachin N. S. on 02/11/2017 for Bug-30782 -- Start
-If oglblprdfeat.udchkprod('vugst')
+*!*	If oGlblPrdFeat.UdChkProd('vugst')   &&Commented by Priyanka B on 22032019 for Bug-32067
+If oGlblPrdFeat.UdChkProd('vugst') Or oGlblPrdFeat.UdChkProd('vuisd') Or oGlblPrdFeat.UdChkProd('isdkgen')   &&Modified by Priyanka B on 22032019 for Bug-32067
 	If _curvouobj.EditMode=.T.
 		cdAmendDt = Iif(Type('Main_vw.AmendDate')='T','Main_vw.AmendDate',Iif(Type('Lmc_vw.AmendDate')='T','Lmc_vw.AmendDate',Iif(Type('MainAdd_vw.AmendDate')='T','MainAdd_vw.AmendDate','')))
 		If !Empty(cdAmendDt)
 			If Empty(Evaluate(cdAmendDt)) Or Ttod(Evaluate(cdAmendDt))=Ctod('01/01/1900')
-				If Messagebox("Do you want to Amend the Records?"+Chr(13)+"If 'Yes' then enter amend date and original record will stored"+Chr(13)+Replicate(" ",5)+"else"+Chr(13)+"'No' to continue saving without amendment date and no original record will be stored.",4+32,vumess) = 6
-					Return .F.
-				Endif
+				If !(Year(Date())==Year(main_vw.Date) And Month(Date())=Month(main_vw.Date))		&& Added by Shrikant S. on 21/08/2018 for Installer 2.0.0
+					If Messagebox("Do you want to Amend the Records?"+Chr(13)+"If 'Yes' then enter amend date and original record will stored"+Chr(13)+Replicate(" ",5)+"else"+Chr(13)+"'No' to continue saving without amendment date and no original record will be stored.",4+32,vumess) = 6
+						Return .F.
+					Endif
+				Endi																			&& Added by Shrikant S. on 21/08/2018 for Installer 2.0.0
 			Else
-				If Month(Ttod(main_vw.Date)) >= Month(Ttod(Evaluate(cdAmendDt))) AND Year(Ttod(main_vw.Date)) >= Year(Ttod(Evaluate(cdAmendDt)))
+				If Month(Ttod(main_vw.Date)) >= Month(Ttod(Evaluate(cdAmendDt))) And Year(Ttod(main_vw.Date)) >= Year(Ttod(Evaluate(cdAmendDt)))
 					Messagebox("Amendment date month should be greater than the Invoice date month.",0+64,vumess)
 					Return .F.
 				Else
@@ -407,21 +453,21 @@ If Type('Main_vw.Entry_ty')<>'U' And Type('main_vw.ewbqrcode')<>'U'
 		_bcval=Iif(Type('lmc_vw.ewbn')<>'U',lmc_vw.ewbn,main_vw.ewbn)
 
 		If !Empty(_bcval)
-			IF !EMPTY(company.gstin)
-				ldateformat=SET("Date")
-				ltimeformat=SET("Hours")
-				SET DATE mdy
-				SET HOURS TO 12
-				lcdateval=Iif(Type('lmc_vw.EWBVFD')<>'U',dtoc(lmc_vw.EWBVFD),dtoc(main_vw.EWBVFD))
-				lctimeval=Iif(Type('lmc_vw.EWBVFT')<>'U',ALLTRIM(lmc_vw.EWBVFT),ALLTRIM(main_vw.EWBVFT))
-				_bcval=ALLTRIM(_bcval)+"/"+ALLTRIM(company.gstin)+"/"+TRANSFORM(CTOT(lcdateval+" "+lctimeval))
-				IF !EMPTY(ldateformat)
-					SET DATE &ldateformat
-				ENDIF
-				IF !EMPTY(ltimeformat)
-					SET HOURS TO &ltimeformat
-				endif
-			endif
+			If !Empty(company.gstin)
+				ldateformat=Set("Date")
+				ltimeformat=Set("Hours")
+				Set Date Mdy
+				Set Hours To 12
+				lcdateval=Iif(Type('lmc_vw.EWBVFD')<>'U',Dtoc(lmc_vw.EWBVFD),Dtoc(main_vw.EWBVFD))
+				lctimeval=Iif(Type('lmc_vw.EWBVFT')<>'U',Alltrim(lmc_vw.EWBVFT),Alltrim(main_vw.EWBVFT))
+				_bcval=Alltrim(_bcval)+"/"+Alltrim(company.gstin)+"/"+Transform(Ctot(lcdateval+" "+lctimeval))
+				If !Empty(ldateformat)
+					Set Date &ldateformat
+				Endif
+				If !Empty(ltimeformat)
+					Set Hours To &ltimeformat
+				Endif
+			Endif
 			Set Procedure To vu_udfs In &xapps AddIt
 			_mbcval=Func_QRCode(_bcval)
 
@@ -467,3 +513,97 @@ Endif
 *!*	ENDIF
 *!*	***** Added by Kishor A. on 09/06/2015 for Bug 26269 ****End
 && Commented by Shrikant S. on 12/08/2015 for Bug-26554		&& End
+
+
+&&Added by Priyanka B on 05102019 for Bug-32747 Start
+_curvouobj = _Screen.ActiveForm
+If ("efabric" $ vchkprod)
+
+	lcOldalias = Alias()
+	If Inlist(_curvouobj.pcvtype,"W1","RD")
+
+		If (_curvouobj.AddMode Or _curvouobj.EditMode)
+			Select Item_vw
+			Scan
+				*!*					Replace Item_vw.fpcs With 1, Item_vw.fcutper With Item_vw.qty In Item_vw  &&Commented by Priyanka B on 15022020 for Bug-33252
+				&&Modified by Priyanka B on 15022020 for Bug-33252 Start
+				If Empty(Item_vw.fpcs) And Type('Item_vw.fpcs')<>'U'
+					Replace Item_vw.fpcs With 1 In Item_vw
+				Endif
+				If Empty(Item_vw.fcutper) And Type('Item_vw.fcutper')<>'U'
+					Replace Item_vw.fcutper With 1 In Item_vw
+				Endif
+				&&Modified by Priyanka B on 15022020 for Bug-33252 End
+
+				Select Item_vw
+			Endscan
+		Endif
+	Endif
+
+	&&Added by Priyanka B on 12102019 for Bug-32747 Start
+	*!*		If Inlist(_curvouobj.pcvtype,"AF","FO")  &&Commented by Priyanka B on 28082020 for AU 2.2.5
+	If Inlist(_curvouobj.pcvtype,"AF")  &&Modified by Priyanka B on 28082020 for AU 2.2.5
+		If (_curvouobj.AddMode Or _curvouobj.EditMode)
+			If !Used('curItType')
+				sql_con  = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,[ select * from it_mast ],[curItType],"_curvouobj.nHandle",_curvouobj.DataSessionId,.F.)
+				If sql_con < 0
+					_curvouobj.ShowMessagebox('ERROR!!! It_mast table not found',48,vumess)
+					sql_con = 0
+				Endif
+
+				Select Item_vw
+				Go Top
+				Scan
+					If Used('curItType') And Reccount('curItType') > 0
+						Select Type From curItType Where it_code=?Item_vw.it_code Into Cursor _curItTy
+						If Inlist(Alltrim(Upper(_curItTy.Type)),"FINISHED","SEMI FINISHED")
+							If Empty(Item_vw.flotno)
+								Messagebox("Lot No. cannot be empty!!",0+16,vumess)
+								&&Added by Prajakta B. on 08-01-2020 for Bug 33074  &&Start
+								If Used('curItType')
+									Use In curItType
+								Endif
+								&&Added by Prajakta B. on 08-01-2020 for Bug 33074  &&End
+								Return .F.
+							Endif
+						Endif
+					Endif
+					Select Item_vw
+				Endscan
+				If Used('curItType')
+					Use In curItType
+				Endif
+			Endif
+		Endif
+		If Used('curItType')
+			Use In curItType
+		Endif
+	Endif
+	&&Added by Priyanka B on 12102019 for Bug-32747 End
+
+	&&Added by Priyanka B on 17022020 for Bug-33252 Start
+	If Inlist(_curvouobj.pcvtype,"AF","RD")
+		Select Item_vw
+		mrecno=Iif(!Eof(),Recno(),0)
+		Go Top In Item_vw
+		Scan
+			nCutPerPc = Item_vw.qty/Iif(Item_vw.fpcs>0,Item_vw.fpcs,1)
+			If Type('item_vw.fCutPer')<>'U'
+				Replace Item_vw.fcutper With nCutPerPc In Item_vw
+			Endif
+			Select Item_vw
+		Endscan
+
+		If mrecno>0
+			Select Item_vw
+			Go mrecno
+		Endif
+	Endif
+	&&Added by Priyanka B on 17022020 for Bug-33252 End
+
+	If !Empty(lcOldalias)
+		Select (lcOldalias)
+	Endif
+Endif
+
+&&Added by Priyanka B on 05102019 for Bug-32747 End

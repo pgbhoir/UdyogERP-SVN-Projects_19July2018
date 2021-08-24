@@ -13,7 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using iTextSharp.text;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
-
+using System.Data;
 
 namespace udPdfSignature
 {
@@ -66,8 +66,8 @@ namespace udPdfSignature
         public byte[] getStreamedMetaData()
         {
             MemoryStream os = new System.IO.MemoryStream();
-            XmpWriter xmp = new XmpWriter(os, this.info);            
-            xmp.Close();            
+            XmpWriter xmp = new XmpWriter(os, this.info);
+            xmp.Close();
             return os.ToArray();
         }
 
@@ -142,7 +142,7 @@ namespace udPdfSignature
         }
 
         //Added by Shrikant S. on 10/09/2015 for Bug-26664          //Start
-        public void Sign(string InPdf, string OutPdf, string SigLocation, bool visible,Rectangle rectangle,string reason,string location)
+        public void Sign(string InPdf, string OutPdf, string SigLocation, bool visible, Rectangle rectangle, string reason, string location)
         {
 
             PdfReader reader = new PdfReader(InPdf);
@@ -173,7 +173,7 @@ namespace udPdfSignature
         //Commented by Shrikant S. on 10/09/2015 for Bug-26664          //Start
         //public void Sign(string InPdf, string OutPdf, string SigLocation, bool visible)
         //{
-            
+
         //    PdfReader reader = new PdfReader(InPdf);
         //    int pagecnt = reader.NumberOfPages;
         //    //Activate MultiSignatures
@@ -184,7 +184,7 @@ namespace udPdfSignature
         //    //st.MoreInfo = this.metadata.getMetaData();
         //    //st.XmpMetadata = this.metadata.getStreamedMetaData();
         //    PdfSignatureAppearance sap = st.SignatureAppearance;
-            
+
         //    sap.SetCrypto(this.akp, this.chain, null, PdfSignatureAppearance.WINCER_SIGNED);
         //    //sap.Reason = SigReason;
         //    //sap.Contact = SigContact;
@@ -194,14 +194,18 @@ namespace udPdfSignature
         //    sap.Location = ""; 
         //    if (visible)
         //        sap.SetVisibleSignature(new iTextSharp.text.Rectangle(550, 90, 400, 40), pagecnt, null);
-            
+
         //    st.Close();
         //}
         //Commented by Shrikant S. on 10/09/2015 for Bug-26664          //End
 
         //Added by Shrikant S. on 10/09/2015  for Bug-26664     //Start
-        public bool processCertificate(string inputPdf, string outputPdf, string signBy, Rectangle rectangle, string reason, string location)
+
+        //public bool processCertificate(string inputPdf, string outputPdf, string signBy, Rectangle rectangle, string reason, string location, int methodnm)  //Commnted By Rupesh G on 17122019 for bug no.33134
+        public bool processCertificate(string inputPdf, string outputPdf, string signBy, Rectangle rectangle, string reason, string location, int methodnm, DataTable dtRec,bool issignvalid) //Add By Rupesh G on 17122019 for bug no.33134
         {
+
+            
             bool returnVal = true;
             bool certificateFound = false;
             string certiName = "CN=" + signBy.Trim();
@@ -210,8 +214,8 @@ namespace udPdfSignature
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
 
             X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
-            X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now,false);      
-            
+            X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+
             foreach (X509Certificate2 cert in fcollection)
             {
                 try
@@ -220,7 +224,7 @@ namespace udPdfSignature
                     //Org.BouncyCastle.X509.X509Certificate[] chain = new Org.BouncyCastle.X509.X509Certificate[]{cp.ReadCertificate(cert.RawData)};
                     org.bouncycastle.x509.X509Certificate certAux = new org.bouncycastle.x509.X509Certificate(cert.GetRawCertData());
                     org.bouncycastle.x509.X509Certificate[] chain = new org.bouncycastle.x509.X509Certificate[] { certAux };
-                    
+
                     // Added by Shrikant S. on 06/06/2018 for Bug-31559      // Start
                     if (chain.Length > 0)
                     {
@@ -231,14 +235,14 @@ namespace udPdfSignature
                             continue;
                     }
                     // Added by Shrikant S. on 06/06/2018 for Bug-31559      // End
-                    
+
                     if (PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN").ToLower().Trim() == signBy.ToLower().Trim())
                     {
                         certificateFound = true;
 
                         FileStream outputFileStream = new FileStream(outputPdf, FileMode.Create, FileAccess.Write);
                         PdfReader reader = new PdfReader(inputPdf);
-                        PdfStamper stp = PdfStamper.CreateSignature(reader,outputFileStream, '\0', null, true);
+                        PdfStamper stp = PdfStamper.CreateSignature(reader, outputFileStream, '\0', null, true);
                         PdfSignatureAppearance sap = stp.SignatureAppearance;
                         int pagecnt = reader.NumberOfPages;
                         sap.SetVisibleSignature(rectangle, pagecnt, null);
@@ -247,10 +251,55 @@ namespace udPdfSignature
                         sap.SetCrypto(null, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
                         sap.Reason = reason;
                         sap.Location = location;
-                        sap.Layer2Text = "Digitally Signed by " + PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN") + Environment.NewLine
-                                    + (sap.Reason != string.Empty ? "Reason :" + sap.Reason + Environment.NewLine : string.Empty)
-                                    + (sap.Location != string.Empty ? "Location: " + sap.Location + Environment.NewLine : string.Empty)
-                                    + "Date:" + DateTimeOffset.Now.ToString();
+
+                        //Commnted By Rupesh G on 17122019 for bug no.33134--Start
+                        //sap.Layer2Text = "Digitally Signed by " + PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN") + Environment.NewLine
+                        //            + (sap.Reason != string.Empty ? "Reason :" + sap.Reason + Environment.NewLine : string.Empty)
+                        //            + (sap.Location != string.Empty ? "Location: " + sap.Location + Environment.NewLine : string.Empty)
+                        //            + "Date:" + DateTimeOffset.Now.ToString();
+                        //Commnted By Rupesh G on 17122019 for bug no.33134--End
+
+                        //Add By Rupesh G on 17122019 for bug no.33134--Start
+                        string signVal = "";
+                        if (dtRec.Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in dtRec.Rows)
+                            {
+                                if (signVal == "")
+                                {
+                                    if (dr["fldnm"].ToString().Trim().ToLower() == "printdate" && dr["fldval"].ToString().Trim()=="")
+                                    {
+                                        signVal = dr["prefix"].ToString().Trim() + " " + DateTimeOffset.Now.ToString() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                    }
+                                    else
+                                    {
+                                        signVal = dr["prefix"].ToString().Trim() + " " + dr["fldval"].ToString().Trim() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                    }
+                                   
+                                }
+                                else
+                                {
+                                    if (dr["fldnm"].ToString().Trim().ToLower() == "printdate" && dr["fldval"].ToString().Trim() == "")
+                                    {
+                                        signVal = signVal + dr["prefix"].ToString().Trim() + " " + DateTimeOffset.Now.ToString() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                    }
+                                    else
+                                    {
+                                        signVal = signVal + dr["prefix"].ToString().Trim() + " " + dr["fldval"].ToString().Trim() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                    }
+                                   
+                                }
+
+                            }
+                        }
+                        sap.Layer2Text = signVal;
+                        if (!issignvalid)
+                        {
+                            sap.Acro6Layers = true;
+                        }
+                        //Add By Rupesh G on 17122019 for bug no.33134--End
+
+
 
                         //sap.Layer4Text = "Demo4";     //Change the caption of Invalid Signature
                         //sap.Acro6Layers = true;       //enable/disable the tick mark
@@ -328,6 +377,223 @@ namespace udPdfSignature
             }
             return returnVal;
         }
+
+        //Added by Shrikant S. on 15/07/2019 for Bug 32632 ---Start
+        //public bool processCertificate_everypage(string inputPdf, string outputPdf, string signBy, iTextSharp.text.Rectangle rectangle, string reason, string location, int methodnm)//Commnted By Rupesh G on 17122019 for bug no.33134
+        public bool processCertificate_everypage(string inputPdf, string outputPdf, string signBy, iTextSharp.text.Rectangle rectangle, string reason, string location, int methodnm, DataTable dtRec,bool issignvalid) //Add By Rupesh G on 17122019 for bug no.33134
+        {
+            bool returnVal = true;
+            bool certificateFound = false;
+            string certiName = "CN=" + signBy.Trim();
+
+            X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+
+            X509Certificate2Collection collection = (X509Certificate2Collection)store.Certificates;
+            X509Certificate2Collection fcollection = (X509Certificate2Collection)collection.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
+
+            foreach (X509Certificate2 cert in fcollection)
+            {
+                try
+                {
+                    //Org.BouncyCastle.X509.X509CertificateParser cp = new Org.BouncyCastle.X509.X509CertificateParser(null);
+                    //Org.BouncyCastle.X509.X509Certificate[] chain = new Org.BouncyCastle.X509.X509Certificate[]{cp.ReadCertificate(cert.RawData)};
+                    org.bouncycastle.x509.X509Certificate certAux = new org.bouncycastle.x509.X509Certificate(cert.GetRawCertData());
+                    org.bouncycastle.x509.X509Certificate[] chain = new org.bouncycastle.x509.X509Certificate[] { certAux };
+
+                    // Added by Shrikant S. on 06/06/2018 for Bug-31559      // Start
+                    if (chain.Length > 0)
+                    {
+                        if (PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN") == null)
+                            continue;
+
+                        if (Convert.ToString(PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN")) == string.Empty)
+                            continue;
+                    }
+                    // Added by Shrikant S. on 06/06/2018 for Bug-31559      // End
+
+                    if (PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN").ToLower().Trim() == signBy.ToLower().Trim())
+                    {
+                        certificateFound = true;
+                        int pagecnt = 0;                //Added by Shrikant S on 15/07/2019 
+                        int runningPgNo = 1;            //Added by Shrikant S on 15/07/2019 
+
+                        //FileStream outputFileStream = new FileStream(outputPdf, FileMode.Create, FileAccess.Write);
+                        PdfReader reader = new PdfReader(inputPdf);
+
+                        //Added by Shrikant S on 15/07/2019         //Start
+                        pagecnt = reader.NumberOfPages;
+
+                        while (runningPgNo <= pagecnt && pagecnt > 0)
+                        {
+                            if (runningPgNo != 1)
+                            {
+                                reader = new PdfReader(inputPdf);
+                            }
+                            string newFileNm = (runningPgNo == pagecnt ? outputPdf : outputPdf.ToLower().Replace(".pdf", "_" + runningPgNo.ToString() + ".pdf"));
+                            FileStream outputFileStream = new FileStream(newFileNm, FileMode.Create, FileAccess.Write);
+                            inputPdf = newFileNm;
+                            //Added by Shrikant S on 15/07/2019         // End
+
+                            PdfStamper stp = PdfStamper.CreateSignature(reader, outputFileStream, '\0', null, true);
+                            PdfSignatureAppearance sap = stp.SignatureAppearance;
+                            //int pagecnt = reader.NumberOfPages;           //Commented by Shrikant S. on 15/07/2019
+
+
+                            //sap.SetVisibleSignature(rectangle, pagecnt, null);        //Commented by Shrikant S. on 15/07/2019  
+                            sap.SetVisibleSignature(rectangle, runningPgNo, null);      //Added by Shrikant S on 15/07/2019 
+
+                            sap.SignDate = DateTime.Now;
+                            sap.SetCrypto(null, chain, null, PdfSignatureAppearance.WINCER_SIGNED);
+                            sap.Reason = reason;
+                            sap.Location = location;
+
+
+                            //  sap.Layer2Text = "test";
+
+                            //Commented By Rupesh G on 17122019 for bug no.33134--Start
+                            //sap.Layer2Text = "Digitally Signed by " + PdfPKCS7.GetSubjectFields(chain[0]).GetField("CN") + Environment.NewLine
+                            //            + (sap.Reason != string.Empty ? "Reason :" + sap.Reason + Environment.NewLine : string.Empty)
+                            //            + (sap.Location != string.Empty ? "Location: " + sap.Location + Environment.NewLine : string.Empty)
+                            //            + "Date:" + DateTimeOffset.Now.ToString();
+                            //Commented By Rupesh G on 17122019 for bug no.33134--End
+
+                            //Add By Rupesh G on 17122019 for bug no.33134--Start
+                            string signVal = "";
+                            if (dtRec.Rows.Count > 0)
+                            {
+                                foreach (DataRow dr in dtRec.Rows)
+                                {
+                                    if (signVal == "")
+                                    {
+                                        if (dr["fldnm"].ToString().Trim().ToLower() == "printdate" && dr["fldval"].ToString().Trim() == "")
+                                        {
+                                            signVal = dr["prefix"].ToString().Trim() + " " + DateTimeOffset.Now.ToString() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                        }
+                                        else
+                                        {
+                                            signVal = dr["prefix"].ToString().Trim() + " " + dr["fldval"].ToString().Trim() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (dr["fldnm"].ToString().Trim().ToLower() == "printdate" && dr["fldval"].ToString().Trim() == "")
+                                        {
+                                            signVal = signVal + dr["prefix"].ToString().Trim() + " " + DateTimeOffset.Now.ToString() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                        }
+                                        else
+                                        {
+                                            signVal = signVal + dr["prefix"].ToString().Trim() + " " + dr["fldval"].ToString().Trim() + " " + dr["sufix"].ToString().Trim() + (Convert.ToBoolean(dr["newline"].ToString()) == false ? "" : Environment.NewLine);
+                                        }
+
+                                    }
+
+                                }
+
+                                
+                                
+                            }
+                            sap.Layer2Text = signVal;
+                            if(!issignvalid)
+                            {
+                                sap.Acro6Layers = true;
+                            }
+                            //Add By Rupesh G on 17122019 for bug no.33134--End
+
+
+                           // sap.Layer4Text = "Demo4";     //Change the caption of Invalid Signature
+                          //  sap.Acro6Layers = true;       //enable/disable the tick mark
+
+                            PdfSignature dic = new PdfSignature(PdfName.ADOBE_PPKMS, PdfName.ADBE_PKCS7_SHA1);
+                            dic.Date = new PdfDate(sap.SignDate);
+
+                            if (sap.Reason != null)
+                                dic.Reason = sap.Reason;
+                            if (sap.Location != null)
+                                dic.Location = sap.Location;
+
+                            sap.CryptoDictionary = dic;
+                            int csize = 4000;
+                            Hashtable exc = new Hashtable();
+                            exc[PdfName.CONTENTS] = csize * 2 + 2;
+                            sap.PreClose(exc);
+
+                            HashAlgorithm sha = new SHA1CryptoServiceProvider();
+
+                            Stream s = sap.RangeStream;
+
+                            int read = 0;
+                            byte[] buff = new byte[8192];
+                            while ((read = s.Read(buff, 0, 8192)) > 0)
+                            {
+                                sha.TransformBlock(buff, 0, read, buff, 0);
+                            }
+                            sha.TransformFinalBlock(buff, 0, 0);
+                            byte[] pk = null;
+                            try
+                            {
+                                pk = SignMsg(sha.Hash, cert, false);
+                            }
+                            catch (Exception)
+                            {
+                                s.Flush();
+                                s.Close();
+                                outputFileStream.Flush();
+                                outputFileStream.Close();
+                                if (File.Exists(outputPdf))
+                                    File.Delete(outputPdf);
+
+                                //MessageBox.Show("Credentials not found for selected certificate."+Environment.NewLine+"Email will be generated without digital signature." ,this.appCap,MessageBoxButtons.OK,MessageBoxIcon.Information);         //Commented by Shrikant S. on 08/06/2018 for Bug-31559
+                                MessageBox.Show("Credentials not found for selected certificate." + Environment.NewLine + "Pdf will be generated without digital signature.", this.appCap, MessageBoxButtons.OK, MessageBoxIcon.Information);     //Added by Shrikant S. on 08/06/2018 for Bug-31559
+                                return false;
+                            }
+                            byte[] outc = new byte[csize];
+
+                            PdfDictionary dic2 = new PdfDictionary();
+
+                            Array.Copy(pk, 0, outc, 0, pk.Length);
+
+                            dic2.Put(PdfName.CONTENTS, new PdfString(outc).SetHexWriting(true));
+                            sap.Close(dic2);
+                            //Added by Shrikant S. on 15/07/2019        //Start
+                            //if (outputFileStream != null)
+                            outputFileStream.Close();
+                            runningPgNo++;
+                        }
+                        if (pagecnt > 0)
+                        {
+                            for (int j = 1; j < pagecnt; j++)
+                            {
+                                string newFileNm = (j == pagecnt ? outputPdf : outputPdf.ToLower().Replace(".pdf", "_" + j.ToString() + ".pdf"));
+                                if (File.Exists(newFileNm))
+                                    File.Delete(newFileNm);
+                            }
+                        }
+                        //Added by Shrikant S. on 15/07/2019        //End
+                        break;                  //Added by Shrikant S.on 07/06/2018 for Bug-31559
+                    }
+                }
+                catch (CryptographicException)
+                {
+                    MessageBox.Show("Information could not be written out for this certificate.");
+                    returnVal = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured:" + ex.Message);
+                    returnVal = false;
+                }
+            }
+            store.Close();
+            if (certificateFound == false)
+            {
+                MessageBox.Show("No certificate found for signature");
+                returnVal = false;
+            }
+            return returnVal;
+        }
+        //Added by Shrikant S. on 15/07/2019 for Bug 32632 ---End
         public byte[] SignMsg(Byte[] msg, X509Certificate2 signerCert, bool detached)
         {
             //  Place message in a ContentInfo object.
@@ -354,7 +620,7 @@ namespace udPdfSignature
         }
         public string GetCertificateName()
         {
-            string retValue=string.Empty;
+            string retValue = string.Empty;
             X509Store st = new X509Store(StoreName.My, StoreLocation.CurrentUser);
             st.Open(OpenFlags.ReadOnly);
 

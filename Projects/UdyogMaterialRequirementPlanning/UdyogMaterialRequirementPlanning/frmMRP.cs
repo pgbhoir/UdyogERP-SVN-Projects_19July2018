@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
 using System.Diagnostics;
+using udAdditionalInfo;
 
 namespace UdyogMaterialRequirementPlanning
 {
@@ -36,9 +37,8 @@ namespace UdyogMaterialRequirementPlanning
             //clsCommon.AppUserName = "ADMIN";
             //ValidInEntries = "SO:DATE";
             //clsCommon.Valid_Trans = "SO:DATE"; // added by suraj Kumawat for Bug-29249 
-
             ////Execution from Software
-
+            clsCommon.CompId = Convert.ToInt32(args[0]);  //Added by Priyanka B on 02052018 for Bug-30938
             clsCommon.DbName = args[1];
             clsCommon.ServerName = args[2];
             clsCommon.User = args[3];
@@ -49,23 +49,20 @@ namespace UdyogMaterialRequirementPlanning
             clsCommon.pApplNm = args[9].Replace("<*#*>", " ");
             clsCommon.pApplId = args[10];
             clsCommon.pApplCode = args[11].Replace("<*#*>", " ");
-            ValidInEntries = args[13];
-
+            ValidInEntries = args[13];  
             clsCommon.FromDt = Convert.ToDateTime(args[14].Replace("<*#*>", " "), new CultureInfo("en-GB"));
             clsCommon.ToDt = Convert.ToDateTime(args[15].Replace("<*#*>", " "), new CultureInfo("en-GB"));
-            clsCommon.Valid_Trans = args[13]; // added by suraj Kumawat for Bug-29249 
 
+            clsCommon.Valid_Trans = args[13];
             clsCommon.FinYear = clsCommon.FromDt.Year.ToString() + "-" + clsCommon.ToDt.Year.ToString();
             clsCommon.cApplNm = typeof(Program).Assembly.GetName().Name + ".exe";
             clsCommon.cApplId = Convert.ToString(Process.GetCurrentProcess().Id);
             clsCommon.ApplName = "Process Material Planning";
-
-
+            
             clsCommon.ConnStr = "Data Source=" + clsCommon.ServerName + ";Initial Catalog=" + clsCommon.DbName + ";Uid=" + clsCommon.User + ";Pwd=" + clsCommon.Password;
             this.dtEditFrom.EditValue = clsCommon.FromDt.Date;
             this.dtEditTo.EditValue = clsCommon.ToDt.Date;
             clsCommon.FinYear = clsCommon.FromDt.Year.ToString() + "-" + clsCommon.ToDt.Year.ToString();
-
         }
         #endregion
 
@@ -115,9 +112,10 @@ namespace UdyogMaterialRequirementPlanning
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private DataTable GetPendingData()
         { 
             SqlConnection conn = new SqlConnection(clsCommon.ConnStr);
@@ -155,19 +153,19 @@ namespace UdyogMaterialRequirementPlanning
             bool RetVal=true;
             if (this.dtEditFrom.Text == string.Empty)
             {
-                MessageBox.Show("Please select from date.");
+                MessageBox.Show("Please select from date.", clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.dtEditFrom.Focus();
                 return false;
             }
             if (this.dtEditTo.Text == string.Empty)
             {
-                MessageBox.Show("Please select to date.");
+                MessageBox.Show("Please select to date.", clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.dtEditTo.Focus();
                 return false;
             }
             if (Convert.ToDateTime(this.dtEditTo.EditValue) < Convert.ToDateTime(this.dtEditFrom.EditValue))
             {
-                MessageBox.Show("From date can not be greater than to date.");
+                MessageBox.Show("From date can not be greater than to date.", clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.dtEditFrom.Focus();
                 return false;
             }
@@ -230,7 +228,6 @@ namespace UdyogMaterialRequirementPlanning
             if (clsCommon.Valid_Trans.ToString() == "SP:DATE")
             {
                 sqlstr = "SELECT distinct B.WARE_NM  FROM LCODE A  LEFT OUTER JOIN WAREHOUSE B ON B.Validity LIKE '%' + A.Entry_ty + '%' OR(B.Validity LIKE '%' + A.BCODE_NM + '%' AND A.BCODE_NM <> '') WHERE(A.BCODE_NM IN('SP') OR A.ENTRY_TY in('SP')) and isnull(B.WARE_NM,'') <> ''";
-
             }
             else
             {
@@ -241,13 +238,17 @@ namespace UdyogMaterialRequirementPlanning
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable ldt = new DataTable();
             da.Fill(ldt);
-            string result = ldt.Rows[0][0].ToString();
 
-            if (result != "")
+            if (ldt.Rows.Count > 0)         // ***** Added by Sachin N. S. on 06/11/2019 for Bug-32925 
             {
-                this.txtWarehouse.Text = result;
-                clsCommon.Warehouse = result;
-                this.txtWarehouse.ReadOnly = true;
+                string result = ldt.Rows[0][0].ToString();
+
+                if (result != "")
+                {
+                    this.txtWarehouse.Text = result;
+                    clsCommon.Warehouse = result;
+                    this.txtWarehouse.ReadOnly = true;
+                }
             }
         }
 
@@ -261,7 +262,8 @@ namespace UdyogMaterialRequirementPlanning
             {
                 sqstr = "SELECT distinct B.WARE_NM  FROM LCODE A  LEFT OUTER JOIN WAREHOUSE B ON B.Validity LIKE '%' + A.Entry_ty + '%' OR(B.Validity LIKE '%' + A.BCODE_NM + '%' AND A.BCODE_NM <> '') WHERE(A.BCODE_NM IN('SP') OR A.ENTRY_TY in('SP')) and isnull(B.WARE_NM,'') <> ''";
             }
-            else {
+            else
+            {
                 sqstr = "SELECT distinct B.WARE_NM  FROM LCODE A  LEFT OUTER JOIN WAREHOUSE B ON B.Validity LIKE '%' + A.Entry_ty + '%' OR(B.Validity LIKE '%' + A.BCODE_NM + '%' AND A.BCODE_NM <> '') WHERE(A.BCODE_NM IN('SO') OR A.ENTRY_TY in('SO')) and isnull(B.WARE_NM,'') <> ''";
             }
             // SqlCommand cmd = new SqlCommand("SELECT distinct B.WARE_NM  FROM LCODE A  LEFT OUTER JOIN WAREHOUSE B ON B.Validity LIKE '%' + A.Entry_ty + '%' OR(B.Validity LIKE '%' + A.BCODE_NM + '%' AND A.BCODE_NM <> '') WHERE(A.BCODE_NM IN('SO') OR A.ENTRY_TY in('SO', 'sp')) and isnull(B.WARE_NM,'') <> '' ", conn);  // Added by Suraj Kumawat for Bug-29249 

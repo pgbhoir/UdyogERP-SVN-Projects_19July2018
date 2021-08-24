@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.Utils;
 using DevExpress.XtraGrid.Views.Base;
 using System.Collections;
+using ueconnect;
+using System.IO;
 
 namespace UdyogMaterialRequirementPlanning
 {
@@ -40,6 +42,9 @@ namespace UdyogMaterialRequirementPlanning
         string ErrorMsg = string.Empty;
         int TranGenType;
         string EntryTbl = string.Empty;
+        string BkdatedValue = string.Empty;  //Added by Priyanka B on 04052018 for Bug-30938
+        string ItemName;
+
         #region Form Properties
         private bool _IsUpdated = false;
         public bool IsUpdated
@@ -56,11 +61,11 @@ namespace UdyogMaterialRequirementPlanning
         {
             InitializeComponent();
             FinalData = finalData;
-            TranGenType = tranGenType;      //1-Single Transaction  2-Bomwise Transaction
+            TranGenType = tranGenType;      // 1-Single Transaction  2-Bomwise Transaction
             Entry_Ty = entry_ty;
             this.Text = caption;
             MrpLog = MRPLogTable;
-            _Narration = ""; // added by Suraj Kumawat for  Bug-29249
+            _Narration = "";                // added by Suraj Kumawat for  Bug-29249
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -75,9 +80,11 @@ namespace UdyogMaterialRequirementPlanning
             RetVal = this.CheckValidations();
             if (RetVal.Trim().Length > 0)
             {
-                MessageBox.Show(RetVal);
+                MessageBox.Show(RetVal, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
+
+            //MessageBox.Show("Testing - 1");
             SqlTransaction tran = null;
             UdyogDataOperation.DBOperation op = new UdyogDataOperation.DBOperation();
             UdyogTranOperation.TranOperation tranOp = new UdyogTranOperation.TranOperation(); ;
@@ -86,24 +93,41 @@ namespace UdyogMaterialRequirementPlanning
             string finYear = string.Empty;
             try
             {
+                //MessageBox.Show("Testing - 2");
                 SqlConnection conn = new SqlConnection(clsCommon.ConnStr);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 double TranId;
                 int commitTransaction = 0;
+
+
+                //MessageBox.Show("Testing - 3");
+
                 for (int i = 0; i < MainTable.Rows.Count; i++)
                 {
                     try
                     {
+                        //MessageBox.Show("Testing - 4 :"+i.ToString());
+                        //MessageBox.Show("Testing - 5");
+
                         tran = conn.BeginTransaction();
                         //cmd.Transaction = tran;
                         int tmpTranId = Convert.ToInt32(MainTable.Rows[i]["Tran_cd"]);
                         string docNo = Convert.ToString(MainTable.Rows[i]["Doc_no"]);
                         MainTable.Rows[i]["Inv_no"] = this.GetInvNo(Entry_Ty, DateTime.Today, new SqlConnection(clsCommon.ConnStr), MainTable.Rows[i]["Inv_sr"].ToString(), clsCommon.FinYear);
+
+                        //MessageBox.Show("Testing - 6");
+
+                        //MessageBox.Show("Testing 1 : "+ MainTable.Rows[i]["Inv_no"].ToString());
                         inv_no = tranOp.GenerateInvNo(Entry_Ty, MainTable.Rows[i]["Inv_sr"].ToString()
                                 , MainTable.Rows[i]["Inv_no"].ToString(), DateTime.Today, "", "", (int)Convert.ToUInt32(Lcode.Rows[0]["Invno_size"]), new SqlConnection(clsCommon.ConnStr)
                                     , EntryTbl, clsCommon.DbName, clsCommon.FromDt, clsCommon.ToDt);
+
+                        //MessageBox.Show("Testing 2 : " + MainTable.Rows[i]["Inv_no"].ToString());
+
+                        //MessageBox.Show("Testing - 7");
+
                         if (inv_no.Trim().Length == 0)
                             continue;
                         inv_sr = MainTable.Rows[i]["Inv_sr"].ToString();
@@ -116,10 +140,15 @@ namespace UdyogMaterialRequirementPlanning
                         MainTable.Rows[i]["Gro_amt"] = (decimal)ItemTable.Compute("Sum(Gro_amt)", "Tran_cd=" + tmpTranId);
                         MainTable.Rows[i]["Ac_id"] = this.GetPartyId(MainTable.Rows[i]["Party_nm"].ToString());
 
+                        //MessageBox.Show("Testing - 8");
+
                         cmd.Parameters.Clear();
-                        cmd = op.GenerateInsertString(cmd, MainTable.Rows[i], EntryTbl + "main", new string[] { "Tran_cd" }, null); 
+                        cmd = op.GenerateInsertString(cmd, MainTable.Rows[i], EntryTbl + "main", new string[] { "Tran_cd" }, null);
                         cmd.Transaction = tran;
                         cmd.Connection = conn;
+
+                        //MessageBox.Show("Testing - 9");
+
                         int rowsAffected = cmd.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
@@ -128,8 +157,13 @@ namespace UdyogMaterialRequirementPlanning
                             MainTable.Rows[i]["Tran_cd"] = TranId;
                             int UpdateRec = 0;
                             int ItemRec = (int)ItemTable.Compute("count(Tran_cd)", "Tran_cd=" + tmpTranId.ToString().Trim());
+
+                            //MessageBox.Show("Testing - 10");
+
                             for (int j = 0; j < ItemTable.Rows.Count; j++)
                             {
+                                //MessageBox.Show("Testing - 11");
+
                                 if (Convert.ToInt32(ItemTable.Rows[j]["Tran_cd"]) == tmpTranId)
                                 {
                                     ItemTable.Rows[j]["Inv_no"] = MainTable.Rows[i]["Inv_no"];
@@ -139,23 +173,36 @@ namespace UdyogMaterialRequirementPlanning
                                     ItemTable.Rows[j]["Ac_Id"] = MainTable.Rows[i]["Ac_Id"];
                                     cmd.Parameters.Clear();
                                     // cmd = op.GenerateInsertString(cmd, ItemTable.Rows[j], EntryTbl + "Item", null, null); // Commented by Suraj Kumawat for GST Date on 11-05-2017
-                                    cmd = op.GenerateInsertString(cmd, ItemTable.Rows[j], EntryTbl + "Item", new string[] { "ItemRowId" }, null); // Added by Suraj Kumawat for GST Date on 11-05-2017
-                                    
+                                   // cmd = op.GenerateInsertString(cmd, ItemTable.Rows[j], EntryTbl + "Item", new string[] { "ItemRowId" }, null); // Added by Suraj Kumawat for GST Date on 11-05-2017   //Commented by Divyang for Bug-33430 on 14/04/2020
+                                    cmd = op.GenerateInsertString(cmd, ItemTable.Rows[j], EntryTbl + "Item", new string[] { "ItemRowId", "it_desc" }, null); // Added by Divyang for Bug-33430 on 14/04/2020
+
+                                    //MessageBox.Show("Testing - 12");
+
                                     cmd.ExecuteNonQuery();
                                     cmd.Parameters.Clear();
 
+                                    //MessageBox.Show("Testing - 13");
+
                                     UpdateRec++;
                                 }
+
+                                //MessageBox.Show("Testing - 14");
                             }
                             if (UpdateRec == ItemRec)
                             {
+                                //MessageBox.Show("Testing - 15");
+
                                 for (int l = 0; l < MrpLog.Rows.Count; l++)
                                 {
+                                    //MessageBox.Show("Testing - 16");
+
                                     string fldNm = (Entry_Ty == "PD" ? "rIt_code" : "It_code");
                                     DataView itemview = ItemTable.DefaultView;
                                     itemview.RowFilter = "Tran_cd=" + MainTable.Rows[i]["Tran_cd"].ToString() + " and it_code=" + MrpLog.Rows[l][fldNm].ToString();
                                     for (int m = 0; m < itemview.Count; m++)
                                     {
+
+                                        //MessageBox.Show("Testing - 17");
 
                                         if (Convert.ToDecimal(MrpLog.Rows[l][fldNm]) == Convert.ToDecimal(itemview[m]["it_code"]))
                                         {
@@ -163,29 +210,47 @@ namespace UdyogMaterialRequirementPlanning
                                             MrpLog.Rows[l]["Itref_tran"] = itemview[m]["Tran_cd"];
                                             MrpLog.Rows[l]["RItserial"] = itemview[m]["Itserial"];
                                             MrpLog.Rows[l]["rIt_code"] = itemview[m]["It_code"];
-                                            cmd = op.GenerateInsertString(cmd, MrpLog.Rows[l], "MRPLOG", new string[] { "ItemLvl" }, null);
+                                            //cmd = op.GenerateInsertString(cmd, MrpLog.Rows[l], "MRPLOG", new string[] { "ItemLvl" }, null);  //Commented by Priyanka B on 27042018 for Bugs 31390 & 31306
+                                            cmd = op.GenerateInsertString(cmd, MrpLog.Rows[l], "MRPLOG", new string[] { "ItemLvl", "ItemBom" }, null);  //Modified by Priyanka B on 27042018 for Bugs 31390 & 31306
+
+                                            //MessageBox.Show("Testing - 18");
+
                                             cmd.ExecuteNonQuery();
                                             cmd.Parameters.Clear();
+
+                                            //MessageBox.Show("Testing - 19");
                                         }
+
+                                        //MessageBox.Show("Testing - 20");
                                     }
                                     itemview.RowFilter = "";
                                 }
                                 tran.Commit();
                                 commitTransaction++;
+
+                                //MessageBox.Show("Testing - 21");
                             }
                         }
                         //ItemTable.AcceptChanges();
+
+                        //MessageBox.Show("Testing - 22");
+
                         gridView2.ActiveFilterString = "";
                         if (gridView1.SelectedRowsCount > 0)
                         {
+                            //MessageBox.Show("Testing - 23");
+
                             gridView2.ActiveFilterString = "Tran_cd=" + gridView1.GetDataRow(gridView1.FocusedRowHandle)["Tran_cd"].ToString();
                             gridView2.RefreshData();
                         }
                         else
                         {
+                            //MessageBox.Show("Testing - 24");
                             gridView2.ActiveFilterString = "Tran_cd=" + gridView1.GetDataRow(0)["Tran_cd"].ToString();
                             gridView2.RefreshData();
                         }
+
+                        //MessageBox.Show("Testing - 25");
                     }
                     catch (Exception ex)
                     {
@@ -194,14 +259,16 @@ namespace UdyogMaterialRequirementPlanning
                             tran.Rollback();
                         tranOp.DeleteGeneratedInvNo(Entry_Ty, inv_sr, inv_no, finYear, DateTime.Today, new SqlConnection(clsCommon.ConnStr), Convert.ToBoolean(Lcode.Rows[0]["Auto_inv"]));
                         continue;
-
                     }
 
+                    //MessageBox.Show("Testing - 26");
                 }
                 this.Refresh();
                 if (commitTransaction > 0)
                 {
-                    MessageBox.Show("Transaction(s) generated successfully.");
+                    //MessageBox.Show("Testing - 27");
+
+                    MessageBox.Show("Transaction(s) generated successfully.", clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.btnFinish.Enabled = false;
                     this.IsUpdated = true;
                     this.Refresh();
@@ -210,6 +277,9 @@ namespace UdyogMaterialRequirementPlanning
                 {
                     throw new ApplicationException("Transaction not generated.");
                 }
+
+                //MessageBox.Show("Testing - 28");
+
                 //Application.Exit();
             }
 
@@ -219,17 +289,23 @@ namespace UdyogMaterialRequirementPlanning
                 //    tran.Rollback();
                 ErrorMsg = ErrorMsg + Environment.NewLine + ex.Message;
                 //tranOp.DeleteGeneratedInvNo(Entry_Ty, inv_sr, inv_no.Trim(), finYear, DateTime.Now, new SqlConnection(connStr),Convert.ToBoolean(Lcode.Rows[0]["Auto_inv"]));
-                MessageBox.Show(ErrorMsg);
+                MessageBox.Show(ErrorMsg, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorMsg = string.Empty;
                 return;
             }
 
+            //MessageBox.Show("Testing - 29");
         }
 
         private string CheckValidations()
         {
             try
             {
+                //***** Added by Sachin N. S. on 29/01/2018 for Bug-30938 -- Start
+                if (gridView1.RowCount == 0)
+                    throw new ApplicationException("No records for processing.");
+                //***** Added by Sachin N. S. on 29/01/2018 for Bug-30938 -- End
+
                 if (gridView1.RowCount > 0 && gridView1.Columns["inv_sr"].Visible == true)
                 {
                     for (int i = 0; i < MainTable.Rows.Count; i++)
@@ -263,6 +339,20 @@ namespace UdyogMaterialRequirementPlanning
                     }
                 }
                 //}
+
+                //Added by Priyanka B on 04052018 for Bug-30938 Start
+                if (CheckBackDateEntry() == true)
+                {
+                    switch (BkdatedValue)
+                    {
+                        case "A":
+                            //throw new ApplicationException("Transaction No. less than this already exist in post-dated entries");
+                            throw new ApplicationException("Post-dated entries already exist with lesser tranasction no.\nCannot Continue...");
+                        case "B":
+                            throw new ApplicationException("Date cannot be less than the last entry date.\nCannot Continue...");
+                    }
+                }
+                //Added by Priyanka B on 04052018 for Bug-30938 End
             }
             catch (Exception ex)
             {
@@ -270,18 +360,81 @@ namespace UdyogMaterialRequirementPlanning
             }
             return string.Empty;
         }
+
+        //Added by Priyanka B on 04052018 for Bug-30938 Start
+        private bool CheckBackDateEntry()
+        {
+            bool retval = false;
+            string ret = string.Empty;
+            string sqlstr = string.Empty;
+            SqlConnection con = new SqlConnection(clsCommon.ConnStr);
+            SqlCommand cmd = new SqlCommand(sqlstr, con);
+
+            //sqlstr = "SELECT DATE = CONVERT(VARCHAR, DATE,103) FROM " + this.EntryTbl + "MAIN WHERE DATE > @todaydate";
+            sqlstr = "SELECT DATE = CONVERT(VARCHAR, DATE,103) FROM " + this.EntryTbl + "MAIN WHERE DATE > @todaydate and Entry_ty=@EntryTy";       // Changed by Sachin N. S. on 17/10/2019 for Bug-32922
+            con = new SqlConnection(clsCommon.ConnStr);
+            cmd = new SqlCommand(sqlstr, con);
+            cmd.Parameters.Add(new SqlParameter("@todaydate", DateTime.Today));
+            cmd.Parameters.Add(new SqlParameter("@EntryTy", this.Entry_Ty));     // Added by Sachin N. S. on 17/10/2019 for Bug-32922
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            ret = Convert.ToString(cmd.ExecuteScalar());
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            if (ret != string.Empty)
+            {
+                sqlstr = "SELECT BK_DATED FROM LCODE WHERE ENTRY_TY = '" + this.Entry_Ty + "'";
+                con = new SqlConnection(clsCommon.ConnStr);
+                cmd = new SqlCommand(sqlstr, con);
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+                ret = Convert.ToString(cmd.ExecuteScalar());
+                switch (ret)
+                {
+                    case "A":
+                        BkdatedValue = ret;
+                        retval = true;
+                        break;
+                    case "B":
+                        BkdatedValue = ret;
+                        retval = true;
+                        break;
+                    case "C":
+                        retval = false;
+                        break;
+                }
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return retval;
+        }
+        //Added by Priyanka B on 04052018 for Bug-30938 End
+
         private void frmMRPPlan3_Load(object sender, EventArgs e)
         {
+            //Added by Prajakta B. on 23/04/2020 for Bug 33359   Start
+            string sqlstr = "Select It_Heading from Vudyog..Co_mast where DbName='" + clsCommon.DbName + "' and compid=" + clsCommon.CompId.ToString();
+            SqlConnection con = new SqlConnection(clsCommon.ConnStr);
+            SqlCommand cmd = new SqlCommand(sqlstr, con);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+            ItemName = Convert.ToString(cmd.ExecuteScalar());
+            //Added by Prajakta B. on 23/04/2020 for Bug 33359   End
             string retvalue = string.Empty;
             this.Text = clsCommon.ApplName;
 
             if (clsCommon.IconFile != null)
                 this.Icon = new Icon(clsCommon.IconFile);
             retvalue = this.GenerateHeaderDetail();
-            
+
             if (retvalue != string.Empty)
             {
-                MessageBox.Show(retvalue);
+                if (!(retvalue.Trim().Length == 1 && retvalue.Trim() == "."))
+                {
+                    MessageBox.Show(retvalue, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 this.Close();
                 return;
             }
@@ -434,7 +587,8 @@ namespace UdyogMaterialRequirementPlanning
 
             DataRow row;
             // string[] fieldList = new string[] { "Item_no:Item No.:50:0:0:0", "Item:Item Name:250:1:0:0", "Qty:Quantity:90:2:3:0", "Rate:Rate:90:3:2:1", "u_asseamt:Ass. Value:90:4:2:0" }; // Commented by Suraj Kumawat for GST Date on 11-05-2017
-            string[] fieldList = new string[] { "Item_no:Goods No.:50:0:0:0", "Item:Goods Name:250:1:0:0", "Qty:Quantity:90:2:3:0", "Rate:Rate:90:3:2:1", "u_asseamt:Ass. Value:90:4:2:0" }; // Added by Suraj Kumawat for GST Date on 11-05-2017
+            // string[] fieldList = new string[] { "Item_no:Goods No.:50:0:0:0", "Item:Goods Name:250:1:0:0","it_desc:Goods Desc:300:1:0:0", "Qty:Quantity:90:2:3:0", "Rate:Rate:90:3:2:1", "u_asseamt:Ass. Value:90:4:2:0" }; // Added by Suraj Kumawat for GST Date on 11-05-2017//Commented by Prajakta B. on 24/04/2020 for Bug 33359
+            string[] fieldList = new string[] { "Item_no:"+ItemName.ToString().Trim()+" No.:50:0:0:0", "Item:" +ItemName.ToString().Trim()+":250:1:0:0", "it_desc:" +ItemName.ToString().Trim()+" Desc:300:1:0:0", "Qty:Quantity:90:2:3:0", "Rate:Rate:90:3:2:1", "u_asseamt:Ass. Value:90:4:2:0" }; // Added by Suraj Kumawat for GST Date on 11-05-2017//Modified by Prajakta B. on 24/04/2020 for Bug 33359
 
             #region Item columns
             for (int i = 0; i < fieldList.Length; i++)
@@ -465,7 +619,7 @@ namespace UdyogMaterialRequirementPlanning
                 row[4] = cols[3];
                 row[5] = cols[4];
                 row[6] = (cols[5] == "1" ? true : false);
-              
+
                 FieldListTbl.Rows.Add(row);
             }
             #endregion
@@ -605,7 +759,8 @@ namespace UdyogMaterialRequirementPlanning
                     this.GenerateSingleTransaction();
                     break;
                 case 2:         //Multiple Transaction
-                    this.GenerateMultipleTransaction();
+                    //this.GenerateMultipleTransaction();
+                    errmsg = this.GenerateMultipleTransaction();        // Changed by Sachin N. S. on 03/03/2018 for Bug-30938
                     break;
                 default:
                     break;
@@ -634,7 +789,7 @@ namespace UdyogMaterialRequirementPlanning
                 MainRow["l_yn"] = clsCommon.FinYear;
                 MainRow["narr"] = "Generated from MRP " + DateTime.Today.ToString("dd-MM-yyyy");
                 MainRow["Apledby"] = clsCommon.AppUserName;
-                
+
                 //// Changes done by suraj Kumawat for Bug-29436 date on  01-02-2017  Start...
                 if (CheckApproval == true)
                 {
@@ -642,7 +797,8 @@ namespace UdyogMaterialRequirementPlanning
                     MainRow["Apgenby"] = "";
                     MainRow["Apgentime"] = "";
                 }
-                else {
+                else
+                {
                     MainRow["Apgen"] = "YES";
                     MainRow["Apgenby"] = clsCommon.AppUserName;
                     MainRow["Apgentime"] = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
@@ -652,7 +808,8 @@ namespace UdyogMaterialRequirementPlanning
                 MainRow["CompId"] = clsCommon.CompId;
                 MainRow["Apledtime"] = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
                 MainRow["User_name"] = clsCommon.AppUserName;
-                MainRow["l_yn"] = clsCommon.FinYear;
+                //MainRow["l_yn"] = clsCommon.FinYear;  //Commented by Priyanka B on 25052018 for Bug-30938
+                MainRow["l_yn"] = CreateYear();  //Modified by Priyanka B on 25052018 for Bug-30938
                 MainRow["due_dt"] = MainRow["Date"];
                 partynm = Convert.ToString(MainRow["Party_nm"]);
                 partycode = Convert.ToInt32(MainRow["ac_id"]);
@@ -683,9 +840,11 @@ namespace UdyogMaterialRequirementPlanning
                     ItemRow["Rate"] = 0.00;
                     ItemRow["u_asseamt"] = 0.00;
                     ItemRow["CompId"] = clsCommon.CompId;
-                    ItemRow["l_yn"] = clsCommon.FinYear;
+                    //ItemRow["l_yn"] = clsCommon.FinYear;  //Commented by Priyanka B on 25052018 for Bug-30938
+                    ItemRow["l_yn"] = CreateYear();  //Modified by Priyanka B on 25052018 for Bug-30938
                     ItemRow["Qty"] = Convert.ToDecimal(FinalData.Rows[j]["Qty"]);
                     ItemRow["ware_nm"] = FinalData.Rows[j]["ware_nm"];
+                    ItemRow["it_desc"] = FinalData.Rows[j]["it_desc"];   //Added by Prajakta B. on 27/03/2020 for Bug 32929
                     
                     if (Entry_Ty == "WK")
                     {
@@ -696,8 +855,9 @@ namespace UdyogMaterialRequirementPlanning
                 #endregion
             }
         }
-        private void GenerateMultipleTransaction()
+        private string GenerateMultipleTransaction()
         {
+            string errmsg1 = "";     // Added by Sachin N. S. on 03/03/2018 for Bug-30938
             int NoOfTran = 1;
             int Itserial = 0;
             DataView view = FinalData.DefaultView;
@@ -721,20 +881,53 @@ namespace UdyogMaterialRequirementPlanning
             DataColumn colRate = new DataColumn("Rate", typeof(decimal));
             FinalData.Columns.Add(colRate);
             Boolean CheckApproval = Convert.ToBoolean(Lcode.Rows[0]["apgenps"]); // Added by Suraj Kumawat for Bug-29436 date on 01-02-2017 
+
+            // ****** Added by Sachin N. S. on 29/01/2018 for Bug-30938 -- Start
+            //string sqlstr = "set dateformat dmy Select lVendMRP from Vudyog..Co_mast where DbName='" + clsCommon.DbName + "' and sta_dt='" + clsCommon.FromDt.ToString() + "' and end_dt='" + clsCommon.ToDt.ToString() + "'";  //Commented by Priyanka B on 02052018 for Bug-30938
+            string sqlstr = "set dateformat dmy Select lVendMRP from Vudyog..Co_mast where DbName='" + clsCommon.DbName + "' and compid=" + clsCommon.CompId.ToString();  //Modified by Priyanka B on 02052018 for Bug-30938
+            SqlConnection con = new SqlConnection(clsCommon.ConnStr);
+            SqlCommand cmd = new SqlCommand(sqlstr, con);
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            bool _lVendMRP = (Boolean)(Convert.ToBoolean(cmd.ExecuteScalar()));
+            bool _lPriceLst = Convert.ToBoolean(Lcode.Rows[0]["It_rate"]);
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            bool lRet = (_lVendMRP == true && _lPriceLst == true) || (_lVendMRP == true && _lPriceLst == false) ? true : false;
+            if (_lVendMRP == false && _lPriceLst == true)
+            {
+                if (MessageBox.Show("You are generating Indent without using Price List.\n" + "Do you still want to continue?", clsCommon.ApplName, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    lRet = false;
+                }
+                else
+                {
+                    errmsg1 = ".";
+                    return errmsg1;
+                }
+            }
+            // ****** Added by Sachin N. S. on 29/01/2018 for Bug-30938 -- End
+
             for (int x = 0; x < FinalData.Rows.Count; x++)
             {
                 FinalData.Rows[x]["Ac_id"] = 0;
                 FinalData.Rows[x]["Rate"] = 0.00;
                 FinalData.Rows[x]["Party_nm"] = "";
-                if (Convert.ToBoolean(Lcode.Rows[0]["It_rate"]))
+
+                //if (Convert.ToBoolean(Lcode.Rows[0]["It_rate"]))
+                if (lRet)        // Changed by Sachin N. S. on 29/01/2018 for Bug-30938
                 {
                     if (!this.GetItemRateAndParty(Convert.ToString(FinalData.Rows[x]["It_code"]), x))
                     {
-                        MessageBox.Show("Error occured while updating the rates.");
-                        return;
+                        //MessageBox.Show("Error occured while updating the rates.");
+                        errmsg1 = "Error occured while updating the rates.";
+                        return errmsg1;     // Changed by Sachin N. S. on 03/03/2018 for Bug-30938
                     }
                 }
             }
+
+
             view.Sort = "Party_Nm";
             for (int j = 0; j < view.Count; j++)
             {
@@ -778,9 +971,10 @@ namespace UdyogMaterialRequirementPlanning
 
                     MainRow["Apled"] = "YES";
                     MainRow["CompId"] = clsCommon.CompId;
-                    MainRow["l_yn"] = clsCommon.FinYear;
+                    //MainRow["l_yn"] = clsCommon.FinYear;  //Commented by Priyanka B on 24052018 for Bug-30938
+                    MainRow["l_yn"] = CreateYear();  //Modified by Priyanka B on 24052018 for Bug-30938
                     MainRow["Apledtime"] = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
-                    
+
                     MainRow["Sysdate"] = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
                     MainRow["User_name"] = clsCommon.AppUserName;
                     MainRow["due_dt"] = MainRow["Date"];
@@ -808,15 +1002,21 @@ namespace UdyogMaterialRequirementPlanning
                 ItemRow["Ac_id"] = partycode;
                 ItemRow["Inv_sr"] = inv_sr;
                 ItemRow["Cate"] = cate;
-                ItemRow["l_yn"] = clsCommon.FinYear;
+                //ItemRow["l_yn"] = clsCommon.FinYear;  //Commented by Priyanka B on 25052018 for Bug-30938
+                ItemRow["l_yn"] = CreateYear();  //Modified by Priyanka B on 25052018 for Bug-30938
                 ItemRow["CompId"] = clsCommon.CompId;
                 ItemRow["Rate"] = view[j]["Rate"];
                 ItemRow["Qty"] = Convert.ToDecimal(view[j]["Qty"]);
                 ItemRow["u_asseamt"] = Convert.ToDecimal(view[j]["Qty"]) * Convert.ToDecimal(view[j]["Rate"]);
+                ItemRow["gro_amt"] = Convert.ToDecimal(view[j]["Qty"]) * Convert.ToDecimal(view[j]["Rate"]);    // Added by Divyang for Bug-33430 on 14/04/2020
+
                 ItemRow["Tran_cd"] = TranId;
                 ItemRow["narr"] = DateTime.Today.ToString("dd-MM-yyyy");
                 ItemRow["ware_nm"] = view[j]["ware_nm"];  // added by Suraj Kumawat for bug-29249 
                 _Narration = Convert.ToString(ItemRow["ware_nm"]);
+                
+                ItemRow["it_desc"] = view[j]["it_desc"]; //Added by Prajakta B. on 27/03/2020 for Bug 32929
+                
                 if (Entry_Ty == "WK")
                 {
                     this.UpdateWKOrderDetails(ItemRow, view[j]["It_code"].ToString());
@@ -826,11 +1026,44 @@ namespace UdyogMaterialRequirementPlanning
                 Itserial++;
                 #endregion
             }
+            
+            return errmsg1;     // Added by Sachin N. S. on 03/03/2018 for Bug-30938
         }
+
+        //Added by Priyanka B on 24052018 for Bug-30938 Start
+        private string CreateYear()
+        {
+            string vctrYear = string.Empty;
+            DateTime VentDate = DateTime.Today;
+            if (VentDate >= clsCommon.FromDt && VentDate <= clsCommon.ToDt)
+                vctrYear = clsCommon.FromDt.Year.ToString() + "-" + clsCommon.ToDt.Year.ToString();
+            else
+            {
+                List<int> endDate = new List<int>();
+                for (int i = 1; i <= clsCommon.ToDt.Month; i++)
+                {
+                    endDate.Add(i);
+                }
+
+                List<int> startDate = new List<int>();
+                for (int i = clsCommon.FromDt.Month; i <= 12; i++)
+                {
+                    startDate.Add(i);
+                }
+                if (endDate.Contains(VentDate.Month))
+                    vctrYear = (VentDate.Year - 1).ToString().Trim() + "-" + (VentDate.Year).ToString().Trim();
+                else
+                    if (startDate.Contains(VentDate.Month))
+                    vctrYear = (VentDate.Year).ToString().Trim() + "-" + (VentDate.Year + 1).ToString().Trim();
+            }
+            return vctrYear;
+        }
+        //Added by Priyanka B on 24052018 for Bug-30938 End
+
         private void UpdateNarration()
         {
-             string Narr = "Generated from MRP " + DateTime.Today.ToString("dd-MM-yyyy") + " Against ";
-            DataTable OrderTbl = MrpLog.DefaultView.ToTable(true, new string[] { "Entry_ty","OrderNo" });
+            string Narr = "Generated from MRP " + DateTime.Today.ToString("dd-MM-yyyy") + " Against ";
+            DataTable OrderTbl = MrpLog.DefaultView.ToTable(true, new string[] { "Entry_ty", "OrderNo" });
             DataView orderView = OrderTbl.DefaultView;
             orderView.Sort = "Entry_ty,OrderNo";
             string code = "";
@@ -838,7 +1071,7 @@ namespace UdyogMaterialRequirementPlanning
             string code_nm = string.Empty;
             foreach (DataRow itemRow in OrderTbl.Rows)
             {
-                code =itemRow["Entry_ty"].ToString().Trim();
+                code = itemRow["Entry_ty"].ToString().Trim();
                 if (tmpcode != code)
                 {
                     tmpcode = code;
@@ -852,7 +1085,7 @@ namespace UdyogMaterialRequirementPlanning
                         SqlDataReader dr = cmd.ExecuteReader();
                         while (dr.Read())
                         {
-                            code_nm = dr["Code_nm"].ToString().Trim().ToTitleCase()+" Nos.:";
+                            code_nm = dr["Code_nm"].ToString().Trim().ToTitleCase() + " Nos.:";
                         }
                         dr.Close();
                         if (con.State == ConnectionState.Open)
@@ -862,25 +1095,25 @@ namespace UdyogMaterialRequirementPlanning
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         code_nm = " Order Nos. ";
                     }
                     Narr = Narr + " " + code_nm;
                 }
-                
-                Narr = Narr + " " + itemRow["OrderNo"].ToString().Trim()+",";
+                Narr = Narr + " " + itemRow["OrderNo"].ToString().Trim() + ",";
             }
 
             if (_Narration.ToString().Trim() != "")
             {
                 Narr = Narr + "  For WareHouse : " + _Narration.ToString().Trim() + ",";
-            } 
+            }
 
             for (int i = 0; i < MainTable.Rows.Count; i++)
             {
-                MainTable.Rows[i]["Narr"] = Narr.Substring(0,Narr.Length-1);
+                MainTable.Rows[i]["Narr"] = Narr.Substring(0, Narr.Length - 1);
             }
         }
+
         private bool GetItemRateAndParty(string ItemCode, int ItemRow)
         {
             try
@@ -906,10 +1139,9 @@ namespace UdyogMaterialRequirementPlanning
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, clsCommon.ApplName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
         }
 
         private void UpdateWKOrderDetails(DataRow itemRow, string It_code)
@@ -933,6 +1165,7 @@ namespace UdyogMaterialRequirementPlanning
                 conn.Close();
             }
         }
+
         private int GetId(string tableName, string SearchFld, string ReturnFld, string value, SqlConnection conn)
         {
             int retAcId = 0;
@@ -989,6 +1222,12 @@ namespace UdyogMaterialRequirementPlanning
             string suffix = string.Empty;
             string monthFormat = string.Empty;
             string v_i_middle = string.Empty;
+            //Added by Priyanka B on 03052018 for Bug-30938 Start
+            //string vctrYear = string.Empty;
+            //int[] startdate = new int[9];
+            //int[] enddate = new int[3];
+            //int j = 0;
+            //Added by Priyanka B on 03052018 for Bug-30938 End
 
             DataTable TmpTbl = new DataTable();
             SqlCommand cmd;
@@ -1003,7 +1242,16 @@ namespace UdyogMaterialRequirementPlanning
             if (Series.Rows.Count > 0)
             {
                 SeriesType = (Convert.ToString(Series.Rows[0]["s_Type"])).Trim();
-                prefix = (Convert.ToString(Series.Rows[0]["i_prefix"]).Replace('"', ' ').Replace("'", "").Trim()).Trim();
+                //******* Added by Sachin N. S. on 28/02/2018 for Bug-30938 -- Start
+                if (InvoiceSeries == "")
+                {
+                    prefix = EntryTy + "/" + finYear.Substring(0, 4).Substring(2, 2) + finYear.Substring(5, 4).Substring(2, 2) + "/";
+                }
+                else
+                {
+                    //******* Added by Sachin N. S. on 28/02/2018 for Bug-30938 -- End
+                    prefix = (Convert.ToString(Series.Rows[0]["i_prefix"]).Replace('"', ' ').Replace("'", "").Trim()).Trim();
+                }
                 suffix = (Convert.ToString(Series.Rows[0]["i_suffix"]).Replace('"', ' ').Replace("'", "")).Trim();
                 monthFormat = (Convert.ToString(Series.Rows[0]["mnthformat"])).Trim();
 
@@ -1035,6 +1283,31 @@ namespace UdyogMaterialRequirementPlanning
                 }
             }
 
+            //Added by Priyanka B on 03052018 for Bug-30938 Start
+            string vctrYear = string.Empty;
+            if (VentDate >= clsCommon.FromDt && VentDate <= clsCommon.ToDt)
+                vctrYear = clsCommon.FromDt.Year.ToString() + "-" + clsCommon.ToDt.Year.ToString();
+            else
+            {
+                List<int> endDate = new List<int>();
+                for (int i = 1; i <= clsCommon.ToDt.Month; i++)
+                {
+                    endDate.Add(i);
+                }
+
+                List<int> startDate = new List<int>();
+                for (int i = clsCommon.FromDt.Month; i <= 12; i++)
+                {
+                    startDate.Add(i);
+                }
+                if (endDate.Contains(VentDate.Month))
+                    vctrYear = (VentDate.Year - 1).ToString().Trim() + "-" + (VentDate.Year).ToString().Trim();
+                else
+                    if (startDate.Contains(VentDate.Month))
+                    vctrYear = (VentDate.Year).ToString().Trim() + "-" + (VentDate.Year + 1).ToString().Trim();
+            }
+            //Added by Priyanka B on 03052018 for Bug-30938 End
+
             switch (SeriesType)
             {
                 case "DAYWISE":
@@ -1063,7 +1336,8 @@ namespace UdyogMaterialRequirementPlanning
                     cmd = new SqlCommand(sqlStr, conn);
                     cmd.Parameters.Add(new SqlParameter("@Entry_ty", Entry_Ty));
                     cmd.Parameters.Add(new SqlParameter("@Series", InvoiceSeries));
-                    cmd.Parameters.Add(new SqlParameter("@L_yn", finYear));
+                    //cmd.Parameters.Add(new SqlParameter("@L_yn", finYear));  //Commented by Priyanka B on 03052018 for Bug-30938
+                    cmd.Parameters.Add(new SqlParameter("@L_yn", vctrYear));   //Modified by Priyanka B on 03052018 for Bug-30938
                     break;
             }
             cmd.Connection = conn;
@@ -1155,7 +1429,8 @@ namespace UdyogMaterialRequirementPlanning
             MainTable = new DataTable("Main_vw");
             lda.Fill(MainTable);
 
-            SqlStr = "Select * From " + EntryTbl + "Item Where 1=2";
+            SqlStr = "Select '' as it_desc,* From " + EntryTbl + "Item Where 1=2";
+            
             cmd.CommandText = SqlStr;
             ItemTable = new DataTable("Item_vw");
             lda.Fill(ItemTable);

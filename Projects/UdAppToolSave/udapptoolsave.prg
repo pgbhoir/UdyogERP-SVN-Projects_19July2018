@@ -1,4 +1,5 @@
 && Added By Shrikant S. on 29/12/2012 for Bug-2267		&& Start		&&vasant030412
+	
 _Malias 	= Alias()
 _mRecNo	= Recno()
 _curvouobj = _Screen.ActiveForm
@@ -6,6 +7,7 @@ Set DataSession To _curvouobj.DataSessionId
 && Added By Shrikant S. on 29/12/2012 for Bug-2267		&& End		&&vasant030412
 
 Set DataSession To _Screen.ActiveForm.DataSessionId
+
 
 Local sqlconobj
 nhandle=0
@@ -342,7 +344,8 @@ Endif
 *!*	--------------------update cldate,part-ii srno,pla srno in acdet as per main table
 If (Type('_screen.activeform.PCVTYPE')='C' And Used('MAIN_VW'))
 *!*		If Inlist(_Screen.ActiveForm.pcvtype,'BI','RP','RR','GI','OB','GR','HI','HR','SR','ST','VI','PT','VR','JV','P1','BP','CP','J2')&&11Sep09 -- Rupesh -- Added JV &&TKT-2647 Add 'J2'
-	If Inlist(_Screen.ActiveForm.pcvtype,'BI','RP','RR','GI','OB','GR','HI','HR','SR','ST','VI','PT','VR','JV','P1','BP','CP','J1','J2','J3')&&11Sep09 -- Rupesh -- Added JV &&TKT-2647 Add 'J2' &&TKT-4123 Add J1
+*!*		If Inlist(_Screen.ActiveForm.pcvtype,'BI','RP','RR','GI','OB','GR','HI','HR','SR','ST','VI','PT','VR','JV','P1','BP','CP','J1','J2','J3')&&11Sep09 -- Rupesh -- Added JV &&TKT-2647 Add 'J2' &&TKT-4123 Add J1   &&Commented by Priyanka B on 24042019 for Bug-32426
+	If Inlist(_Screen.ActiveForm.pcvtype,'BI','RP','RR','GI','OB','GR','HI','HR','SR','ST','VI','PT','VR','JV','P1','BP','CP','J1','J2','J3','M3','M6')&&11Sep09 -- Rupesh -- Added JV &&TKT-2647 Add 'J2' &&TKT-4123 Add J1   &&Modified by Priyanka B on 24042019 for Bug-32426
 *!*  Added by Shrikant  on 08Oct09 ----------- Start
 		If (_Screen.ActiveForm.pcvtype="SR" )
 			Replace u_gcssr With .T. In main_vw
@@ -350,7 +353,8 @@ If (Type('_screen.activeform.PCVTYPE')='C' And Used('MAIN_VW'))
 *!*  Added by Shrikant  on 08Oct09 ----------- End
 *!*			IF TYPE('MAIN_VW.U_CLDT')='T' AND INLIST(_SCREEN.ACTIVEFORM.pcvtype,"OB","BB","BP","CP") &&Rup 07/10/09
 *!*			If Type('MAIN_VW.U_CLDT')='T' And Inlist(_Screen.ActiveForm.pcvtype,"OB","BB","BP","CP","J1") &&Rup 07/10/09 &&TKT-4123 Add J1
-		If Type('MAIN_VW.U_CLDT')='T' And Inlist(_Screen.ActiveForm.pcvtype,"OB","BB","BP","CP","J1","ST","P1") &&added by satish pal for bug-98 AND BUG-678
+*!*			If Type('MAIN_VW.U_CLDT')='T' And Inlist(_Screen.ActiveForm.pcvtype,"OB","BB","BP","CP","J1","ST","P1") &&added by satish pal for bug-98 AND BUG-678  &&Commented by Priyanka B on 24042019 for Bug-32426
+		If Type('MAIN_VW.U_CLDT')='T' And Inlist(_Screen.ActiveForm.pcvtype,"OB","BB","BP","CP","J1","ST","P1","M3","M6") &&added by satish pal for bug-98 AND BUG-678  &&Modified by Priyanka B on 24042019 for Bug-32426
 			If Empty(main_vw.u_cldt) Or Year(main_vw.u_cldt)<=1900
 				Replace u_cldt With main_vw.Date In main_vw
 			Endif
@@ -698,12 +702,13 @@ UsingOtherItRef=.F.
 *!*	PurchaseRet=.F.
 UsingItemVw=.F.
 isDeffInv=.F.
-Set Step On
+
 
 If 	Type("main_vw.u_choice")='L'
 	isDeffInv=main_vw.u_choice
 Endif
 
+*!*	Set Step On
 
 If Used('lcode_vw') And isDeffInv=.F.
 *	IF oGlblPrdFeat.UdChkProd('exmfgbp') AND INLIST(lcode_vw.inv_stk,'+','-') &&Commented by Amrendra for bug-4379 on 18-12-2012
@@ -755,7 +760,8 @@ Endif
 && Added by Shrikant S. on 14/11/2017 for GST Bug-30857		&& End
 
 
-If BatchMandatory=.T. And oGlblPrdFeat.UdChkProd('exmfgbp')
+*!*	If BatchMandatory=.T. And oGlblPrdFeat.UdChkProd('exmfgbp')			&& Commented by Shrikant S. on 22/11/2018 for Auto updater 2.0.1
+If BatchMandatory=.T. And oGlblPrdFeat.UdChkProd('exmfgbp') And !oGlblPrdFeat.UdChkProd('phrmretlr')				&& Added by Shrikant S. on 22/11/2018 for Auto updater 2.0.1
 	Select item_vw
 	Go Top
 	isPickupCliecked=.T.
@@ -803,10 +809,21 @@ If BatchMandatory=.T. And oGlblPrdFeat.UdChkProd('exmfgbp')
 					Select item_vw
 					Return .F.
 				Endif
-			Else
-				=Messagebox("No Batch Selected ...",0+64,vumess)
-				Select item_vw
-				Return .F.
+			ELSE
+				*-- Added By Anil on 11072020 for Bug No 33328 Start
+					SELECT item_vw
+					COUNT FOR EMPTY(batchno) TO mRecord
+					IF mrecord > 0
+						=Messagebox("No Batch Selected ...",0+64,vumess)
+						Select item_vw
+						Return .F.
+					ENDIF
+					*-- Added By Anil on 11072020 for Bug No 33328 End
+					*-- Commented By Anil on 11072020 for Bug No 33328 Start
+*!*							=Messagebox("No Batch Selected ...",0+64,vumess)	&& Commented by Anil on 11072020 for Bug 33328
+*!*							Select item_vw
+*!*							Return .F.
+					*-- Commented By Anil on 11072020 for Bug No 33328 Start
 			Endif
 		Endif
 		If isRawMat=.T. And UsingOtherItRef=.T.
@@ -1122,6 +1139,7 @@ If Type('_curvouobj.PcvType') = 'C' And Used('MAIN_VW')
 
 			sql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[tmptbl_vw],"This.Parent.nHandle",_curvouobj.DataSessionId,.F.)
 			If sql_con > 0 And Used('tmptbl_vw')
+
 				_mCond = "a.REntry_ty = b.Entry_ty AND a.Entry_ty = c.Entry_ty AND a.Tran_cd = c.Tran_cd AND a.ItSerial = c.ItSerial"
 				Select a.REntry_ty,a.ItRef_Tran,a.ritserial,Sum(a.Rqty) As Rqty,c.Item From ItRef_vw a,tmptbl_vw B,item_vw c ;
 					WHERE &_mCond ;
@@ -1149,7 +1167,8 @@ If Type('_curvouobj.PcvType') = 'C' And Used('MAIN_VW')
 						Endif
 					Endif
 
-					msqlstr="Select Top 1 AllocQty From StkResrvSum Where Entry_ty = ?tmptbl_vw1.REntry_ty and Tran_cd = ?tmptbl_vw1.ItRef_Tran and ItSerial = ?tmptbl_vw1.RItSerial"
+*!*						msqlstr="Select Top 1 AllocQty From StkResrvSum Where Entry_ty = ?tmptbl_vw1.REntry_ty and Tran_cd = ?tmptbl_vw1.ItRef_Tran and ItSerial = ?tmptbl_vw1.RItSerial "  &&Commented by Sachin N. S. on 25/09/2018 for Bug-31756
+					msqlstr="Select SUM(AllocQty) as allocqty From StkResrvDet Where REntry_ty = ?tmptbl_vw1.REntry_ty and RTran_cd = ?tmptbl_vw1.ItRef_Tran and RItSerial = ?tmptbl_vw1.RItSerial and entry_ty not in ('PO','WK') "  &&Modified by Sachin N. S. on 25/09/2018 for Bug-31756
 					sql_con = _curvouobj.sqlconobj.dataconn([EXE],company.dbname,msqlstr,[tmptbl_vw],"This.Parent.nHandle",_curvouobj.DataSessionId,.F.)
 					If sql_con > 0 And Used('tmptbl_vw')
 						If Reccount('tmptbl_vw') > 0
@@ -1197,7 +1216,7 @@ If Used(_Malias)  &&Added by Priyanka B on 23062018 for Sprint 1.0.1
 	If Betw(_mRecNo,1,Reccount())
 		Go _mRecNo
 	Endif
-ENDIF  &&Added by Priyanka B on 23062018 for Sprint 1.0.1
+Endif  &&Added by Priyanka B on 23062018 for Sprint 1.0.1
 
 && Added By Shrikant S. on 29/12/2012 for Bug-2267		&& End			&&vasant030412
 

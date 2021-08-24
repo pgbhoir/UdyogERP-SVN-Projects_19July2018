@@ -1,5 +1,6 @@
 
-If Inlist(main_vw.entry_ty ,"LR","IL")
+*!*	If Inlist(main_vw.entry_ty ,"LR","IL")  &&Commented by Priyanka B on 08082019 for Bug-32747
+If Inlist(main_vw.entry_ty ,"LR","IL","RD") &&Modified by Priyanka B on 08082019 for Bug-32747
 
 	If Empty(_Screen.ActiveForm.txtPartyName.Value)
 		Messagebox("Party Name left blank", 64, VuMess)
