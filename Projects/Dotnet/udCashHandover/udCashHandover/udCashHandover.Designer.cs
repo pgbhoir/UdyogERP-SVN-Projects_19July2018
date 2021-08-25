@@ -109,6 +109,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Txttot200 = new uNumericTextBox.cNumericTextBox();
+            this.Txt200 = new uNumericTextBox.cNumericTextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.Txttot1000 = new uNumericTextBox.cNumericTextBox();
             this.Txt1000 = new uNumericTextBox.cNumericTextBox();
             this.Txttot500 = new uNumericTextBox.cNumericTextBox();
@@ -489,14 +492,15 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Location = new System.Drawing.Point(292, 53);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(368, 178);
+            this.groupBox2.Size = new System.Drawing.Size(368, 154);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(8, 140);
+            this.panel1.Location = new System.Drawing.Point(8, 112);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(355, 1);
             this.panel1.TabIndex = 12;
@@ -505,17 +509,18 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(235, 154);
+            this.label36.Location = new System.Drawing.Point(235, 126);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(10, 13);
             this.label36.TabIndex = 14;
             this.label36.Text = "`";
+            this.label36.Click += new System.EventHandler(this.label36_Click);
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(235, 111);
+            this.label33.Location = new System.Drawing.Point(235, 87);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(10, 13);
             this.label33.TabIndex = 10;
@@ -526,29 +531,32 @@
             this.TxtTotHndOvr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTotHndOvr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtTotHndOvr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.TxtTotHndOvr.Location = new System.Drawing.Point(263, 149);
+            this.TxtTotHndOvr.Location = new System.Drawing.Point(263, 121);
             this.TxtTotHndOvr.Name = "TxtTotHndOvr";
             this.TxtTotHndOvr.Size = new System.Drawing.Size(99, 23);
             this.TxtTotHndOvr.TabIndex = 15;
+            this.TxtTotHndOvr.TextChanged += new System.EventHandler(this.TxtTotHndOvr_TextChanged);
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(235, 86);
+            this.label34.Location = new System.Drawing.Point(235, 159);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(10, 13);
             this.label34.TabIndex = 7;
             this.label34.Text = "`";
+            this.label34.Visible = false;
             // 
             // TxtTaxamt
             // 
             this.TxtTaxamt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtTaxamt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTaxamt.Location = new System.Drawing.Point(263, 82);
+            this.TxtTaxamt.Location = new System.Drawing.Point(263, 155);
             this.TxtTaxamt.Name = "TxtTaxamt";
             this.TxtTaxamt.Size = new System.Drawing.Size(99, 20);
             this.TxtTaxamt.TabIndex = 8;
+            this.TxtTaxamt.Visible = false;
             // 
             // label35
             // 
@@ -564,7 +572,7 @@
             // 
             this.TxtDiscamt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtDiscamt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDiscamt.Location = new System.Drawing.Point(263, 107);
+            this.TxtDiscamt.Location = new System.Drawing.Point(263, 83);
             this.TxtDiscamt.Name = "TxtDiscamt";
             this.TxtDiscamt.Size = new System.Drawing.Size(99, 20);
             this.TxtDiscamt.TabIndex = 11;
@@ -591,7 +599,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(7, 154);
+            this.label18.Location = new System.Drawing.Point(7, 126);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(86, 13);
             this.label18.TabIndex = 13;
@@ -601,17 +609,18 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(7, 86);
+            this.label16.Location = new System.Drawing.Point(7, 159);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 13);
             this.label16.TabIndex = 6;
             this.label16.Text = "Tax Amount.";
+            this.label16.Visible = false;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(7, 111);
+            this.label15.Location = new System.Drawing.Point(7, 87);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(91, 13);
             this.label15.TabIndex = 9;
@@ -656,13 +665,14 @@
             this.DtGridvw1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column3});
-            this.DtGridvw1.Location = new System.Drawing.Point(292, 238);
+            this.DtGridvw1.Location = new System.Drawing.Point(292, 213);
             this.DtGridvw1.Name = "DtGridvw1";
             this.DtGridvw1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.DtGridvw1.RowHeadersVisible = false;
             this.DtGridvw1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.DtGridvw1.Size = new System.Drawing.Size(369, 227);
+            this.DtGridvw1.Size = new System.Drawing.Size(369, 285);
             this.DtGridvw1.TabIndex = 6;
+            this.DtGridvw1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtGridvw1_CellContentClick);
             // 
             // Column1
             // 
@@ -693,7 +703,7 @@
             this.groupBox3.Controls.Add(this.lblRoundOff);
             this.groupBox3.Controls.Add(this.label26);
             this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Location = new System.Drawing.Point(12, 332);
+            this.groupBox3.Location = new System.Drawing.Point(12, 359);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(276, 134);
             this.groupBox3.TabIndex = 3;
@@ -806,6 +816,7 @@
             this.txtRoundOff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtRoundOff.Location = new System.Drawing.Point(153, 81);
             this.txtRoundOff.Name = "txtRoundOff";
+            this.txtRoundOff.pAllowNegative = false;
             this.txtRoundOff.Size = new System.Drawing.Size(109, 22);
             this.txtRoundOff.TabIndex = 8;
             this.txtRoundOff.TextChanged += new System.EventHandler(this.txtRoundOff_TextChanged);
@@ -819,6 +830,7 @@
             this.TxtCashinHand.Name = "TxtCashinHand";
             this.TxtCashinHand.Size = new System.Drawing.Size(109, 22);
             this.TxtCashinHand.TabIndex = 8;
+            this.TxtCashinHand.TextChanged += new System.EventHandler(this.TxtCashinHand_TextChanged);
             // 
             // lblRoundOff
             // 
@@ -924,7 +936,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 232);
+            this.label8.Location = new System.Drawing.Point(7, 255);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(31, 13);
             this.label8.TabIndex = 24;
@@ -934,7 +946,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(7, 256);
+            this.label9.Location = new System.Drawing.Point(7, 279);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 27;
@@ -953,6 +965,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Txttot200);
+            this.groupBox1.Controls.Add(this.Txt200);
+            this.groupBox1.Controls.Add(this.label37);
             this.groupBox1.Controls.Add(this.Txttot1000);
             this.groupBox1.Controls.Add(this.Txt1000);
             this.groupBox1.Controls.Add(this.Txttot500);
@@ -985,16 +1000,47 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(12, 53);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(276, 278);
+            this.groupBox1.Size = new System.Drawing.Size(276, 300);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // Txttot200
+            // 
+            this.Txttot200.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txttot200.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txttot200.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Txttot200.Location = new System.Drawing.Point(167, 228);
+            this.Txttot200.Name = "Txttot200";
+            this.Txttot200.Size = new System.Drawing.Size(95, 22);
+            this.Txttot200.TabIndex = 32;
+            this.Txttot200.TextChanged += new System.EventHandler(this.Txt200_TextChanged);
+            // 
+            // Txt200
+            // 
+            this.Txt200.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txt200.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt200.Location = new System.Drawing.Point(85, 228);
+            this.Txt200.Name = "Txt200";
+            this.Txt200.Size = new System.Drawing.Size(69, 20);
+            this.Txt200.TabIndex = 31;
+            this.Txt200.TextChanged += new System.EventHandler(this.Txt200_TextChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(7, 232);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(31, 13);
+            this.label37.TabIndex = 30;
+            this.label37.Text = "` 200";
             // 
             // Txttot1000
             // 
             this.Txttot1000.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txttot1000.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txttot1000.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.Txttot1000.Location = new System.Drawing.Point(167, 252);
+            this.Txttot1000.Location = new System.Drawing.Point(167, 275);
             this.Txttot1000.Name = "Txttot1000";
             this.Txttot1000.Size = new System.Drawing.Size(95, 22);
             this.Txttot1000.TabIndex = 29;
@@ -1003,7 +1049,7 @@
             // 
             this.Txt1000.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txt1000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt1000.Location = new System.Drawing.Point(85, 252);
+            this.Txt1000.Location = new System.Drawing.Point(85, 275);
             this.Txt1000.Name = "Txt1000";
             this.Txt1000.Size = new System.Drawing.Size(69, 20);
             this.Txt1000.TabIndex = 28;
@@ -1015,7 +1061,7 @@
             this.Txttot500.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txttot500.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Txttot500.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.Txttot500.Location = new System.Drawing.Point(167, 228);
+            this.Txttot500.Location = new System.Drawing.Point(167, 251);
             this.Txttot500.Name = "Txttot500";
             this.Txttot500.Size = new System.Drawing.Size(95, 22);
             this.Txttot500.TabIndex = 26;
@@ -1024,7 +1070,7 @@
             // 
             this.Txt500.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txt500.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt500.Location = new System.Drawing.Point(85, 228);
+            this.Txt500.Location = new System.Drawing.Point(85, 251);
             this.Txt500.Name = "Txt500";
             this.Txt500.Size = new System.Drawing.Size(69, 20);
             this.Txt500.TabIndex = 25;
@@ -1204,7 +1250,7 @@
             this.groupBox5.Controls.Add(this.LblDtModi);
             this.groupBox5.Controls.Add(this.label28);
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Location = new System.Drawing.Point(12, 465);
+            this.groupBox5.Location = new System.Drawing.Point(12, 490);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(649, 35);
             this.groupBox5.TabIndex = 4;
@@ -1388,7 +1434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 505);
+            this.ClientSize = new System.Drawing.Size(667, 528);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -1542,6 +1588,9 @@
         private System.Windows.Forms.Label label38;
         private uNumericTextBox.cNumericTextBox txtRoundOff;
         private System.Windows.Forms.Label lblRoundOff;
+        private uNumericTextBox.cNumericTextBox Txttot200;
+        private uNumericTextBox.cNumericTextBox Txt200;
+        private System.Windows.Forms.Label label37;
     }
 }
 

@@ -11,7 +11,7 @@ using System.Threading;
 using System.IO;
 using System.Collections;
 using System.Diagnostics;
-//using ueconnect;
+using ueconnect;
 using GetInfo;
 using udReportList;
 using Udyog.Library.Common;
@@ -33,7 +33,7 @@ namespace udCashHandover
         String cAppPId, cAppName;
         Boolean cValid = true;
         Boolean Iscancel = false;
-        //clsConnect oConnect;
+        clsConnect oConnect;
         string startupPath = string.Empty;
         string ErrorMsg = string.Empty;
         string ServiceType = string.Empty;
@@ -42,6 +42,8 @@ namespace udCashHandover
         System.Windows.Forms.Timer Clock = null;
         DataSet vDsCommon;
         string ReportListIcon = string.Empty;
+        DataTable ps = new DataTable();
+        DataTable cashout = new DataTable();
 
         public udCashHandov(string[] args)
         {
@@ -88,8 +90,10 @@ namespace udCashHandover
 
             this.SetMenuRights();
             startupPath = Application.StartupPath;
-            //startupPath = @"D:\VUDYOGSDK\";
-            //oConnect = new clsConnect();
+
+            //startupPath = @"F:\UdyogERPENT\";
+
+            oConnect = new clsConnect();
 
             GetInfo.iniFile ini = new GetInfo.iniFile(startupPath + "\\" + "Visudyog.ini");
             string appfile = ini.IniReadValue("Settings", "xfile").Substring(0, ini.IniReadValue("Settings", "xfile").Length - 4);
@@ -118,6 +122,7 @@ namespace udCashHandover
                 UdyogRegister regiInfo = new UdyogRegister();
                 ServiceType = regiInfo.RegistrationInfo.ServiceType;
             }
+
             this.btnLast_Click(sender, e);
 
             this.mInsertProcessIdRecord();
@@ -219,7 +224,9 @@ namespace udCashHandover
             {
                 pProc = Process.GetProcessById(Convert.ToInt16(this.pPApplPID));
                 String pName = pProc.ProcessName;
+
                 string pName1 = this.pPApplName.Substring(0, this.pPApplName.IndexOf("."));
+
                 if (pName.ToUpper() != pName1.ToUpper())
                 {
                     procExists = false;
@@ -229,11 +236,11 @@ namespace udCashHandover
             {
                 procExists = false;
             }
-            if (procExists == false)
-            {
-                MessageBox.Show("Can't proceed, Main Application " + this.pPApplText + " is closed.", this.pPApplText, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                Application.Exit();
-            }
+            //if (procExists == false)
+            //{
+            //   MessageBox.Show("Can't proceed, Main Application " + this.pPApplText + " is closed.", this.pPApplText, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //   Application.Exit();
+            //}
         }
 
         private void mthBindClear()
@@ -246,6 +253,7 @@ namespace udCashHandover
             this.Txt20.DataBindings.Clear();
             this.Txt50.DataBindings.Clear();
             this.Txt100.DataBindings.Clear();
+            this.Txt200.DataBindings.Clear(); //Prajakta B.
             this.Txt500.DataBindings.Clear();
             this.Txt1000.DataBindings.Clear();
             this.TxtTotHndOvr.DataBindings.Clear();
@@ -312,8 +320,10 @@ namespace udCashHandover
                 this.Txt20.DataBindings.Add("Text", dsMain.Tables[0], "Cash20x");
                 this.Txt50.DataBindings.Add("Text", dsMain.Tables[0], "Cash50x");
                 this.Txt100.DataBindings.Add("Text", dsMain.Tables[0], "Cash100x");
+                this.Txt200.DataBindings.Add("Text", dsMain.Tables[0], "Cash200x");  //prajakta B.
                 this.Txt500.DataBindings.Add("Text", dsMain.Tables[0], "Cash500x");
-                this.Txt1000.DataBindings.Add("Text", dsMain.Tables[0], "Cash1000x");
+                //this.Txt1000.DataBindings.Add("Text", dsMain.Tables[0], "Cash1000x");
+                this.Txt1000.DataBindings.Add("Text", dsMain.Tables[0], "Cash2000x");  ///Prajakta B.
                 this.TxtTotHndOvr.DataBindings.Add("Text", dsMain.Tables[0], "TotHndOvr");
                 this.TxtCntrID.DataBindings.Add("Text", dsMain.Tables[0], "CntrCode");
                 this.TxtTranNo.DataBindings.Add("Text", dsMain.Tables[0], "Inv_no");
@@ -334,6 +344,7 @@ namespace udCashHandover
             this.Txt20.MaxLength = 10;
             this.Txt50.MaxLength = 10;
             this.Txt100.MaxLength = 10;
+            this.Txt200.MaxLength = 10;//Prajakta B.
             this.Txt500.MaxLength = 10;
             this.Txt1000.MaxLength = 10;
             this.txtRoundOff.MaxLength = 10;
@@ -538,6 +549,7 @@ namespace udCashHandover
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            this.btnPreview.Enabled = false;  //Added by Prajakta B. on 19112018 for Bug 31930
             this.mcheckCallingApplication();
             this.mthEdit();
             AssignSourceToGrid();
@@ -1021,17 +1033,16 @@ namespace udCashHandover
             }
         }
 
-
         private void btnGradeName_Click(object sender, EventArgs e)
         {
             mcheckCallingApplication();
             string VForText = string.Empty, vSearchCol = string.Empty, strSQL = string.Empty, Vstr = string.Empty, vColExclude = string.Empty, vDisplayColumnList = string.Empty, vReturnCol = string.Empty;
             DataSet tDs = new DataSet();
             SqlStr = "Select convert(varchar,tran_cd) as tran_cd,Inv_No from " + vMainTblNm + " order by " + vMainField;
-            tDs = oDataAccess.GetDataSet(SqlStr, null, 20);  
+            tDs = oDataAccess.GetDataSet(SqlStr, null, 20);
             DataView dvw = tDs.Tables[0].DefaultView;
             //added by Prajakta B on 20042018 ---------- Start
-            if (tDs.Tables[0].Rows.Count>0)  
+            if (tDs.Tables[0].Rows.Count > 0)
             {
                 VForText = "Select Invoice No.";
                 vSearchCol = "Inv_NO";
@@ -1137,6 +1148,11 @@ namespace udCashHandover
             Calculation();
         }
 
+        private void Txt200_TextChanged(object sender, EventArgs e)
+        {
+            Calculation();
+        }
+
         private void Txt500_TextChanged(object sender, EventArgs e)
         {
             Calculation();
@@ -1188,6 +1204,7 @@ namespace udCashHandover
                 this.Txt20.Enabled = true;
                 this.Txt50.Enabled = true;
                 this.Txt100.Enabled = true;
+                this.Txt200.Enabled = true;//Prajakta B.
                 this.Txt500.Enabled = true;
                 this.Txt1000.Enabled = true;
                 this.txtRoundOff.Enabled = true;
@@ -1203,6 +1220,7 @@ namespace udCashHandover
                 this.Txt20.Enabled = false;
                 this.Txt50.Enabled = false;
                 this.Txt100.Enabled = false;
+                this.Txt200.Enabled = false;//Prajakta B.
                 this.Txt500.Enabled = false;
                 this.Txt1000.Enabled = false;
 
@@ -1213,6 +1231,7 @@ namespace udCashHandover
                 this.Txttot20.Enabled = false;
                 this.Txttot50.Enabled = false;
                 this.Txttot100.Enabled = false;
+                this.Txttot200.Enabled = false;//Prajakta B.
                 this.Txttot500.Enabled = false;
                 this.Txttot1000.Enabled = false;
 
@@ -1237,6 +1256,7 @@ namespace udCashHandover
                 this.txtRoundOff.Enabled = false;
                 this.btnCounterCd.Enabled = false;
                 this.btnGradeName.Enabled = true;
+                this.btnPreview.Enabled = true;  //Added by Prajakta B. on 19112018 for Bug 31930
             }
         }
 
@@ -1249,12 +1269,13 @@ namespace udCashHandover
             this.Txttot20.Text = (Convert.ToInt32(this.Txt20.Text) * 20).ToString();
             this.Txttot50.Text = (Convert.ToInt32(this.Txt50.Text) * 50).ToString();
             this.Txttot100.Text = (Convert.ToInt32(this.Txt100.Text) * 100).ToString();
+            this.Txttot200.Text = (Convert.ToInt32(this.Txt200.Text) * 200).ToString();//Prajakta B.
             this.Txttot500.Text = (Convert.ToInt32(this.Txt500.Text) * 500).ToString();
             //this.Txttot1000.Text = (Convert.ToInt32(this.Txt1000.Text) * 1000).ToString();  //Commented by Prajakta B. on 13042018 
             this.Txttot1000.Text = (Convert.ToInt32(this.Txt1000.Text) * 2000).ToString();    //modified by Prajakta B. on 13042018 
 
             this.TxtCurrency.Text = (Convert.ToInt32(this.Txttot1.Text) + Convert.ToInt32(this.Txttot2.Text) + Convert.ToInt32(this.Txttot5.Text) + Convert.ToInt32(this.Txttot10.Text) +
-                      Convert.ToInt32(this.Txttot20.Text) + Convert.ToInt32(this.Txttot50.Text) + Convert.ToInt32(this.Txttot100.Text) +
+                      Convert.ToInt32(this.Txttot20.Text) + Convert.ToInt32(this.Txttot50.Text) + Convert.ToInt32(this.Txttot100.Text) + Convert.ToInt32(this.Txttot200.Text) +
                       Convert.ToInt32(this.Txttot500.Text) + Convert.ToInt32(this.Txttot1000.Text)).ToString();
 
             this.TxtCashinHand.Text = (Convert.ToDecimal(this.TxtCashBills.Text) + Convert.ToDecimal(this.TxtCashin.Text)).ToString();
@@ -1299,6 +1320,25 @@ namespace udCashHandover
                 DataTable Cashin1 = Cashin.Copy();
                 DtPOSmain.Tables.Add(Cashin1);
                 DtPOSmain.Tables[3].TableName = "Cashin";
+
+                //Commented by Rupesh G. on 15122018--start
+                //Added by Prajakta B. on 05122018 --Start
+                //string strsql1 = "";
+                //strsql1 = strsql1 + "select TotalValue,POSOUTTRAN from PSPAYDETAIL pp left join dcmain dc on pp.Entry_ty=dc.entry_ty and pp.Tran_cd=dc.tran_cd ";
+                //strsql1 = strsql1 + " where pp.PayMode = 'cash' and  pp.USER_NAME ='" + this.pAppUerName + "' AND pp.[DATE] <= getdate()";
+                //ps = oDataAccess.GetDataSet(strsql1, null, 20).Tables[0];
+                //DataTable ps1 = ps.Copy();
+                //DtPOSmain.Tables.Add(ps1);
+                //DtPOSmain.Tables[4].TableName = "ps";
+
+                //string strsql2 = "";
+                //strsql2 = strsql2 + "select tran_cd from POSCashOut where  USERNAME ='" + this.pAppUerName + "' AND [DATE] <= getdate()";
+                //cashout = oDataAccess.GetDataSet(strsql2, null, 20).Tables[0];
+                //DataTable cashout1 = cashout.Copy();
+                //DtPOSmain.Tables.Add(cashout1);
+                //DtPOSmain.Tables[5].TableName = "cashout";
+                //Added by Prajakta B. on 05122018 --End
+                //Commented by Rupesh G. on 15122018--END
 
                 dsMain.Tables[0].Rows[0]["Entry_Ty"] = "CO";
                 dsMain.Tables[0].Rows[0]["Date"] = this.TxtDate.Text;
@@ -1372,7 +1412,7 @@ namespace udCashHandover
                     DtGridvw1.AutoGenerateColumns = false;
                     DtGridvw1.DataSource = DtPOSmain.Tables["PSPAYDETAIL"];
                     DtGridvw1.Columns[0].DataPropertyName = "PayMode";
-                    DtGridvw1.Columns[1].DataPropertyName = "TotalValue";
+                    DtGridvw1.Columns[1].DataPropertyName = "TotalValue";  //Prajakta B.
                 }
                 else
                 {
@@ -1411,7 +1451,8 @@ namespace udCashHandover
             {
                 SaveString = "";
                 SaveString = "Set DateFormat dmy UPDATE DCMAIN SET POSOUTTRAN = " + Convert.ToInt16(Trancd.Rows[0][0].ToString());
-                SaveString = SaveString + " WHERE ENTRY_TY='PS' AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =0 AND CNTRCODE='" + dsMain.Tables[0].Rows[0]["CNTRCODE"].ToString() + "'";
+                //SaveString = SaveString + " WHERE ENTRY_TY='PS' AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =0 AND CNTRCODE='" + dsMain.Tables[0].Rows[0]["CNTRCODE"].ToString() + "'"; //Prajakta
+                SaveString = SaveString + " WHERE ENTRY_TY in ('PS','HS') AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =0 AND CNTRCODE='" + dsMain.Tables[0].Rows[0]["CNTRCODE"].ToString() + "'"; //Prajakta
 
                 SaveString = SaveString + " ;Set DateFormat dmy UPDATE POSCASHIN SET CashOTran = " + Convert.ToInt16(Trancd.Rows[0][0].ToString());
                 SaveString = SaveString + " Where Cntrid = " + dsMain.Tables[0].Rows[0]["CounterID"].ToString() + " And tran_cd = " + dsMain.Tables[0].Rows[0]["CashInTran"].ToString() + " and UserName ='" + this.pAppUerName + "' and isnull(CashOTran,0) =0";
@@ -1421,7 +1462,8 @@ namespace udCashHandover
             {
                 SaveString = "";
 
-                SaveString = SaveString + " Set DateFormat dmy UPDATE DCMAIN SET POSOUTTRAN = 0 WHERE ENTRY_TY='PS' AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =" + Convert.ToInt16(Trancd.Rows[0][0].ToString());
+                //SaveString = SaveString + " Set DateFormat dmy UPDATE DCMAIN SET POSOUTTRAN = 0 WHERE ENTRY_TY='PS' AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =" + Convert.ToInt16(Trancd.Rows[0][0].ToString()); //Prajakta
+                SaveString = SaveString + " Set DateFormat dmy UPDATE DCMAIN SET POSOUTTRAN = 0 WHERE ENTRY_TY in ('PS','HS') AND [USER_NAME] = '" + this.pAppUerName + "' and isnull(POSOUTTRAN,0) =" + Convert.ToInt16(Trancd.Rows[0][0].ToString());//Prajakta
 
                 SaveString = SaveString + " ;Set DateFormat dmy UPDATE POSCASHIN SET CashOTran = 0";
                 SaveString = SaveString + " Where Cntrid = " + dsMain.Tables[0].Rows[0]["CounterID"] + " And tran_cd = " + dsMain.Tables[0].Rows[0]["CashInTran"] + " and UserName ='" + this.pAppUerName + "' and CashOTran=" + dsMain.Tables[0].Rows[0]["Tran_cd"];
@@ -1460,6 +1502,7 @@ namespace udCashHandover
                         {
                             dsMain.Tables[0].Rows[0]["TotCheqAmt"] = PAYDET["TotalValue"].ToString();
                         }
+
                     }
                 }
 
@@ -1471,6 +1514,7 @@ namespace udCashHandover
                 dsMain.Tables[0].Rows[0]["TrnDtTime"] = DtPOSmain.Tables["SQLDATE"].Rows[0]["SQLdate"];
                 dsMain.Tables[0].Rows[0]["CompID"] = this.pCompId;
                 dsMain.Tables[0].Rows[0]["CashInAmt"] = DtPOSmain.Tables["CashIn"].Rows[0]["Cashinamt"].ToString();
+                // dsMain.Tables[0].Rows[0]["CashInAmt"] = DtPOSmain.Tables["ps"].Rows[0]["TotalValue"].ToString();
                 dsMain.Tables[0].Rows[0]["CashInTran"] = DtPOSmain.Tables["CashIn"].Rows[0]["Tran_cd"].ToString();
                 dsMain.Tables[0].Rows[0]["CounterID"] = DtPOSmain.Tables["CashIn"].Rows[0]["CNTRID"].ToString();
                 dsMain.Tables[0].Rows[0]["CntrCode"] = DtPOSmain.Tables["CashIn"].Rows[0]["CntrCode"].ToString();
@@ -1534,14 +1578,14 @@ namespace udCashHandover
             //oPrint.pTran_Cd = Convert.ToInt16(dsMain.Tables[0].Rows[0]["Tran_Cd"].ToString());
 
             //added by Prajakta B. On 04052018 for Installer Start
-            if(dsMain.Tables[0].Rows.Count > 0)
+            if (dsMain.Tables[0].Rows.Count > 0)
             {
                 oPrint.pSpPara = "'" + this.TxtUser.Text + "','" + this.TxtDate.Text + "'," + this.pCompId + ",'" + dsMain.Tables[0].Rows[0]["Tran_cd"].ToString() + "'";
             }
             else
             {
                 string trancd = "0";
-                oPrint.pSpPara = "'" + this.TxtUser.Text + "','" + this.TxtDate.Text + "'," + this.pCompId + ",'"+trancd+"' ";
+                oPrint.pSpPara = "'" + this.TxtUser.Text + "','" + this.TxtDate.Text + "'," + this.pCompId + ",'" + trancd + "' ";
                 MessageBox.Show("No Records found for Display");
             }
             //added by Prajakta B. On 04052018 for Installer End
@@ -1590,7 +1634,9 @@ namespace udCashHandover
                     {
                         if (PSPAY["Paymode"].ToString() == "CASH")
                         {
-                            Cash = PSPAY["Totalvalue"].ToString();
+                            //Cash = PSPAY["Totalvalue"].ToString();  // Commented by Prajakta B. 20082018 for Installer ERP 2.0.0.0
+                            // Cash = DtPOSmain.Tables["DCMAIN"].Rows[0]["NetAmount"].ToString();  // Added by Prajakta B. 20082018 for Installer ERP 2.0.0.0 // 05122018//Commented by rupesh g on 15122018
+                            Cash = PSPAY["Totalvalue"].ToString();//Add Rupesh G. on 15122018
                         }
                     }
                 }
@@ -1617,6 +1663,43 @@ namespace udCashHandover
                         }
                         this.TxtCntrID.Text = DtPOSmain.Tables["Cashin"].Rows[0]["CNTRCODE"].ToString();
                         this.TxtCashin.Text = DtPOSmain.Tables["CashIn"].Rows[0]["Cashinamt"].ToString();
+                        this.TxtCashBills.Text = Cash;//Add By Rupesh G. on 15122018
+                         //Commented By Rupesh G. on 15122018---Start
+                           //Added By Prajakta B. on 06122018     --Start
+                           //if (DtPOSmain.Tables["ps"].Rows.Count>0 && (DtPOSmain.Tables["cashout"].Rows[0]["tran_cd"].ToString()!=DtPOSmain.Tables["ps"].Rows[0]["POSOUTTRAN"].ToString()))
+
+                        //if (DtPOSmain.Tables["cashout"].Rows.Count != 0)
+                        //{
+                        //    if (DtPOSmain.Tables["ps"].Rows.Count > 0 && (DtPOSmain.Tables["cashout"].Rows[0]["tran_cd"].ToString() != DtPOSmain.Tables["ps"].Rows[0]["POSOUTTRAN"].ToString()))
+                        //    {
+
+                        //        this.TxtCashBills.Text = DtPOSmain.Tables["ps"].Rows[0]["TotalValue"].ToString();
+
+                        //    }
+                        //    else
+                        //    {
+                        //        this.TxtCashBills.Text = "0.00";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (DtPOSmain.Tables["ps"].Rows.Count > 0)
+                        //    {
+
+                        //        this.TxtCashBills.Text = DtPOSmain.Tables["ps"].Rows[0]["TotalValue"].ToString();
+
+                        //    }
+                        //    else
+                        //    {
+                        //        this.TxtCashBills.Text = "0.00";
+                        //    }
+                        //}
+
+
+
+                        //Added By Prajakta B. on 06122018     --End
+                        //Commented By Rupesh G. on 15122018---end
+
                         this.TxtUser.Text = this.pAppUerName;
                     }
                 }
@@ -1629,6 +1712,31 @@ namespace udCashHandover
             Clock.Interval = 1000;
             Clock.Tick += new EventHandler(Clock_Tick);
             Clock.Enabled = true;
+        }
+
+        private void DtGridvw1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TxtCashinHand_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtTotHndOvr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+
         }
 
         void Clock_Tick(object sender, EventArgs e)
