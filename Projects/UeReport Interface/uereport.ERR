@@ -1,7 +1,7 @@
-Program d:\svngst\uereport interface\vuchoice.prg has the following errors:
+Program d:\svn development\uereport interface\vuchoice.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
-Form d:\svngst\uereport interface\vureport.scx has the following errors:
+Form d:\svn development\uereport interface\vureport.scx has the following errors:
     Unknown CHKRIGHT - Undefined
     Application UEORDERZOOM_NEW - Undefined
     Application UEORDERZOOM - Undefined
@@ -17,14 +17,16 @@ Form d:\svngst\uereport interface\vureport.scx has the following errors:
     Application UEBALANCELIST - Undefined
     Application UESTKITEMMONTHLYSUMMARY - Undefined
     Unknown UEGETPOP - Undefined
+    Unknown BARSTAT - Undefined
     Proc./Func. UDAPPREPINIT - Undefined
     Proc./Func. UDTRIGREPINIT - Undefined
     Proc./Func. UETRIGREPINIT - Undefined
-    Unknown BARSTAT - Undefined
+    Unknown DEC - Undefined
+    Unknown NEWDECRY - Undefined
 
-Form d:\svngst\uereport interface\vuadv.scx has the following errors:
+Form d:\svn development\uereport interface\vuadv.scx has the following errors:
     Unknown UEGETPOP - Undefined
 
-Visual Class Library d:\svngst\uereport interface\gridfind.vcx has the following errors:
+Visual Class Library d:\svn development\uereport interface\gridfind_rep.vcx has the following errors:
     Unknown UEGETPOP - Undefined
 
