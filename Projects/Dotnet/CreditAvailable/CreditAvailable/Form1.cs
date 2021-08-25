@@ -488,16 +488,20 @@ namespace CreditAvailable
                 if (comboBox1.SelectedIndex == 0)
                 {
                     VForText = "Select HSN Code";
-                    vSearchCol = "dtCredit";
+                    //vSearchCol = "dtCredit";  //Commented by Priyanka B on 29032019 for Bug-32366
+                    vSearchCol = "HSNCODE";  //Modified by Priyanka B on 29032019 for Bug-32366
                     vDisplayColumnList = "HSNCODE:" + lblcode + "";
                     vReturnCol = "HSNCODE";
                 }
                 else
                 {
                     VForText = "Select Service Tarrif Code";
-                    vSearchCol = "dtCredit";
-                    vDisplayColumnList = "Service Tarrif Code:" + lblcode + "";
-                    vReturnCol = "Service Tarrif Code";
+                    //vSearchCol = "dtCredit";  //Commented by Priyanka B on 29032019 for Bug-32366
+                    vSearchCol = "HSNCODE";  //Modified by Priyanka B on 29032019 for Bug-32366
+                    //vDisplayColumnList = "Service Tarrif Code:" + lblcode + "";  //Commented by Priyanka B on 29032019 for Bug-32366
+                    vDisplayColumnList = "HSNCODE:" + lblcode + "";  //Modified by Priyanka B on 29032019 for Bug-32366
+                    //vReturnCol = "Service Tarrif Code";  //Commented by Priyanka B on 29032019 for Bug-32366
+                    vReturnCol = "HSNCODE";  //Modified by Priyanka B on 29032019 for Bug-32366
                 }
                 udSelectPop.SELECTPOPUP oSelectPop = new udSelectPop.SELECTPOPUP();
                 oSelectPop.pdataview = dvw;
@@ -1077,6 +1081,11 @@ namespace CreditAvailable
         {
             if (this.btnEdit.Enabled)
                 btnEdit_Click(this.btnEdit, e);
+        }
+
+        private void lblNote_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

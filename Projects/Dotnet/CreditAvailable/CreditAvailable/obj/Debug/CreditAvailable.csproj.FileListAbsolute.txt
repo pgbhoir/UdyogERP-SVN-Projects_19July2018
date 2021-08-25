@@ -34,3 +34,11 @@ D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvai
 D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.exe
 D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.pdb
 D:\PROJECT WORK 2\2.Credit_Availabilty_With_Filter\Credit availabilty\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.csprojResolveAssemblyReference.cache
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\bin\Debug\CreditAvailable.exe.config
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\bin\Debug\CreditAvailable.exe
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\bin\Debug\CreditAvailable.pdb
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.Form1.resources
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.Properties.Resources.resources
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.csproj.GenerateResource.Cache
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.exe
+E:\SVNProjects\AU 2.1.2\CreditAvailable\CreditAvailable\obj\Debug\CreditAvailable.pdb
