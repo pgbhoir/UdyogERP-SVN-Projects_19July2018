@@ -1,0 +1,14 @@
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\Read CSV data.exe.config
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\Read CSV data.exe
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\Read CSV data.pdb
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\DataAccess-Net.dll
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\GetInfo.DLL
+E:\Suraj\Read CSV data\Read CSV data\bin\Debug\uBaseForm.dll
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read CSV data.csprojResolveAssemblyReference.cache
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Interop.ueconnect.dll
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read CSV data.csproj.ResolveComReference.cache
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read_CSV_data.Form2.resources
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read_CSV_data.Properties.Resources.resources
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read CSV data.csproj.GenerateResource.Cache
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read CSV data.exe
+E:\Suraj\Read CSV data\Read CSV data\obj\Debug\Read CSV data.pdb
