@@ -10,3 +10,10 @@ D:\udAlertExecution from VSS\UdAlertExecution\obj\Debug\UdAlertExecution.pdb
 D:\udAlertExecution from VSS\UdAlertExecution\bin\Debug\UdAlertExecution.exe
 D:\udAlertExecution from VSS\UdAlertExecution\bin\Debug\UdAlertExecution.pdb
 D:\udAlertExecution from VSS\UdAlertExecution\obj\Debug\ResolveAssemblyReference.cache
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Debug\UdAlertExecution.exe
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Debug\UdAlertExecution.pdb
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Debug\UdAlertExecution.exe
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Debug\UdAlertExecution.pdb
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Debug\GetInfo.DLL
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Debug\Udyog.Library.Common.dll
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Debug\UdAlertExecution.csprojResolveAssemblyReference.cache

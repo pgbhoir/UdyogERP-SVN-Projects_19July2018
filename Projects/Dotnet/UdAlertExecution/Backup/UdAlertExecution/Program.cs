@@ -5,8 +5,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Diagnostics;
-//using udyogerp;
-using Udyog.Library.Common;
+using udyogerp;
 
 namespace UdAlertExecution
 {
@@ -78,8 +77,6 @@ namespace UdAlertExecution
                 
                 string CurrPath;
                 CurrPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
-                string _nenc = string.Empty;        //Added by Shrikant S. on 29/01/2019 for Bug-32155
-
                 args = new string[4];
                 //args[0] = "udyog3\\vudyogsdk";
                 //args[1] = "sa";
@@ -91,21 +88,9 @@ namespace UdAlertExecution
                 args[1] = ini.IniReadValue("DataServer", eObject.OnEncrypt("myName", eObject.Enc("myName", "User")));
                 args[2] = ini.IniReadValue("DataServer", eObject.OnEncrypt("myName", eObject.Enc("myName", "Pass")));
                 args[3] = "vudyog";
-                //Added by Shrikant S. on 29/01/2019 for Bug-32155          //Start
-                _nenc = ini.IniReadValue("Settings", "NENC");
-                if (_nenc.Trim() == "1")
-                {
-                    args[1] = VU_UDFS.NewDECRY(VU_UDFS.HexDecimalToASCII(args[1]), "Ud*yog+1993Uid");
-                    args[2] = VU_UDFS.NewDECRY(VU_UDFS.HexDecimalToASCII(args[2]), "Ud*yog+1993Pwd");
-                }
-                else
-                {
-                    //Added by Shrikant S. on 29/01/2019 for Bug-32155      //End
-                    args[1] = eObject.Dec("myName", eObject.OnDecrypt("myName", args[1]));
-                    args[2] = eObject.Dec("myName", eObject.OnDecrypt("myName", args[2]));
-                }               //Added by Shrikant S. on 29/01/2019 for Bug-32155
-                
 
+                args[1] = eObject.Dec("myName", eObject.OnDecrypt("myName", args[1]));
+                args[2] = eObject.Dec("myName", eObject.OnDecrypt("myName", args[2]));
             }
                   
             ClsMain c = new ClsMain(args);

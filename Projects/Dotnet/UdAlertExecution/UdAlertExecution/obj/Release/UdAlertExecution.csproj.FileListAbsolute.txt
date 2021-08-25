@@ -1,0 +1,9 @@
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Release\UdAlertExecution.csprojResolveAssemblyReference.cache
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\UdAlertExecution.exe
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\UdAlertExecution.pdb
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\DataAccess-Net.dll
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\GetInfo.DLL
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\uBaseForm.dll
+D:\SVNGST\UdAlertExecution\UdAlertExecution\bin\Release\Udyog.Library.Common.dll
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Release\UdAlertExecution.exe
+D:\SVNGST\UdAlertExecution\UdAlertExecution\obj\Release\UdAlertExecution.pdb
