@@ -1,14 +1,15 @@
-Form e:\...\uegstrreporttemplate\uegstrreporttemplate.scx has the following errors:
+Form e:\svnprojects\bug-32872\uegstrreporttemplate\uegstrreporttemplate.scx has the following errors:
     Unknown BARSTAT - Undefined
     Unknown UDGSTOUTWARDEXCEL - Undefined
     Unknown UDGSTINWARDEXCEL - Undefined
     Unknown UDGSTISDINWARDEXCEL - Undefined
     Unknown UDGST1EEXCEL - Undefined
     Unknown UDGST1SECTION13EEXCEL - Undefined
+    Unknown UDGSTITC04 - Undefined
 
-Visual Class Library d:\udyoggst\class\standardui.vcx has the following errors:
+Visual Class Library d:\udyogerpent2.2.0\class\standardui.vcx has the following errors:
     Unknown BARSTAT - Undefined
 
-Visual Class Library d:\udyoggst\class\_base.vcx has the following errors:
+Visual Class Library d:\udyogerpent2.2.0\class\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 

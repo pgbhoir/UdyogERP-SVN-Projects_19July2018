@@ -1,0 +1,10 @@
+*!*	LPARAMETERS tnrange AS INTEGER
+PARAMETERS vDataSessionId 
+
+IF VARTYPE(VuMess) <> 'C'
+	MESSAGEBOX('Internal Application Not Run Directly...',0+48,[])
+	QUIT
+	RETURN .F.
+ENDIF
+
+DO FORM frmgstr9report WITH vDataSessionId 
