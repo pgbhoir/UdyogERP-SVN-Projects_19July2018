@@ -35,3 +35,13 @@ D:\1 Development\Dotnet\CashIn Project\Working Folder for Bug-27503\udCashIn\obj
 D:\1 Development\Dotnet\CashIn Project\Working Folder for Bug-27503\udCashIn\obj\Release\udCashIn.csproj.GenerateResource.Cache
 D:\1 Development\Dotnet\CashIn Project\Working Folder for Bug-27503\udCashIn\obj\Release\udCashIn.exe
 D:\1 Development\Dotnet\CashIn Project\Working Folder for Bug-27503\udCashIn\obj\Release\udCashIn.pdb
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Release\udCashIn.exe
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Release\udCashIn.pdb
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Release\udSelectPop.dll
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Release\uNumericTextBox.dll
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.csprojResolveAssemblyReference.cache
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.frmuDCashIn.resources
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.Properties.Resources.resources
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.csproj.GenerateResource.Cache
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.exe
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Release\udCashIn.pdb

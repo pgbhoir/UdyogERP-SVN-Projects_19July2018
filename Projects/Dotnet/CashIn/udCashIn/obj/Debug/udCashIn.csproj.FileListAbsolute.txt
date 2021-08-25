@@ -22,3 +22,12 @@ D:\Ruchit\SVN\Currency Master\CashIn Project\udCashIn\bin\Debug\Udyog.Library.Co
 D:\Ruchit\SVN\Currency Master\CashIn Project\udCashIn\obj\Debug\udCashIn.csprojResolveAssemblyReference.cache
 D:\Ruchit\SVN\Currency Master (CashIN)\CashIn Project\udCashIn\obj\Debug\udCashIn.exe
 D:\Ruchit\SVN\Currency Master (CashIN)\CashIn Project\udCashIn\obj\Debug\udCashIn.pdb
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Debug\udCashIn.exe
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Debug\udCashIn.pdb
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Debug\udSelectPop.dll
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\bin\Debug\Udyog.Library.Common.dll
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Debug\udCashIn.frmuDCashIn.resources
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Debug\udCashIn.Properties.Resources.resources
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Debug\udCashIn.csproj.GenerateResource.Cache
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Debug\udCashIn.exe
+E:\New Installer\New Setup\From Prajakta\CashIn\udCashIn\obj\Debug\udCashIn.pdb
