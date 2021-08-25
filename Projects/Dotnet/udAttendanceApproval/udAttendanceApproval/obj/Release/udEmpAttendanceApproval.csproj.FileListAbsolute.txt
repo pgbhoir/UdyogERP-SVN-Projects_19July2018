@@ -79,3 +79,16 @@ F:\Bug\25971\udAttendanceApproval\udAttendanceApproval\bin\Release\udAttendanceA
 F:\Bug\25971\udAttendanceApproval\udAttendanceApproval\bin\Release\udAttendanceApproval.pdb
 F:\Bug\25971\udAttendanceApproval\udAttendanceApproval\bin\Release\udclsDGVNumericColumn.dll
 F:\Bug\25971\udAttendanceApproval\udAttendanceApproval\bin\Release\Interop.ueconnect.dll
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\Interop.ueconnect.dll
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udEmpAttendanceApproval.csproj.ResolveComReference.cache
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udAttendanceApproval.exe
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udAttendanceApproval.pdb
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\udAttendanceApproval.exe
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\udAttendanceApproval.pdb
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\GetInfo.DLL
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\udclsDGVNumericColumn.dll
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\stdole.dll
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\bin\Release\Interop.ueconnect.dll
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udEmpAttendanceApproval.csprojResolveAssemblyReference.cache
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udAttendanceApproval.frmAttendanceIntegration.resources
+D:\01 RRG\02 Project Work\29 Payroll Point\Bug 33162\Day To Day muster\udAttendanceApproval\udAttendanceApproval\obj\Release\udEmpAttendanceApproval.csproj.GenerateResource.Cache

@@ -64,6 +64,7 @@ namespace udAttendanceApproval
         #region Initialization of Form with parameter        
         public frmAttendanceIntegration(string[] args)
         {
+            
             InitializeComponent();
             this.pDisableCloseBtn = true;
             this.pPara = args;
@@ -87,10 +88,11 @@ namespace udAttendanceApproval
         #region Form Load Event
         private void frmAttendanceIntegration_Load(object sender, EventArgs e)
         {
+            
             CultureInfo ci = new CultureInfo("en-US");
             ci.DateTimeFormat.ShortDatePattern = "dd/MM/yyyy";
             Thread.CurrentThread.CurrentCulture = ci;
-
+            
             txtMuster.Text = "Monthly";
             DataAccess_Net.clsDataAccess._databaseName = this.pComDbnm;
             DataAccess_Net.clsDataAccess._serverName = this.pServerName;
@@ -109,7 +111,7 @@ namespace udAttendanceApproval
                 this.btnMonth.Image = Image.FromFile(fName);
                 this.btnProcYear.Image = Image.FromFile(fName);
             }
-
+            
             btnFirst.Enabled = false;
             btnBack.Enabled = false;
             btnForward.Enabled = false;
@@ -128,9 +130,11 @@ namespace udAttendanceApproval
             btnHelp.Enabled = false;
             btnExit.Enabled = false;
            btnCalculator.Enabled = false;      // Added by Pratap on 31-10-2012
-           this.mInsertProcessIdRecord();      // Added by Pratap on 02-11-2012
+            
+            this.mInsertProcessIdRecord();      // Added by Pratap on 02-11-2012
             this.mthDsCommon();
             loadLatestData();
+            
             //Added by Archana K. on 16/05/13 for Bug-7899 start
             startupPath = Application.StartupPath;
             oConnect = new clsConnect();
@@ -344,6 +348,24 @@ namespace udAttendanceApproval
             txtMonthDays.Width = 110;
             dgrApprov.Columns.Add(txtMonthDays);
 
+            //Add by Rupesh G on 05022020 for bug no. 33162 --start
+            DataGridViewTextBoxColumn txtOverTime = new DataGridViewTextBoxColumn();
+            txtOverTime.HeaderText = "OT Hours";
+            txtOverTime.DataPropertyName = "OverTime";
+            txtOverTime.Name = "OverTime";
+            txtOverTime.HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopCenter;
+            txtOverTime.Width = 110;
+            dgrApprov.Columns.Add(txtOverTime);
+
+            DataGridViewTextBoxColumn txtWorkHR = new DataGridViewTextBoxColumn();
+            txtWorkHR.HeaderText = "Work Hours";
+            txtWorkHR.DataPropertyName = "WorkedHour";
+            txtWorkHR.Name = "WorkedHour";
+            txtWorkHR.HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopCenter;
+            txtWorkHR.Width = 110;
+            dgrApprov.Columns.Add(txtWorkHR);
+            //Add by Rupesh G on 05022020 for bug no. 33162 --End
+
             DataGridViewTextBoxColumn txtWeekOff = new DataGridViewTextBoxColumn();
             txtWeekOff.HeaderText = "Tot. Week Offs";
             txtWeekOff.DataPropertyName = "WO";
@@ -457,7 +479,7 @@ namespace udAttendanceApproval
             if (procExists == false)
             {
               MessageBox.Show("Can't proceed,Main Application " + this.pPApplText + " is closed", this.pPApplText, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-              Application.Exit();
+             Application.Exit();
             }
         }
         private void mInsertProcessIdRecord()
