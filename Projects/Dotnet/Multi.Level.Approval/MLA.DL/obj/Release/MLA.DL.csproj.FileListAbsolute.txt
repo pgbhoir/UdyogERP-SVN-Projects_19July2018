@@ -1,0 +1,14 @@
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\bin\Release\MLA.DL.dll
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\bin\Release\MLA.DL.pdb
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\bin\Release\MLA.ENTITY.dll
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\bin\Release\MLA.ENTITY.pdb
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.csprojResolveAssemblyReference.cache
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.dll
+D:\MultiLevel\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.pdb
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\bin\Release\MLA.DL.dll
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\bin\Release\MLA.DL.pdb
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\bin\Release\MLA.ENTITY.dll
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\bin\Release\MLA.ENTITY.pdb
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.dll
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\MLA.DL\obj\Release\MLA.DL.pdb
