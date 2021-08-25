@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36AC4903-76B1-4740-B0A8-9A49FAB77393}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MLA.APPS</RootNamespace>
+    <AssemblyName>MLA.APPS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v6.3, Version=6.3.2.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v6.3, Version=6.3.2.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v6.3, Version=6.3.2.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v6.3, Version=6.3.2.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v6.3, Version=6.3.2.0, Culture=neutral, PublicKeyToken=79868b8147b5eae4">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="eMailClient.MailSender, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="GetInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Interop.vunettofx, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLAEmailSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLAEmailSettings.designer.cs">
+      <DependentUpon>MLAEmailSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLAAppMailStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLAAppMailStatus.designer.cs">
+      <DependentUpon>MLAAppMailStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLAAppLevelSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLAAppLevelSettings.Designer.cs">
+      <DependentUpon>MLAAppLevelSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLAAppRemarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLAAppRemarks.Designer.cs">
+      <DependentUpon>MLAAppRemarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLAApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLAApproval.Designer.cs">
+      <DependentUpon>MLAApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MLASettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MLASettings.Designer.cs">
+      <DependentUpon>MLASettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultiColumnComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLAEmailSettings.resx">
+      <DependentUpon>MLAEmailSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLAAppMailStatus.resx">
+      <DependentUpon>MLAAppMailStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLAAppLevelSettings.resx">
+      <DependentUpon>MLAAppLevelSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLAAppRemarks.resx">
+      <DependentUpon>MLAAppRemarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLAApproval.resx">
+      <DependentUpon>MLAApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLASettings.resx">
+      <DependentUpon>MLASettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MLA.ENTITY\MLA.ENTITY.csproj">
+      <Project>{BE9BA536-2481-4330-A293-77707C25069A}</Project>
+      <Name>MLA.ENTITY %28MLA.ENTITY\MLA.ENTITY%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MLA.LL\MLA.LL.csproj">
+      <Project>{5D910BE2-9106-4C6C-8214-1484C0BB6EBF}</Project>
+      <Name>MLA.LL %28MLA.LL\MLA.LL%29</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User-Group-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Increase-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-item-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrows-Left-3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrows-Right-3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Decisions-Approve-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Decisions-Disapprove-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Decisions-Make-decision-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Action-cancel-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comment-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downloads-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoom-icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
