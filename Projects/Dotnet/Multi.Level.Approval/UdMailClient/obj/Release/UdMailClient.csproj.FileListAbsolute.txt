@@ -1,0 +1,15 @@
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Release\UdMailClient.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Release\UdMailClient.pdb
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Release\eMailClient.MailSender.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.csprojResolveAssemblyReference.cache
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.MailStatusMonitor.resources
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.csproj.GenerateResource.Cache
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.pdb
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\bin\Release\UdMailClient.dll
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\bin\Release\UdMailClient.pdb
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.MailStatusMonitor.resources
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.dll
+E:\SVNProjects\Bug-32062 Installer 2.1.0\Multi.Level.Approval\UdMailClient\obj\Release\UdMailClient.pdb

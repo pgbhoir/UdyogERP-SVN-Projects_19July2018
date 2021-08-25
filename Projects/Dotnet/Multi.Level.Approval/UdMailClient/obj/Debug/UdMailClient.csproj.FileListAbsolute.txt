@@ -1,0 +1,39 @@
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.dll
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.pdb
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\bin\Debug\eMailClient.MailSender.dll
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\obj\Debug\ResolveAssemblyReference.cache
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.MailStatusMonitor.resources
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.csproj.GenerateResource.Cache
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.dll
+D:\Uday Product Projects\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.pdb
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.dll
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.pdb
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\bin\Debug\eMailClient.MailSender.dll
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\obj\Debug\ResolveAssemblyReference.cache
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.MailStatusMonitor.resources
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.csproj.GenerateResource.Cache
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.dll
+E:\Gaurav\Bugs\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.pdb
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.pdb
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\bin\Debug\eMailClient.MailSender.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.MailStatusMonitor.resources
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.csproj.GenerateResource.Cache
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.pdb
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\bin\Debug\UdMailClient.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\bin\Debug\UdMailClient.pdb
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\bin\Debug\eMailClient.MailSender.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\obj\Debug\UdMailClient.csprojResolveAssemblyReference.cache
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\obj\Debug\UdMailClient.MailStatusMonitor.resources
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\obj\Debug\UdMailClient.csproj.GenerateResource.Cache
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\obj\Debug\UdMailClient.dll
+F:\Kishor\Original-Bug-Projects\21965\New Working\Multi.Level.Approval_New\UdMailClient\obj\Debug\UdMailClient.pdb
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Debug\UdMailClient.pdb
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\bin\Debug\eMailClient.MailSender.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.csprojResolveAssemblyReference.cache
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.MailStatusMonitor.resources
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.csproj.GenerateResource.Cache
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.dll
+D:\MultiLevel\Multi.Level.Approval\UdMailClient\obj\Debug\UdMailClient.pdb
