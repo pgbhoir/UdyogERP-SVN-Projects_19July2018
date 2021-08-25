@@ -1,0 +1,77 @@
+BARCODE 227,114,"128M",17,0,180,2,4,"!105Goods 1"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"Goods 1"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!1051234567891"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"1234567891"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!10599999999"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"99999999"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!10588888888"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"88888888"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!1057777777"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"7777777"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!10566666666"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"66666666"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+BARCODE 227,114,"128M",17,0,180,2,4,"!10555555555"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"55555555"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
