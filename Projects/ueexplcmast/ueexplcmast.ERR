@@ -1,7 +1,9 @@
-Form e:\svnprojects\ueexplcmast\frmexplcmast.scx has the following errors:
+Form e:\svnprojects\bug-31789\ueexplcmast\frmexplcmast.scx has the following errors:
     Unknown UEGETPOP - Undefined
+    Unknown GETCONNECTIONSTRING - Undefined
     Unknown BARSTAT - Undefined
+    Proc./Func. UEEXTRA - Undefined
 
-Visual Class Library e:\svnprojects\ueexplcmast\class\standardui.vcx has the following errors:
+Visual Class Library e:\svnprojects\bug-31789\ueexplcmast\class\standardui.vcx has the following errors:
     Unknown BARSTAT - Undefined
 
