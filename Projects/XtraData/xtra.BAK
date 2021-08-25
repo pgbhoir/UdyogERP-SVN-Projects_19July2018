@@ -41,11 +41,11 @@ If _UdNewTrigEnbl
 	If File('UDAppetvalid.app')
 		Set Proc To UDAppetvalid.App Additive
 	Endif
-	If File('UDTrigetvalid.fxp')
+	If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		Set Proc To UDTrigetvalid Additive
 	Endif
 Else
-	If File('UeTrigetvalid.fxp')
+	If File('UeTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		Set Proc To UeTrigetvalid Additive
 	Endif
 Endif
@@ -57,11 +57,11 @@ If _UdNewTrigEnbl
 	If File('UDAppxtraOpen.app')
 		NretVal=UDAppxtraOpen()
 	Endif
-	If File('UDTrigxtraOpen.fxp') And NretVal
+	If File('UDTrigxtraOpen.fxp') And NretVal AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		NretVal=UDTrigxtraOpen()
 	Endif
 Else
-	If File('UeTrigxtraOpen.fxp')
+	If File('UeTrigxtraOpen.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		NretVal=UeTrigxtraOpen()
 	Endif
 Endif
@@ -77,11 +77,11 @@ If [vuexc] $ vchkProd And Empty(filterCnd)
 		If File('UDAppetvalid.app')
 			Set Proc To UDAppetvalid.App Additive
 		Endif
-		If File('UDTrigetvalid.fxp')
+		If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UDTrigetvalid Additive
 		Endif
 	Else
-		If File('UeTrigetvalid.fxp')
+		If File('UeTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UeTrigetvalid Additive
 		Endif
 	Endif
@@ -143,7 +143,7 @@ If [vutex] $ vchkProd
 		If File('UDAppetvalid.app')
 			Set Proc To UDAppetvalid.App Additive
 		Endif
-		If File('UDTrigetvalid.fxp')
+		If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UDTrigetvalid Additive
 		Endif
 	Else
@@ -261,7 +261,8 @@ If !Eof() Or lnFlUpld>0
 				Case Uppe(Allt(wTable)) = [ITEM_VW]
 					Set Filter To (lother.FormNo=curLother.FormNo) And !lother.Ingrid
 					Go Top
-					s=Iif(Empty(lother.FormDesc) Or Isnull(lother.FormDesc),[Additional Info (ITEMWISE)  ==>> FORM NO. ]+Allt(Str(curLother.FormNo)),lother.FormDesc)		&& Changed By Sachin N. s. on 16/03/2009
+*!*						s=Iif(Empty(lother.FormDesc) Or Isnull(lother.FormDesc),[Additional Info (ITEMWISE)  ==>> FORM NO. ]+Allt(Str(curLother.FormNo)),lother.FormDesc)		&& Changed By Sachin N. s. on 16/03/2009		&& Commented by Shrikant S. on 25/05/2017 for GST
+					s=Iif(Empty(lother.FormDesc) Or Isnull(lother.FormDesc),[Additional Info (LINEWISE)  ==>> FORM NO. ]+Allt(Str(curLother.FormNo)),lother.FormDesc)		&& Added by Shrikant S. on 25/05/2017 for GST
 				Otherwise
 					Set Filter To (lother.FormNo=curLother.FormNo)
 					Go Top

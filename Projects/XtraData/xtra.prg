@@ -41,11 +41,11 @@ If _UdNewTrigEnbl
 	If File('UDAppetvalid.app')
 		Set Proc To UDAppetvalid.App Additive
 	Endif
-	If File('UDTrigetvalid.fxp')
+	If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		Set Proc To UDTrigetvalid Additive
 	Endif
 Else
-	If File('UeTrigetvalid.fxp')
+	If File('UeTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		Set Proc To UeTrigetvalid Additive
 	Endif
 Endif
@@ -57,11 +57,11 @@ If _UdNewTrigEnbl
 	If File('UDAppxtraOpen.app')
 		NretVal=UDAppxtraOpen()
 	Endif
-	If File('UDTrigxtraOpen.fxp') And NretVal
+	If File('UDTrigxtraOpen.fxp') And NretVal AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		NretVal=UDTrigxtraOpen()
 	Endif
 Else
-	If File('UeTrigxtraOpen.fxp')
+	If File('UeTrigxtraOpen.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 		NretVal=UeTrigxtraOpen()
 	Endif
 Endif
@@ -77,11 +77,11 @@ If [vuexc] $ vchkProd And Empty(filterCnd)
 		If File('UDAppetvalid.app')
 			Set Proc To UDAppetvalid.App Additive
 		Endif
-		If File('UDTrigetvalid.fxp')
+		If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UDTrigetvalid Additive
 		Endif
 	Else
-		If File('UeTrigetvalid.fxp')
+		If File('UeTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UeTrigetvalid Additive
 		Endif
 	Endif
@@ -143,11 +143,11 @@ If [vutex] $ vchkProd
 		If File('UDAppetvalid.app')
 			Set Proc To UDAppetvalid.App Additive
 		Endif
-		If File('UDTrigetvalid.fxp')
+		If File('UDTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UDTrigetvalid Additive
 		Endif
 	Else
-		If File('UeTrigetvalid.fxp')
+		If File('UeTrigetvalid.fxp') AND !INLIST(Upper(dec(NewDecry(GlobalObj.getPropertyval("UdProdCode"),'Ud*yog+1993'))),'UERPSTD','UERPSILVPRO') &&Bug-31756 Rupesh Added Values for uERP in inlist
 			Set Proc To UeTrigetvalid Additive
 		Endif
 	Endif

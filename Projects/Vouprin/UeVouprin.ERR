@@ -1,7 +1,10 @@
-Form e:\productdev\continuous printing\vou_prin\vouprin - copy\vouprint.scx has the following errors:
+Form d:\prajakta\project\auto updater 2.2.2 issues\vouprin\vouprint.scx has the following errors:
+    Proc./Func. UECRVIEWER - Undefined
     Unknown BARSTAT - Undefined
     Visual Class Library DATEPICKER - Undefined
+    Unknown UEGETPOP - Undefined
+    Proc./Func. TOUEVOUCHER - Undefined
 
-Program e:\productdev\continuous printing\vou_prin\vouprin - copy\vouprint.prg has the following errors:
+Program d:\prajakta\project\auto updater 2.2.2 issues\vouprin\vouprint.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
