@@ -49,7 +49,7 @@ namespace ITC_Mismatch_Details
         int cn = 0;
         int cn1 = 0;
         int i = 0, selectCnt = 0;
-        int rowindex = 0;
+        int rowindex = 0, statuscount = 0, Selectrowcount;
         string cboStatusValue, status_; //Added by Priyanka B on 15/05/2017
         bool chkAccept = false;  //Added by Priyanka B on 15/05/2017
         //PubClassProp objProperties = new PubClassProp();
@@ -61,6 +61,7 @@ namespace ITC_Mismatch_Details
 
         int ii, jj;
         string val, num, samt, csamt, rt, txval, camt, inv_typ, pos, idt, rchrg, inum, chksum, cfs, ctin, fp, gstin;
+        string iamt;  //Added by Rupesh G. on 10072019 for Bug-31757
         public void load1()
         {
             bindGridSupplier();
@@ -494,8 +495,257 @@ namespace ITC_Mismatch_Details
 
 
         }
+        private DataTable getRecordGrid()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "MyTable";
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+
+                if (col.DisplayIndex == 12)
+                {
+                    dt.Columns.Add("Status");
+                }
+                else if (col.DisplayIndex == 13)
+                {
+                    dt.Columns.Add("Accept");
+                }
+                else if (col.DisplayIndex == 14)
+                {
+                    dt.Columns.Add("Accept Date");
+                }
+                else
+                {
+                    dt.Columns.Add(col.DataPropertyName);
+                }
+
+            }
+            string status;
+            try
+            {
+                status = comboBox1.SelectedItem.ToString();
+            }
+            catch (Exception e)
+            {
+                status = "All";
+            }
 
 
+            if (status == "All")
+            {
+                foreach (DataGridViewRow gridRow in dataGridView1.Rows)
+                {
+                    if (gridRow.IsNewRow)
+                    { continue; }
+                    else
+                    {
+
+
+                        DataRow dtRow = dt.NewRow();
+                        for (int i1 = 0; i1 < dataGridView1.Columns.Count; i1++)
+
+                            dtRow[i1] = (gridRow.Cells[i1].Value == null ? DBNull.Value : gridRow.Cells[i1].Value);
+                        dt.Rows.Add(dtRow);
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow gridRow in dataGridView1.Rows)
+                {
+                    // MessageBox.Show(gridRow.Cells[12].Value.ToString());
+                    //  if (gridRow.IsNewRow || gridRow.Selected == false)
+                    if (gridRow.IsNewRow || gridRow.Cells[12].Value.ToString() != status)
+                    { continue; }
+                    else
+                    {
+
+
+                        DataRow dtRow = dt.NewRow();
+                        for (int i1 = 0; i1 < dataGridView1.Columns.Count; i1++)
+
+                            dtRow[i1] = (gridRow.Cells[i1].Value == null ? DBNull.Value : gridRow.Cells[i1].Value);
+                        dt.Rows.Add(dtRow);
+                    }
+                }
+            }
+
+            //}
+            //else
+            //{
+            //    foreach (DataGridViewRow gridRow in dataGridView1.Rows)
+            //    {
+            //        if (gridRow.IsNewRow)
+            //        { continue; }
+            //        else
+            //        {
+
+
+            //            DataRow dtRow = dt.NewRow();
+            //            for (int i1 = 0; i1 < dataGridView1.Columns.Count; i1++)
+
+            //                dtRow[i1] = (gridRow.Cells[i1].Value == null ? DBNull.Value : gridRow.Cells[i1].Value);
+            //            dt.Rows.Add(dtRow);
+            //        }
+            //    }
+
+            //}
+
+
+            return dt;
+        }
+
+        public void ExportToExcel(DataTable dt_record, string excelFilename)
+        {
+            lblProgress.Visible = true;
+            progressBar1.Visible = true;
+            try
+            {
+                lblProgress.Text = "Opening Excel Application.....";
+                progressBar1.Value = 30;
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+
+                progressBar1.Value = 40;
+                Microsoft.Office.Interop.Excel.Workbook wBook;
+
+                progressBar1.Value = 50;
+                Microsoft.Office.Interop.Excel.Worksheet wSheet;
+
+                progressBar1.Value = 60;
+                wBook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+
+                progressBar1.Value = 70;
+                wSheet = (Microsoft.Office.Interop.Excel.Worksheet)wBook.ActiveSheet;
+
+                progressBar1.Value = 80;
+                System.Data.DataTable dt = dt_record;
+                System.Data.DataColumn dc = new DataColumn();
+
+                progressBar1.Value = 90;
+                int colIndex = 0;
+                float rowIndex = 1;
+                progressBar1.Value = 100;
+
+                foreach (DataColumn dcol in dt.Columns)
+                {
+                    colIndex = colIndex + 1;
+                    excel.Cells[rowIndex, colIndex] = dcol.ColumnName;
+                }
+
+                progressBar1.Value = 0;
+                rowIndex += 1;
+                float nrow = 1;
+                excel.Columns.NumberFormat = "@";
+                foreach (DataRow drow in dt.Rows)
+                {
+                    colIndex = 0;
+                    foreach (DataColumn dcol in dt.Columns)
+                    {
+                        colIndex = colIndex + 1;
+                        excel.Cells[rowIndex, colIndex] = drow[dcol.ColumnName].ToString();
+
+                    }
+                    float aa = nrow == dt.Rows.Count ? 100.00f : (nrow / dt.Rows.Count) * 100;
+
+                    progressBar1.Value = (Int32)aa;
+                    progressBar1.Refresh();
+                    progressBar1.Refresh();
+                    lblProgress.Text = "Read Records: " + nrow.ToString() + "/" + dt.Rows.Count;
+
+                    nrow = nrow + 1;
+                    rowIndex = rowIndex + 1;
+                }
+                progressBar1.Value = 100;
+                progressBar1.Refresh();
+
+
+
+                object misValue = System.Reflection.Missing.Value;
+                excel.Columns.AutoFit();
+                excel.ActiveWorkbook.SaveAs(excelFilename + ".xls", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                excel.ActiveWorkbook.Saved = true;
+
+                progressBar1.Visible = false;
+                lblProgress.Visible = false;
+
+                MessageBox.Show("Your excel file exported successfully at " + excelFilename + ".xls", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Excel Application not available", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                progressBar1.Value = 0;
+                progressBar1.Visible = false;
+                lblProgress.Visible = false;
+            }
+        }
+
+        private void chkIgnore_CheckedChanged(object sender, EventArgs e)
+        {
+            //Commented by Priyanka B on 24082019 for Bug-31759 & refer comment 10 Start
+            //bindGridSupplier();
+            //bindGridReceiver();
+            //accept();
+            //GridSupplierCheckbox();
+            //setdate();
+            //resize();
+            //countRecords();
+
+            //foreach (DataGridViewColumn dgvc in dataGridView1.Columns)
+            //{
+            //    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+            //}
+            //foreach (DataGridViewColumn dgvc in dataGridView3.Columns)
+            //{
+            //    dgvc.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //}
+            //Commented by Priyanka B on 24082019 for Bug-31759 & refer comment 10 End
+        }
+
+        public string getFileName(string fname)
+        {
+            string DfilePath, filename, FilePath;
+            string date = DateTime.Now.ToString("dd/MM/yy") + "_" + DateTime.Now.ToString("hh:mm:ss tt");
+
+            FolderBrowserDialog vFolderBrowserDialog1 = new FolderBrowserDialog();
+            vFolderBrowserDialog1.ShowDialog();
+            DfilePath = vFolderBrowserDialog1.SelectedPath;
+            if (DfilePath == "")
+            {
+                return "";
+            }
+            progressBar1.Value = 0;
+            progressBar1.Value = 10;
+            lblProgress.Visible = true;
+            progressBar1.Visible = true;
+
+            filename = fname + date;
+            filename = filename.Replace(".", "").Replace("-", "").Replace("/", "").Replace(":", "").Replace("__", "_").Replace(" ", "");
+            //  FilePath = DfilePath + filename+".xls";
+            FilePath = DfilePath + filename;
+            FilePath = FilePath.Replace("\\\\", "\\");
+            return FilePath;
+        }
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            DataTable dt = getRecordGrid();
+
+            if (dt.Rows.Count > 0)
+            {
+                file_path = getFileName("\\ITC_Mismatch_Reconciliation");
+                if (file_path != "")
+                {
+                    ExportToExcel(dt, file_path);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No record found to export.", "", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+
+        }
 
 
 
@@ -933,6 +1183,17 @@ namespace ITC_Mismatch_Details
                                 rt = "0";
                             }
 
+                            //Added by Rupesh G. on 10072019 for Bug-31757 Start
+                            try
+                            {
+                                iamt = m1["itm_det"]["iamt"].ToString();
+                            }
+                            catch (Exception eee)
+                            {
+                                iamt = "0";
+                            }
+                            //Added by Rupesh G. on 10072019 for Bug-31757 End
+
                             // MessageBox.Show(m1["itm_det"]["txval"].ToString());
                             try
                             {
@@ -1054,7 +1315,8 @@ namespace ITC_Mismatch_Details
 
                         decimal rt0 = decimal.Parse(rt);
                         decimal rt1 = decimal.Parse(rt) / 2;
-                        decimal igst = decimal.Parse(csamt);
+                        //decimal igst = decimal.Parse(csamt);  //Commented by Rupesh G. on 10072019 for Bug-31757
+                        decimal igst = decimal.Parse(iamt);  //Modified by Rupesh G. on 10072019 for Bug-31757
                         decimal cgst = decimal.Parse(camt);
                         decimal sgst = decimal.Parse(samt);
                         if ((cgst > 0 || sgst > 0) && igst <= 0)
@@ -1086,7 +1348,11 @@ namespace ITC_Mismatch_Details
         public void pageLoad()
         {
             this.MaximizeBox = false;
-            //   this.MinimizeBox = false;         
+            //   this.MinimizeBox = false;  
+            lblProgress.Visible = false;
+            progressBar1.Visible = false;
+
+
             dtEcxelData.Clear();
             dtEcxelData.Columns.Clear();
             dtEcxelData.Columns.Add("Supplier's GSTIN", typeof(string));
@@ -1261,8 +1527,10 @@ namespace ITC_Mismatch_Details
             button3.Location = new Point(this.Width - 100, 35 + 30);
             checkBox1.Location = new Point(this.Width - 120, 40 + 30);
             label3.Location = new Point(this.Width - 200, 40 + 30);
-            label6.Location = new Point(this.Width - 250, 20);
-            button1.Location = new Point(this.Width - 100, 10);
+            label6.Location = new Point(this.Width - 430, 20);
+            panel4.Location = new Point(this.Width - 290, 9);
+            //  btnExport.Location = new Point(this.Width - 250, 20);
+            button1.Location = new Point(this.Width - 91, 9);
 
 
             DataGridViewColumn column = dataGridView1.Columns[1]; // column[1] selects the required column 
@@ -1582,17 +1850,19 @@ namespace ITC_Mismatch_Details
         {
             //pageLoad();
             //search_status();
-
-          
+            statuscount = 1;
+            Selectrowcount = 0;
+            string searchValue = "";
             try
             {
-                string searchValue = comboBox1.SelectedItem.ToString();
+                searchValue = comboBox1.SelectedItem.ToString();
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (row.Cells[12].Value.ToString().Equals(searchValue))
                     {
                         row.Selected = true;
+                        Selectrowcount++;
                     }
                     else
                     {
@@ -1605,6 +1875,14 @@ namespace ITC_Mismatch_Details
             catch (Exception exc)
             {
 
+            }
+            if (searchValue != "All")
+            {
+                label6.Text = "Records Count =" + Selectrowcount;
+            }
+            else
+            {
+                label6.Text = "Records Count =" + dataGridView1.Rows.Count;
             }
             //SetVisibility(); //Commented by Priyanka B on 17/05/2017 Visibility
         }
@@ -1934,7 +2212,6 @@ namespace ITC_Mismatch_Details
                             row.Selected = false;
                             //    row.Visible = false;
                         }
-
                     }
                 }
                 catch (Exception exc)
@@ -2022,9 +2299,9 @@ namespace ITC_Mismatch_Details
             this.Company_endDate = Company_endDate;
             this.Companystate = company_state;
             //Added by Priyanka B on 12/05/2017 Start
-            this.iconpath = iconpath;
-            Icon MainIcon = new System.Drawing.Icon(this.iconpath);
-            this.Icon = MainIcon;
+            //  this.iconpath = iconpath;
+            //Icon MainIcon = new System.Drawing.Icon(this.iconpath);
+            // this.Icon = MainIcon;
             //Added by Priyanka B on 12/05/2017 End
         }
 
@@ -2199,6 +2476,7 @@ namespace ITC_Mismatch_Details
                        && (dr1[2].ToString().Trim() == dr[4].ToString().Trim() &&
                        Convert.ToDateTime(dr1[3].ToString()).ToString("dd/MM/yyyy").Trim() == Convert.ToDateTime(dr[5].ToString()).ToString("dd/MM/yyyy").Trim()
                       ))
+
 
                     {
                         count++;
@@ -2521,9 +2799,9 @@ namespace ITC_Mismatch_Details
 
             SqlConnection con = new SqlConnection(constring);
             string sql = "EXEC proc_MultipleSelect '" + Entry_ty + "' ,'" + Tran_cd + "'";
-       
+
             // MessageBox.Show(sql);
-          
+
             SqlCommand cmd = new SqlCommand("EXEC proc_MultipleSelect '" + Entry_ty + "' ,'" + Tran_cd + "'", con);
             cmd.CommandType = CommandType.Text;
             sda = new SqlDataAdapter(cmd);

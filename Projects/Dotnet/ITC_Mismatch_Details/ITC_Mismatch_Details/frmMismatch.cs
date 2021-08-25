@@ -76,8 +76,6 @@ namespace ITC_Mismatch_Details
 
         }
 
-
-
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -139,8 +137,6 @@ namespace ITC_Mismatch_Details
             checkBox1.Checked = false;
             label1.Text = "Select All";
         }
-
-
 
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {

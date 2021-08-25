@@ -88,3 +88,33 @@ D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_
 D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
 D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
 D:\Project Work\Shrikant Sir Work\Project Work\ITC MISMATCH PB\ITC Mismatch\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatchDetails.resources
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\Newtonsoft.Json.dll
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\Newtonsoft.Json.xml
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb
+D:\RRG\01 Bug Work\07 Bug 31626\Project\ITC_Mismatch_Details\bin\Debug\microsoft.office.interop.excel.dll
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe.config
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.exe
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\ITC_Mismatch_Details.pdb
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\Newtonsoft.Json.dll
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\Newtonsoft.Json.xml
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Debug\Interop.vunettofx.dll
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csprojResolveAssemblyReference.cache
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\Interop.vunettofx.dll
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.ResolveComReference.cache
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatch.resources
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmMismatchDetails.resources
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.frmSelectFile.resources
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.Properties.Resources.resources
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.csproj.GenerateResource.Cache
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.exe
+E:\SVNProjects\Bug-31759\ITC_Mismatch_Details\ITC_Mismatch_Details\obj\Debug\ITC_Mismatch_Details.pdb

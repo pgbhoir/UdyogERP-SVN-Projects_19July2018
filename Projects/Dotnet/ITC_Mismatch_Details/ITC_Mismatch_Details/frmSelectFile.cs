@@ -23,9 +23,9 @@ namespace ITC_Mismatch_Details
     {
         DataAccess_Net.clsDataAccess oDataAccess;
         string file_path, file_name, extension;
-        public static string  constring;
+        public static string constring;
         String cAppPId, cAppName;
-        static public  string Company_db, Company_startDate, Company_endDate, application_user, Default_path, application_path, Main_icon, Product_code, Company_State;
+        static public string Company_db, Company_startDate, Company_endDate, application_user, Default_path, application_path, Main_icon, Product_code, Company_State;
         private string Excel03Con;
         private string Excel07Con;
         PubClassProp objProperties = new PubClassProp();
@@ -66,7 +66,7 @@ namespace ITC_Mismatch_Details
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string file_type=string.Empty;
+            string file_type = string.Empty;
             if (textBox1.Text == "" && textBox2.Text == "")
             {
                 //MessageBox.Show("Select Your Excel File", "ITC Mismatch Details", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);  //Commented by Priyanka B on 17/05/2017
@@ -78,27 +78,27 @@ namespace ITC_Mismatch_Details
                 {
                     file_type = "Inward";
                 }
-                if(radioButton2.Checked == true)
+                if (radioButton2.Checked == true)
                 {
                     file_type = "Outward";
                 }
-                    
+
                 try
                 {
                     frmMismatchDetails frm = new frmMismatchDetails();
-                  
+
                     frm.getData(file_path, file_name, extension, file_type);
                     //  frm.getData1(pComDbnm, pAppUerName, Product_code, Default_path, application_path, Company_startDate, Company_endDate);   //Commented by Priyanka B on 12/05/2017
-                 
-                    frm.getData1(pComDbnm, pAppUerName, Product_code, Default_path, application_path, Company_startDate, Company_endDate, Main_icon,Company_State);   //Added by Priyanka B on 12/05/2017
+
+                    frm.getData1(pComDbnm, pAppUerName, Product_code, Default_path, application_path, Company_startDate, Company_endDate, Main_icon, Company_State);   //Added by Priyanka B on 12/05/2017
                     frm.ShowDialog();
-                 
+
                     this.Dispose();
-                    
+
 
 
                 }
-                catch(Exception ess)
+                catch (Exception ess)
                 {
                     MessageBox.Show(ess.Message.ToString(), "ITC Mismatch Details", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -111,10 +111,11 @@ namespace ITC_Mismatch_Details
         }
         public frmSelectFile(string[] args)
         {
-           // MessageBox.Show("enter 1");
+            // MessageBox.Show("enter 1");
             InitializeComponent();
             pCompId = Convert.ToInt16(args[0]);
-            this.pFrmCaption = "ITC Mismatch Reconciliation";
+            //this.pFrmCaption = "ITC Mismatch Reconciliation";   //Commented by Prajakta B. on 16082018 for ERP 2.0.0.0 Installer
+            this.pFrmCaption = "Mismatch Reconcile";             //Added by Prajakta B. on 16082018 for ERP 2.0.0.0 Installer
             this.pComDbnm = args[1];
             this.pServerName = args[2];
             this.pUserId = args[3];
@@ -128,21 +129,21 @@ namespace ITC_Mismatch_Details
             this.pPApplName = args[9];
             this.pPApplPID = Convert.ToInt16(args[10]);
             this.pPApplCode = args[11];
-          //  MessageBox.Show("enter 2");
+            //  MessageBox.Show("enter 2");
             try
             {
-           //     MessageBox.Show("enter 3");
+                //     MessageBox.Show("enter 3");
                 Product_code = args[12];
                 Default_path = args[13];
                 application_path = args[14];
                 Company_startDate = args[15];
                 Company_endDate = args[16];
                 Company_State = args[17].Trim().ToString();
-              //  MessageBox.Show("" + args[17].Trim().ToString());
+                //  MessageBox.Show("" + args[17].Trim().ToString());
             }
             catch (Exception)
             {
-               // MessageBox.Show("enter 4");
+                // MessageBox.Show("enter 4");
             }
             constring = @"Data Source=" + pServerName + ";Initial Catalog=" + pComDbnm + ";User id = " + pUserId + ";password=" + pPassword + "";
         }
@@ -167,11 +168,11 @@ namespace ITC_Mismatch_Details
                     this.extension = extension;
                     this.file_name = file_name;
                     if (extension.ToLower() != ".json")
-                      //  if (extension.ToLower() != ".xls" && extension.ToLower() != ".json")
+                    //  if (extension.ToLower() != ".xls" && extension.ToLower() != ".json")
                     {
                         MessageBox.Show("Please select the valid JSON file with the .json extension.", "ITC Mismatch Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                       // MessageBox.Show("Please select the valid excel file with the .xls extension or JSON file with the .json extension.", "ITC Mismatch Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // MessageBox.Show("Please select the valid excel file with the .xls extension or JSON file with the .json extension.", "ITC Mismatch Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         textBox1.Text = "";
                         textBox2.Text = "";
                     }
@@ -191,7 +192,7 @@ namespace ITC_Mismatch_Details
 
                     this.getRecordsToExcel(file_path, file_name, extension);
                 }
-             
+
                 //Added by Priyanka B on 17/05/2017 End
             }
             catch (Exception ex)
@@ -231,7 +232,7 @@ namespace ITC_Mismatch_Details
             {
                 cmd.Connection = con;
                 con.Open();
-                
+
                 dtExcel = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
 
                 //Commented by Priyanka B on 16/05/2017 Start

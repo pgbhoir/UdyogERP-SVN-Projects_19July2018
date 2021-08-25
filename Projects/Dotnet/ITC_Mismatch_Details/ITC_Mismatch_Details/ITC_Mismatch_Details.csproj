@@ -56,8 +56,8 @@
     <Reference Include="DataAccess-Net">
       <HintPath>..\..\..\VudyogSDK\DataAccess-Net.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.vunettofx">
-      <HintPath>..\..\..\..\..\5 ITC Mismatch\ITC Mismatch_14062017\ITC_Mismatch_Details\ITC_Mismatch_Details\bin\Release\Interop.vunettofx.dll</HintPath>
+    <Reference Include="microsoft.office.interop.excel">
+      <HintPath>..\..\..\..\..\svn\ExportDataToFile\ExportDataToFile\bin\Debug\microsoft.office.interop.excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -171,9 +171,21 @@
   <ItemGroup>
     <Content Include="GST.ico" />
     <Content Include="Resources\giphy.gif" />
+    <None Include="Resources\icon.ico" />
     <None Include="Resources\open.gif" />
     <None Include="Icons\report_excel.gif" />
     <Content Include="report_excel.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="vunettofx">
+      <Guid>{F19D3149-0E47-44C2-AD1E-D1F3E6F451A6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
