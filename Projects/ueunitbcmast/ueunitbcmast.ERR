@@ -1,0 +1,8 @@
+Form e:\svnprojects\bug-32747\new projects\ueunitbcmast\frmbarcodemast.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown UEJOUR_OP - Undefined
+    Unknown UEGETPOP - Undefined
+
+Program e:\svnprojects\bug-32747\new projects\ueunitbcmast\ueunitbcmast.prg has the following errors:
+    Unknown APPVERCHK - Undefined
+
