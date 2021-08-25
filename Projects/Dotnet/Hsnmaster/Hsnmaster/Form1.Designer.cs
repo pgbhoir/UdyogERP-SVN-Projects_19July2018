@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +76,12 @@
             this.btnStateList = new System.Windows.Forms.Button();
             this.chkSelect = new System.Windows.Forms.CheckBox();
             this.dgvGSTRate = new System.Windows.Forms.DataGridView();
+            this.colCGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
+            this.colSGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
+            this.colIGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
+            this.colEffectFrom = new CalendarColumn();
+            this.PrimaryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnHSNCode = new System.Windows.Forms.Button();
             this.cboStateList = new System.Windows.Forms.ComboBox();
             this.txtStateCode = new System.Windows.Forms.TextBox();
@@ -84,12 +90,6 @@
             this.lblHSNCode = new System.Windows.Forms.Label();
             this.calendarColumn1 = new CalendarColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
-            this.colSGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
-            this.colIGST = new udclsDGVNumericColumn.CNumEditDataGridViewColumn();
-            this.colEffectFrom = new CalendarColumn();
-            this.PrimaryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -535,6 +535,64 @@
             this.dgvGSTRate.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGSTRate_CellEndEdit);
             this.dgvGSTRate.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvGSTRate_DataError);
             // 
+            // colCGST
+            // 
+            this.colCGST.AllowNegative = false;
+            this.colCGST.DecimalLength = 2;
+            dataGridViewCellStyle2.Format = "F2";
+            this.colCGST.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colCGST.HeaderText = "C GST %";
+            this.colCGST.Name = "colCGST";
+            this.colCGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colCGST.Width = 150;
+            // 
+            // colSGST
+            // 
+            this.colSGST.AllowNegative = false;
+            this.colSGST.DecimalLength = 2;
+            dataGridViewCellStyle3.Format = "F2";
+            this.colSGST.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colSGST.HeaderText = "S GST /UT GST %";
+            this.colSGST.Name = "colSGST";
+            this.colSGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colSGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colSGST.Width = 150;
+            // 
+            // colIGST
+            // 
+            this.colIGST.AllowNegative = false;
+            this.colIGST.DecimalLength = 2;
+            dataGridViewCellStyle4.Format = "F2";
+            this.colIGST.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colIGST.HeaderText = "I GST %";
+            this.colIGST.Name = "colIGST";
+            this.colIGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colIGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colIGST.Width = 150;
+            // 
+            // colEffectFrom
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colEffectFrom.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colEffectFrom.HeaderText = "Effective From";
+            this.colEffectFrom.Name = "colEffectFrom";
+            this.colEffectFrom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colEffectFrom.Width = 150;
+            // 
+            // PrimaryID
+            // 
+            this.PrimaryID.HeaderText = "PrimaryID";
+            this.PrimaryID.Name = "PrimaryID";
+            this.PrimaryID.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.FalseValue = "false";
+            this.Column1.HeaderText = "Exempted";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
             // btnHSNCode
             // 
             this.btnHSNCode.Location = new System.Drawing.Point(315, 10);
@@ -610,64 +668,6 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // colCGST
-            // 
-            this.colCGST.AllowNegative = false;
-            this.colCGST.DecimalLength = 2;
-            dataGridViewCellStyle2.Format = "F2";
-            this.colCGST.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colCGST.HeaderText = "C GST %";
-            this.colCGST.Name = "colCGST";
-            this.colCGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colCGST.Width = 150;
-            // 
-            // colSGST
-            // 
-            this.colSGST.AllowNegative = false;
-            this.colSGST.DecimalLength = 2;
-            dataGridViewCellStyle3.Format = "F2";
-            this.colSGST.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colSGST.HeaderText = "S GST /UT GST %";
-            this.colSGST.Name = "colSGST";
-            this.colSGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colSGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colSGST.Width = 150;
-            // 
-            // colIGST
-            // 
-            this.colIGST.AllowNegative = false;
-            this.colIGST.DecimalLength = 2;
-            dataGridViewCellStyle4.Format = "F2";
-            this.colIGST.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colIGST.HeaderText = "I GST %";
-            this.colIGST.Name = "colIGST";
-            this.colIGST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colIGST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colIGST.Width = 150;
-            // 
-            // colEffectFrom
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEffectFrom.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colEffectFrom.HeaderText = "Effective From";
-            this.colEffectFrom.Name = "colEffectFrom";
-            this.colEffectFrom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colEffectFrom.Width = 150;
-            // 
-            // PrimaryID
-            // 
-            this.PrimaryID.HeaderText = "PrimaryID";
-            this.PrimaryID.Name = "PrimaryID";
-            this.PrimaryID.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.FalseValue = "false";
-            this.Column1.HeaderText = "Exempted";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
             // frmHSNCodeMast
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -682,6 +682,7 @@
             this.Name = "frmHSNCodeMast";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HSN Code Master";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmHSNCodeMast_FormClosed);
             this.Load += new System.EventHandler(this.frmHSNCodeMast_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
