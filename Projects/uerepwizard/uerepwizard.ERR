@@ -1,4 +1,4 @@
-Form e:\svnprojects\bug-31118\uerepwizard\repstat.scx has the following errors:
+Form e:\svnprojects\std installer 2.0.0.0\uerepwizard\repstat.scx has the following errors:
     Unknown NEWDECRY - Undefined
     Unknown DEC - Undefined
     Unknown NEWENCRY - Undefined
@@ -7,9 +7,9 @@ Form e:\svnprojects\bug-31118\uerepwizard\repstat.scx has the following errors:
     Unknown UEGETPOP - Undefined
     Proc./Func. UEQUERYEDITOR - Undefined
 
-Visual Class Library e:\svnprojects\bug-31118\uerepwizard\_base.vcx has the following errors:
+Visual Class Library e:\svnprojects\std installer 2.0.0.0\uerepwizard\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Program e:\svnprojects\bug-31118\uerepwizard\main.prg has the following errors:
+Program e:\svnprojects\std installer 2.0.0.0\uerepwizard\main.prg has the following errors:
     Unknown APPVERCHK - Undefined
 
