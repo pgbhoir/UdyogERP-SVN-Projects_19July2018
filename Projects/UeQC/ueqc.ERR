@@ -1,11 +1,11 @@
-Visual Class Library d:\udyoggst\class\standardui.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\standardui.vcx has the following errors:
     Unknown BARSTAT - Undefined
 
-Form e:\svnprojects\ueqc\frmqc.scx has the following errors:
+Form e:\...\bug_33359\my changes\transaction\27-04-2020\ueqc\ueqc\frmqc.scx has the following errors:
     Unknown UEGETPOP - Undefined
     Unknown UDTRIGQCCNTRLFINALUPDT - Undefined
 
-Visual Class Library d:\udyoggst\class\vouclass.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\vouclass.vcx has the following errors:
     Unknown UEGETPOP - Undefined
     Proc./Func. UENRENTRY - Undefined
     Form UEFRM_OPWKITEMALLOCATION - Undefined
@@ -17,11 +17,13 @@ Visual Class Library d:\udyoggst\class\vouclass.vcx has the following errors:
     Proc./Func. UDTRIGVOUXTRACLOSE - Undefined
     Proc./Func. UETRIGVOUXTRACLOSE - Undefined
     Form PTSRCH - Undefined
+    Proc./Func. UEMARKSMAST - Undefined
     Form UEFRM_GST_ADJ - Undefined
     Application UEDUTYDEBIT - Undefined
     Application UDAPPSUPPLIMENTORY - Undefined
     Application UEFRMGSTADJ - Undefined
     Application UDAPPRCMDET - Undefined
+    Application UDAPPGSTR_STATUS - Undefined
     Application UETDSPAYMENT - Undefined
     Application UEEMPPAYROLLPOSTING - Undefined
     Form UEETITDETINAR - Undefined
@@ -39,13 +41,16 @@ Visual Class Library d:\udyoggst\class\vouclass.vcx has the following errors:
     Form UEFRM_SERTAX_DET - Undefined
     Application UESERVICETAXCREDIT - Undefined
     Application UESERVICETAXCREDITACCRUAL - Undefined
+    Application UEGSTCHALLANDETAILS - Undefined
     Application UDAPPVOUXTRACLOSE - Undefined
     Program UDTRIGVOUXTRACLOSE - Undefined
     Form UEFRM_DCSTITEMALLOCATION - Undefined
     Form UEFRM_BOMDETAILSIP - Undefined
+    Form UEFRM_BOMDETAILSOP - Undefined
     Proc./Func. SAVEOPPTTAXDET - Undefined
     Application UDAPPETVALID - Undefined
+    Proc./Func. UEUNITBCSERIALIZE - Undefined
 
-Visual Class Library d:\udyoggst\class\_base.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 

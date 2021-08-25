@@ -1,0 +1,15 @@
+Form d:\svngst\uemultico_mast\co_mast.scx has the following errors:
+    Unknown BARSTAT - Undefined
+    Unknown NEWDECRY - Undefined
+    Proc./Func. READINFFILE - Undefined
+    Unknown NEWENCRY - Undefined
+    Unknown MVAR - Undefined
+    Unknown DECODER - Undefined
+    Unknown UEGETPOP - Undefined
+
+Form d:\svngst\uemultico_mast\sel_prod.scx has the following errors:
+    Unknown GETPRIVSTR - Undefined
+
+Visual Class Library d:\svngst\uemultico_mast\_base.vcx has the following errors:
+    Program SETOBJRF - Undefined
+

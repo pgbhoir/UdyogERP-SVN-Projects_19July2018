@@ -1,0 +1,4 @@
+Parameters _lndatasessionid,_actform,lnit_code,lnacid
+
+Do Form uefrmlastdeal With _lndatasessionid,_actform,lnit_code,lnacid
+Read Event
