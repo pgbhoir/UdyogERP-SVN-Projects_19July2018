@@ -154,7 +154,6 @@ namespace udCompanySetting
                 if (vSaveString != "")
                 {
                     oDataAccess.ExecuteSQLStatement(vSaveString, null, vTimeOut, true);
-                    this.pAddMode = false;
                 }
                 
 
@@ -261,11 +260,6 @@ namespace udCompanySetting
             {
                 return;
             }
-
-            //if (vTblCo_Set.Rows[0]["BarCodeId"].ToString().Trim() == "" && tblUpdtNm=="Co_Set")
-            //{
-            //    this.pAddMode = true;
-            //}
 
             /*<---Identity Columns--->*/
             if (this.pAddMode == true)
@@ -411,7 +405,6 @@ namespace udCompanySetting
             GetInfo.iniFile ini = new GetInfo.iniFile(startupPath + "\\" + "Visudyog.ini");
             vShowTips = ini.IniReadValue("Defaults", "ShowIntroForm");
             
-            
             frmGeneral oFrmGeneral = new udCompanySetting.frmGeneral();
             oFrmGeneral.pTblMain = this.vTblMain;
             oFrmGeneral.oDataAccess = this.oDataAccess;
@@ -419,11 +412,9 @@ namespace udCompanySetting
             oFrmGeneral.pPApplText=this.pPApplText;
             oFrmGeneral.pAddMode = this.pAddMode;
             oFrmGeneral.pEditMode = this.pEditMode;
-            oFrmGeneral.pShowTips = this.vShowTips; //Divyang
             oFrmGeneral.Icon = this.Icon;
             oFrmGeneral.ShowDialog();
             vShowTips = oFrmGeneral.pShowTips;
-            ini.IniWriteValue("Defaults", "ShowIntroForm", vShowTips);
         }
         private void btnInv_Click(object sender, EventArgs e)
         {

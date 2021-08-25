@@ -39,9 +39,7 @@ namespace udCompanySetting
         {
             if (this.pTblMain == null) { return; }
             if (this.pTblMain.Rows.Count == 0) { return; }
-            //if ((bool)this.pTblManufact.Rows[0]["BatchItem"]) { this.rdbGoods.Checked = true; this.rdbRun.Checked = false; } else { this.rdbGoods.Checked = false; this.rdbRun.Checked = true; }
-            if ((bool)this.pTblManufact.Rows[0]["BatchItem"]) { this.rdbGoods.Checked = true; this.rdbRun.Checked = false; }    //Added by Divyang 11072020
-            if ((bool)this.pTblManufact.Rows[0]["BatchRun"]) { this.rdbGoods.Checked = false; this.rdbRun.Checked = true; }     //Added by Divyang 11072020
+            if ((bool)this.pTblManufact.Rows[0]["BatchItem"]) { this.rdbGoods.Checked = true; this.rdbRun.Checked = false; } else { this.rdbGoods.Checked = false; this.rdbRun.Checked = true; }
             chkAutoBatch.Checked = ((bool)this.pTblManufact.Rows[0]["autobatch"] ? true : false);    //Divyang
 
             chkonLineBal.Checked =    ((bool)this.pTblMain.Rows[0]["It_BChk"]? true : false);

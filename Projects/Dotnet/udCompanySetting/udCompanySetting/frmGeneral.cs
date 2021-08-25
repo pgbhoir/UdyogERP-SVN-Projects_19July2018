@@ -19,8 +19,7 @@ namespace udCompanySetting
         string vSqlStr;
         short vTimeOut = 15;
         string vHolidays="";
-        //string vShowTips = "0";
-        string vShowTips;
+        string vShowTips = "0";
         public frmGeneral()
         {
             this.pDisableCloseBtn = true;
@@ -55,8 +54,7 @@ namespace udCompanySetting
             this.nudInvLen.DataBindings.Add("Text", this.pTblMain, "Inv_Length");
             this.txtItHeading.DataBindings.Add("Text", this.pTblMain, "It_Heading");    //Divyang
             chkApproset.Checked = (this.pTblMain.Rows[0]["approset"].ToString() == "True" ? true : false);  //Divyang
-            //this.cmbDsb.DataBindings.Add("Text", this.pTblMain, "DISP_DSB");  //Divyang
-            cmbDsb.Text = (pTblMain.Rows[0]["DISP_DSB"].ToString().Trim() == "N" ? "None" :  "Standard" );
+            chkDsbDisp.Checked = (this.pTblMain.Rows[0]["DISP_DSB"].ToString() == "True" ? true : false);  //Divyang
             chkSTLine.Checked = (this.pTblMain.Rows[0]["sgro_op"].ToString() == "True" ? true : false);  //Divyang
             ChkPTLine.Checked = (this.pTblMain.Rows[0]["pgro_op"].ToString() == "True" ? true : false);  //Divyang
             chkSTRate.Checked = (this.pTblMain.Rows[0]["srate_op"].ToString() == "True" ? true : false);  //Divyang
@@ -97,7 +95,7 @@ namespace udCompanySetting
             this.pTblMain.Rows[0]["Holi_Day"] = vHolidays;
             this.pTblMain.Rows[0]["It_heading"] = this.txtItHeading.Text.Trim();  //Divyang
             this.pTblMain.Rows[0]["approset"] = this.chkApproset.Checked;  //Divyang
-            this.pTblMain.Rows[0]["DISP_DSB"] = this.cmbDsb.Text.Substring(0,1);  //Divyang
+            this.pTblMain.Rows[0]["DISP_DSB"] = this.chkDsbDisp.Checked;  //Divyang
             this.pTblMain.Rows[0]["sgro_op"] = this.chkSTLine.Checked;  //Divyang
             this.pTblMain.Rows[0]["pgro_op"] = this.ChkPTLine.Checked;  //Divyang
             this.pTblMain.Rows[0]["srate_op"] = this.chkSTRate.Checked;  //Divyang
@@ -129,7 +127,7 @@ namespace udCompanySetting
             this.nudInvLen.Enabled=vEnabled;
             this.txtItHeading.Enabled = vEnabled;       //Divyang
             chkApproset.Enabled = vEnabled; //Divyang
-            cmbDsb.Enabled = vEnabled; //Divyang
+            chkDsbDisp.Enabled = vEnabled; //Divyang
             chkSTLine.Enabled = vEnabled;
             ChkPTLine.Enabled = vEnabled;
             chkSTRate.Enabled = vEnabled;

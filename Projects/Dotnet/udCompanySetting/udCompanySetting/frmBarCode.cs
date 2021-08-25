@@ -122,7 +122,7 @@ namespace udCompanySetting
                 DataTable tblBarType = new DataTable();
                 vSqlStr = "Select * From barcodetypemast Where   BarCodeNm='" + this.txtType.Text.Trim() + "'";
                 tblBarType = oDataAccess.GetDataTable(vSqlStr, null, vTimeOut);
-                if (tblBarType.Rows.Count > 0)
+                if (tblBarType.Rows.Count > 1)
                 {
                     this.pTblCo_Set.Rows[0]["BarCodeId"] = tblBarType.Rows[0]["BarCodeId"];
                     this.pTblCo_Set.Rows[0]["BCFontNm"] = tblBarType.Rows[0]["BCFontNm_HR"];

@@ -59,9 +59,8 @@
             this.ChkPTLine = new System.Windows.Forms.CheckBox();
             this.chkPTRate = new System.Windows.Forms.CheckBox();
             this.chkSTLine = new System.Windows.Forms.CheckBox();
+            this.chkDsbDisp = new System.Windows.Forms.CheckBox();
             this.chkShwWEFDt = new System.Windows.Forms.CheckBox();
-            this.cmbDsb = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmdTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInvLen)).BeginInit();
@@ -238,7 +237,7 @@
             // chkTips
             // 
             this.chkTips.AutoSize = true;
-            this.chkTips.Location = new System.Drawing.Point(21, 313);
+            this.chkTips.Location = new System.Drawing.Point(21, 306);
             this.chkTips.Name = "chkTips";
             this.chkTips.Size = new System.Drawing.Size(76, 17);
             this.chkTips.TabIndex = 16;
@@ -247,7 +246,7 @@
             // 
             // btnDone
             // 
-            this.btnDone.Location = new System.Drawing.Point(309, 338);
+            this.btnDone.Location = new System.Drawing.Point(309, 323);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(75, 23);
             this.btnDone.TabIndex = 19;
@@ -375,45 +374,33 @@
             this.chkSTLine.Text = "Sales Line Total";
             this.chkSTLine.UseVisualStyleBackColor = true;
             // 
+            // chkDsbDisp
+            // 
+            this.chkDsbDisp.AutoSize = true;
+            this.chkDsbDisp.Location = new System.Drawing.Point(121, 306);
+            this.chkDsbDisp.Name = "chkDsbDisp";
+            this.chkDsbDisp.Size = new System.Drawing.Size(152, 17);
+            this.chkDsbDisp.TabIndex = 17;
+            this.chkDsbDisp.Text = "Show Dashboard on Login";
+            this.chkDsbDisp.UseVisualStyleBackColor = true;
+            // 
             // chkShwWEFDt
             // 
             this.chkShwWEFDt.AutoSize = true;
-            this.chkShwWEFDt.Location = new System.Drawing.Point(21, 344);
+            this.chkShwWEFDt.Location = new System.Drawing.Point(21, 329);
             this.chkShwWEFDt.Name = "chkShwWEFDt";
             this.chkShwWEFDt.Size = new System.Drawing.Size(210, 17);
             this.chkShwWEFDt.TabIndex = 18;
             this.chkShwWEFDt.Text = "Show W.E.F. Date in Price List  Master";
             this.chkShwWEFDt.UseVisualStyleBackColor = true;
             // 
-            // cmbDsb
-            // 
-            this.cmbDsb.FormattingEnabled = true;
-            this.cmbDsb.Items.AddRange(new object[] {
-            "None",
-            "Standard"});
-            this.cmbDsb.Location = new System.Drawing.Point(219, 311);
-            this.cmbDsb.Name = "cmbDsb";
-            this.cmbDsb.Size = new System.Drawing.Size(100, 21);
-            this.cmbDsb.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(121, 314);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 13);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Dashboard Setting";
-            // 
             // frmGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 369);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.cmbDsb);
+            this.ClientSize = new System.Drawing.Size(396, 359);
             this.Controls.Add(this.chkShwWEFDt);
+            this.Controls.Add(this.chkDsbDisp);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.chkApproset);
             this.Controls.Add(this.txtItHeading);
@@ -483,8 +470,7 @@
         private System.Windows.Forms.CheckBox ChkPTLine;
         private System.Windows.Forms.CheckBox chkSTLine;
         private System.Windows.Forms.CheckBox chkPTRate;
+        private System.Windows.Forms.CheckBox chkDsbDisp;
         private System.Windows.Forms.CheckBox chkShwWEFDt;
-        private System.Windows.Forms.ComboBox cmbDsb;
-        private System.Windows.Forms.Label label6;
     }
 }
