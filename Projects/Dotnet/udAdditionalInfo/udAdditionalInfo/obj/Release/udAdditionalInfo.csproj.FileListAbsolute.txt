@@ -7,3 +7,30 @@ D:\1 Development\Dotnet\udAdditionalInfo\udAdditionalInfo\udAdditionalInfo\obj\R
 D:\1 Development\Dotnet\udAdditionalInfo\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csproj.GenerateResource.Cache
 D:\1 Development\Dotnet\udAdditionalInfo\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.dll
 D:\1 Development\Dotnet\udAdditionalInfo\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.pdb
+D:\additional\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.dll
+D:\additional\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.pdb
+D:\additional\udAdditionalInfo\udAdditionalInfo\bin\Release\DataAccess-Net.dll
+D:\additional\udAdditionalInfo\udAdditionalInfo\bin\Release\udSelectPop.dll
+D:\additional\udAdditionalInfo\udAdditionalInfo\bin\Release\uNumericTextBox.dll
+D:\additional\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csprojResolveAssemblyReference.cache
+D:\additional\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.udFrmAdditionalInfo.resources
+D:\additional\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csproj.GenerateResource.Cache
+D:\additional\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.dll
+D:\additional\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.pdb
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.dll
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.pdb
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\bin\Release\DataAccess-Net.dll
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\bin\Release\udSelectPop.dll
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\bin\Release\uNumericTextBox.dll
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csprojResolveAssemblyReference.cache
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.udFrmAdditionalInfo.resources
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csproj.GenerateResource.Cache
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.dll
+D:\SVNGST\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.pdb
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.dll
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\bin\Release\udAdditionalInfo.pdb
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csprojResolveAssemblyReference.cache
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.udFrmAdditionalInfo.resources
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.csproj.GenerateResource.Cache
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.dll
+D:\SVN Development\udAdditionalInfo\udAdditionalInfo\obj\Release\udAdditionalInfo.pdb
