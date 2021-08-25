@@ -1,6 +1,6 @@
 *!*	Lparameter ventryType, vInvoiceSeries, vInvoiceNo,VentDate, voldInvoiceSeries, voldInvoiceNo,vinv_size,oSqlConObj, nDataSessionId, Entry_Tbl, vnHandle,vcDbName,vdSta_Dt,vdEnd_Dt		&& 170414
 Lparameter ventryType, vInvoiceSeries, vInvoiceNo,VentDate, voldInvoiceSeries, voldInvoiceNo,vinv_size,oSqlConObj, nDataSessionId, Entry_Tbl, vnHandle,vcDbName,vdSta_Dt,vdEnd_Dt,nDbName
-SET STEP ON 
+
 If Empty(ventryType)
 	Retu ''
 Endif

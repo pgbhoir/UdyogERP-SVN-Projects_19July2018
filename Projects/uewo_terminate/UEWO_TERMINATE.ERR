@@ -1,13 +1,13 @@
-Visual Class Library d:\installer12.0\gst\vudyoggst\class\_base.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\_base.vcx has the following errors:
     Program SETOBJRF - Undefined
 
-Form d:\...\17-04-17\z new updates\svn\uewo_terminate\frmfilter.scx has the following errors:
+Form e:\...\bug_33359\my changes\transaction\28-04-2020\uewo_terminate\frmfilter.scx has the following errors:
     Unknown UEGETPOP - Undefined
     Unknown BARSTAT - Undefined
 
-Form d:\...\17-04-17\z new updates\svn\uewo_terminate\uefrm_terminate_wo.scx has the following errors:
+Form e:\...\my changes\transaction\28-04-2020\uewo_terminate\uefrm_terminate_wo.scx has the following errors:
     Unknown BARSTAT - Undefined
 
-Visual Class Library d:\installer12.0\gst\vudyoggst\class\standardui.vcx has the following errors:
+Visual Class Library f:\udyogerpsdk_2.2.0\class\standardui.vcx has the following errors:
     Unknown BARSTAT - Undefined
 
