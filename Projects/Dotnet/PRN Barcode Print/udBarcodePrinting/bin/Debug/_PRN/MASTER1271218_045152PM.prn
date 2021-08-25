@@ -1,0 +1,147 @@
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
+<xpml><page quantity='0' pitch='15.0 mm'></xpml>SIZE 33.7 mm, 15 mm
+DIRECTION 0,0
+REFERENCE 0,0
+OFFSET 0 mm
+SET REWIND OFF
+SET PEEL OFF
+SET CUTTER OFF
+SET PARTIAL_CUTTER OFF
+<xpml></page></xpml><xpml><page quantity='1' pitch='15.0 mm'></xpml>SET TEAR ON
+CLS
+BARCODE 227,114,"128M",17,0,180,2,4,"!105#it_name"
+CODEPAGE 1252
+TEXT 196,96,"0",180,8,8,"#it_name"
+TEXT 266,73,"0",180,7,7,"Product"
+TEXT 266,51,"0",180,7,7,"Batch No"
+TEXT 266,28,"0",180,7,7,"MRP"
+TEXT 180,73,"0",180,7,7,": Product1"
+TEXT 180,51,"0",180,7,7,": Batch No1"
+TEXT 180,28,"0",180,7,7,": MRP1"
+PRINT 1,1
+<xpml></page></xpml><xpml><end/></xpml>
