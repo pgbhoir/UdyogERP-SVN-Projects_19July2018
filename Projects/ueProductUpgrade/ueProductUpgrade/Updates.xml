@@ -31,8 +31,8 @@
     <Database>VUDYOG</Database>
     <ChkExists>1</ChkExists>
     <SqlQuery>
-      Create Procedure Usp_Int_GenFeature
-      @companyDB Varchar(15),@defaDB varchar(15),@paramType Varchar(15),@paramValue Varchar(500),@encValue Varchar(1000),@compForrights Varchar(1000),@rights Varchar(250),@roles Varchar(250)
+      create Procedure [dbo].[Usp_Int_GenFeature]
+      @companyDB Varchar(15),@defaDB varchar(15),@paramType Varchar(15),@paramValue Varchar(500),@encValue Varchar(1000),@compForrights Varchar(1000),@rights Varchar(250),@roles Varchar(250),@UpdateType Int,@Product Varchar(200)
       As
       Begin
       Declare @Sqlcmd NVarchar(4000),@RowsAffected Int,@ParamDefinition NVarchar(1000),@RecCount int
@@ -44,16 +44,24 @@
       Begin
       set @Sqlcmd='If Exists (Select Top 1 Padname,Barname From ' + @companyDB + '..Com_Menu Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue+ ''')'
       set @Sqlcmd = @Sqlcmd + ' ' + 'Begin '
+      if @UpdateType=1
+      Begin
+      set @Sqlcmd = @Sqlcmd + ' '	+ 'Update ' + @companyDB + '..Com_Menu Set newRange=Convert(Varbinary(250),@encValue) Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue+ ''''
+      End
       set @Sqlcmd = @Sqlcmd + ' '	+ 'Select 0 as ret,'''' As ErrorMsg'
       set @Sqlcmd = @Sqlcmd + ' ' + 'End'
+      set @ParamDefinition='@encValue Varchar(250)'
       print @Sqlcmd
-      Exec Sp_ExecuteSql @Sqlcmd
+      Exec Sp_ExecuteSql @Sqlcmd,@ParamDefinition,@encValue=@encValue
 
       Set @rowsAffected = @@rowcount
       --		PRINT @rowsAffected
       IF @rowsAffected=1
       Begin
       --Select 0 as ret,'' As ErrorMsg
+      set @Sqlcmd = ' Update Vudyog..rolesrights set Prodcode=Convert(varbinary(max),@Product) Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue + ''' and user_roles=@roles  and company=dbo.func_decoder(ltrim(rtrim(@compForrights)),''T'') )'
+      set @ParamDefinition='@compForrights Varchar(1000), @roles Varchar(250), @Product Varchar(200)'
+      Exec Sp_ExecuteSql @Sqlcmd,@ParamDefinition,@compForrights=@compForrights, @roles =@roles,@Product=@Product
       return
 
       End
@@ -80,10 +88,10 @@
       set @ParamDefinition='@encValue Varchar(250)'
       Exec sp_executesql @Sqlcmd,@ParamDefinition,@encValue=@encValue
 
-      set @Sqlcmd = ' insert into Vudyog..rolesrights(padname,barname,[range],company,rights,user_roles) Select PadName,Barname,[Range],@compForrights, @rights, @roles From ' + @defaDB + '..Com_Menu Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue + ''''
+      set @Sqlcmd = ' insert into Vudyog..rolesrights(padname,barname,[range],company,rights,user_roles,Prodcode) Select PadName,Barname,[Range],dbo.func_decoder(ltrim(rtrim(@compForrights)),''T''), @rights, @roles,Convert(varbinary(max),@Product) From ' + @defaDB + '..Com_Menu Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue + ''''
       set @Sqlcmd = @Sqlcmd + ' ' + ' and rtrim(upper(padname))+rtrim(upper(barname)) Not in (Select rtrim(upper(padname))+rtrim(upper(barname)) From Vudyog..rolesrights WITH(NOLOCK) Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue + ''' and user_roles=@roles  and company=@compForrights )'
       set @ParamDefinition='@compForrights Varchar(1000), @rights Varchar(250), @roles Varchar(250)'
-      Exec sp_executesql @Sqlcmd,@ParamDefinition,@compForrights=@compForrights, @rights=@rights  , @roles =@roles
+      Exec sp_executesql @Sqlcmd,@ParamDefinition,@compForrights=@compForrights, @rights=@rights  , @roles =@roles,@Product=@Product
 
 
       set @Sqlcmd = ' insert into ' + @companyDB + '..userrights([user],padname,barname,range,rights,user_roles) Select dbo.func_decoder(ltrim(rtrim(''Admin'')),''F''),PadName,Barname,[Range],@rights ,@roles From ' + @defaDB + '..Com_Menu Where rtrim(upper(padname))+rtrim(upper(barname))=''' + @paramValue + ''''
@@ -114,7 +122,7 @@
       return
       End
 
-      set @Sqlcmd='insert into Vudyog..rolesrights(padname,barname,[range],company,rights,user_roles) Select PadName,Barname,[Range],@compForrights,@rights ,@roles From ' + @defaDB + '..Com_Menu Where rtrim(ltrim(upper(Padname)))+rtrim(ltrim(upper(Barname))) in (Select rtrim(ltrim(upper(Padname)))+rtrim(ltrim(upper(Barname))) from ##tmpComMenu )  '
+      set @Sqlcmd='insert into Vudyog..rolesrights(padname,barname,[range],company,rights,user_roles) Select PadName,Barname,[Range],dbo.func_decoder(ltrim(rtrim(@compForrights)),''T''),@rights ,@roles From ' + @defaDB + '..Com_Menu Where rtrim(ltrim(upper(Padname)))+rtrim(ltrim(upper(Barname))) in (Select rtrim(ltrim(upper(Padname)))+rtrim(ltrim(upper(Barname))) from ##tmpComMenu )  '
       set @Sqlcmd = @Sqlcmd + ' ' + ' and rtrim(upper(padname))+rtrim(upper(barname)) Not in (Select rtrim(upper(padname))+rtrim(upper(barname)) From Vudyog..rolesrights WITH(NOLOCK) Where rtrim(upper(padname))+rtrim(upper(barname))  in (Select rtrim(ltrim(upper(Padname)))+rtrim(ltrim(upper(Barname))) from ##tmpComMenu) and user_roles=@roles  and company=@compForrights )'
       set @ParamDefinition='@compForrights Varchar(1000), @rights Varchar(250), @roles Varchar(250)'
       Exec sp_executesql @Sqlcmd,@ParamDefinition,@compForrights=@compForrights, @rights=@rights, @roles=@roles
@@ -144,9 +152,17 @@
       Begin
       Set @Sqlcmd=' If Exists (Select Top 1 Entry_ty From ' + @companyDB + '..Lcode Where Entry_ty=''' + @paramValue + ''')'
       set @Sqlcmd = @Sqlcmd + ' ' + 'Begin '
+
+      if @UpdateType=1
+      Begin
+      set @Sqlcmd = @Sqlcmd + ' '	+ 'Update ' + @companyDB + '..Lcode Set cd=Convert(Varbinary(250),@encValue) Where Entry_ty=''' + @paramValue + ''''
+      End
       set @Sqlcmd = @Sqlcmd + ' '	+ 'Select 0 as ret,'''' As ErrorMsg'
       set @Sqlcmd = @Sqlcmd + ' ' + 'End'
-      Exec Sp_ExecuteSql @Sqlcmd
+      set @ParamDefinition='@encValue Varchar(250)'
+      print @Sqlcmd
+      Exec Sp_ExecuteSql @Sqlcmd,@ParamDefinition,@encValue=@encValue
+
 
       Set @rowsAffected = @@rowcount
       IF @rowsAffected=1
@@ -251,9 +267,15 @@
       Begin
       Set @Sqlcmd=' If Exists (Select Top 1 Rep_nm From ' + @companyDB + '..r_status Where ltrim(rtrim([Group]))+ltrim(rtrim([Desc]))+ltrim(rtrim(rep_nm))=''' + @paramValue + ''')'
       set @Sqlcmd = @Sqlcmd + ' ' + 'Begin '
+      if @UpdateType=1
+      Begin
+      set @Sqlcmd = @Sqlcmd + ' '	+ 'Update ' + @companyDB + '..r_status Set newgroup=Convert(Varbinary(250),@encValue) Where ltrim(rtrim([Group]))+ltrim(rtrim([Desc]))+ltrim(rtrim(rep_nm))=''' + @paramValue + ''''
+      end
       set @Sqlcmd = @Sqlcmd + ' '	+ 'Select 0 as ret,'''' As ErrorMsg'
       set @Sqlcmd = @Sqlcmd + ' ' + 'End'
-      Exec Sp_ExecuteSql @Sqlcmd
+      set @ParamDefinition='@encValue Varchar(250)'
+      print @Sqlcmd
+      Exec Sp_ExecuteSql @Sqlcmd,@ParamDefinition,@encValue=@encValue
 
       Set @rowsAffected = @@rowcount
       IF @rowsAffected=1
@@ -298,7 +320,6 @@
       End Catch
       End
       End
-
     </SqlQuery>
   </Updates>
   <Updates>
@@ -324,7 +345,7 @@
     <UpdatesOrder>3</UpdatesOrder>
     <UpdatesType>U</UpdatesType>
     <UpdatesName>ApplicationDet</UpdatesName>
-    <IsActive>1</IsActive>
+    <IsActive>0</IsActive>
     <Remarks>Executing Script </Remarks>
     <Database>VUDYOG</Database>
     <ChkExists>0</ChkExists>
@@ -353,7 +374,7 @@
       Delete From ApplicationDet Where appname in ('iTax','USquare','VudyogMFG','VudyogTRD','VudyogServiceTax')
     </SqlQuery>
   </Updates>
-<Updates>
+  <Updates>
     <UpdatesOrder>5</UpdatesOrder>
     <UpdatesType>U</UpdatesType>
     <UpdatesName>ApplicationDet</UpdatesName>
@@ -364,16 +385,115 @@
     <SqlQuery>
       If Not Exists(Select AppName From Vudyog..ApplicationDet Where AppName='UdyogGSTSDK')
       Begin
-	      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogGSTSDK','Udyog GSTSDK','12.0')
+      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogGSTSDK','Udyog GSTSDK','12.0')
       End
       If Not Exists(Select AppName From Vudyog..ApplicationDet Where AppName='UdyogERP')
       Begin
-	      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogERP','Udyog ERP','1.0')
+      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogERP','Udyog ERP','1.0')
       End
       If Not Exists(Select AppName From Vudyog..ApplicationDet Where AppName='UdyogERPSDK')
       Begin
-	      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogERPSDK','Udyog ERPSDK','1.0')
+      Insert Into Vudyog..ApplicationDet(AppName,AppDesc,BaseVersion) Values ('UdyogERPSDK','Udyog ERPSDK','1.0')
       End
+    </SqlQuery>
+  </Updates>
+  <Updates>
+    <UpdatesOrder>6</UpdatesOrder>
+    <UpdatesType>U</UpdatesType>
+    <UpdatesName>UpdateRequest</UpdatesName>
+    <IsActive>1</IsActive>
+    <Remarks>Executing Script </Remarks>
+    <Database>VUDYOG</Database>
+    <ChkExists>0</ChkExists>
+    <SqlQuery>
+      If Not exists (Select [name] From SysObjects Where xtype='U' and [Name]='UpdateRequest')
+      Begin
+      Create Table UpdateRequest(RequestData xml,ReqTime DateTime,ReqprodUpd xml)
+      End
+      If Not Exists(Select [Name] From SysObjects Where XType='U' and [Name]='AddiScriptDet')
+      Begin
+      Create Table AddiScriptDet(ProdName Varchar(200),ScrFileNm Varchar(50))
+      End
+    </SqlQuery>
+  </Updates>
+  <Updates>
+    <UpdatesOrder>7</UpdatesOrder>
+    <UpdatesType>U</UpdatesType>
+    <UpdatesName>Prodmfg structure</UpdatesName>
+    <IsActive>1</IsActive>
+    <Remarks>Executing Script </Remarks>
+    <Database>VUDYOG</Database>
+    <ChkExists>0</ChkExists>
+    <SqlQuery>
+      Declare @SqlCmd nVarchar(200),@DbName nVARCHAR(200)
+
+
+      DECLARE CurCo_mast CURSOR FOR
+      SELECT Distinct DbName FROM Vudyog..Co_mast Where com_type=''
+
+      OPEN CurCo_mast
+      FETCH NEXT FROM CurCo_mast INTO @DbName
+      WHILE @@FETCH_STATUS=0
+      BEGIN
+
+      Set @SqlCmd = 'use '+rtrim(@DbName)+' Execute add_columns ''Manufact'',''ProdMfg Varchar(100) Default '''''''' With Values'''
+      print @SqlCmd
+      execute sp_executesql @SqlCmd
+
+
+      FETCH NEXT FROM CurCo_mast INTO @DbName
+      END
+      CLOSE CurCo_mast
+      DEALLOCATE CurCo_mast
+
+    </SqlQuery>
+  </Updates>
+  <Updates>
+    <UpdatesOrder>8</UpdatesOrder>
+    <UpdatesType>P</UpdatesType>
+    <UpdatesName>USP_update_Lother_dcmast</UpdatesName>
+    <IsActive>0</IsActive>
+    <Remarks>Executing Stored Procedure</Remarks>
+    <Database>Company</Database>
+    <ChkExists>1</ChkExists>
+    <SqlQuery>
+     If Exists(Select [Name] From SysObjects Where xType='P' and [Name]='USP_update_Lother_dcmast')
+Begin
+	Drop Procedure USP_update_Lother_dcmast
+End
+Go
+Create Procedure USP_update_Lother_dcmast
+@FromDbName Varchar(20)
+as
+Declare @SqlCmd NVarchar(max), @ParmDefinition nvarchar(500),@fldlist varchar(8000),@tblName Varchar(20),@dbName Varchar(20)
+
+set @dbName=db_name()
+set @tblName ='Lother'
+
+set @SqlCmd='Execute USP_ENT_GETFIELD_LIST @tblNameP ,@fldListp output'
+SET @ParmDefinition = N'@tblNameP Varchar(20),@fldListp Varchar(8000) OUTPUT';
+Execute sp_executesql @SqlCmd, @ParmDefinition,@tblNameP = @tblName, @fldListp=@fldlist OUTPUT
+
+set @SqlCmd='Insert into '+@tblName+'('+@fldlist+') select '+@fldlist+' From '+@FromDbName+'..'+@tblName
+	+' Where E_code in (Select Entry_ty From '+@dbName+'..Lcode Where cd is not null) and quotename(rtrim(E_code))+quotename(rtrim(Fld_nm))+quotename(att_file) Not in (Select quotename(rtrim(E_code))+quotename(rtrim(Fld_nm))+quotename(att_file) from '+@dbName+'..'+@tblName+' )'
+Execute sp_executesql @SqlCmd
+
+SET @SqlCmd='Update '+@tblName+' set subserial=a.subserial from '+@FromDbName+'..'+@tblName+' a inner join  '+@tblName+' b on (quotename(rtrim(a.E_code))+quotename(rtrim(a.Fld_nm))+quotename(a.att_file)=quotename(rtrim(b.E_code))+quotename(rtrim(b.Fld_nm))+quotename(b.att_file)) Where b.subserial is null'
+Execute sp_executesql @SqlCmd
+
+set @tblName ='Dcmast'
+
+set @SqlCmd='Execute USP_ENT_GETFIELD_LIST @tblNameP ,@fldListp output'
+SET @ParmDefinition = N'@tblNameP Varchar(20),@fldListp Varchar(8000) OUTPUT';
+Execute sp_executesql @SqlCmd, @ParmDefinition,@tblNameP = @tblName, @fldListp=@fldlist OUTPUT
+
+set @SqlCmd='Insert into '+@tblName+'('+@fldlist+') select '+@fldlist+' From '+@FromDbName+'..'+@tblName
+	+' Where Entry_ty in (Select Entry_ty From '+@dbName+'..Lcode Where cd is not null) and quotename(rtrim(Entry_ty))+quotename(rtrim(Fld_nm))+quotename(att_file) Not in (Select quotename(rtrim(Entry_ty))+quotename(rtrim(Fld_nm))+quotename(att_file) from '+@dbName+'..'+@tblName+' )'
+Execute sp_executesql @SqlCmd
+
+
+
+
     </SqlQuery>
   </Updates>
 </NewDataSet>

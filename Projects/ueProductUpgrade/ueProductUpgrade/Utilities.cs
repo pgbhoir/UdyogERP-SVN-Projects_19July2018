@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
-
+using System.Data;
+using DataAccess_Net;
 
 namespace ueProductUpgrade
 {
@@ -166,6 +167,283 @@ namespace ueProductUpgrade
             }
             return false;
         }
+        public static DataRow AddNewRow(DataTable _dt)
+        {
+            DataRow _dr = _dt.NewRow();
+            for (int i = 0; i < _dt.Columns.Count; i++)
+            {
+                switch (_dt.Columns[i].DataType.ToString())
+                {
+                    case "System.Int16":
+                        _dr[i] = Convert.ToInt16(0);
+                        break;
+                    case "System.Decimal":
+                        _dr[i] = Convert.ToDecimal(0.00);
+                        break;
+                    case "System.Double":
+                        _dr[i] = Convert.ToDouble(0.00);
+                        break;
+                    case "System.String":
+                        _dr[i] = Convert.ToString("");
+                        break;
+                    case "System.Boolean":
+                        _dr[i] = Convert.ToBoolean(false);
+                        break;
+                    case "System.DateTime":
+                        _dr[i] = Convert.ToDateTime("01/01/1900");
+                        break;
+                }
+            }
+            return _dr;
+        }
 
+        private static string GetUpdateString(DataRow _dr, string _tblName, List<clsParam> _clparam, string _xcludeFld)
+        {
+            DataTable _dt = _dr.Table;
+            string _sql = BuildUpdateSQL(_dt, _tblName, _xcludeFld);
+
+            clsParam _objparam;
+            clsParam.pType paramType = clsParam.pType.pString;
+            string _fldNm = "";
+            string[] _xcludeFldArr = _xcludeFld.Split(',');
+            foreach (DataColumn _dc in _dt.Columns)
+            {
+                _fldNm = _dc.ColumnName;
+                if (Array.IndexOf(_xcludeFldArr, _fldNm.ToUpper()) != -1)
+                {
+                    continue;
+                }
+
+                if (_dc.DataType.Name == "Byte[]")
+                    continue;
+
+                switch (_dc.DataType.ToString().ToLower())
+                {
+                    case "varchar":
+                        paramType = clsParam.pType.pString;
+                        break;
+                    case "decimal":
+                        paramType = clsParam.pType.pFloat;
+                        break;
+                    case "bit":
+                        paramType = clsParam.pType.pLong;
+                        break;
+                    case "datetime":
+                        paramType = clsParam.pType.pDate;
+                        break;
+                    case "text":
+                        paramType = clsParam.pType.pString;
+                        break;
+                    default:
+                        paramType = clsParam.pType.pString;
+                        break;
+                }
+                _objparam = new clsParam(_dc.ColumnName, _dr[_fldNm], paramType, _clparam, false, null, clsParam.pInOut.pIn);
+            }
+            return _sql;
+        }
+
+        private static string BuildUpdateSQL(DataTable _dt, string _tblName, string _xcludeFld)
+        {
+            StringBuilder _InsSql = new StringBuilder("Update " + _tblName + " ");
+            StringBuilder _ValSql = new StringBuilder(" Set ");
+            bool _FirstRec = true;
+            string _colName = "";
+            string[] _xcludeFldArr = _xcludeFld.Split(',');
+            foreach (DataColumn _dc in _dt.Columns)
+            {
+                _colName = _dc.ColumnName.ToUpper();
+                if (Array.IndexOf(_xcludeFldArr, _colName) != -1)
+                {
+                    continue;
+                }
+
+                if (_dc.DataType.Name == "Byte[]")
+                    continue;
+
+                if (_FirstRec)
+                {
+                    _FirstRec = false;
+                }
+                else
+                {
+                    _InsSql.Append(", ");
+                    _ValSql.Append(", ");
+                }
+
+                _ValSql.Append("[" + _dc.ColumnName + "] = ?");
+            }
+
+            _InsSql.Append(_ValSql.ToString());
+            _InsSql.Append("Where Tran_cd = " + _dt.Rows[0]["Tran_Cd"].ToString());
+
+            return _InsSql.ToString();
+        }
+        //***** Added by Sachin N. S. on 20/01/2016 for Bug-27503 -- End ******//
+
+        private static string BuildInsertSQL(DataTable _dt, string _tblName, string _xcludeFld)
+        {
+            StringBuilder _InsSql = new StringBuilder("Insert into " + _tblName + " ( ");
+            StringBuilder _ValSql = new StringBuilder(" Values (");
+            bool _FirstRec = true;
+            bool _isIdentity = false;
+            string _IdentityType = "";
+            string _colName = "";
+            string[] _xcludeFldArr = _xcludeFld.Split(',');
+            foreach (DataColumn _dc in _dt.Columns)
+            {
+                _colName = _dc.ColumnName.ToUpper();
+
+                if (Array.IndexOf(_xcludeFldArr, _colName) != -1)
+                {
+                    continue;
+                }
+
+                if (_dc.DataType.Name == "Byte[]")
+                    continue;
+
+                if (_dc.AutoIncrement)
+                {
+                    _isIdentity = true;
+
+                    switch (_dc.DataType.Name)
+                    {
+                        case "Int16":
+                            _IdentityType = "smallint";
+                            break;
+                        case "SByte":
+                            _IdentityType = "tinyint";
+                            break;
+                        case "Int64":
+                            _IdentityType = "bigint";
+                            break;
+                        case "Decimal":
+                            _IdentityType = "decimal";
+                            break;
+                        default:
+                            _IdentityType = "int";
+                            break;
+                    }
+                }
+                else
+                {
+                    if (_FirstRec)
+                    {
+                        _FirstRec = false;
+                    }
+                    else
+                    {
+                        _InsSql.Append(", ");
+                        _ValSql.Append(", ");
+                    }
+
+                    _InsSql.Append("[" + _dc.ColumnName + "]");
+                    _ValSql.Append("?");
+                    //_ValSql.Append("@");
+                    //_ValSql.Append(_dc.ColumnName);
+                }
+            }
+
+            _InsSql.Append(")");
+            _ValSql.Append(")");
+            _InsSql.Append(_ValSql.ToString());
+
+            if (_isIdentity)
+            {
+                _InsSql.Append("; Select cast(scope_identity() as ");
+                _InsSql.Append(_IdentityType);
+                _InsSql.Append(")");
+            }
+
+            return _InsSql.ToString();
+        }
+        private static string GetInsertString(DataRow _dr, string _tblName, List<clsParam> _clparam, string _xcludeFld)
+        {
+            DataTable _dt = _dr.Table;
+            string _sql = BuildInsertSQL(_dt, _tblName, _xcludeFld);
+
+            clsParam _objparam;
+            clsParam.pType paramType = clsParam.pType.pString;
+            string _fldNm = "";
+            string[] _xcludeFldArr = _xcludeFld.Split(',');
+            foreach (DataColumn _dc in _dt.Columns)
+            {
+                _fldNm = _dc.ColumnName;
+                if (Array.IndexOf(_xcludeFldArr, _fldNm.ToUpper()) != -1)
+                {
+                    continue;
+                }
+
+                if (_dc.DataType.Name == "Byte[]")
+                    continue;
+
+                switch (_dc.DataType.ToString().ToLower())
+                {
+                    case "varchar":
+                        paramType = clsParam.pType.pString;
+                        break;
+                    case "decimal":
+                        paramType = clsParam.pType.pFloat;
+                        break;
+                    case "bit":
+                        paramType = clsParam.pType.pLong;
+                        break;
+                    case "datetime":
+                        paramType = clsParam.pType.pDate;
+                        break;
+                    case "text":
+                        paramType = clsParam.pType.pString;
+                        break;
+                    default:
+                        paramType = clsParam.pType.pString;
+                        break;
+                }
+                _objparam = new clsParam(_dc.ColumnName, _dr[_fldNm], paramType, _clparam, false, null, clsParam.pInOut.pIn);
+            }
+
+            //_clparam.Add(new clsParam { FieldName = "@Entry_ty1", Value = _dc });
+            //_clparam.Add(new clsParam { FieldName = "@Tran_cd", Value = 0 });
+
+            return _sql;
+        }
+    }
+
+    public static class Extensions
+    {
+        public static String Left(this string input, int length)
+        {
+            var result = "";
+            if ((input.Length <= 0)) return result;
+            if ((length > input.Length))
+            {
+                length = input.Length;
+            }
+            result = input.Substring(0, length);
+            return result;
+        }
+ 
+        public static String Mid(this string input, int start, int length)
+        {
+            var result = "";
+            if (((input.Length <= 0) || (start >= input.Length))) return result;
+            if ((start + length > input.Length))
+            {
+                length = (input.Length - start);
+            }
+            result = input.Substring(start, length);
+            return result;
+        }
+ 
+        public static String Right(this string input, int length)
+        {
+            var result = "";
+            if ((input.Length <= 0)) return result;
+            if ((length > input.Length))
+            {
+                length = input.Length;
+            }
+            result = input.Substring((input.Length - length), length);
+            return result;
+        }
     }
 }

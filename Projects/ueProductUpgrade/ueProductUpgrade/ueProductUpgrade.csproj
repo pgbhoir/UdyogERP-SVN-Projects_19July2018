@@ -61,9 +61,12 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="ubaseform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="udSelectPop">
+      <HintPath>C:\UdyogERP\udSelectPop.dll</HintPath>
+    </Reference>
     <Reference Include="Udyog.Library.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\UdyogLibraryCommon\UdyogLibraryCommon\bin\Release\Udyog.Library.Common.dll</HintPath>
+      <HintPath>E:\U7\UdyogERP\Udyog.Library.Common.dll</HintPath>
     </Reference>
     <Reference Include="UdyogZipUnzip">
       <HintPath>..\..\UdyogZipUnzip\UdyogZipUnzip\bin\Release\UdyogZipUnzip.dll</HintPath>

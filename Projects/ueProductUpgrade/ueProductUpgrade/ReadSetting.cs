@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using Udyog.Library.Common;
 
 class ReadSetting
 {
     private string _nenc = string.Empty;        //Added by Shrikant S. on 26/04/2018 for Bug-31488  
+
     public ReadSetting(string appPath)
     {
         GetInfo.iniFile ini = new GetInfo.iniFile(appPath + "\\" + "Visudyog.ini");
@@ -63,5 +65,13 @@ class ReadSetting
     public string ConnectionString
     {
         get { return "Data Source=" + this.Server + ";Initial Catalog=VUDYOG;Uid=" + this.User + ";Pwd=" + this.Pass; }
+    }
+}
+class WriteSetting
+{
+    public WriteSetting(string appPath,string sectionName,string keyName,string value)
+    {
+        GetInfo.iniFile ini = new GetInfo.iniFile(appPath + "\\" + "Visudyog.ini");
+        ini.IniWriteValue(sectionName, keyName, value);
     }
 }

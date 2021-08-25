@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Windows.Forms;
 
 namespace ueProductUpgrade
 {
@@ -67,6 +68,7 @@ namespace ueProductUpgrade
             ldv.Sort = "UpdatesOrder";
             ldv.RowFilter = "Database='Company' and IsActive=1";
             connStr = connStr.Replace("VUDYOG", companyDB);
+            conn.ConnectionString = connStr;
             if (ldv.Count > 0)
             {
                 for (int i = 0; i < ldv.Count; i++)
@@ -81,6 +83,7 @@ namespace ueProductUpgrade
                         {
                             sqlStr = ldv[i]["SqlQuery"].ToString().Trim();
                             lcmd = new SqlCommand(sqlStr, conn);
+
                             lcmd.ExecuteNonQuery();
                         }
                         this.ConnClose();
@@ -89,6 +92,8 @@ namespace ueProductUpgrade
                     {
                         sqlStr = ldv[i]["SqlQuery"].ToString().Trim();
                         lcmd = new SqlCommand(sqlStr, conn);
+                       
+
                         this.ConnOpen();
                         lcmd.ExecuteNonQuery();
                         this.ConnClose();
