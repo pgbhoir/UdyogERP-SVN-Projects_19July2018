@@ -1,4 +1,5 @@
-Visual Class Library e:\svnprojects\bug-31526\new folder\uedataexport\dbflow_bll.vcx has the following errors:
+Visual Class Library e:\svnprojects\prajakta\uedataexport\dbflow_bll.vcx has the following errors:
     Unknown UDTRIGVOUDATAEXPORT - Undefined
+    Unknown FUNC_QRCODE - Undefined
     Unknown GETPREFIX - Undefined
 

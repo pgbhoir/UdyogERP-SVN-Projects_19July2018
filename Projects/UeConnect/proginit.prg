@@ -7,14 +7,14 @@ Define Class clsConnect As Custom OlePublic
 	This.appname=Alltrim(appFile)+".EXE"
 
 	Set Default To &appPath
-&&Added by Shrikant S. on 01/08/2014		&& Start		
+&&Added by Shrikant S. on 01/08/2014		&& Start
 	lcPath=&appPath+"\"+This.appname
 	Set Classlib To UdGeneral.vcx In (lcPath) Additive
 	Set Classlib To "SqlConnection.vcx" In (lcPath) Additive
 	Set Procedure To vu_udfs.prg In (lcPath) Additive
 &&Added by Shrikant S. on 01/08/2014		&& End
-	
-&&Commented by Shrikant S. on 01/08/2014		&& Start	
+
+&&Commented by Shrikant S. on 01/08/2014		&& Start
 *!*		Set Classlib To UdGeneral.vcx In (This.appname) Additive
 *!*		Set Classlib To "SqlConnection.vcx" In (This.appname) Additive
 *!*		Set Procedure To vu_udfs.prg In (This.appname) Additive
@@ -51,7 +51,7 @@ Define Class clsConnect As Custom OlePublic
 	vumess=This.appname
 	GlobalObj= Createobject("UdGeneral")
 	If Type('GlobalObj')='O'
-		This.retValue=Dec(GlobalObj.getPropertyval(lcpara))
+		This.retValue=Dec(GlobalObj.getpropertyval(lcpara))
 		GlobalObj=Null
 	Endif
 	Return (This.retValue)
@@ -62,18 +62,30 @@ Define Class clsConnect As Custom OlePublic
 	vumess=This.appname
 	GlobalObj= Createobject("UdGeneral")
 	If Type('GlobalObj')='O'
-		This.retValue=Dec(NewDecry(GlobalObj.getPropertyval(lcpara),'Udyog_*Prod_Cd'))
+		This.retValue=Dec(NewDecry(GlobalObj.getpropertyval(lcpara),'Udyog_*Prod_Cd'))
 		GlobalObj=Null
 	Endif
 	Return (This.retValue)
 	Endproc
+
+	Procedure RetUnqProperty(lcpara As String) As String
+	This.retValue=""
+	vumess=This.appname
+	GlobalObj= Createobject("UdGeneral")
+	If Type('GlobalObj')='O'
+		This.retValue=Transform(GlobalObj.getpropertyval(lcpara))
+		GlobalObj=Null
+	Endif
+	Return (This.retValue)
+	Endproc
+
 
 	Procedure RetProduct() As String
 	This.retValue=""
 	vumess=This.appname
 	GlobalObj= Createobject("UdGeneral")
 
-	_arrcode = GlobalObj.getPropertyval("MainProduct(1,3)")
+	_arrcode = GlobalObj.getpropertyval("MainProduct(1,3)")
 	If !Empty(_arrcode)
 		This.retValue = Dec(_arrcode)+","
 		GlobalObj=Null
@@ -88,6 +100,7 @@ Define Class clsConnect As Custom OlePublic
 	Return (This.retValue)
 	Endproc
 
+
 	Procedure ReadRegiValue(aPath As String) As String
 	This.retValue=""
 	vumess=This.appname
@@ -97,8 +110,11 @@ Define Class clsConnect As Custom OlePublic
 		ueReadRegMe = Createobject("ueReadRegisterMe")
 	Endif
 	If Type('ueReadRegMe') = 'O'
-		_UnqVal = GlobalObj.getPropertyval('UnqVal')
+		_UnqVal = GlobalObj.getpropertyval('UnqVal')
 		_UnqVal = Substr(Dec(_UnqVal),2,8)
+
+		_prod=This.RetProduct()
+		ueReadRegMe.ProdCheck = Iif(Len(_prod)>0,Left(_prod,Len(_prod)-1),"")			&& Added by Shrikant S. on 15/04/2019 for Registration
 		ueReadRegMe._ueReadRegisterMe(aPath,_UnqVal)
 
 		This.retValue=Alltrim(ueReadRegMe.r_comp)
@@ -118,6 +134,9 @@ Define Class clsConnect As Custom OlePublic
 		This.retValue=This.retValue+"^"+Alltrim(Str(ueReadRegMe.r_noof))
 		This.retValue=This.retValue+"^"+Alltrim(ueReadRegMe.r_srvtype)
 		This.retValue=This.retValue+"^"+Alltrim(ueReadRegMe.xvalue)
+		This.retValue=This.retValue+"^"+Alltrim(ueReadRegMe.r_mob)						&& Added by Shrikant S. on 12/03/2019 for Registration
+		This.retValue=This.retValue+"^"+Alltrim(ueReadRegMe.r_idno)						&& Added by Shrikant S. on 01/04/2019 for Registration
+		This.retValue=This.retValue+"^"+Alltrim(ueReadRegMe.r_pid)						&& Added by Shrikant S. on 01/04/2019 for Registration
 	Endif
 	ueReadRegMe=Null
 	GlobalObj=Null
